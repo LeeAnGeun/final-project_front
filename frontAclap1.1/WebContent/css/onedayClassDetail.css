@@ -1,0 +1,260 @@
+@charset "UTF-8";
+/*메인 컨테이너*/
+.onedayClassContaier{
+	margin-top:80px;
+	margin-left:300px;
+	margin-right:300px;
+}
+
+/*상단 제목*/
+.onedayClassMainTextBox{
+	height:120px;
+	width:100%;
+	font-family: 'Roboto', sans-serif;	
+	margin-bottom:10px;
+}
+.onedayClassMainText{  /*카테고리*/
+	font-size:17px;
+	font-weight: 600;
+	padding-bottom:4px;
+}
+.onedayClassTitle{  /*메인 타이틀*/
+	font-size:32px;
+	font-weight: 600;
+	padding-bottom:9px;
+}
+
+.onedayClassMainText3{  /*별점, 공유하기, 저장 컨테이너*/
+	font-size:18px;
+}
+#DetailLocation{
+	font-size:15px;
+	font-weight: 500;
+	margin-left: 8px;
+}
+.DetailShareBtn{  /*공유하기*/
+    border: none;
+    background-color: white;
+    font-size:18px;
+    float:right;
+    margin-right:10px;
+}
+.DetailLikeBtn{  /*저장 버튼*/
+    border: none;
+    background-color: white;
+    font-size:18px;
+    float:right;
+}
+.DetailShareBtn:hover{
+	cursor: pointer;
+	background-color:#F5F2F5;	
+}
+.DetailLikeBtn:hover{
+	cursor: pointer;
+	background-color:#F5F2F5;	
+}
+
+
+
+/*---- 이미지 박스 A ----*/
+.onedayClassImageBoxA{
+	width:1090px;
+	height:400px;
+}
+.ocImgFrameA1{
+	width:250px;
+	height:400px;
+	overflow: hidden;
+}
+.ocImgFrameA2{
+	width:317.5px;
+	height:195px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameA3{
+	width:317.5px;
+	height:195px;
+	overflow: hidden;
+	padding-left:10px;
+	padding-top:10px;
+}
+.ocImgFrameA4{
+	width:220px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameA5{
+	width:272px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+/*---- 이미지 박스 B ----*/
+.onedayClassImageBoxB{
+	width:1090px;
+	height:400px;
+}
+.ocImgFrameB1{
+	width:350px;
+	height:210px;
+	overflow: hidden;
+}
+.ocImgFrameB2{
+	width:350px;
+	height:180px;
+	overflow:hidden;
+	padding-top:10px;	
+}
+.ocImgFrameB3{
+	width:200px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameB4{
+	width:300px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameB5{
+	width:210px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+/*---- 이미지 박스 C ----*/
+.onedayClassImageBoxC{
+	width:1090px;
+	height:400px;
+}
+.ocImgFrameC1{
+	width:352.5px;
+	height:210px;
+	overflow: hidden;
+}
+.ocImgFrameC2{
+	width:352.5px;
+	height:180px;
+	overflow:hidden;
+	padding-top:10px;	
+}
+.ocImgFrameC3{
+	width:400px;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameC4{
+	width:317.5px;
+	height:195px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgFrameC5{
+	width:317.5px;
+	height:195px;
+	overflow: hidden;
+	padding-left:10px;
+	padding-top:10px;
+}
+
+/*---- 이미지  비율 ----*/
+.ocImgWidth{
+	width:100%;
+}
+.ocImgHeight{
+	height:100%;
+}
+
+/*---- 이미지박스 선택 ----*/
+.onedayClassImageSelector{ 
+	width:100%;
+	height:60px;
+	margin-bottom:5px;
+}
+
+.layerBtnChoice{
+	float:right;
+	font-size:20px;
+	border:none;
+	height:35px;
+	width:74px;
+	border-radius: 2px;
+	margin-left:11px;
+	background-color:#98A4A6;	
+	color:white;
+}
+.layerBtnNonChoice{
+	float:right;
+	font-size:20px;
+	border:none;
+	height:35px;
+	width:74px;
+	border-radius: 2px;
+	margin-left:11px;
+	background-color:#F5F2F5;	
+}
+.layerBtnChoice:hover{
+	cursor: pointer;
+}
+.layerBtnNonChoice:hover{
+	cursor: pointer;
+}
+
+
+
+/*메인 컨텐츠*/
+.onedayClassContentBox1{
+	margin-top:30px;
+}
+.ocSubTitle{  
+	font-size:27px;
+	font-weight: 550;
+	margin-bottom:10px;
+}
+.ocIcon{
+	font-size:25px;
+}
+.ocTxt1{  
+	font-size:25px;
+}
+
+.hrMargin{
+	padding-top:30px;
+	padding-bottom:30px;
+}
+.scProgramTxt{
+	font-size:20px;
+	line-height: 30px;
+}
+
+/* 선생님  소개 */
+.ocTeacherImg{
+	height:70px;
+	width:70px;
+	border-radius: 50%;
+}
+.ocTeacherMail{
+	font-size:16px;
+	padding-top:3px;
+}
+.teacherStar{
+	font-size:20px;
+	padding-top:3px;
+	padding-bottom:25px;
+}
+	
+
+
+/* 리뷰*/
+.reviewBox{
+	
+}
+
+
+

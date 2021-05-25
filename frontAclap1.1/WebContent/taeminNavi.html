@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- CSS -->
+<!-- HOME CSS -->
 <link rel="stylesheet" href="./css/home.css">
 
 </head>
@@ -30,8 +30,8 @@
 		<div class="menuTop2">
 			<ul class="navListTop">
 				<li class="listItem"><a id="len0" class="hoverable" href="#" onclick="FAQ();return false;">FAQ</a></li>
-				<li class="listItem"><a id="len1" class="hoverable" href="#">크리에이터</a></li>
 
+				<li class="listItem"><a id="len1" class="hoverable" href="#" onclick='goOnedayClassOpen()'>크리에이터</a></li>
 				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="#">클래스</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="point.html">포인트 충전</a></li>
@@ -138,22 +138,19 @@
 	<div id="psyClassList"></div>
 
 	<!-- 선생님이 되어보세요-->
-	<br><br><br><br>
 	<div class='teacherBox' style="background-size:cover; background-image:url('./images/teacher.png');">
-		<input type='button' id='onedayClassOpenBtn' value='자세히 알아보기' >
+		<input type='button' id='onedayClassOpenBtn' onclick='goOnedayClassOpen()' value='자세히 알아보기' >
 	</div>
-	<br><br>
 </div>
-
-<!-- footer -->
-      <footer class="footer">
+	<!-- footer -->
+    <footer class="footer">
         <div class="info-box">
           <div class="footnote">
           <p><span class="footer-white">Anyone Can Learn Anything Precious</span></p><br>
             ACLAP <span class="highlight">&copy;2021</span>
           </div>
         </div>
-      </footer>
+    </footer>
 
 <script>
 $(document).ready(function(){
@@ -298,6 +295,11 @@ function admin() {
 //로고 클릭시
 function ACLAP(){
 	location.href="taeminNavi.html";
+}
+
+//onedayClass Open View
+function goOnedayClassOpen(){
+	$("#perfectGuy").load("onedayClassView/onedayClassOpen.html");
 }
 
 

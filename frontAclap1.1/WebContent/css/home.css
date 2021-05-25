@@ -613,15 +613,21 @@ img {vertical-align: middle;}
 .teacherBox{
 	height:500px;
 	width:1240px;
+	border-radius:10px;
+	margin-left:230px;
+	margin-top:100px;
+	margin-bottom:50px;
 }
 
 #onedayClassOpenBtn{
-	font-size:15px;
+ 	font-size:15px;
 	font-weight: 550;
 	border-radius:7px;
+	border:none;
 	height:50px;
 	width:130px;
-	background-color:yellow;
+	margin-left:118px;
+	margin-top:250px;
 }
 #onedayClassOpenBtn:hover{
 	background-color:#FAF8DB;
