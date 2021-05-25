@@ -4,11 +4,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
- <!-- jquary -->
-<!--	
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- -->
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -272,7 +267,8 @@ $(document).ready(function(){
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >학생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >선생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">정보 수정</a> </li>
-        </ul> 
+            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_stampTable">도장판</a> </li>
+        </ul> 	
     </div>
 </div>
 
@@ -416,6 +412,11 @@ $(document).ready(function(){
    </div>
 </div>
 
+<div id="stampTable" class="hide_table">
+	<div class="stamp_Modal_Table">
+		ddd
+	</div>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -454,9 +455,11 @@ $(document).ready(function() {
 							+ "<div class='text-muted' id='count'>신청한 수업</div>"
 						+ "</div>"
 						
-						+ "<div class='d-flex flex-column align-items-center spoint2' id='border-right'>"
+						+ "<div class='d-flex flex-column align-items-center spoint2' onclick='spoint2()' id='border-right'>"
+							
 							+ "<p class='h4'>" + dto.aCount + "</p>"
 							+ "<div class='text-muted' id='count'>수강한 수업</div>"
+							
 						+ "</div>"
 						
 						+ "<div class='d-flex flex-column align-items-center spoint3'>"
@@ -548,6 +551,7 @@ $(document).ready(function() {
 					});
 				}
 				$(".schdulelist").append(str1);
+				
 			},
 			error:function(){
 				alert('error');
@@ -678,6 +682,9 @@ $(document).ready(function() {
  	
 });
 
+function spoint2(){
+	$(".hide_table").toggleClass("show_table");	
+}
 </script>
 
 
@@ -747,6 +754,8 @@ $(document).ready(function() {
 	  
 	});	
 });	
+	
+
 </script>
 
 
