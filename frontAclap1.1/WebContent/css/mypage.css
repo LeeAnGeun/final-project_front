@@ -84,6 +84,31 @@ body {
     text-align: center;
 }
 
+.hide_table{
+	opacity: 0;
+   	visibility: hidden;
+}
+
+.show_table{
+	opacity: 1;
+    visibility: visible;
+}
+
+.stamp_Modal_Table{
+	position: fixed; 
+ 	top: 9.2%;
+	left:37%;
+	top:40%;  
+	z-index:1; 	
+	padding: 1rem 1.5rem;
+	background-color:white;
+	width: 380px;
+	height: 420px;
+	border-radius: 0.5rem;
+	text-align:center;
+	box-shadow: 3px 2px 5px #66676B;
+}
+
 #info{
 	margin-top: 70px;	
 	text-align: center;
