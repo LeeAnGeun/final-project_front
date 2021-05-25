@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+ <!-- jquary -->
+<!--	
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ -->
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- icon -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- mypage CSS -->
+<link rel="stylesheet" href="./css/mypage.css">
+<link href='fullcalendar/main.css' rel='stylesheet' />
+
+<!-- js -->
+<script src='filesaver/FileSaver.js'></script>
+<script src='filesaver/html2canvas.js'></script>
+<script src='fullcalendar/main.js'></script>
+
+<script>
+
+///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
+
+$(document).ready(function(){
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json
+
+	// 회원정보 확인 Modal
+	//$(document).on("click", "#_infoUpdate", function () {
+	$("#a_infoUpdate").on("click", function() {
+		// alert("_infoUpdate"	);
+		$("#memberUpdateCheck").modal('show');
+	});
+
+	// 비밀번호로 인증하기
+	$("#memberUpdatePwdCheckBtn").click(function(){
+		if($("#memberUpdatePwdCheckInput").val() == json.pwd ){
+			alert("인증되었습니다.");
+			$("#memberUpdateCheck").modal('hide');
+			
+		} 
+		else {
+			alert('비밀번호가 올바르지 않습니다');
+			$("#memberUpdatePwdCheckInput").val("");
+			$("#memberUpdatePwdCheckInput").focus();
+		} 
+	});
+
+	// 이메일로 인증하기
+	$("#memberUpdateEmailSendBtn").click(function(){
+		
+		if($("#memberUpdateEmailCheckInput").val() == json.email){
+			emailSend();
+			alert('인증번호를 보냈습니다. 인증번호를 입력해주세요');
+		}
+		else{
+			alert('이메일 주소가 올바르지 않습니다. 다시 확인하세요');
+			$("#memberUpdateEmailCheckInput").val("");
+			$("#memberUpdateEmailCheckInput").focus();
+		}
+	});
+
+
+	// 이메일 인증번호 전송
+	let code = 0;
+	function emailSend(){
+
+		let makeNum = Math.floor(Math.random() * 100000) + 100000;
+		if(makeNum > 100000) 
+			makeNum = makeNum - 10000; 
+		code = makeNum
+	 
+		$.ajax({
+			url:"http://localhost:3000/emailSend",
+			type:'post',
+			data:{email:json.email, num:code},
+			error:function(){
+				alert('emailSend ajax error');
+			}
+		});
+	}
+
+	// 이메일 인증번호 확인
+	$("#memberUpdateCodeCheckBtn").click(function(){
+		if($("#memberUpdateEmailCodeInput").val() == code){
+			alert("인증되었습니다.");
+			$("#memberUpdateCheck").modal('hide');
+			$("#memberUpdateModal").modal('show');
+		}
+		else{
+			alert('인증번호가 올바르지 않습니다');
+		}
+		$("#memberUpdateEmailCheckInput").val("");
+		$("#memberUpdateEmailCheckInput").focus();
+		$("#memberUpdateEmailCodeInput").val("");
+	});
+
+
+	/////////////////////////// 정보 수정 (회원정보 수정)  ///////////////////////////////
+
+		
+
+	// 프로필 이미지 미리보기
+	$("#_profilePic").on("change", handleImgFileSelect);
+	function handleImgFileSelect(e) {
+		
+		let files = e.target.files;
+		let filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+		   if(!f.type.match("image.*")) {
+		       alert("이미지만 업로드 가능합니다.");
+		       return;
+		   }
+		   sel_file = f;
+		   let reader = new FileReader();
+		   reader.onload = function(e) {
+		        $("#newprofile").attr("src", e.target.result);   
+		        $("#newprofile").css("height", '150px');  
+		        $("#newprofile").css("width", '150px');  
+		   }
+		   reader.readAsDataURL(f);
+		});
+	}
+
+
+	// 회원정보 수정 입력 값 빈 칸 체크
+	$("#memberUpdateBtn").click(function(){
+		if($("#newUserName").val() == ""){
+			alert('이름을 입력하세요');
+			$("#newUserName").focus();
+		}
+		else if($("#newNickName").val() == ""){
+			alert('닉네임을 입력하세요');
+			$("#newNickName").focus();
+		}
+		else if($("#newPwd").val() == ""){
+			alert('비밀번호를 입력하세요');
+			$("#newPwd").focus();
+		}
+		else if($("#newPhoneNum").val() == ""){
+			alert('전화번호를 입력하세요');
+			$("#newPhoneNum").focus();
+		}
+		else {
+			inputCheck();
+		}
+	});
+
+
+	// 회원정보 수정 입력 값 중복확인 & 정규식 체크
+	function inputCheck(){
+		let pwdCheck = /^[a-zA-Z0-9]{4,12}$/; // pwassword 정규식
+		let phoneCheck = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; // 휴대전화 정규식
+		let nickName = $("#newNickName").val();
+		$.ajax({
+			url:"http://localhost:3000/checkNickName", 
+			type:'post',
+			data:{nickName:nickName},
+			success:function( data ){
+				if(nickName != json.nickName && data != 0){
+					alert("사용중인 닉네임 입니다");
+					$("#newNickName").val("");
+					$("#newNickName").focus();
+				}
+				else if($("#newPwd").val() != $("#newCpwd").val()){ 
+					alert("비밀번호가 동일하지 않습니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!pwdCheck.test($("#newPwd").val())){
+					alert("패스워드는 4~12자의 영문 대소문자와 숫자만 가능합니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!phoneCheck.test($("#newPhoneNum").val())){
+					alert("올바른 전화번호를 입력하세요");
+					$("#newPhoneNum").val("");
+					$("#newPhoneNum").focus();
+				}
+				else{
+					memberUpdateAf();
+				}
+			},
+			error:function(){
+				alert('inputCheck Check ajax error');
+			}
+		});
+	}
+		
+		
+		// 회원정보 수정 AF
+		function memberUpdateAf(){
+		$.ajax({
+			url:"http://localhost:3000/myPageUserUpdate", 
+			type:'post',
+			data : new FormData($("#myPageUserUpdate")[0]), 
+			enctype : 'multipart/form-data',
+			processData : false,
+			contentType : false,
+			cache : false,
+			success:function( data ){
+				if(data){
+					alert('성공적으로 수정되었습니다');
+					let item = JSON.stringify(data);       // json -> string
+					sessionStorage.setItem("login", item); // 세션 저장
+					location.reload();
+				}
+				else{
+					alert("수정 실패");
+				}
+			},
+			error:function(){
+				alert('memberUpdateAf ajax error');
+			}
+		});
+		}
+		
+		
+		// 회원 탈퇴
+		$("#memberDropOut").click(function(){
+			let dropOut = confirm('정말로 탈퇴 하시겠습니까');
+			if(dropOut){
+				$.ajax({
+					url:"http://localhost:3000/memberDropOut", 
+					type:'post',
+					data:{memNum:json.memNum},
+					success:function( data ){
+						if(data>0){
+							alert('성공적으로 탈퇴 되었습니다');
+							location.href='taeminNavi.html';
+						}
+						else{
+							alert('회원 탈퇴 실패');
+						}
+					},
+					error:function(){
+						alert('memberDropOut ajax Error')
+					}
+				});
+			}
+			else{
+				$('#memberUpdateModal').modal('hide');
+			}
+		});
+})
+
+</script>
+
+
+</head>
+<!-- calendar script -->
+
+<body>
+
+<div class="a_main">
+<div class="container border-bottom bg-white mt-1 pt-md-3 pt-2 a_header">
+    <div class="a_myinfo">
+       
+       
+    </div>
+    <div class="a_navbar">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >학생신분</a> </li>
+            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >선생신분</a> </li>
+            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">정보 수정</a> </li>
+        </ul> 
+    </div>
+</div>
+
+<div class="tab-content w-100 pt-md-0 mainScreen">
+    <div class="tab-pane show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+        <div class="container rounded-bottom bg-light">
+            <div class="row pl-lg-5 pt-md-0 pt-sm-2 mainView">
+            	 <div class="col-md-6 py-md-3 subView1" >
+                    <div class="d-flex flex-row justify-content-start align-items-center pt-md-4 pb-md-3 pt-sm-2 border-bottom timeline">
+                        <div class="p-md-2 pl-sm-2 mt-sm-1 font-weight-bold">User Timeline</div>
+                        <input type="month" id="_date" class="p-md-2 pt-sm-1 p-2 ml-auto border rounded text-muted bg-white"><input type="button" id="_searchSchedules" value="검색">
+                    </div>
+                    <div class="text-secondary">
+                    	<span class="a_date"></span>
+                    </div>
+                    <div class="schdulelist">
+	                   
+                    </div>            
+                </div>
+                
+                <div class="col-md-6 pt-md-0 mt-5 subView2" >
+                    <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
+                    <div class="bg-white border rounded view">
+                        <div class="d-flex flex-row align-items-center b_info">
+                            <div class="d-flex flex-column align-items-center px-md-4 px-3 day">
+                                <div class="dday">
+                                 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="d-flex flex-row justify-content-center ct_info">
+                            
+                        </div>
+                    </div>
+                </div>
+            	
+            </div>
+            
+            <!-- nav 선생신분 calendar div -->
+			<div id='calendar' style="position : relative;">
+			
+			</div> 
+        </div>
+    </div>
+	   
+</div>
+</div>
+
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="saveRecipt">
+                <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
+                <div class="px-4 py-5">
+                    <h3 class="text-uppercase">ACLAP</h3>
+                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> <span class="theme-color">결제 내역</span>
+                    
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">축구</span> <span class="text-muted">$1750.00</span> </div>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3"> <span class="font-weight-bold">전체 금액</span> <span class="font-weight-bold theme-color">$2125.00</span> </div>
+                    <div class="text-center mt-5"> <button class="btn btn-primary" id="_saveRecipt">영수증 저장</button> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 회원정보수정 Modal 1 (회원정보확인) -->
+<div class="modal fade" id="memberUpdateCheck">
+  <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title  text-center">회원정보 수정</h4>
+       </div>        
+       <div class="modal-footer">
+         <input type='password' id="memberUpdatePwdCheckInput" class="form-inline" size='45px' style='float:left;' placeholder="비밀번호로 인증하기">
+         <button type="button" class="btn btn-light" id='memberUpdatePwdCheckBtn'>인증</button>
+       </div>       
+       <div class="modal-footer">
+         <input type='text' id="memberUpdateEmailCheckInput" class="form-inline" size='45px' style='float:left;' placeholder="이메일로 인증하기 ">
+         <button type="button" class="btn btn-light" id='memberUpdateEmailSendBtn'>전송</button>
+         <input type='text' id="memberUpdateEmailCodeInput" class="form-inline" size='45px' style='float:left;' placeholder="인증번호 입력">
+         <button type="button" class="btn btn-light" id='memberUpdateCodeCheckBtn'>인증</button>
+       </div>
+     </div>
+   </div>
+</div>
+
+
+
+<!-- 회원정보수정 Modal 2 (정보 입력 View) -->
+<div class="modal fade" id="memberUpdateModal">
+  <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">회원정보 수정</h4>
+       </div>        
+       <div class="modal-body">
+       
+       <form id='myPageUserUpdate'>
+        <input type='hidden' name='memNum' id='_memNum'>
+        <input type='hidden' name='oldProfilePic' id='_oldProfilePic'>
+       
+       	<label for="profile" class='updateFont'>Profile</label> 
+       	<br style='padding-bottom:1px'>
+	   	<input type="file" name="fileload" class="profile2" id="_profilePic" style="display: none" >	            
+	    <label for="_profilePic"> 
+	   	<img id="newprofile" class="profile">
+	    </label>
+	    <br>        
+	    
+        <label class='updateFont'>UserName</label>
+        <input type='text' class="form-inline newInput" name='userName' id='newUserName' size='60px'>
+         
+       	<label class='updateFont'>NickName</label>
+        <input type='text' class="form-inline newInput" name='nickName' id='newNickName' size='60px'>
+                 
+       	<label class='updateFont'>Email</label>
+        <input type='text' class="form-inline holdInput" name='email' id='originalEmail' size='60px' readonly>
+  
+       	<label class='updateFont'>Password</label>
+        <input type='password' class="form-inline newInput" name='pwd' id='newPwd' size='60px'>
+         
+        <label class='updateFont'>Confirm Password</label>
+        <input type='password' class="form-inline newInput" id='newCpwd' size='60px'>
+         
+        <label class='updateFont'>Phone Number</label>
+        <input type='text' class="form-inline newInput" name='phoneNum' id='newPhoneNum' size='60px'>
+        
+        <br>
+        <input type='button' class='btn btn-light' id='memberUpdateBtn' style='float:right' value='수정완료'>
+        <input type='button' class='btn btn-light' id='memberDropOut' style='float:right' value='회원탈퇴'>
+       </form>
+       </div>
+     </div>
+   </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+ 	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json 
+	//alert(json.id);
+	let memNum = json.memNum;
+
+	// mypage 접속시 div append
+	$.ajax({
+		url:"http://localhost:3000/myinfo", // 임의로 넣음
+		type:'post',
+		data:{memNum:memNum},
+		success:function( dto ){
+		
+			// calendar을 숨김
+			$("#calendar").hide();
+			
+			$("#_myinfo").remove();	// class 갱신을 위해 이미 있는 class 내용을 비워준다.
+			
+			// 나의 정보 
+			let div = "<div class='profilePic'>"
+						+ "<img src='./upload/" + dto.profilePic + "' class='rounded-circle' id='profile'>"
+					+ "</div>";
+		  	
+		    div += "<div class='' id='info'>"
+		              + "<h2>"+dto.nickName+"님, 환영합니다.</h2>"
+		         + "</div>";   
+		     
+		    // 신청한 수업, 수강한 수업, 포인트    
+			div += "<div class='rounded p-lg-2 p-1' id='blue-background'>"
+					+ "<div class='point'>"
+					
+						+ "<div class='d-flex flex-column align-items-center spoint1' id='border-right'>"
+							+ "<p class='h4'>" + dto.rCount + "</p>"
+							+ "<div class='text-muted' id='count'>신청한 수업</div>"
+						+ "</div>"
+						
+						+ "<div class='d-flex flex-column align-items-center spoint2' id='border-right'>"
+							+ "<p class='h4'>" + dto.aCount + "</p>"
+							+ "<div class='text-muted' id='count'>수강한 수업</div>"
+						+ "</div>"
+						
+						+ "<div class='d-flex flex-column align-items-center spoint3'>"
+							+ "<p class='h4'>" + dto.myPoint + "</p>"
+							+ "<div class='text-muted' id='count'>포인트</div>"
+						+ "</div>"
+				
+					+ "</div>"
+				+ "</div>";
+				
+			// alert(div);
+			$(".a_myinfo").append(div);
+			
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+	
+	// 처음 mypage 접속시 현재날로 검색 하기 위함
+	let date = new Date();
+	let syear = date.getFullYear();
+	let smonth = date.getMonth() + 1;
+	
+	// 처음 mypage 들어올 경우 현재 달로 검색
+	getMySchedule(syear, smonth)
+	
+	// 자신이 신청한 수업 Schedule을 위한 function
+	function getMySchedule(syear, smonth){
+		let mdate = syear + "-" +two(smonth + "");
+		
+		
+		$("#_date").val(mdate);
+		
+		$.ajax({
+			url:"http://localhost:3000/mySchedule", 
+			type:'post',
+			data:{rdate:mdate, memNum:memNum},
+			async:false,
+			success:function( list ){
+			//	alert(list);
+				// 스케줄에서 수업이 현재날 기준으로 끝난 수업인지 아닌지 판별하기 위한 date
+				
+				$(".line").remove();
+				$(".a_date").remove();
+				
+				$(".a_date").append(mdate + "");
+				
+				str1 = "";
+				if(list == ""){
+				//	alert("이달에 일정이 없습니다.");
+					str1 +=	"<div class='d-flex flex-row pt-2 line'>"
+								+ "이달에 일정이 없습니다"
+						  + "</div>";
+				}else{
+					
+					$.each(list, function (i, val){
+						let pdate = new Date();
+						let pyear = date.getFullYear();
+						let pmonth = date.getMonth() + 1;
+						let pday = date.getDate();
+						
+						pdate = Number(pyear + two(pmonth + "") + two(pday));
+						
+						let rdate = Number(val.rdate.replace(/-/gi, ""));
+						let cStatus = "";
+						if(pdate <= rdate){
+							cStatus = "<span class='text-primary a_cStatus'>expect</span>";
+						}else{
+							cStatus = "<span class='text-danger a_cStatus'>end</span>";
+						}
+						
+						str1 += "<div class='d-flex flex-row pt-2 line'>"
+									+ "<div class='d-flex flex-column mdot'>"
+										+ "<div>" + val.rdate + "</div>"
+									+ "</div>"
+									+ "<div class='progress vertical-progress'>"
+										+ "<div class='_dot' id='dot'></div>"
+									+ "</div>"
+									+ "<div class='d-flex flex-column border bg-white ml-md-5 p-sm-0 status' id='status' rdate='" + val.rdate + "' class_seq='"+ val.classNum +"'>"
+										+ "<div class='_arrow' id='arrow'></div>"
+										
+										+ "<div class='text-dark pl-sm-2 _title'>" + val.title 
+											+ cStatus
+										+ "</div>"
+															
+									+ "</div>"
+							  + "</div>";
+					});
+				}
+				$(".schdulelist").append(str1);
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+		
+		// 클레스 디테일을 바꿔주는 부분
+	 	$(".status").on("click", function() {
+			let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
+			let rdate = $(this).attr("rdate"); // 클릭한 rdate 가져옴  ex) 2021-05-22
+			
+			$.ajax({
+				url:"http://localhost:3000/classDtail", 
+				type:'post',
+				data:{classNum:classNum},
+				async:false,
+				success:function( classDto ){
+					let month = rdate.substring(5,7);
+					let day = rdate.substring(8,10);
+					
+					$(".dday").remove();
+					$(".m_info").remove();
+					$(".mct_info").remove();
+					
+					$(".day").append("<div class='dday'><h5>" + month + "-" + day + "</h5></div>");
+					
+					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
+									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='./upload/" + classDto.profilePic + "' alt='' width='50' height='50' class='rounded-circle'> </div>"
+									+ "<div class='d-flex flex-column tps'>"
+										+ "<div><b>" + classDto.title + "</b></div>"
+										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
+									+ "</div>"
+							   + "</div>";
+							   
+	             	$(".b_info").append(b_info);
+	  
+	             	let ct_info = "<div class='d-flex flex-column justify-content-center mct_info'>"
+	             					+ "<div class='pb-2'><span class='fa fa-book-reader' style='margin-right: 10px'></span><b>선생 소개</b></div>"
+	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
+		           						+ "<div class='p-1' id='small-font'>" + classDto.aboutMe + "</div>"
+		             				+ "</div>"
+		             				
+	             					+ "<div class='pb-2 pt-2'><span class='fa fa-chalkboard-teacher' style='margin-right: 10px'></span><b>수업 소개</b></div>"
+	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
+		          						+ "<div class='p-1' id='small-font'>" + classDto.information + "</div>"    
+		          					+ "</div>"
+		          					
+		          					+ "<div class='btn_sdel'>"
+		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#staticBackdrop'>결제 내역</button>"
+		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>취소 신청</button>"
+	                        	 	+ "</div>"
+	             				+ "</div>";	
+	             
+	             	$(".ct_info").append(ct_info);
+	             	
+					let classDtail = "";
+					
+				},
+				error:function(){
+					alert('error');
+				}
+			});
+		});
+		
+	}
+	
+	// 달을 검색했을 경우
+	$("#_searchSchedules").click(function() {
+		let date = $("#_date").val();
+
+		let year = date.substring(0, 4);
+		let month = date.substring(5,8);
+
+		// 자신이 신청한 수업 Schedule을 위한 function
+		getMySchedule(year, month);
+	});
+	
+	
+	// 나의 일정
+	$("#_mySchedules").on("click", function() {
+		// 기존 학생신분 부분을 보여줌
+		$(".mainView").show();
+		$('#_mySchedules').css('color', 'green');
+		$('#_myClass').css('color', 'black');
+		
+		// calendar을 숨김
+		$("#calendar").hide();	
+	});
+	
+	/////////////////////////// 자신이 개설한 수업  ///////////////////////////////
+		
+	// 선생 신분 클릭 시
+	/* $("#_myClass").on("click", function() {	
+		// 기존 학생신분 부분을 숨김
+		$(".mainView").hide();
+		$('#_myClass').css('color', 'green');
+	
+		$("#calendar").show();
+		
+
+	}); */n
+	// 영수증 이미지 저장 script
+	$("#_saveRecipt").on("click", function() {
+		html2canvas($("#saveRecipt").get(0)).then(
+		canvas =>{
+			canvas.toBlob(function(data){
+				saveAs(data, 'image.png');
+			});
+		});
+	}); 
+	
+	/* function downloadURI(uri, name) {
+	    let link = document.createElement("a");
+
+	    link.download = name;
+	    link.href = uri;
+	    document.body.appendChild(link);
+	    link.click();   
+	    //after creating link you should delete dynamic link
+	    //clearDynamicLink(link); 
+	} */
+	
+	function two(msg){
+		return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
+	};
+	
+
+ 	
+});
+
+</script>
+
+
+<script type="text/javascript">	
+	$(document).ready(function() {
+	// alert('달력달력')
+	
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json
+	//alert(json.id);
+
+	/* 	
+	$(document).addEventListener('DOMContentLoaded', function() {
+		 */
+	$("#_myClass").click(function(){
+		$(".mainView").hide();
+		$('#_myClass').css('color', 'green');
+		$('#_mySchedules').css('color', 'black');
+		
+		$("#calendar").show();
+		
+		let memNum = json.memNum;
+
+		// alert('hi');
+		var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+		headerToolbar: {	
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+	      },
+	    
+	      locale: "ko",
+	      navLinks: true, // can click day/week names to navigate views
+	      businessHours: true, // display business hours
+	      editable: true,
+	      selectable: true,
+	      displayEventTime: true, //시간은 빼주었다... 하지만 주, 일 별 목록에선 보인다.
+			eventSources: [{
+			events: function(info, successCallback, failureCallback) {
+				$.ajax({
+					url: 'http://localhost:3000/myclsScheduleData',
+					type: 'POST',
+					dataType: 'json',
+					data: {memNum:memNum},
+					success: function(data) {
+						// alert('success');
+						var ev = Array();
+						$.each(data, function (i, entry) {
+							ev.push({title: entry.title + entry.name,
+								
+								start: entry.rdate, end:entry.rdate
+							});
+							
+						});
+						successCallback(ev);
+					},
+					error: function () {
+						alert('error');
+					}
+				});
+			}
+		}]	
+	});
+			
+	calendar.render();
+	  
+	});	
+});	
+</script>
+
+
+</body>
+</html>

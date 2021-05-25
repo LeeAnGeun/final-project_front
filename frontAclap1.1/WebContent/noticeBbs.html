@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.transition, ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after, p.acP {
+  transition: all 0.25s ease-in-out;
+}
+.transition, ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after, table.acT {
+ transition: all 0.25s ease-in-out;
+}
+.flipIn, ul.acUlist li.acLi, h1.acNT {
+  animation: flipdown 0.5s ease both;
+}
+
+.no-select, h2.acNT2 {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+div.acBigBody {
+  width: 100%;
+  height: 100%;
+  perspective: 900;
+  overflow: hidden;
+  background-color: #dce7eb;
+  font-family: "Titillium Web", sans-serif;
+  color: rgba(48, 69, 92, 0.8);
+  position: relative;
+}
+
+div.acTitleD {
+	width: 100%;
+	height: 100px;
+	position: relative;
+	float:left;
+	margin-top: 100px;
+	margin-left: 200px;
+}
+div.acBigBody div.acBody {
+  min-height: 0;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 90px 0;
+  transform: translate(-50%, 0);
+  box-shadow: 0 10px 0 0 #ff6873 inset;
+  background-color: #fefffa;
+  max-width: 500px;
+  padding: 30px;
+  position: relative;
+}
+@media (max-width: 550px) {
+  div.acBody {
+    box-sizing: border-box;
+    transform: translate(0, 0);
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    left: 0;
+  }
+}
+
+h1.acNT, h2.acNT2 {
+  color: #ff6873;
+}
+
+h1.acNT {
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+h2.acNT2 {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+  background-color: #fefffa;
+  margin: 0;
+  cursor: pointer;
+}
+
+p.acP {
+  color: rgba(48, 69, 92, 0.8);
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  max-height: 800px;
+  opacity: 1;
+  transform: translate(0, 0);
+  margin-top: 14px;
+  z-index: 2;
+}
+
+
+ul.acUlist {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+}
+ul.acUlist li.acLi {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 4px;
+  padding-top: 18px;
+  border-top: 1px dotted #dce7eb;
+}
+ul.acUlist li.acLi:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+ul.acUlist li.acLi:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+ul.acUlist li.acLi:nth-of-type(3) {
+  animation-delay: 1s;
+}
+ul.acUlist li.acLi:last-of-type {
+  padding-bottom: 0;
+}
+ul.acUlist li.acLi i {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+}
+ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after {
+  content: "";
+  position: absolute;
+  background-color: #ff6873;
+  width: 3px;
+  height: 9px;
+}
+ul.acUlist li.acLi i:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+ul.acUlist li.acLi i:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+ul.acUlist li.acLi input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+ul.acUlist li.acLi input[type=checkbox]:checked ~ p.acP {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+}
+ul.acUlist li.acLi input[type=checkbox]:checked ~ Table.acT {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+}
+ul.acUlist li.acLi input[type=checkbox]:checked ~ i:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+ul.acUlist li.acLi input[type=checkbox]:checked ~ i:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+</style>
+</head>
+<body>
+<div class="acBigBody">
+<div class="acTitleD"><h1 class="acTitle">FAQ</h1></div>
+<div class="acBody">
+<h1 class="acNT">자주묻는 질문</h1>
+<ul class="acUlist">
+  <li class="acLi">
+    <input type="checkbox" checked>
+    <i></i>
+    <h2 class="acNT2">환불정책</h2>
+    <p class="acP">클래스 신청, 결제일 이후 당일 클래스 시작 하루전까지 전액환불가능, 당일취소의 경우 전액환불이 어려우시며 클래스 시작 3시간전까지 50%환불가능합니다. 그이후에는 환불 불가합니다.</p>
+  </li>
+  <li class="acLi">
+    <input type="checkbox" checked>
+    <i></i>
+    <h2 class="acNT2">포인트 적립은 어떻게 할 수 있나요?</h2>
+    <p class="acP">[포인트 적립 방법]<br>
+		1.수강 중 주어지는 "미션완료"시 미션완료 격려 포인트 : 2,000 P (한 클래스당 1일 1회)<br>
+		2. 좋아요 누르기 : 500P (한 클래스당 1일 1회)<br>
+		[포인트 유의 사항]<br>
+		ㅁ 포인트의 유효기간은 적립일로부터 1년 입니다.<br>
+		ㅁ 한번 사용하신 포인트는 철회가 불가능 합니다.<br>
+		ㅁ 계정정보 이전시에 포인트 이전은 불가능 합니다.</p>
+  </li>
+  <li class="acLi">
+    <input type="checkbox" checked>
+    <i></i>
+    <h2 class="acNT2">수강증,영수증 발급</h2>
+    <p class="acP">a. [마이페이지] - 빨간색 [주문상세보기] 버튼 클릭<br>
+		b. [영수증 출력] 버튼 클릭<br>
+		c. 결제 정보 입력하면 영수증 발급 완료 됨 </p>
+  </li>
+  <li class="acLi">
+    <input type="checkbox" checked>
+    <i></i>
+    <h2 class="acNT2">구매한 클래스가 확인되지 않아요!</h2>
+    <p class="acP">결제한 클래스가 보이지 않는 경우
+				먼저 아래 요청드리는 두 가지를 꼬~옥! 확인해주세요.<br>
+				<b>
+				1. 현재 로그인 되어있는 상태인지 확인하기<br>
+				2. 결제한 계정으로 로그인 한 상태인지 확인하기</b></p>
+  </li>
+  
+</ul>
+</div>
+</div>
+</body>
+</html>
