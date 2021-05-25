@@ -31,6 +31,7 @@
 			<ul class="navListTop">
 				<li class="listItem"><a id="len0" class="hoverable" href="#" onclick="FAQ();return false;">FAQ</a></li>
 				<li class="listItem"><a id="len1" class="hoverable" href="#">크리에이터</a></li>
+
 				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="#">클래스</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="point.html">포인트 충전</a></li>
@@ -298,6 +299,11 @@ function admin() {
 function ACLAP(){
 	location.href="taeminNavi.html";
 }
+
+
+//클래스 클릭시
+function classView() {
+	$("#perfectGuy").load("categoryPage/categoryViewPage.html");
 
 function event(){
 	$("#perfectGuy").load("event.html");
