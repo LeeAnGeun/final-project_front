@@ -33,7 +33,7 @@
 
 				<li class="listItem"><a id="len1" class="hoverable" href="#" onclick='goOnedayClassOpen()'>크리에이터</a></li>
 				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
-				<li class="listItem"><a id="len3" class="hoverable" href="#">클래스</a></li>
+				<li class="listItem"><a id="len3" class="hoverable" href="#" onclick="classView();return false;">클래스</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="point.html">포인트 충전</a></li>
  		   		<li class="listItem">
  		   			<a id="len4" class="hoverable" href="loginRegi.html">로그인/회원가입</a>
@@ -233,14 +233,14 @@ $(document).ready(function(){
 
 // 마이페이지 이동
 function goMyPage(){
-	alert('click')
+	alert('click');
 	$(".hide_modal").toggleClass("show_modal");	
 	$("#perfectGuy").load("myPageView/mypage.html"); 
 }
 
 // 매니저페이지 이동
 function goManagerPage(){
-	alert('click')
+	alert('click');
 		$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
 	$("#perfectGuy").load("adminPageView/managerPage.html");
 }
@@ -306,7 +306,7 @@ function goOnedayClassOpen(){
 //클래스 클릭시
 function classView() {
 	$("#perfectGuy").load("categoryPage/categoryViewPage.html");
-
+}
 function event(){
 	$("#perfectGuy").load("event.html");
 }
