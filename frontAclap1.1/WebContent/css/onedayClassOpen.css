@@ -1,0 +1,165 @@
+@charset "UTF-8";
+.openContainer{
+	padding-left:120px;
+	padding-right:120px;
+}
+.openSort{
+	display: flex; 
+	flex-direction: row; 
+	justify-content: space-between;
+}
+.openMaintTextBox{
+	padding-left:40px;
+	margin-top:350px;
+}
+.openTitle{
+	font-family: Playfair display;
+	font-weight: 800;
+	font-size:120px;
+	padding-bottom: 30px;
+}
+.openSubTitle{
+	font-family: Playfair display;
+	font-weight: 800;
+	font-size:22px;
+}
+.openThirdTitle{
+	font-family:Open Sans;
+}
+.openMainImage{
+	width:800px;
+}
+
+/* 컨텐츠 */
+.content-margin{
+	margin-top:250px;
+}
+.contentImgBox{
+}
+
+.contentImg{
+	width:700px;
+	border-radius: 20px;
+}
+.contentImgText{
+	font-family:Roboto;
+	font-size:150px;
+	font-weight: 1000;
+	letter-spacing:10px;
+	color:white;
+	z-index: 1;
+	position: relative;
+	top:-110px;
+	left:55px;
+}
+.contentTextBox{
+	border-radius: 20px;
+	background-color:white;
+	width: 700px;
+	height:700px;
+
+}
+.contentTextTitle{
+	font-family: Roboto;
+	font-size:40px;
+	font-weight: 740;
+	color:#478AC9;
+	margin-top:120px;
+	margin-left:50px;
+	margin-bottom:50px;
+}
+.contentText{
+font-family:Open Sans;
+	margin-left:50px;
+	margin-right:50px;
+	font-size:28px;
+}
+.sliderControll{
+	text-align:center;
+	position: relative;
+	top:-125px;
+}
+.sliderColor{
+	color:white;
+}
+.sliderColor:hover{
+	color:#478AC9;
+}
+
+/*contact*/
+.makeClassBox{
+	margin-top:100px;
+	margin-left:150px;
+	height:500px;
+}
+.makeClasstext1{
+	font-family: Open Sans;
+	font-style: italic;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom:30px;
+}
+.makeClasstext2{
+	font-family: Roboto;
+	font-size:60px;
+	font-weight: 800;
+	line-height: 65px;
+	margin-bottom: 60px;
+}
+.makeClasstext2:hover{
+	cursor: pointer;
+	color:white;
+	font-weight: 830;
+}
+.makeClasstext3{
+	font-family: Open Sans;
+	font-size: 16px;
+	font-weight: 650;
+}
+.contactInfo{
+	margin-top:100px;
+	margin-left:60px;
+}
+.contactInfoTitle{
+	font-family:Roboto;
+	font-size: 25px;
+	font-weight: 750;
+	margin-bottom: 10px;
+}
+.contactInfoContent{
+	font-family:Open Sans;
+	font-size:18px;
+	margin-bottom: 13px;
+}
+.contactMail{
+	margin-top:100px;
+	margin-right:150px;
+}
+.s_inputTextCss{
+	font-family: Open Sans;
+	width: 350px;
+	height:45px;
+	font-size:18px;
+	border-radius: 5px;
+	border:none;
+	margin-bottom: 8px;
+}
+.s_inputTextAeraCss{
+	font-family: Open Sans;
+	width:350px;
+	height:170px;
+	border-radius: 5px;
+	border:none;
+	margin-bottom: 5px;
+}
+#contactMailAf{
+	font-family:Roboto;
+	font-size: 15px;
+	font-weight: 700;
+	height:45px;
+	width: 120px;
+	background-color:black;
+	border-radius: 5px;
+	border:none;
+	color:white;
+}
