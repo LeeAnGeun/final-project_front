@@ -1,10 +1,18 @@
 @charset "UTF-8";
-/*메인 컨테이너*/
+/*메인 컨테이너 (노트북)*/
+/* 
 .onedayClassContaier{
 	margin-top:80px;
-	margin-left:300px;
-	margin-right:300px;
+	margin-left:320px;
+	margin-right:320px;
 }
+*/
+/*메인 컨테이너 (데스크탑)*/
+.onedayClassContaier{
+	margin-top:80px;
+	margin-left:400px;
+	margin-right:400px;
+} 
 
 /*상단 제목*/
 .onedayClassMainTextBox{
@@ -55,64 +63,97 @@
 }
 
 
-
 /*---- 이미지 박스 A ----*/
 .onedayClassImageBoxA{
-	width:1090px;
+	width:1120px;
 	height:400px;
+	padding-bottom:30px;
 }
 .ocImgFrameA1{
-	width:250px;
+	width:300px;
 	height:400px;
 	overflow: hidden;
+}
+.ocImgA1{
+	width:300px;
+	height:400px;
 }
 .ocImgFrameA2{
 	width:317.5px;
-	height:195px;
+	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 }
+.ocImgA2{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameA3{
 	width:317.5px;
-	height:195px;
+	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 	padding-top:10px;
 }
+.ocImgA3{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameA4{
-	width:220px;
+	width:240x;
+	height:400px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.ocImgA4{
+	width:240px;
+	height:400px;
+}
+.ocImgFrameA5{
+	width:252px;
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
 }
 .ocImgFrameA5{
-	width:272px;
+	width:252px;
 	height:400px;
-	overflow: hidden;
-	padding-left:10px;
 }
 
 /*---- 이미지 박스 B ----*/
 .onedayClassImageBoxB{
-	width:1090px;
+	width:1120px;
 	height:400px;
+	padding-bottom:30px;
 }
 .ocImgFrameB1{
-	width:350px;
-	height:210px;
+	width:317.5px;
+	height:200px;
 	overflow: hidden;
 }
+.ocImgB1{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameB2{
-	width:350px;
-	height:180px;
+	width:317.5px;
+	height:200px;
 	overflow:hidden;
 	padding-top:10px;	
 }
+.ocImgB2{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameB3{
-	width:200px;
+	width:230px;
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
+}
+.ocImgB3{
+	width:230px;
+	height:400px;
 }
 .ocImgFrameB4{
 	width:300px;
@@ -120,56 +161,78 @@
 	overflow: hidden;
 	padding-left:10px;
 }
+.ocImgB4{
+	width:300px;
+	height:400px;
+}
 .ocImgFrameB5{
-	width:210px;
+	width:272.5px;
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
+}
+.ocImgB5{
+	width:272.5px;
+	height:400px;
 }
 
 /*---- 이미지 박스 C ----*/
 .onedayClassImageBoxC{
-	width:1090px;
+	width:1120px;
 	height:400px;
+	padding-bottom:30px;
 }
 .ocImgFrameC1{
-	width:352.5px;
-	height:210px;
+	width:317.5px;
+	height:200px;
 	overflow: hidden;
 }
+.ocImgC1{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameC2{
-	width:352.5px;
-	height:180px;
+	width:317.5px;
+	height:200px;
 	overflow:hidden;
 	padding-top:10px;	
 }
+.ocImgC2{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameC3{
-	width:400px;
+	width:485px;
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
 }
+.ocImgC3{
+	width:485px;
+	height:400px;
+}
 .ocImgFrameC4{
 	width:317.5px;
-	height:195px;
+	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 }
+.ocImg4{
+	width:317.5px;
+	height:200px;
+}
 .ocImgFrameC5{
 	width:317.5px;
-	height:195px;
+	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 	padding-top:10px;
 }
+.ocImgC5{
+	width:317.5px;
+	height:200px;
+}
 
-/*---- 이미지  비율 ----*/
-.ocImgWidth{
-	width:100%;
-}
-.ocImgHeight{
-	height:100%;
-}
 
 /*---- 이미지박스 선택 ----*/
 .onedayClassImageSelector{ 
@@ -177,7 +240,6 @@
 	height:60px;
 	margin-bottom:5px;
 }
-
 .layerBtnChoice{
 	float:right;
 	font-size:20px;
@@ -207,10 +269,8 @@
 }
 
 
-
-/*메인 컨텐츠*/
+/*-------- 메인 컨텐츠 --------*/
 .onedayClassContentBox1{
-	margin-top:30px;
 }
 .ocSubTitle{  
 	font-size:27px;
@@ -233,7 +293,8 @@
 	line-height: 30px;
 }
 
-/* 선생님  소개 */
+
+/*--------- 선생님  소개 --------*/
 .ocTeacherImg{
 	height:70px;
 	width:70px;
@@ -249,12 +310,182 @@
 	padding-bottom:25px;
 }
 	
-
-
-/* 리뷰*/
-.reviewBox{
-	
+/*-----------  주소검색 -------*/
+.placeSearch{
+	margin-top:15px;
+	margin-bottom:15px;
+	border:none;
+	background-color: #F5F2F5;
+	width:350px;
+	height:30px;
+	border-radius: 5px;
+}
+.placeBtn{
+	height:32px;
+	width:50px;
+	border:none;
+	background-color: #E6FAB6;
+	margin-top:3px;
+	margin-left:5px;
+	border-radius: 5px;
+}
+.placeBtn:hover{
+	cursor: pointer;
 }
 
 
 
+/*----- 리뷰 -----*/
+.reviewBox{
+  margin-bottom:5px;
+  height: 210px;
+  padding: 10px;
+  display: flex; 
+  justify-content: space-between; 
+  overflow:hidden;
+}
+.reviewItem{
+	width:560px;
+	margin-left:10px;
+	margin-right:10px;
+	padding-top:5px;
+}
+.reviewImg{
+	border-radius:50%;
+	width:55px;
+	height:55px;
+}
+.reviewId{
+	padding-top:4px;
+	padding-left:7px;
+	font-size:20px;
+	font-weight: 600;
+}
+.reviewDate{
+	font-size:12px;
+	padding-left:7px;
+	
+}
+.reviewContent{
+	padding-top:10px;
+}
+.reviewModalBtn{
+	margin-top:30px;
+	margin-bottom:30px;
+	width:400px;
+	height:50px;
+	font-size:25px;
+	border-radius:20px;
+	border:none;
+	background-color:#F5F2F5;
+}
+.reviewModalBtn:hover{
+	background-color:#BAB9C4;
+	cursor: pointer;
+}
+.review_hide_modal{
+   opacity: 0;
+   visibility: hidden;
+}
+.review_show_modal {
+    opacity: 1;
+    visibility: visible;
+}
+.review_Modal_Container{
+	z-index:1;
+	position:fixed;
+ 	top:120px;
+	left:760px; 
+	border-radius:20px;
+	box-shadow: 3px 2px 5px #66676B;
+	background-color:#F5F2F5;
+	height:660px;
+	width:400px;
+}
+.review_modal_close{
+	font-size:30px;
+	color:gray;
+	float:right;
+	padding-right:10px;
+	padding-top:10px;
+}
+.review_Modal_Content{
+	height:600px;
+	width:400px;
+	background-color:#F5F2F5;
+	overflow: scroll;
+}
+.review_modal_close:hover{
+	cursor: pointer;
+	color:black;
+}
+.reviewModalItem{
+	margin-left:50px;
+	margin-right:35px;
+	padding-bottom:40px;
+}
+/* 스크롤바 숨기기 */ 
+::-webkit-scrollbar	{
+    display: none;
+}
+
+
+
+/*---- 강의신청 ----*/
+.classApplication_Container{
+  height: 200px;
+  background-color: #01579b;
+  display: flex;        
+  justify-content: space-between;
+  margin-top:25px; 
+}
+.classApplicatoinBox{
+	height: 200px;
+	width: 200px;
+	background-color: white;
+}
+.caDate{
+	padding-top:20px;
+	margin-bottom:-6px;
+	padding-left:35px;
+	font-size:25px;
+	font-weight: 600;
+}
+.caTime{
+	padding-left:35px;
+	padding-top:2px;
+	font-size:13px;
+}
+.coinNprice{
+	padding-left:35px;
+	padding-top:15px;
+}
+.coin{
+	width:30px;
+	height:30px;
+	margin-bottom:9px;
+}
+.caPrice{
+	font-size:27px;
+	font-weight: 500;
+}
+.caSelectBtn{
+	font-size:20px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+.caSoldoutBtn{
+	font-size:20px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#98A4A6;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}

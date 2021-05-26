@@ -190,7 +190,7 @@ $(document).ready(function(){
 		$(".hide_modal").toggleClass("show_modal");	
 		if(chNum == 0){
 			$(".carousel-control-next").hide();	
-			chNum = 1;
+			chNum1 = 1;
 		}
 		else{
 			$(".carousel-control-next").show();	
@@ -201,28 +201,17 @@ $(document).ready(function(){
 	// 매니저 모달창 띄우기
 	$("#len6").click(function(){
 		$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
-	});
-	
-	// 스크롤 고정
-	$(window).scroll(function(event) {
-		if($(window).scrollTop() > $("#login_modal").offset().top) {
-			$("#login_modal").css("position",'fixed');
-			$("#login_modal").css("z-index",'1');
+		if(chNum == 0){
+			$(".carousel-control-next").hide();	
+			chNum1 = 1;
 		}
-		if($(window).scrollTop() < $("#login_modal").offset().top) {
-			$("#login_modal").css("position",'static');
-			$("#login_modal").css("z-index",'1');
-		}
-		if($(window).scrollTop() > $("#Manager_login_modal").offset().top) {
-			$("#Manager_login_modal").css("position",'fixed');
-			$("#Manager_login_modal").css("z-index",'1');
-		}
-		if($(window).scrollTop() < $("#Manager_login_modal").offset().top) {
-			$("#Manager_login_modal").css("position",'static');
-			$("#Manager_login_modal").css("z-index",'1');
+		else{
+			$(".carousel-control-next").show();	
+			chNum = 0;
 		}
 	});
 	
+
 	// 로그아웃 
 	$(".logoutButton").click(function(){
 		sessionStorage.clear();
@@ -292,7 +281,7 @@ function admin() {
 	$("#perfectGuy").load("adminPageView/managerPage.html");
 }
 
-//로고 클릭시
+//로고 클릭시 
 function ACLAP(){
 	location.href="taeminNavi.html";
 }
@@ -306,7 +295,7 @@ function goOnedayClassOpen(){
 //클래스 클릭시
 function classView() {
 	$("#perfectGuy").load("categoryPage/categoryViewPage.html");
-
+}
 function event(){
 	$("#perfectGuy").load("event.html");
 }
