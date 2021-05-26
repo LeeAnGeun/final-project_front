@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- https://github.com/josecebe/twbs-pagination 에서 가져옴 -->
+<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>  
+
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -316,6 +319,33 @@ $(document).ready(function(){
     </div>
 	   
 </div>
+
+<div id="stampTable" class="hide_table">
+	<div class="stamp_Modal_Table">
+		<i class="fa fa-times close_Table"></i>
+		<div>
+		<table class="stamp_Table" frame=void border="1">
+			<colgroup>
+			    <col width="20%"/>
+			    <col width="20%"/>
+			    <col width="20%"/>
+			    <col width="20%"/>
+			    <col width="20%"/>
+			  </colgroup>
+		<!-- 	<tbody class="stamp_Table_body">
+			
+			</tbody> -->
+		</table>
+		</div>
+		<!-- paging -->
+		<div class="container">
+			<nav aria-lable="Page navigation">
+				<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+			</nav>
+		</div>
+		
+	</div>
+</div>
 </div>
 
 
@@ -412,11 +442,6 @@ $(document).ready(function(){
    </div>
 </div>
 
-<div id="stampTable" class="hide_table">
-	<div class="stamp_Modal_Table">
-		ddd
-	</div>
-</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -652,7 +677,7 @@ $(document).ready(function() {
 		$("#calendar").show();
 		
 
-	}); */n
+	}); */
 	// 영수증 이미지 저장 script
 	$("#_saveRecipt").on("click", function() {
 		html2canvas($("#saveRecipt").get(0)).then(
@@ -678,13 +703,123 @@ $(document).ready(function() {
 		return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
 	};
 	
-
+	// 도장판 닫기
+	$(".close_Table").click(function(){
+		$(".show_table").attr('class', "hide_table");
+	});	
  	
 });
 
+
 function spoint2(){
-	$(".hide_table").toggleClass("show_table");	
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json 
+	//alert(json.id);
+	let memNum = json.memNum;
+	
+	alert("spoint2");
+	stampTable(memNum, 0);
+	stampCount(memNum);
 }
+
+// 도장판을 보기위한 function
+function stampTable( memNum, pageNum ){
+	$(".hide_table").attr('class', "show_table");
+	
+	$.ajax({
+		url: 'http://localhost:3000/myStampList',
+		type: 'POST',
+		dataType: 'json',
+		data: {memNum:memNum, pageNum:pageNum},
+		success: function(list) {
+	
+			$(".stamp_Table_body").remove();
+			
+			let table = "<tbody class='stamp_Table_body'><tr>";
+			
+			// 다 채워진 판 이외에 나머지 도장판
+			let i = 1;
+			for(i; i < list.length + 1; i++){
+				if(i==6){
+					table += "</tr><tr>";
+				}
+				table += "<td><img class='tableImg' src='./images/stamp.png'></td>";
+			}
+			
+			for(i; i<11; i++){
+				if(i==6){
+					table += "</tr><tr>";
+				}
+				table += "<td>"+ i +"</td>";
+				
+			}
+			
+			table += "</tr></tbody>";
+			// alert(table);
+			
+			$(".stamp_Table").append(table);
+         	
+			
+		},
+		error: function () {
+			alert('error');
+		}
+	});
+}
+
+//글의 총수를 취득
+function stampCount(memNum) {
+	
+	$.ajax({
+		url:"http://localhost:3000/stampCount",
+		type:"get",
+		data:{memNum:memNum},
+		success:function( totalCount ){
+		
+			if(totalCount == 0){
+				totalCount = 1;	
+			}
+			loadPage(memNum, totalCount);
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
+
+//paging 처리
+function loadPage( memNum, totalCount  ) {
+	
+	let pageSize = 10;
+	let nowPage = 1;
+	
+	let _totalPages = totalCount / pageSize;
+	if(totalCount % pageSize >0){
+		_totalPages++;
+	}
+
+	$("#pagination").twbsPagination("destroy")
+	
+	$("#pagination").twbsPagination({		
+	//	startPage: 1,
+		totalPages: _totalPages,
+		visiblePages: 10,
+		first:'<span aria-hidden="true">«</span>',
+		prev:"이전",
+		next:"다음",
+		last:'<span aria-hidden="true">»</span>',
+		initiateStartPageClick:false, // 맨처음 프로그램을 실행 하였을 경우 onPageClick의 자동실행을 막아준다
+		onPageClick:function(event, page){
+			nowPage = page;
+		//	alert('nowPage:' + page);
+			stampTable( memNum, page - 1 );
+		}
+	});	
+	
+//	$("#pagination").twbsPagination('changeTotalPages', _totalPages, nowPage);
+}
+
+
 </script>
 
 
