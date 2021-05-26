@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="../css/onedayClassDetail.css">
 <!-- 카카오맵 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92928f9e601c2b81c37ec8882d4901ac&libraries=services"></script>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -53,22 +56,21 @@
 	</div>
 	
 	<!-- 레이어 선택 버튼 -->
-	<!-- 
+	 <!--  
 	<div class='onedayClassImageSelector'>
 		<br>
 		<input type=button class='layerBtnNonChoice' id='layer3' value='Layer3' onclick='showLayer3()'>
 		<input type=button class='layerBtnNonChoice' id='layer2' value='Layer2' onclick='showLayer2()'>
 		<input type=button class='layerBtnChoice' id='layer1' value='Layer1' onclick='showLayer1()'>
 	</div>
-	 -->
-	 
+	-->
 	<!-- 이미지 박스 1 -->
 	<div class='onedayClassImageBoxA'>
 		<div style='float:left'>
 			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
 		   	<div class='ocImgFrameA1'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg2.png">
+			       <img id="profilePic" class="ocImgA1" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		</div>
@@ -77,14 +79,14 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameA2'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg1.png">
+			       <img id="profilePic" class="ocImgA2" src="../images/onedayClassImg1.png">
 			    </label>
 			</div>
 
 			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
 			<div class='ocImgFrameA3'>
 				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg3.png">
+				    <img id="profilePic" class="ocImgA3" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div> 
@@ -93,7 +95,7 @@
 			<input type="file" name="ClassImg4" id="ClassImg4" style="display: none">	            
 		   	<div class='ocImgFrameA4'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg2.png">
+			       <img id="profilePic" class="ocImgA4" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		</div>
@@ -102,7 +104,7 @@
 			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
 		   	<div class='ocImgFrameA5'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg2.png">
+			       <img id="profilePic" class="ocImgA5" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		</div>
@@ -114,14 +116,14 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameB1'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg1.png">
+			       <img id="profilePic" class="ocImgB1" src="../images/onedayClassImg1.png">
 			    </label>
 			</div>
 		
 			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
 		   	<div class='ocImgFrameB2'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class=ocImgWidth src="../images/onedayClassImg3.png">
+			       <img id="profilePic" class="ocImgB2" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		</div>
@@ -130,7 +132,7 @@
 			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
 			<div class='ocImgFrameB3'>
 				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg3.png">
+				    <img id="profilePic" class="ocImgB3" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div>	
@@ -139,7 +141,7 @@
 			<input type="file" name="ClassImg4" id="ClassImg4" style="display: none">	            
 			<div class='ocImgFrameB4'>
 				 <label for="_profilePic"> 
-				      <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg3.png">
+				      <img id="profilePic" class="ocImgB4" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div> 
@@ -148,7 +150,7 @@
 			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
 			<div class='ocImgFrameB5'>
 				 <label for="_profilePic"> 
-				      <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg3.png">
+				      <img id="profilePic" class="ocImgB5" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div> 
@@ -161,14 +163,14 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameC1'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg3.png">
+			       <img id="profilePic" class="ocImgC1" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		
 			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
 		   	<div class='ocImgFrameC2'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class=ocImgWidth src="../images/onedayClassImg3.png">
+			       <img id="profilePic" class="ocImgC2" src="../images/onedayClassImg2.png">
 			    </label>
 			</div>
 		</div>
@@ -177,7 +179,7 @@
 			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
 			<div class='ocImgFrameC3'>
 				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgHeight" src="../images/onedayClassImg4.png">
+				    <img id="profilePic" class="ocImgC3" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div>	
@@ -186,14 +188,14 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameC4'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg1.png">
+			       <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
 			    </label>
 			</div>
 
 			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
 			<div class='ocImgFrameC5'>
 				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgWidth" src="../images/onedayClassImg3.png">
+				    <img id="profilePic" class="ocImgC5" src="../images/onedayClassImg2.png">
 				 </label>
 			</div>
 		</div> 
@@ -245,167 +247,415 @@
 	
 	<!-- 수업 장소 -->
 	<span class='ocSubTitle'>수업장소</span><br>
-	<div align='center'>
-		<!-- 검색창 -->
-	    <form class = 'form-inline' onsubmit="searchClass(); return false;">   
-	       <input type="text" id="keyword" class="form-control" placeholder="우리 동네">
-	       <button class='btn' type="submit">검색</button>  
-	 	</form>
-		<div id="mapSearch" style="width:100%;height:450px; border-radius:20px"> </div>		
-    	<div id="map" style="width:100%;height:450px;"></div>
-    </div>
-    
+	<!-- 출력용 버젼 -->	
+	<div style='margin-top:2px; font-size:15px'>서울 특별시 은평구 갈현 2동 521-22</div>
+	<div id="map" style="width:100%;height:450px; border-radius:20px; margin-top:20px;"> </div>		
+
+	<!-- 검색용 버젼 -->
+	<!-- 	 		
+	<form class = 'form-inline' onsubmit="searchClass(); return false;">   
+		<input type="text" id="keyword" class="placeSearch" placeholder="정확한 주소를 입력해주세요">
+		<button class='placeBtn' type="submit">검색</button>  
+	</form>
+	<div id="map" style="width:100%;height:450px; border-radius:20px"></div>	
+	-->
+		 
+		 
+	<!-- 후기(최신순으로 여섯개?) -->
    	<div class='hrMargin'><hr></div>
-	
-	
-	
-	<!-- 후기 -->
 	<span class='ocSubTitle' id='teacherTitle'>
 		<i class="fas fa-star" style='color: red;'></i>
 		<span id='reviewGrade'>4.8점(후기 10개)</span>
 	</span><br>
 	
 	<div class='reviewBox'>
-		<div>
-			
+		<div class='reviewItem' id='review1'>
+			<div style='float:left'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
 		</div>
-		<div>
 		
+		<div class='reviewItem' id='review2'>
+			<div style='float:left'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
 		</div>
-
 	</div>
-	<div class='hrMargin'><hr></div>
 	
+	<div class='reviewBox'>
+		<div class='reviewItem' id='review3'>
+			<div style='float:left'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
+		</div>
+		
+		<div class='reviewItem' id='review4'>
+			<div style='float:left'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
+		</div>
+	</div>
+	
+	<div class='reviewBox'>
+		<div class='reviewItem' id='review5'>
+			<div style='float:left'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
+		</div>
+		
+		<div class='reviewItem'>
+			<div style='float:left' id='review5'>
+				<img src="../images/managerIcon.jpg" class='reviewImg'>
+			</div>
+			<div style='float:left;'>
+				<div class='reviewId'>이안근짱</div>
+				<div class='reviewDate'>5월 26일</div>
+			</div>
+			<br><br><br>
+			<div class='reviewContent'>
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+				또 참여하고 싶다능~~~<br>
+				크크코쿄쿜콬킼킄
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
+	<div align=center>
+		<input type='button' class='reviewModalBtn' value='후기 전체보기'>
+	</div>
+	<hr>
+	
+	
+	<!-- 후기 전체보기 Modal -->
+	<div class='review_hide_modal'>
+		<div class='review_Modal_Container'>
+			<i class='far fa-window-close review_modal_close'></i>
+			<div class="review_Modal_Content">
+			   <!-- 리뷰내용 -->
+			   <div class='reviewModalItem'>
+			   		<div style='float:left'>
+						<img src="../images/managerIcon.jpg" class='reviewImg'>
+					</div>
+					<div style='float:left;'>
+						<div class='reviewId'>이안근짱</div>
+						<div class='reviewDate'>5월 26일</div>
+					</div>
+					<br><br><br>
+					<div class='reviewContent'>
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+					</div>
+				</div>
+				
+			    <!-- 리뷰내용 -->		
+				<div class='reviewModalItem'>
+					<div style='float:left'>
+						<img src="../images/managerIcon.jpg" class='reviewImg'>
+					</div>
+					<div style='float:left;'>
+						<div class='reviewId'>이안근짱</div>
+						<div class='reviewDate'>5월 26일</div>
+					</div>
+					<br><br><br>
+					<div class='reviewContent'>
+						또 참여하고 싶다능~~~213213213213213213<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+					</div>
+				</div>
+				
+				<!-- 리뷰내용 -->		
+				<div class='reviewModalItem'>
+					<div style='float:left'>
+						<img src="../images/managerIcon.jpg" class='reviewImg'>
+					</div>
+					<div style='float:left;'>
+						<div class='reviewId'>이안근짱</div>
+						<div class='reviewDate'>5월 26일</div>
+					</div>
+					<br><br><br>
+					<div class='reviewContent'>
+						또 참여하고 싶다능~~~213213213213213213<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+						또 참여하고 싶다능~~~<br>
+						크크코쿄쿜콬킼킄
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 강의 신청하기 -->
+	<div class='ocSubTitle' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
+	<div class='classApplication_Container'>
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 1일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='coinNprice'>
+				<img class='coin' src="../images/coin.jpg">
+				<span class='caPrice'>150</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
 		
 		
+		
+		<div class='classApplicatoinBox'>
+		</div>
+		<div class='classApplicatoinBox'>
+		
+		</div>
+		<div class='classApplicatoinBox'>
+		
+		</div>
+				<div class='classApplicatoinBox'>
+		
+		</div>
+	</div>
+	
+	
+<!-- 	
+	<div id="demo" class="carousel slide" data-ride="carousel" data-interval="false"> data-interval:자동으로 움직이기
+
+	 	
+	    Indicators
+	    <ul class="carousel-indicators">
+		    <li data-target="#demo" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo" data-slide-to="1"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+	    </ul>
+	
+	  	The slideshow
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="la.jpg" alt="Los Angeles">
+			</div>
+			<div class="carousel-item">
+				<img src="chicago.jpg" alt="Chicago">
+			</div>
+			<div class="carousel-item">
+				<img src="ny.jpg" alt="New York">
+			</div>
+		</div>
+	
+	
+	이동버튼
+	 	<div style='float:right'>
+	 		<a href="#demo" data-slide="prev" style='margin-top:30px;'>
+		    <i class="fas fa-chevron-left"></i>
+	  		</a>
+	  		<a href="#demo" data-slide="next" style='margin-top:30px;'>
+	 		<i class="fas fa-chevron-right"></i>
+	 		</a>	
+	 	</div>
+	 	</div>
+	 -->
+<br><br><br><br><br><br><br><br><br><br><br>
+	
+	
 </div>
 
 <script>
+// 이미지 프레임 선택 버튼
 $(document).ready(function(){
 	$(".onedayClassImageBoxB").hide();
 	$(".onedayClassImageBoxC").hide();
 });
-	
-	let chech2 = false;
-	let chech3 = false;
-	function showLayer1(){
-		$(".onedayClassImageBoxA").show();
-		$(".onedayClassImageBoxB").hide();
-		$(".onedayClassImageBoxC").hide();
+let chech2 = false;
+let chech3 = false;
+function showLayer1(){
+	$(".onedayClassImageBoxA").show();
+	$(".onedayClassImageBoxB").hide();
+	$(".onedayClassImageBoxC").hide();
 		
-		$("#layer1").removeClass('layerBtnNonChoice');
-		$("#layer2").removeClass('layerBtnChoice');
+	$("#layer1").removeClass('layerBtnNonChoice');
+	$("#layer2").removeClass('layerBtnChoice');
+	$("#layer3").removeClass('layerBtnChoice');
+	$("#layer1").addClass('layerBtnChoice');				
+	$("#layer2").addClass('layerBtnNonChoice');				
+	$("#layer3").addClass('layerBtnNonChoice');				
+}
+function showLayer2(){
+	$(".onedayClassImageBoxB").show();
+	$(".onedayClassImageBoxA").hide();
+	$(".onedayClassImageBoxC").hide();
+	if(chech2 == false){
+		$("#layer2").removeClass('layerBtnNonChoice');
+		$("#layer1").removeClass('layerBtnChoice');
 		$("#layer3").removeClass('layerBtnChoice');
-		$("#layer1").addClass('layerBtnChoice');				
-		$("#layer2").addClass('layerBtnNonChoice');				
-		$("#layer3").addClass('layerBtnNonChoice');				
+		$("#layer2").addClass('layerBtnChoice');				
+		$("#layer1").addClass('layerBtnNonChoice');				
+		$("#layer3").addClass('layerBtnNonChoice');					
+		check2 = true;
 	}
-	function showLayer2(){
-		$(".onedayClassImageBoxB").show();
-		$(".onedayClassImageBoxA").hide();
-		$(".onedayClassImageBoxC").hide();
-		if(chech2 == false){
-			$("#layer2").removeClass('layerBtnNonChoice');
-			$("#layer1").removeClass('layerBtnChoice');
-				$("#layer3").removeClass('layerBtnChoice');
-				$("#layer2").addClass('layerBtnChoice');				
-				$("#layer1").addClass('layerBtnNonChoice');				
-				$("#layer3").addClass('layerBtnNonChoice');					
-				check2 = true;
-			}
-		}
-		function showLayer3(){
-			$(".onedayClassImageBoxC").show();
-			$(".onedayClassImageBoxA").hide();
-			$(".onedayClassImageBoxB").hide();
-			if(chech3 == false){
-				$("#layer3").removeClass('layerBtnNonChoice');
-				$("#layer1").removeClass('layerBtnChoice');
-				$("#layer2").removeClass('layerBtnChoice');
-				$("#layer3").addClass('layerBtnChoice');				
-				$("#layer1").addClass('layerBtnNonChoice');				
-				$("#layer2").addClass('layerBtnNonChoice');					
-				check3 = true;
-			}
-		}
+}
+function showLayer3(){
+	$(".onedayClassImageBoxC").show();
+	$(".onedayClassImageBoxA").hide();
+	$(".onedayClassImageBoxB").hide();
+	if(chech3 == false){
+		$("#layer3").removeClass('layerBtnNonChoice');
+		$("#layer1").removeClass('layerBtnChoice');		
+		$("#layer2").removeClass('layerBtnChoice');
+		$("#layer3").addClass('layerBtnChoice');				
+		$("#layer1").addClass('layerBtnNonChoice');				
+		$("#layer2").addClass('layerBtnNonChoice');					
+		check3 = true;
+	}
+}
 
-let coordinates = ""		
 		
-		
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-var mapContainer = document.getElementById('mapSearch'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.503131786164694, 127.02430725714143), // 지도의 중심좌표
-        level: 2 // 지도의 확대 레벨
-    };  
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-
-var ps = new kakao.maps.services.Places();  
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+// 카카오 맵 검색용 버젼 
+/* 
+var mapContainer = document.getElementById('map'), 
+mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도생성 	    	
+var geocoder = new kakao.maps.services.Geocoder();     // 주소 -> 좌표 변환
 
 function searchClass() {
-    var keyword = document.getElementById('keyword').value;
+    let keyword =  $('#keyword').val();
     if (keyword == null || keyword == "") {
 		alert('주소를 입력하세요');
         return false;
     }
-    ps.keywordSearch(keyword, placesSearchCB); 
-}
-
-function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-        var bounds = new kakao.maps.LatLngBounds();
-        for (var i=0; i<data.length; i++) {
-            displayMarker(data[i]);    
-            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }       
-        map.setBounds(bounds);
-    } 
-}
-
-function displayMarker(place) {    
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(place.y, place.x) 
-    });
-    
-    // 좌표 클릭 이벤트
-    kakao.maps.event.addListener(marker, 'click', function() {
-        let source = map.getCenter()+""; // 좌표 저장
-        source=source.replace('(','');
-		source = source.replace(')','');
-        coordinates = source;
-		alert(coordinates);	// 이걸 저장하자
+    else{
+	    let locatoin = $('#keyword').val();
 		
-		var markerPosition  = new kakao.maps.LatLng(coordinates); 
-		var marker = new kakao.maps.Marker({ position: markerPosition });
-		marker.setMap(mapSearch);
-    });
+		//주소로 좌표를 검색합니다
+		geocoder.addressSearch(locatoin, function(result, status) {
+			
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+				// 마커 표시
+				var marker = new kakao.maps.Marker({map: map, position: coords});
+				
+				// 장소 설명
+				 var infowindow = new kakao.maps.InfoWindow({
+				   	 content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'});
+				     infowindow.open(map, marker);
+				     map.setCenter(coords);
+				     
+					// -------- 주소를 저장하는 코드 넣기 ---------
+			}
+			else{
+				alert('정확한 주소를 입력해주세요');
+				$('#keyword').val("");
+				$('#keyword').focus();
+			}
+		});    
+	}
 }
-
-
-// 검색 후 보여지는 지도
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 2 // 지도의 확대 레벨
-    };
+ */
+ 
+// 카카오맵 출력용 버젼
+var mapContainer = document.getElementById('map'), 
+    mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+var geocoder = new kakao.maps.services.Geocoder();
 
-// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 컨트롤러 생성
-var mapTypeControl = new kakao.maps.MapTypeControl();
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT); //위치선정
+geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(result, status) {
 
-// 줌 컨트롤 생성
-var zoomControl = new kakao.maps.ZoomControl();
-map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT); //위치선정
+     if (status === kakao.maps.services.Status.OK) {
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        var marker = new kakao.maps.Marker({map: map, position: coords});
 
-/* 마커 */
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-var marker = new kakao.maps.Marker({ position: markerPosition });
-marker.setMap(map);
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
+        });
+        infowindow.open(map, marker);
+        map.setCenter(coords);
+    } 
+});    
+
+
+$(".reviewModalBtn").click(function(){
+	$(".review_hide_modal").toggleClass("review_show_modal");	
+});
+$(".review_modal_close").click(function(){
+	$(".review_hide_modal").toggleClass("review_show_modal");	
+});
+
 </script>
-	
 </body>
 </html>

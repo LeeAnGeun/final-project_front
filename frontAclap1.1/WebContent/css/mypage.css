@@ -15,6 +15,7 @@ body {
 .a_main{
 	padding-top: 100px;
 	padding-bottom: 100px;
+	position: relative;
 }
 
 .tab-contents {
@@ -71,6 +72,7 @@ body {
     width:30%;
     margin-left: 30px;
     padding-right: 30px;
+    cursor: pointer;
 }
 
 .spoint3{
@@ -95,18 +97,24 @@ body {
 }
 
 .stamp_Modal_Table{
-	position: fixed; 
- 	top: 9.2%;
-	left:37%;
-	top:40%;  
+	position:absolute;
+	left:38.5%;
+	top:33%;  
 	z-index:1; 	
 	padding: 1rem 1.5rem;
 	background-color:white;
-	width: 380px;
-	height: 420px;
+	width: 420px;
+	height: 250px;
 	border-radius: 0.5rem;
 	text-align:center;
 	box-shadow: 3px 2px 5px #66676B;
+}
+
+.stamp_Table{
+	margin-top: 25px;
+	margin-bottom: 5px;
+	width: 90%;
+	height: 150px;
 }
 
 #info{
@@ -206,6 +214,21 @@ body {
 
 .a_cStatus{
 	margin-left: 10px;
+}
+
+.close_Table{
+	float: right;
+	color: #000;
+    cursor: pointer
+}
+
+.close_Table:hover{
+	color: #000
+}
+
+.tableImg{
+	width: 30px;
+	height:30px;
 }
 
 #small-font {
