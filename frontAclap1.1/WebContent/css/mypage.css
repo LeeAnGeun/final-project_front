@@ -16,6 +16,8 @@ body {
 	padding-top: 100px;
 	padding-bottom: 100px;
 	position: relative;
+	width: 100vw;
+	height: 100vh;
 }
 
 .tab-contents {
@@ -97,14 +99,15 @@ body {
 }
 
 .stamp_Modal_Table{
-	position:absolute;
-	left:38.5%;
-	top:33%;  
+	position: absolute;
+ 	left:36.5% !important;
+	top:35% !important;   
+
 	z-index:1; 	
 	padding: 1rem 1.5rem;
 	background-color:white;
-	width: 420px;
-	height: 250px;
+	width: 30vw;
+	height: 28vh;
 	border-radius: 0.5rem;
 	text-align:center;
 	box-shadow: 3px 2px 5px #66676B;
@@ -112,9 +115,9 @@ body {
 
 .stamp_Table{
 	margin-top: 25px;
-	margin-bottom: 5px;
-	width: 90%;
-	height: 150px;
+	margin-bottom: 5px;	
+	width: 25vw;
+	height: 18vh;
 }
 
 #info{
