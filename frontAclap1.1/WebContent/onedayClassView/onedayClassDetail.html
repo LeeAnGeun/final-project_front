@@ -114,6 +114,8 @@
 			</div>
 		</div>
 	</div>
+	
+
 
 	<!-- 이미지 박스 2 -->
 	<div class='onedayClassImageBoxB'>
@@ -247,7 +249,36 @@
       		으어어어어어어인포자리<br>
       		으어어어어어어인포자리<br>
       	</div>
+
 	</div>
+	
+		<!-- 이미지 확대 모달 -->
+		
+		<div class="hide_modal">
+		
+			<i class="fas fa-times"></i>
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="../images/flower.png" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="../images/test3.jpg" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="../images/취미1.png" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			  </div>
+			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+		</div>
 	
 	<!-- 프로그램 -->
 	<div class='hrMargin'><hr></div>
@@ -879,6 +910,7 @@ $(".review_modal_close").click(function(){
 });
 
 
+
 // 강의신청 Pagenation
 // pagination
 let pr = document.querySelector( '.paginate.left' );
@@ -909,6 +941,7 @@ function slide(offset) {
 slide(0); 
 
 //이미지 확대 모달창
+
 $(".hide_modal").hide();
 
 let modalCheck = true;
@@ -932,6 +965,7 @@ $(".fa-times").click(function(){
     $('body').css("background-color","");
     modalCheck = true;
 });
+
 
 
 </script>

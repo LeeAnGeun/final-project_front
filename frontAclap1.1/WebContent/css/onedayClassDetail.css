@@ -558,6 +558,7 @@
 	border-radius: 5px;
 }
 
+
 /*반응형*/
 @media screen and (max-width: 800px) {
    .classApplication_Container {
@@ -683,9 +684,13 @@
 
 /*------------ 5027 이미지 클릭시 모달창 -------------*/
 
+/*---- 이미지 클릭시 모달창 -----*/
+
+
 .hide_modal {
    opacity: 0;
    visibility: hidden;
+
    width:800px;
    height:600px;
    overflow:hidden;
@@ -720,4 +725,5 @@
    object-fit: contain;
    width:800px;
    height:600px;
+
 }
