@@ -25,6 +25,37 @@
 <script src='fullcalendar/main.js'></script>
 
 <script>
+document.onkeydown = fkey;
+document.onkeypress = fkey
+document.onkeyup = fkey;
+
+let wasPressed = false;
+
+function fkey(e){
+        e = e || window.event;
+       if( wasPressed ) return; 
+
+        if (e.keyCode == 116) {
+            alert("f5 pressed");
+            $("#perfectGuy").load("myPageView/mypage.html"); 
+             wasPressed = true;
+             noEvent(e);
+        }else {
+        //  alert("Window closed");
+        }
+}
+ 
+function noEvent(e) { // 새로 고침 방지
+    if (e.keyCode == 116) {
+        alert("새로고침을 할 수 없습니다.");
+        e.keyCode = 2;
+        return false;
+    } else if (e.ctrlKey
+            && (e.keyCode == 78 || e.keyCode == 82)) {
+        return false;
+    }
+}
+document.onkeydown = noEvent;
 
 ///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
 
@@ -444,6 +475,7 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
+
 $(document).ready(function() {
  	let login = sessionStorage.getItem("login");
 	let json = JSON.parse(login); // String -> json 
