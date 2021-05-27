@@ -12,6 +12,7 @@
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <!-- 커스텀 css -->
 <link rel="stylesheet" href="../css/onedayClassDetail.css">
 <!-- 카카오맵 -->
@@ -19,6 +20,8 @@
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 
 </head>
@@ -55,15 +58,17 @@
 		</div>
 	</div>
 	
-	<!-- 레이어 선택 버튼 -->
-	 <!--  
+	<!-- 레이어 선택 버튼 -->	 
+	
+<!-- 	
 	<div class='onedayClassImageSelector'>
 		<br>
 		<input type=button class='layerBtnNonChoice' id='layer3' value='Layer3' onclick='showLayer3()'>
 		<input type=button class='layerBtnNonChoice' id='layer2' value='Layer2' onclick='showLayer2()'>
 		<input type=button class='layerBtnChoice' id='layer1' value='Layer1' onclick='showLayer1()'>
 	</div>
-	-->
+	 -->
+	
 	<!-- 이미지 박스 1 -->
 	<div class='onedayClassImageBoxA'>
 		<div style='float:left'>
@@ -188,7 +193,7 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameC4'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
+				    <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
 			    </label>
 			</div>
 
@@ -201,6 +206,32 @@
 		</div> 
 	</div>
 	
+	<!-- 이미지 확대 모달 -->
+      <div class="hide_modal">  
+         <i class="fas fa-times"></i>
+         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+             <div class="carousel-item active">
+               <img src="../images/flower.png" class="d-block w-100 modalimg" alt="...">
+             </div>
+             <div class="carousel-item">
+               <img src="../images/test3.jpg" class="d-block w-100 modalimg" alt="...">
+             </div>
+             <div class="carousel-item">
+               <img src="../images/취미1.png" class="d-block w-100 modalimg" alt="...">
+             </div>
+           </div>
+           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+           </a>
+         </div>
+      </div>
+	
 	<div class='onedayClassContentBox1'>
 		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
 		<i class='material-icons ocIcon'>access_time</i>
@@ -208,6 +239,14 @@
 		&nbsp;&nbsp;
 		<i class='material-icons'>people</i>
 		<span class='ocTxt1'> 5명</span>
+		&nbsp;&nbsp;
+      	<i class='material-icons'>check</i>
+      	<span class='ocTxt1'> 리코더</span>
+      	<div class='classInfo'>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      	</div>
 	</div>
 	
 	<!-- 프로그램 -->
@@ -267,6 +306,93 @@
 		<i class="fas fa-star" style='color: red;'></i>
 		<span id='reviewGrade'>4.8점(후기 10개)</span>
 	</span><br>
+		<div style='padding-top:15px;'>
+		<div style='float:left; margin-right:3px; margin-top:2px'>청결도</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Clstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Clstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Clstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Clstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Clstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Clstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Clstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Clstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Clstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Clstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>안전성 </div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Sfstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Sfstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Sfstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Sfstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Sfstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Sfstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Sfstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Sfstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Sfstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Sfstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>의사소통</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Cmstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Cmstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Cmstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Cmstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Cmstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Cmstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Cmstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Cmstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Cmstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Cmstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>위치성</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Plstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Plstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Plstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Plstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Plstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Plstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Plstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Plstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Plstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Plstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+				
+		<div style='float:left; margin-right:3px; margin-top:2px'>정확성</div>
+		<div style='float:left'>
+			<form class="rating-star">
+			<input type="radio" class='star5' id="Acstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" class='star5' id="Acstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" class='star5' id="Acstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" class='star5' id="Acstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" class='star5' id="Acstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" class='star5' id="Acstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" class='star5' id="Acstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" class='star5' id="Acstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" class='star5' id="Acstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" class='star5' id="Acstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		<br><br><br>
+
+
+	
+	
 	
 	<div class='reviewBox'>
 		<div class='reviewItem' id='review1'>
@@ -464,73 +590,160 @@
 		</div>
 	</div>
 	
-	<!-- 강의 신청하기 -->
-	<div class='ocSubTitle' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
+	<!-- 강의 신청 -->
+	<div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="false">
+	
+	<div>
+	<div class='ocSubTitle2' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
+	<!-- 이동버튼 -->
+	<div class="paginate_btn">
+	<a href="#s_new_slider" class="paginate left" data-slide="prev" >
+       <i></i>
+       <i></i>
+     </a>
+	<!-- 카운터 부분 -->
+	<div class="counter"></div>
+     <a href="#s_new_slider" class="paginate right" data-slide="next">
+       <i></i>
+       <i></i>
+    </a>
+    </div>
+    </div>
+    
+	<!--Slides-->
+	<div class="carousel-inner" role="listbox">
+	<!-- 첫번째 슬라이드 -->
+	<div class="carousel-item active">
 	<div class='classApplication_Container'>
 		<div class='classApplicatoinBox'>
 			<div class='caDate'>5월 1일</div>
 			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
 			<div class='coinNprice'>
-				<img class='coin' src="../images/coin.jpg">
-				<span class='caPrice'>150</span>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
 			</div>
 			<input type='button' class='caSelectBtn' value='신청'>
 		</div>
 		
-		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 2일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
 		
 		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 3일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
 		</div>
+		
 		<div class='classApplicatoinBox'>
-		
+			<div class='caDate'>5월 4일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
 		</div>
+		
 		<div class='classApplicatoinBox'>
-		
-		</div>
-				<div class='classApplicatoinBox'>
-		
+			<div class='caDate'>5월 5일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
 		</div>
 	</div>
+	</div>
 	
-	
-<!-- 	
-	<div id="demo" class="carousel slide" data-ride="carousel" data-interval="false"> data-interval:자동으로 움직이기
-
-	 	
-	    Indicators
-	    <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
-	    </ul>
-	
-	  	The slideshow
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="la.jpg" alt="Los Angeles">
+	<!-- 두번째 슬라이드 -->
+	<div class="carousel-item">
+	<div class='classApplication_Container'>
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 6일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
 			</div>
-			<div class="carousel-item">
-				<img src="chicago.jpg" alt="Chicago">
-			</div>
-			<div class="carousel-item">
-				<img src="ny.jpg" alt="New York">
-			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
 		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 7일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 8일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 9일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 10일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+	</div>
+	</div>
+	</div>
+	
+	<!-- Slider Controls -->
+	<div class="carousel-indicators">
+	   <li data-target="#s_new_slider" data-slide-to="0" class="active"></li>
+       <li data-target="#s_new_slider" data-slide-to="1"></li>
+	</div>
+	</div>
+	
+	<div class='hrMargin'><hr></div>
 	
 	
-	이동버튼
-	 	<div style='float:right'>
-	 		<a href="#demo" data-slide="prev" style='margin-top:30px;'>
-		    <i class="fas fa-chevron-left"></i>
-	  		</a>
-	  		<a href="#demo" data-slide="next" style='margin-top:30px;'>
-	 		<i class="fas fa-chevron-right"></i>
-	 		</a>	
-	 	</div>
-	 	</div>
-	 -->
-<br><br><br><br><br><br><br><br><br><br><br>
-	
+		
 	
 </div>
 
@@ -648,13 +861,78 @@ geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(r
     } 
 });    
 
+//별점
+$(document).ready(function(){
+	$('#Clstar4half').attr('checked', 'checked');
+	$('#Sfstar3').attr('checked', 'checked');
+	$('#Cmstar5').attr('checked', 'checked');
+	$('#Plstar2half').attr('checked', 'checked');
+	$('#Acstar5').attr('checked', 'checked');
+});
 
+// 리뷰 모달 창 컨트롤
 $(".reviewModalBtn").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
 $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
+
+
+// 강의신청 Pagenation
+// pagination
+let pr = document.querySelector( '.paginate.left' );
+let pl = document.querySelector( '.paginate.right' );
+
+pr.onclick = slide.bind( this, -1 );
+pl.onclick = slide.bind( this, 1 );
+
+let index = 0, total = 6;
+
+function slide(offset) {
+	index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+	if(index == 0){
+		$(".left").hide();
+	}else if(index == 5){
+		$(".right").hide();
+	}else{
+		$(".left").show();
+		$(".right").show();
+	}
+	
+	document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+	
+	pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+	pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+} 
+
+slide(0); 
+
+//이미지 확대 모달창
+$(".hide_modal").hide();
+
+let modalCheck = true;
+$(".onedayClassImageBoxA").click(function(){
+      if(modalCheck){
+         $(".hide_modal").toggleClass("show_modal");   
+         $(".hide_modal").show();
+           $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
+           $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+           $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+           $('.ocImgA1').css("opacity","0.5)");
+           $('.ocImgA2').css("opacity","0.5)");
+           $('.ocImgA3').css("background-color","rgba(0, 0, 0, 0.02)");
+           
+         modalCheck=false;
+      };
+});
+   
+$(".fa-times").click(function(){
+   $(".hide_modal").toggleClass("show_modal");   
+    $('body').css("background-color","");
+    modalCheck = true;
+});
+
 
 </script>
 </body>
