@@ -4,7 +4,8 @@
 
 
 div.mainViewW {
-	height: 1800px;
+	height: 1500px;
+	
 	position: relative;
 	
 	
@@ -68,157 +69,154 @@ div.mainViewW div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
 
 
 .categoryPage{
+
 	position: absolute;
-	height: auto;
+	height: 1200px;
  	width: 100vw;
  	overflow: hidden;
-	background-color: #000000;
+	
 }
-
-.categoryPage .pageDescription{
-	text-align: center;
-	overflow: hidden;
-}
-
 
 
 .hide {
   display: none;
   overflow: hidden;
 }
-
-
-.animate_content {
-  animation: animate2 3s ease;
-}
-.fadeIn {
-  z-index: 1;
+.allClass{
+   background: #8ab59b;
+  height: 1200px;;
+   width: 100vw;
 }
 /*  langClass
 -----------------------------------*/
 .langClass {
 	
-   background: white;
-   height: auto;
+    background: #c5ca86;
+	height: 1200px;
  	width: 100vw;
 }
 /*  createClass
 -----------------------------------*/
 .createClass {
-   background: white;
-    height: auto;
+   background: #cc9e75;
+	height: 1200px;
  	width: 100vw;
 }
 /*  cookingClass
 -----------------------------------*/
 .cookingClass {
-   background: white;
-    height: auto;
+   background: #abede3;
+	height: 1200px;
  	width: 100vw;
 }
 /*  programmingClass
 -----------------------------------*/
 .programmingClass {
-   background: white;
-    height: auto;
+   background: #c4abe0;
+	height: 1200px;
  	width: 100vw;
 }
 /*  sportsClass
 -----------------------------------*/
 .sportsClass {
-   background: white;
-    height: auto;
+   background: #e094bf;
+	height: 1200px;
  	width: 100vw;
 }
-/*****************************************************************
-~ Mobile media-queries (max-width: 767px)
-******************************************************************/
-@media only screen and (max-width: 767px) {
-  .pageDescription {
-   
-  }
+/* animation sets */
+/* move from / to  */
+.pt-page-moveToLeft {
+	-webkit-animation: moveToLeft .6s ease both;
+	animation: moveToLeft .6s ease both;
 }
-@-moz-keyframes animate2 {
-  10% {
-    transform: scale(1, 0.002);
-  }
-  35% {
-    transform: scale(0.2, 0.002);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.2, 0.002);
-    opacity: 0;
-  }
-  85% {
-    transform: scale(1, 0.002);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.pt-page-moveFromLeft {
+	-webkit-animation: moveFromLeft .6s ease both;
+	animation: moveFromLeft .6s ease both;
 }
-@-webkit-keyframes animate2 {
-  10% {
-    transform: scale(1, 0.002);
-  }
-  35% {
-    transform: scale(0.2, 0.002);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.2, 0.002);
-    opacity: 0;
-  }
-  85% {
-    transform: scale(1, 0.002);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.pt-page-moveToRight {
+	-webkit-animation: moveToRight .6s ease both;
+	animation: moveToRight .6s ease both;
 }
-@-o-keyframes animate2 {
-  10% {
-    transform: scale(1, 0.002);
-  }
-  35% {
-    transform: scale(0.2, 0.002);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.2, 0.002);
-    opacity: 0;
-  }
-  85% {
-    transform: scale(1, 0.002);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.pt-page-moveFromRight {
+	-webkit-animation: moveFromRight .6s ease both;
+	animation: moveFromRight .6s ease both;
 }
-@keyframes animate2 {
-  10% {
-    transform: scale(1, 0.002);
-  }
-  35% {
-    transform: scale(0.2, 0.002);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.2, 0.002);
-    opacity: 0;
-  }
-  85% {
-    transform: scale(1, 0.002);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.pt-page-moveToTop {
+	-webkit-animation: moveToTop .6s ease both;
+	animation: moveToTop .6s ease both;
+}
+.pt-page-moveFromTop {
+	-webkit-animation: moveFromTop .6s ease both;
+	animation: moveFromTop .6s ease both;
+}
+.pt-page-moveToBottom {
+	-webkit-animation: moveToBottom .6s ease both;
+	animation: moveToBottom .6s ease both;
+}
+.pt-page-moveFromBottom {
+	-webkit-animation: moveFromBottom .6s ease both;
+	animation: moveFromBottom .6s ease both;
 }
 
+
+/********************************* keyframes **************************************/
+/* move from / to  */
+@-webkit-keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+@-webkit-keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); }
+}
+@keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+@-webkit-keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+@-webkit-keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+@-webkit-keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); }
+}
+@keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+@-webkit-keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); }
+}
+@keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
 /* 검색정렬 */
 div.selectAndSearch{
 	height: 80px;
@@ -339,7 +337,7 @@ select {
 div.searchedClassListView{
 	
 	width: auto;
-	height: 1000px;
+	height: auto;
 	position: relative;
 	
 	margin-top: 30px !important;
@@ -357,7 +355,7 @@ div.classListTable{
 	float: left;
 	margin-left: 300px;
 }
-div.container{
+div.classContainer{
 	position: relative;
 	float: left;
 	width: 600px;
@@ -370,6 +368,9 @@ div.container{
   height: 400px;
   float: left;
   margin-left: 20px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 25px;
 }
 
 .classCard:hover {
@@ -377,10 +378,16 @@ div.container{
 }
 
 .classContainer {
-  padding: 2px 16px;
+  text-align: left;
+  padding-left: 10px;
+  width: 300px;
+  height: 120px;
+
 }
 .classImg {
-max-width:280px;
-max-height: 300px;
+  width: 300px;
+  height: 280px;
+  object-fit: cover;
+	border-radius: 25px;
 }
 
