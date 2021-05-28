@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- bootsrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script> 
+
+<script type="text/javascript">
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+</script>
+
 <style type="text/css">
 .transition, ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after, p.acP {
   transition: all 0.25s ease-in-out;
@@ -203,6 +214,8 @@ ul.acUlist li.acLi input[type=checkbox]:checked ~ i:after {
 </style>
 </head>
 <body>
+
+<div id='naviBar'></div>
 <div class="acBigBody">
 <div class="acTitleD"><h1 class="acTitle">FAQ</h1></div>
 <div class="acBody">
@@ -248,5 +261,13 @@ ul.acUlist li.acLi input[type=checkbox]:checked ~ i:after {
 </ul>
 </div>
 </div>
+<div id='footer'></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#naviBar").load("../navibar.html");
+		$("#footer").load("../footer.html");
+	});
+</script>
+
 </body>
 </html>

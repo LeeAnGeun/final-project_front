@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 <style>
@@ -88,6 +91,8 @@
 </head>
 <body>
 
+
+<div id='naviBar'></div>
 <div class="container">
 
 	<div>
@@ -98,7 +103,7 @@
 		<li class="a_event">
 			<a href="javascript:regiEvent();" class="a_eventATag"> 
 				<div>
-					<img class="a_eventImg" src="./images/regiEvent.png">
+					<img class="a_eventImg" src="../images/regiEvent.png">
 					<div class="a_eventFont">
 						가입 이벤트
 					</div>
@@ -111,7 +116,7 @@
 		<li class="a_event">
 			<a href="javascript:chargeEvent();" class="a_eventATag">
 				<div>
-					<img class="a_eventImg" src="./images/eventImg.jpg">
+					<img class="a_eventImg" src="../images/eventImg.jpg">
 					<div class="a_eventFont">
 						충전 이벤트
 					</div>
@@ -124,7 +129,7 @@
 		<li class="a_event">
 			<a href="javascript:proEvent();" class="a_eventATag">
 				<div>
-					<img class="a_eventImg" src="./images/eventImg2.jpg">
+					<img class="a_eventImg" src="../images/eventImg2.jpg">
 					<div class="a_eventFont">
 						할인 이벤트
 					</div>
@@ -137,7 +142,7 @@
 		<li class="a_event">
 			<a href="javascript:cookEvent();" class="a_eventATag"> 
 				<div>
-					<img class="a_eventImg" src="./images/eventImg3.jpg">
+					<img class="a_eventImg" src="../images/eventImg3.jpg">
 					<div class="a_eventFont">
 						할인 이벤트
 					</div>
@@ -150,7 +155,7 @@
 		<li class="a_event">
 			<a href="javascript:stampEvent();" class="a_eventATag">
 				<div>
-					<img class="a_eventImg" src="./images/eventImg4.jpg">
+					<img class="a_eventImg" src="../images/eventImg4.jpg">
 					<div class="a_eventFont">
 						충전 이벤트
 					</div>
@@ -163,7 +168,7 @@
 		<li class="a_event">
 			<a href="" class="a_eventATag">
 				<div>
-					<img class="a_eventImg" src="./images/main4.png">
+					<img class="a_eventImg" src="../images/main4.png">
 					<div class="a_eventFont">
 						이벤트
 					</div>
@@ -177,9 +182,11 @@
 	</div>
 </div>
 
+<div id='footer'></div>
 <script type="text/javascript">
-let login = sessionStorage.getItem("login");
-let json = JSON.parse(login); // String -> json
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+
 
 // 가입 이벤트 이동
 function regiEvent() {

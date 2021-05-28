@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <!-- https://github.com/josecebe/twbs-pagination 에서 가져옴 -->
-<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>  
+<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>  
 
 <!-- bootstrap -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -17,16 +20,20 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
  -->
 <!-- mypage CSS -->
-<link rel="stylesheet" href="./css/mypage.css">
-<link href='fullcalendar/main.css' rel='stylesheet' />
+<link rel="stylesheet" href="../css/mypage.css">
+<link rel="stylesheet" href="../css/navibar.css">
+<link href='../fullcalendar/main.css' rel='stylesheet' />
 
 <!-- js -->
-<script src='filesaver/FileSaver.js'></script>
-<script src='filesaver/html2canvas.js'></script>
-<script src='fullcalendar/main.js'></script>
+<script src='../filesaver/FileSaver.js'></script>
+<script src='../filesaver/html2canvas.js'></script>
+<script src='../fullcalendar/main.js'></script>
 
 <script>
-/* document.onkeydown = fkey;
+
+
+/*
+document.onkeydown = fkey;
 document.onkeypress = fkey
 document.onkeyup = fkey;
 
@@ -68,10 +75,7 @@ function noEvent(e) { // 새로 고침 방지
         return false;
     }
 }
-
 document.onkeydown = noEvent; */
-
-
 ///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
 
 $(document).ready(function(){
@@ -311,6 +315,10 @@ $(document).ready(function(){
 <!-- calendar script -->
 
 <body>
+
+
+<div id="naviBar"></div>
+
 <div class="a_main">
 <div class="container border-bottom bg-white mt-1 pt-md-3 pt-2 a_header">
     <div class="a_myinfo">
@@ -446,7 +454,6 @@ $(document).ready(function(){
 </div>
 
 
-
 <!-- 회원정보수정 Modal 2 (정보 입력 View) -->
 <div class="modal fade" id="memberUpdateModal">
   <div class="modal-dialog">
@@ -495,8 +502,12 @@ $(document).ready(function(){
    </div>
 </div>
 
+<div id="footer"></div>
 
 <script type="text/javascript">
+$("#naviBar").load("../navibar.html");
+
+$("#footer").load("../footer.html");
 
 $(document).ready(function() {
  	let login = sessionStorage.getItem("login");

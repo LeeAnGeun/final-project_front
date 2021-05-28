@@ -27,6 +27,7 @@
 </head>
 <body>
 
+<div id='naviBar'></div>
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
 	
@@ -773,12 +774,16 @@
 	
 	<div class='hrMargin'><hr></div>
 	
-	
-		
-	
 </div>
+<div id='footer'></div>	
 
 <script>
+$(document).ready(function(){
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+})
+
+
 // 이미지 프레임 선택 버튼
 $(document).ready(function(){
 	$(".onedayClassImageBoxB").hide();

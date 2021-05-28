@@ -100,7 +100,7 @@ $(document).ready(function(){
 			if(checkPw) 
 				$("#findPwdModal").modal('show');
 			else
-				location.href = "taeminNavi.html"; 
+				location.href = "../main/main.html"; 
 		}	
 	}
 });
@@ -264,10 +264,10 @@ function Google_Kakao_Regi(email, userName, nickName, profilePic){
 // 선호도 조사 유무 체크
 function interestCheck(data){
 	if(data.interest1 == null)
-		location.href = "getInterest.html"; // 선호도 조사뷰로 이동
+		location.href = "../interest/getInterest.html"; // 선호도 조사뷰로 이동
 	//	location.href = "mypage.html";  
 	else 
-		location.href = "taeminNavi.html"; // 메인뷰로 이동
+		location.href = "../main/main.html"; // 메인뷰로 이동
 }
 
 // 로그인 세션 저장
