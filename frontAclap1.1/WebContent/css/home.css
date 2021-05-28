@@ -653,7 +653,7 @@ img {vertical-align: middle;}
 
 /* ------- 타이틀 설정 -------- */
 .s_mainTitle {
-   max-width: 1210px;F
+   max-width: 1210px;
    width: 100%;
    margin: 0 auto;
    font-size: 40px;
@@ -715,7 +715,9 @@ img {vertical-align: middle;}
 }
 
 .s_img img{
-	width:100%; /*넓이 비율 맞춰 줌 */
+  width: 380px;
+  height: 250px;
+  object-fit: cover;
 }
 
 
@@ -818,6 +820,7 @@ img {vertical-align: middle;}
 	border-radius: 50%;
 	width:50px;
 	height:50px;
+	object-fit: cover
 }
 #len5:hover{
 	cursor: pointer;
@@ -895,6 +898,7 @@ img {vertical-align: middle;}
 	border-radius: 50%;
 	width:90px;
 	height:90px;
+	object-fit: cover;
 	margin-top:10px;
 }
 .loginModalNickName{
