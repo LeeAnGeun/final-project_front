@@ -8,13 +8,14 @@
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>  
 
 <!-- bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ -->
 
 <!-- icon -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+ -->
 <!-- mypage CSS -->
 <link rel="stylesheet" href="./css/mypage.css">
 <link href='fullcalendar/main.css' rel='stylesheet' />
@@ -25,7 +26,7 @@
 <script src='fullcalendar/main.js'></script>
 
 <script>
-document.onkeydown = fkey;
+/* document.onkeydown = fkey;
 document.onkeypress = fkey
 document.onkeyup = fkey;
 
@@ -47,7 +48,7 @@ function fkey(e){
  
 function noEvent(e) { // 새로 고침 방지
     if (e.keyCode == 116) {
-        alert("새로고침을 할 수 없습니다.");
+        //alert("새로고침을 할 수 없습니다.");
         e.keyCode = 2;
         return false;
     } else if (e.ctrlKey
@@ -56,7 +57,7 @@ function noEvent(e) { // 새로 고침 방지
     }
 }
 document.onkeydown = noEvent;
-
+ */
 ///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
 
 $(document).ready(function(){
@@ -64,9 +65,7 @@ $(document).ready(function(){
 	let json = JSON.parse(login); // String -> json
 
 	// 회원정보 확인 Modal
-	//$(document).on("click", "#_infoUpdate", function () {
 	$("#a_infoUpdate").on("click", function() {
-		// alert("_infoUpdate"	);
 		$("#memberUpdateCheck").modal('show');
 	});
 
@@ -75,7 +74,7 @@ $(document).ready(function(){
 		if($("#memberUpdatePwdCheckInput").val() == json.pwd ){
 			alert("인증되었습니다.");
 			$("#memberUpdateCheck").modal('hide');
-			
+			$("#memberUpdateModal").modal('show');
 		} 
 		else {
 			alert('비밀번호가 올바르지 않습니다');
@@ -135,8 +134,18 @@ $(document).ready(function(){
 
 
 	/////////////////////////// 정보 수정 (회원정보 수정)  ///////////////////////////////
-
-		
+    
+	// 회원정보 수정 초기화 값 넣기 
+	$(document).ready(function(){
+		$("#newprofile").attr('src', json.profilePic);
+		$("#_memNum").val(json.memNum);
+		$("#newUserName").val(json.userName);
+		$("#newNickName").val(json.nickName);
+		$("#originalEmail").val(json.email);
+		$("#newPwd").val(json.pwd);
+		$("#newCpwd").val(json.pwd);
+		$("#newPhoneNum").val(json.phoneNum);
+	});
 
 	// 프로필 이미지 미리보기
 	$("#_profilePic").on("change", handleImgFileSelect);
@@ -153,8 +162,6 @@ $(document).ready(function(){
 		   let reader = new FileReader();
 		   reader.onload = function(e) {
 		        $("#newprofile").attr("src", e.target.result);   
-		        $("#newprofile").css("height", '150px');  
-		        $("#newprofile").css("width", '150px');  
 		   }
 		   reader.readAsDataURL(f);
 		});
@@ -265,6 +272,7 @@ $(document).ready(function(){
 					success:function( data ){
 						if(data>0){
 							alert('성공적으로 탈퇴 되었습니다');
+							sessionStorage.clear();
 							location.href='taeminNavi.html';
 						}
 						else{
@@ -289,7 +297,6 @@ $(document).ready(function(){
 <!-- calendar script -->
 
 <body>
-
 <div class="a_main">
 <div class="container border-bottom bg-white mt-1 pt-md-3 pt-2 a_header">
     <div class="a_myinfo">
@@ -496,7 +503,7 @@ $(document).ready(function() {
 			
 			// 나의 정보 
 			let div = "<div class='profilePic'>"
-						+ "<img src='" + dto.profilePic + "' class='rounded-circle' id='profile'>"
+						+ "<img src='" + dto.profilePic + "' class='myPageProfile' id='profile'>"
 					+ "</div>";
 		  	
 		    div += "<div class='' id='info'>"
@@ -636,7 +643,7 @@ $(document).ready(function() {
 					$(".day").append("<div class='dday'><h5>" + month + "-" + day + "</h5></div>");
 					
 					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
-									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='./upload/" + classDto.profilePic + "' alt='' width='50' height='50' class='rounded-circle'> </div>"
+									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='./upload/" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
 									+ "<div class='d-flex flex-column tps'>"
 										+ "<div><b>" + classDto.title + "</b></div>"
 										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
