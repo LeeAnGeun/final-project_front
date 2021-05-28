@@ -30,9 +30,21 @@
 document.onkeypress = fkey
 document.onkeyup = fkey;
 
-let wasPressed = false;
+let wasPressed = false; */
 
-function fkey(e){
+/* $(document).keydown(function(e) {
+    if (e.which == 116 || e.keyCode == 82 && e.ctrlKey) { //116 = F5
+		
+			alert('클릭');
+			$("#perfectGuy").empty();
+			$("#perfectGuy").load("myPageView/mypage.html"); 
+			
+	        return false;
+	   
+
+    }
+});  */
+/* function fkey(e){
         e = e || window.event;
        if( wasPressed ) return; 
 
@@ -56,8 +68,10 @@ function noEvent(e) { // 새로 고침 방지
         return false;
     }
 }
-document.onkeydown = noEvent;
- */
+
+document.onkeydown = noEvent; */
+
+
 ///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
 
 $(document).ready(function(){
@@ -309,6 +323,7 @@ $(document).ready(function(){
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >선생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">정보 수정</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_stampTable">도장판</a> </li>
+            
         </ul> 	
     </div>
 </div>

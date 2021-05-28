@@ -427,3 +427,6 @@ WHERE YMD != '20210621' AND YMD != '20210531';
 -- WHILE문 만들기랑.. 
 
 
+select * from ONEDAYCLASS;
+
+
