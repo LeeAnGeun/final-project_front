@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	// 스크롤 탑 
-	$('html').scrollTop(0);
+	// header, footer 열기
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
 	
 	// 로그인 세션정보 가져오기
 	let login = sessionStorage.getItem("login");
@@ -10,10 +11,10 @@ $(document).ready(function(){
 	$("#makeClassBtn").click(function(){
 		if(json == null){
 			alert('로그인이 필요합니다');
-			location.href='loginRegi.html';
+			location.href='../loginRegi/loginRegi.html';
 		}
 		else{
-			location.href='ondeayClassWrite.html';
+			location.href='onedayClassWrite.html';
 		}
 	});
 	

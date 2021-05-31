@@ -33,6 +33,7 @@
 <body>
 
 <div id='naviBar'></div>
+
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
 	
@@ -710,126 +711,8 @@
     </div>
     
 	<!--Slides-->
-	<div class="carousel-inner" role="listbox">
-	<!-- 첫번째 슬라이드 -->
-	<div class="carousel-item active">
-	<div class='classApplication_Container'>
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 1일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 2일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 3일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 4일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 5일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-	</div>
-	</div>
+	<div class="carousel-inner classScheduleList" role="listbox">
 	
-	<!-- 두번째 슬라이드 -->
-	<div class="carousel-item">
-	<div class='classApplication_Container'>
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 6일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 7일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 8일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 9일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 10일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-	</div>
-	</div>
 	</div>
 	
 	<!-- Slider Controls -->
@@ -837,19 +720,236 @@
 	   <li data-target="#s_new_slider" data-slide-to="0" class="active"></li>
        <li data-target="#s_new_slider" data-slide-to="1"></li>
 	</div>
+	
+	<div align=center>
+		<input type='button' class='allScheduleModalBtn' value='일정 전체보기'>
+	</div>
 	</div>
 	
 	<div class='hrMargin'><hr></div>
 	
 </div>
+
 <div id='footer'></div>	
 
+<!-- 신청 결제 모달 -->
+<div class="modal fade" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="requestPage">
+                <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
+                <div class="px-4 py-5">
+                    <h3 class="text-uppercase">ACLAP</h3>
+                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> 
+                    
+                    <span class="theme-color">결제 내역</span>
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">보유 포인트</span> <span class="text-muted">10,000point</span> </div>
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">축구</span> <span class="text-muted">2,000point</span> </div>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3"> <span class="font-weight-bold">결제 후 잔여 포인트</span> <span class="font-weight-bold theme-color">8,000point</span> </div>
+                    <div class="text-center mt-5"> <button class="btn btn-primary" id="participate">참여하기</button> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 일정 전체보기 Modal -->
+<div class='schedule_hide_modal'>
+	<div class='schedule_Modal_Container'>
+		<i class='far fa-window-close schedule_modal_close'></i>
+		<div class="schedule_Modal_Content">
+			ddd
+		</div>
+	</div>
+</div>
+		
 <script>
+let login = sessionStorage.getItem("login");
+let json = JSON.parse(login); // String -> json 
+//alert(json.id);
+
 $(document).ready(function(){
 	$("#naviBar").load("../navibar.html");
 	$("#footer").load("../footer.html");
+	
+	$.ajax({
+	      url:"http://localhost:3000/classDtail", 
+	      type:'post',
+	      data:{classNum:3},
+	      success:function( dto ){
+	     
+				let pDate = new Date();
+				let fpDate = dateFormat(pDate);
+				alert("pDate : " + pDate.getDate());
+				let startDate = new Date((dto.startDate).substring(0,10));
+				let endDate = new Date((dto.endDate).substring(0,10));
+				
+				// startDate 와 endDate 비교
+		        let s_eDate = dateDiff(startDate, endDate);
+		         
+				// 현재 날과 startDate 비교
+				let s_pDate = dateDiff(startDate, pDate);
+				
+				if(s_pDate >= 0){
+					alert("이미시작함");
+					let len = s_eDate - s_pDate;
+					
+					if(len>30){
+						pDate.setDate(pDate.getDate() + 30);
+						// alert("endDate : " + dateFormat(startDate));
+						classSchedulList(dto.classNum, fpDate, dateFormat(pDate));
+					}else{
+						classSchedulList(dto.classNum, dateFormat, (dto.endDate).substring(0,10));
+					}
+				}else{
+					alert("아직 시작안함");
+					let len = s_eDate;
+					if(len>30){
+						startDate.setDate(startDate.getDate() + 30);
+						
+						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), dateFormat(startDate));
+					}else{
+						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10));
+					}
+				}
+	      },
+          error:function(){
+        	  alert("error");
+          }
+		           
+	});
+	
+	function classSchedulList(classNum, startDate, endDate){
+		
+		$.ajax({
+		      url:"http://localhost:3000/classSchedulList", 
+		      type:'post',
+		      data:{classNum:3, startDate:startDate, endDate:endDate},
+		      success:function( list ){
+		     
+					$(".classApplicatoinBox").remove();   
+					
+					let src = "<div class='carousel-item active'>"
+		                  					+ "<div class='classApplication_Container'>";
+		
+					for(let i=1; i < list.length+1; i++){
+						let classSchedule = list[i-1];
+						let rdate = (classSchedule.rdate).substring(0,10);
+						
+						let sbtn = "";
+						if(classSchedule.limitNum > 0){
+	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                    }else{
+	                    	sbtn += "<h3>마감</h3>";
+	                    }
+						
+						src += "<div class='classApplicatoinBox'>"
+						                     + "<div class='caDate'>" + rdate + "</div>"
+						                     + "<div class='caTime'> 수업 시간 : " + classSchedule.duration + "분</div>"
+						                     + "<div class='caMem'>예약 가능 인원 : " + classSchedule.limitNum + "</div>"
+						                     + "<div class='coinNprice'>"
+						                           + "<i class='fa fa-donate'></i>"
+						                           + "<span class='caPrice'>" + classSchedule.price + "point</span>"
+						                     + "</div>"
+						                     + sbtn
+						              	+ "</div>";
+						// 다음 슬라이드
+						if(i != 1 && i%5 == 0){
+							src += "</div></div>"
+									+ "<div class='carousel-item'>"
+										+ "<div class='classApplication_Container'>";
+						}	  
+						
+					}
+					src += "</div></div>";
+					
+					pagenation(list.length);
+					
+					$(".classScheduleList").append(src);
+		      },
+	        error:function(){
+	      	  alert("error");
+	        }
+			           
+		});
+	}
+	// 강의신청 Pagenation
+	// pagination
+	function pagenation(len){
+		let pr = document.querySelector( '.paginate.left' );
+		let pl = document.querySelector( '.paginate.right' );
+	
+		pr.onclick = slide.bind( this, -1 );
+		pl.onclick = slide.bind( this, 1 );
+		
+		let page = Math.floor(len/5); // 소수점 버림
+		// alert(page);
+		if(len%5 != 0){
+			page = page + 1;
+		}
+		if(page>6){
+			page = 6;
+		}
+		let index = 0, total = page;
+	
+		function slide(offset) {
+			index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+			if(index == 0){
+				$(".left").hide();
+			}else if(index == page-1){
+				$(".right").hide();
+			}else{
+				$(".left").show();
+				$(".right").show();
+			}
+			
+			document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+			
+			pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+			pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+		} 
+	
+		slide(0);
+	}
+	
+	// 두개의 날짜를 비교하여 차이를 알려준다.
+	function dateDiff(_date1, _date2) {
+	    let diffDate_1 = _date1 instanceof Date ? _date1 :new Date(_date1);
+	    let diffDate_2 = _date2 instanceof Date ? _date2 :new Date(_date2);
+	 
+	    diffDate_1 =new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
+	    diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
+	 
+	    let diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
+	    diff = Math.ceil(diff / (1000 * 3600 * 24));
+	 
+	    return diff;
+	}
+	
+	function dateFormat(date){
+	      // alert(date);
+	      let year = date.getFullYear();
+	      let month = date.getMonth()+1;
+	      let day = date.getDate();
+	      
+	      let sDate = year + "-" + two(month + "") + "-" + two(day + "");
+	      return sDate;
+	   }
+	   
+	   function two(msg){
+	      return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
+	   };
+	
+	$(".caSelectBtn").on("click", function () {
+		let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
+		// alert("caSelectBtn");
+		alert(classNum);
+	});
 })
-
 
 // 이미지 프레임 선택 버튼
 $(document).ready(function(){
@@ -981,37 +1081,6 @@ $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
 
-
-
-// 강의신청 Pagenation
-// pagination
-let pr = document.querySelector( '.paginate.left' );
-let pl = document.querySelector( '.paginate.right' );
-
-pr.onclick = slide.bind( this, -1 );
-pl.onclick = slide.bind( this, 1 );
-
-let index = 0, total = 6;
-
-function slide(offset) {
-	index = Math.min( Math.max( index + offset, 0 ), total - 1 );
-	if(index == 0){
-		$(".left").hide();
-	}else if(index == 5){
-		$(".right").hide();
-	}else{
-		$(".left").show();
-		$(".right").show();
-	}
-	
-	document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
-	
-	pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
-	pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
-} 
-
-slide(0); 
-
 //이미지 확대 모달창
 
 $(".image_hide_modal").hide();
@@ -1033,12 +1102,18 @@ $(".onedayClassImageBoxA").click(function(){
       };
 });
    
+
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
+
+$(".requestclose").click(function(){
+   $(".hide_modal").toggleClass("show_modal");   
+
     $('body').css("background-color","");
     $(".image_hide_modal").hide();
     modalCheck = true;
 });
+
 
 //별점
 // 초기값 5점으로 설정....근데 오류남 ㅜ
@@ -1195,6 +1270,14 @@ $("#reviewSubmit").click(function(){
 		 }
 
 	  });	  
+
+//리뷰 모달 창 컨트롤
+$(".allScheduleModalBtn").click(function(){
+	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
+});
+$(".schedule_modal_close").click(function(){
+	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
+
 });
 
 </script>

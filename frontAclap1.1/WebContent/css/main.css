@@ -21,7 +21,6 @@ div.midClassMenu {
 	 width: 75%;
     margin: 0 auto;
     position: center;
- 
     height: 100%;
 	
 }
@@ -58,14 +57,15 @@ div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
 	cursor: pointer;
 }
 
+/*-------------------------- 카드 --------------------------*/
 
 /* ------- 타이틀 설정 -------- */
 .s_mainTitle {
-   max-width: 1210px;
-   width: 100%;
-   margin: 0 auto;
-   font-size: 40px;
+   position:relative;
+   left:15%;
+   font-size: 43px;
    font-weight: 900;
+   margin-bottom:2px;
 }
 
 /* -------- 카드 프레임 설정 -------- */
@@ -79,14 +79,15 @@ div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
    align-items: center;
 }
 
-
 .s_Card {
    width: 100%;
-   max-width: 380px;
-   min-width: 380px;
-   height: 430px;   /*메인 높이*/
+   max-width: 400px;
+   min-width: 400px;
+   height: 450px;   /*메인 높이*/
    background-color: #0C0C12;
-   margin: 20px;
+   margin-top: 20px;
+   margin-left: 34px;
+   margin-right: 34px;
    color: white; 
    border-radius: 10px;
    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
@@ -101,23 +102,21 @@ div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
    }
 }
 
+
 /* ----- slider controller 셋팅 ----- */
 .s_slider {text-align: center;}
 .s_slider i{color: black;}
 
 
-
-
 /* -------- 카드 세부 셋팅 --------- */
-/* 카드 이미지 이미지 셋팅 (자동 crop) */
+/* 카드 이미지 이미지 셋팅 */
 .s_img {
-   width: 380px;
+   width: 400px;
    height: 250px; 
    overflow: hidden; /*넘치는 부분 보이지 않기*/
 }
-
 .s_img img{
-  width: 380px;
+  width: 400px;
   height: 250px;
   object-fit: cover;
 }
@@ -225,15 +224,11 @@ div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
 img {vertical-align: middle;}
 
 /* Slideshow container */
-
 #carouselExampleIndicators1{
 	width: 70%;
 	margin:auto;
 	float: center;
 	position: relative;
-	
-/* 	border: dashed;
-	border-color: green; */
 }
 #carouselExampleFade1{
 	width: 70%;
@@ -254,9 +249,8 @@ img {vertical-align: middle;}
 /* 선생님이 되어보세요*/
 .teacherBox{
 	height:500px;
-	width:1240px;
+	width:1345px;
 	border-radius:10px;
-	margin-left:334px;
 	margin-top:100px;
 	margin-bottom:50px;
 }
@@ -268,7 +262,7 @@ img {vertical-align: middle;}
 	border:none;
 	height:50px;
 	width:130px;
-	margin-left:118px;
+	margin-right:74%;
 	margin-top:250px;
 }
 #onedayClassOpenBtn:hover{
