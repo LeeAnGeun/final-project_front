@@ -1,18 +1,11 @@
 @charset "UTF-8";
-/*메인 컨테이너 (노트북)*/
-/* .onedayClassContaier{
-	margin-top:80px;
-	margin-left:290px;
-	margin-right:290px;
-}
- */
-/*메인 컨테이너 (데스크탑)*/
- .onedayClassContaier{
+/*메인 컨테이너 */
+.onedayClassContaier{
 	margin-top:80px;
 	margin-left:400px;
 	margin-right:400px;
-} 
-
+}
+ 
 /*상단 제목*/
 .onedayClassMainTextBox{
 	height:120px;
@@ -68,24 +61,23 @@
 	height:400px;
 	margin-bottom:30px;
 }
-.ocImgFrameA1{
+.ocImgFrameA2{
 	width:300px;
 	height:400px;
 	overflow: hidden;
 }
-.ocImgA1{
+.ocImgA2{
 	width:300px;
 	height:400px;
 	object-fit: cover;
-	
 }
-.ocImgFrameA2{
+.ocImgFrameA1{
 	width:317.5px;
 	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 }
-.ocImgA2{
+.ocImgA1{
 	width:317.5px;
 	height:200px;
 	object-fit: cover;
@@ -118,6 +110,11 @@
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
+}
+.ocImgA5{
+	width:252px;
+	height:400px;
+	object-fit: cover;
 }
 .ocImgFrameA5{
 	width:252px;
@@ -193,21 +190,10 @@
 	height:400px;
 	margin-bottom:30px;
 }
-.ocImgFrameC1{
-	width:317.5px;
-	height:200px;
-	overflow: hidden;
-}
-.ocImgC1{
-	width:317.5px;
-	height:200px;
-	object-fit: cover;
-}
 .ocImgFrameC2{
 	width:317.5px;
 	height:200px;
-	overflow:hidden;
-	padding-top:10px;	
+	overflow: hidden;
 }
 .ocImgC2{
 	width:317.5px;
@@ -215,23 +201,34 @@
 	object-fit: cover;
 }
 .ocImgFrameC3{
+	width:317.5px;
+	height:200px;
+	overflow:hidden;
+	padding-top:10px;	
+}
+.ocImgC3{
+	width:317.5px;
+	height:200px;
+	object-fit: cover;
+}
+.ocImgFrameC4{
 	width:485px;
 	height:400px;
 	overflow: hidden;
 	padding-left:10px;
 }
-.ocImgC3{
+.ocImgC4{
 	width:485px;
 	height:400px;
 	object-fit: cover;
 }
-.ocImgFrameC4{
+.ocImgFrameC1{
 	width:317.5px;
 	height:200px;
 	overflow: hidden;
 	padding-left:10px;
 }
-.ocImgC4{
+.ocImgC1{
 	width:317.5px;
 	height:200px;
 	object-fit: cover;
@@ -250,43 +247,7 @@
 }
 
 
-/*---- 이미지박스 선택 ----*/
-.onedayClassImageSelector{ 
-	width:100%;
-	height:60px;
-	margin-bottom:5px;
-}
-.layerBtnChoice{
-	float:right;
-	font-size:20px;
-	border:none;
-	height:35px;
-	width:74px;
-	border-radius: 2px;
-	margin-left:11px;
-	background-color:#98A4A6;	
-	color:white;
-}
-.layerBtnNonChoice{
-	float:right;
-	font-size:20px;
-	border:none;
-	height:35px;
-	width:74px;
-	border-radius: 2px;
-	margin-left:11px;
-	background-color:#F5F2F5;	
-}
-.layerBtnChoice:hover{
-	cursor: pointer;
-}
-.layerBtnNonChoice:hover{
-	cursor: pointer;
-}
-.classInfo{
-	font-size:20px;
-	margin-top:18px;
-}
+
 
 /*-------- 메인 컨텐츠 --------*/
 .onedayClassContentBox1{
@@ -344,9 +305,7 @@
 	height:32px;
 	width:50px;
 	border:none;
-	background-color: #E6FAB6;
-	margin-top:3px;
-	margin-left:5px;
+	background-color: white;
 	border-radius: 5px;
 }
 .placeBtn:hover{
@@ -477,20 +436,12 @@
 
 
 /*---- 강의신청 ----*/
-
-.onedayClassContaier{
-	margin-top:80px;
-	margin-left:400px;
-	margin-right:400px;
-} 
-
 .ocSubTitle2{
 	font-size:27px;
 	font-weight: 550;
 	margin-bottom:10px;
 	display: inline-block;
 }
-
 .classApplication_Container{
 	height: 200px;
 	/* background-color: #01579b; */
@@ -499,7 +450,6 @@
 	margin-top:25px; 
 	/* border: 1px solid red; */
 }
-
 .classApplicatoinBox{
 	height: 200px;
 	width: 180px;
@@ -727,11 +677,10 @@
 /*------------ 5027 이미지 클릭시 모달창 -------------*/
 
 /*---- 이미지 클릭시 모달창 -----*/
-
+/* 
 .hide_modal {
    opacity: 0;
    visibility: hidden;
-
    width:800px;
    height:600px;
    overflow:hidden;
@@ -750,7 +699,7 @@
    object-fit:cover;
 }
 .fa-times{
-   background-color:rgba(0, 0, 0, 0);/*까만색(0,0,0) 20% 투명도*/
+   background-color:rgba(0, 0, 0, 0);까만색(0,0,0) 20% 투명도
    font-size:30px;
    text-align: right;
    padding-left: 770px;
@@ -766,5 +715,262 @@
    object-fit: contain;
    width:800px;
    height:600px;
+}
+ */
+ 
+ 
+ 
+/* ----------------글쓰기 관련 CSS ------------*/
+ 
+ /*---- 이미지박스 선택 ----*/
+.onedayClassImageSelector{ 
+	width:100%;
+	height:60px;
+	margin-bottom:5px;
+	margin-left:1px;
+}
+.layerBtnChoice{
+	float:right;
+	font-size:20px;
+	border:none;
+	height:35px;
+	width:74px;
+	border-radius: 2px;
+	margin-left:12px;
+	background-color:#98A4A6;	
+	color:white;
+}
+.layerBtnNonChoice{
+	float:right;
+	font-size:20px;
+	border:none;
+	height:35px;
+	width:74px;
+	border-radius: 2px;
+	margin-left:11px;
+	background-color:#F5F2F5;	
+}
+.layerBtnChoice:hover{
+	cursor: pointer;
+}
+.layerBtnNonChoice:hover{
+	cursor: pointer;
+}
+.classInfo{
+	font-size:20px;
+	margin-top:18px;
+}
 
+/*챕터 디자인*/
+.chapterText{
+	text-align:center;
+	font-size:100px;
+	font-weight: 900;
+	font-family: 'Roboto';	
+	padding-top:50px;
+}
+.ExplicateText{
+	font-size:25px;
+	font-weight: 900;
+	font-family: 'Roboto';	
+}
+
+/*--------- 네비바 -------*/
+.OCWriteTxt {
+  font-family: verdana, sans-serif;
+  font-weight: bold;
+  text-align: right;
+  position: relative;
+  left:-10px;
+}
+#OCbtn1 {
+  top: 250px;
+  background-color: gray;
+  color:white;
+}
+#OCbtn2 {
+  top: 310px;
+  color:black;
+  background-color: white;
+}
+#OCbtn3 {
+  top: 370px;
+  color:black;
+  background-color: white;
+
+}
+#OCbtn4 {
+  top: 430px;
+  color:black;
+  background-color: white;
+}
+#OCbtn5 {
+  top: 490px;
+  color:black;
+  background-color: white;
+}
+#OCSubmitTxt{
+  font-family: verdana, sans-serif;
+  font-weight: bold;
+  position: relative;
+  background-color:white;
+}
+div.navBtn {
+  border: none;
+  border-radius: 30px;
+  width: 540px;
+  height: 50px;
+  position: fixed;
+  left: -475px;
+  transition: .7s ease;
+}
+div.navBtn:hover {
+  cursor:pointer;
+  background-color:#F9EAD7;
+  position: fixed;
+  left: -50px;
+  width: 340px;
+  border-radius: 0px;
+}
+div.OCSubmitBtn {
+  border: none;
+  width: 120px;
+  position: fixed;
+  top: 300px;
+  right:-50px;
+  transition: .7s ease;
+}
+div.OCSubmitBtn:hover {
+	background-color:blue;
+  cursor:pointer;
+  position: fixed;
+  right: -40px;
+  width: 200px;
+}
+
+
+
+/*카테고리 디자인*/
+.CategoryStyle{
+	height:40px;
+	width:230px;
+	font-size:20px;
+	border-radius: 3px;
+	border:none;
+	margin-right:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#_OCtitleInput{
+	margin-top:10px;
+	font-size:32px;
+	font-weight: 600;
+	padding-bottom:9px;
+	height:50px;
+	width:700px;
+	border-radius: 3px;
+	border:none;
+}
+#_OCinfomation{
+	margin-top:10px;
+	width:700px;
+	height:140px;
+	border-radius: 3px;
+	border:none;
+	font-size:20px;
+	font-weight: 600;
+}
+#_OCcontent{
+	margin-top:10px;
+	margin-bottom:20px;
+	width:1000px;
+	height:250px;
+	border-radius: 3px;
+	border:none;
+	font-size:20px;
+	font-weight: 600;
+}
+#_duration{
+	height:30px;
+	width:120px;
+	font-size:15px;
+	border-radius: 3px;
+	border:none;
+	margin-right:10px;
+	margin-top:10px;
+	margin-bottom:10px;	
+}
+.OCIcon{
+	position: relative;
+	top:5px;
+}
+#_limitNum{
+	height:30px;
+	width:120px;
+	font-size:15px;
+	border-radius: 3px;
+	border:none;
+	margin-right:10px;
+	margin-top:7px;
+	margin-bottom:10px;	
+}
+#_preparation{
+	padding-top:2px;
+	font-size:15px;
+	font-weight: 600;
+	height:30px;
+	width:300px;
+	border-radius: 3px;
+	border:none;
+	margin-bottom:50px;
+}
+#_price{
+	padding-top:2px;
+	font-size:15px;
+	font-weight: 600;
+	height:30px;
+	width:150px;
+	border-radius: 3px;
+	border:none;
+	margin-bottom:50px;
+}
+.OCdateText{
+	font-size:15px;
+	font-weight: 600;
+}
+.OCdate{
+	margin-top:7px;
+	border-radius: 3px;
+	border:none;
+	margin-right:50px;
+}
+.noClassBox{
+	font-size:17px;
+}
+#_aboutMeInput{`
+	margin-top:10px;
+	margin-bottom:20px;
+	width:1000px;
+	height:200px;
+	border-radius: 3px;
+	border:none;
+	font-size:20px;
+	font-weight: 600;
+}
+#_youtubeLinkInput{
+	margin-top:10px;
+	font-size:18px;
+	font-weight: 600;
+	height:30px;
+	width:350px;
+	border-radius: 3px;
+	border:none;
+	margin-bottom:50px;
+}
+.OCWriteAfBtn{
+	border:none;
+	width:75%;
+	height:70px;
+	font-size:40px;
+	border-radius: 10px;
 }
