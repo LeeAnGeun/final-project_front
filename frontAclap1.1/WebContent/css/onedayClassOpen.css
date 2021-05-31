@@ -2,6 +2,8 @@
 .openContainer{
 	padding-left:120px;
 	padding-right:120px;
+	margin:0 auto;
+	background-color:#F1C50E;
 }
 .openSort{
 	display: flex; 
@@ -31,16 +33,42 @@
 }
 
 /* 컨텐츠 */
+/* 1920*1080 */
 .content-margin{
 	margin-top:250px;
+	margin-left:150px;
+	margin-right:150px;
 }
+/* 2560*1600*/
+/* 
+.content-margin{
+	margin-top:250px;
+	margin-left:80px;
+	margin-right:80px;
+}
+ */
 .contentImgBox{
 }
 
 .contentImg{
-	width:700px;
+	width:600px;
 	border-radius: 20px;
 }
+/* 2560*1600 */
+/* 
+.contentImgText{
+	font-family:Roboto;
+	font-size:150px;
+	font-weight: 1000;
+	letter-spacing:10px;
+	color:white;
+	z-index: 1;
+	position: relative;
+	top:-90px;
+	left:80px;
+}
+ */
+/* 1920*1080*/
 .contentImgText{
 	font-family:Roboto;
 	font-size:150px;
@@ -50,18 +78,17 @@
 	z-index: 1;
 	position: relative;
 	top:-110px;
-	left:55px;
+	left:170px;
 }
 .contentTextBox{
 	border-radius: 20px;
 	background-color:white;
-	width: 700px;
-	height:700px;
-
+	width: 600px;
+	height:600px;
 }
 .contentTextTitle{
 	font-family: Roboto;
-	font-size:40px;
+	font-size:33px;
 	font-weight: 740;
 	color:#478AC9;
 	margin-top:120px;
@@ -69,10 +96,10 @@
 	margin-bottom:50px;
 }
 .contentText{
-font-family:Open Sans;
+    font-family:Open Sans;
 	margin-left:50px;
 	margin-right:50px;
-	font-size:28px;
+	font-size:24px;
 }
 .sliderControll{
 	text-align:center;

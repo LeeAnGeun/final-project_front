@@ -4,25 +4,31 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <!-- https://github.com/josecebe/twbs-pagination 에서 가져옴 -->
-<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>  
+<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>  
 
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+ 
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <!-- mypage CSS -->
-<link rel="stylesheet" href="./css/mypage.css">
-<link href='fullcalendar/main.css' rel='stylesheet' />
+<link rel="stylesheet" href="../css/mypage.css">
+<link rel="stylesheet" href="../css/navibar.css">
+<link href='../fullcalendar/main.css' rel='stylesheet' />
 
 <!-- js -->
-<script src='filesaver/FileSaver.js'></script>
-<script src='filesaver/html2canvas.js'></script>
-<script src='fullcalendar/main.js'></script>
+<script src='../filesaver/FileSaver.js'></script>
+<script src='../filesaver/html2canvas.js'></script>
+<script src='../fullcalendar/main.js'></script>
 
 <script>
 
@@ -33,9 +39,7 @@ $(document).ready(function(){
 	let json = JSON.parse(login); // String -> json
 
 	// 회원정보 확인 Modal
-	//$(document).on("click", "#_infoUpdate", function () {
 	$("#a_infoUpdate").on("click", function() {
-		// alert("_infoUpdate"	);
 		$("#memberUpdateCheck").modal('show');
 	});
 
@@ -44,7 +48,7 @@ $(document).ready(function(){
 		if($("#memberUpdatePwdCheckInput").val() == json.pwd ){
 			alert("인증되었습니다.");
 			$("#memberUpdateCheck").modal('hide');
-			
+			$("#memberUpdateModal").modal('show');
 		} 
 		else {
 			alert('비밀번호가 올바르지 않습니다');
@@ -104,8 +108,18 @@ $(document).ready(function(){
 
 
 	/////////////////////////// 정보 수정 (회원정보 수정)  ///////////////////////////////
-
-		
+    
+	// 회원정보 수정 초기화 값 넣기 
+	$(document).ready(function(){
+		$("#newprofile").attr('src', json.profilePic);
+		$("#_memNum").val(json.memNum);
+		$("#newUserName").val(json.userName);
+		$("#newNickName").val(json.nickName);
+		$("#originalEmail").val(json.email);
+		$("#newPwd").val(json.pwd);
+		$("#newCpwd").val(json.pwd);
+		$("#newPhoneNum").val(json.phoneNum);
+	});
 
 	// 프로필 이미지 미리보기
 	$("#_profilePic").on("change", handleImgFileSelect);
@@ -122,8 +136,6 @@ $(document).ready(function(){
 		   let reader = new FileReader();
 		   reader.onload = function(e) {
 		        $("#newprofile").attr("src", e.target.result);   
-		        $("#newprofile").css("height", '150px');  
-		        $("#newprofile").css("width", '150px');  
 		   }
 		   reader.readAsDataURL(f);
 		});
@@ -234,6 +246,7 @@ $(document).ready(function(){
 					success:function( data ){
 						if(data>0){
 							alert('성공적으로 탈퇴 되었습니다');
+							sessionStorage.clear();
 							location.href='taeminNavi.html';
 						}
 						else{
@@ -259,6 +272,9 @@ $(document).ready(function(){
 
 <body>
 
+
+<div id="naviBar"></div>
+
 <div class="a_main">
 <div class="container border-bottom bg-white mt-1 pt-md-3 pt-2 a_header">
     <div class="a_myinfo">
@@ -270,7 +286,6 @@ $(document).ready(function(){
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >학생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >선생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">정보 수정</a> </li>
-            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_stampTable">도장판</a> </li>
         </ul> 	
     </div>
 </div>
@@ -349,7 +364,7 @@ $(document).ready(function(){
 </div>
 
 
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="reciptModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body" id="saveRecipt">
@@ -391,7 +406,6 @@ $(document).ready(function(){
      </div>
    </div>
 </div>
-
 
 
 <!-- 회원정보수정 Modal 2 (정보 입력 View) -->
@@ -442,8 +456,13 @@ $(document).ready(function(){
    </div>
 </div>
 
+<div id="footer"></div>
 
 <script type="text/javascript">
+$("#naviBar").load("../navibar.html");
+
+$("#footer").load("../footer.html");
+
 $(document).ready(function() {
  	let login = sessionStorage.getItem("login");
 	let json = JSON.parse(login); // String -> json 
@@ -464,7 +483,7 @@ $(document).ready(function() {
 			
 			// 나의 정보 
 			let div = "<div class='profilePic'>"
-						+ "<img src='./upload/" + dto.profilePic + "' class='rounded-circle' id='profile'>"
+						+ "<img src='" + dto.profilePic + "' class='myPageProfile' id='profile'>"
 					+ "</div>";
 		  	
 		    div += "<div class='' id='info'>"
@@ -604,7 +623,7 @@ $(document).ready(function() {
 					$(".day").append("<div class='dday'><h5>" + month + "-" + day + "</h5></div>");
 					
 					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
-									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='./upload/" + classDto.profilePic + "' alt='' width='50' height='50' class='rounded-circle'> </div>"
+									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
 									+ "<div class='d-flex flex-column tps'>"
 										+ "<div><b>" + classDto.title + "</b></div>"
 										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
@@ -625,7 +644,7 @@ $(document).ready(function() {
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
-		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#staticBackdrop'>결제 내역</button>"
+		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#reciptModal'>결제 내역</button>"
 		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>취소 신청</button>"
 	                        	 	+ "</div>"
 	             				+ "</div>";	
@@ -695,7 +714,7 @@ $(document).ready(function() {
 	    link.href = uri;
 	    document.body.appendChild(link);
 	    link.click();   
-	    //after creating link you should delete dynamic link
+	    //after creating link you should delete dFynamic link
 	    //clearDynamicLink(link); 
 	} */
 	

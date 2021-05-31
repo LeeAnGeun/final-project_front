@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>navibar</title>
+
+<!-- navibar CSS -->
+<link rel="stylesheet" href="../css/navibar.css">
+
+<!-- iamport -->
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="header">
+	<nav class="topMenu">
+		<div class="logoTop">
+			<h2 class="aclap" onclick="ACLAP();return false;" style="cursor: pointer;">ACLAP</h2>
+			<h2 class="aclap" onclick="ACLAP();return false;" style="cursor: pointer;">ACLAP</h2>
+		</div>
+
+		<div class="menuTop2">
+			<ul class="navListTop">
+				<li class="listItem"><a id="len0" class="hoverable" href="#" onclick="FAQ();return false;">FAQ</a></li>
+				<li class="listItem"><a id="len1" class="hoverable" href="#" onclick='goOnedayClassOpen()'>크리에이터</a></li>
+				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
+				<li class="listItem"><a id="len3" class="hoverable" href="#" onclick="classView();return false;">클래스</a></li>
+ 		   		<li class="listItem"><a id="len4" class="hoverable" href="../loginRegi/loginRegi.html">로그인/회원가입</a>
+				<li class="listItem"><img class='trigger' id="len5"></li>
+ 		   		<li class="listItem"><img class='trigger' id="len6" src="../images/managerIcon.jpg"></li>
+            </ul>
+			<span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+		</div>
+	</nav>
+</div>
+
+<!-- Member Modal -->
+<div id="login_modal" class="hide_modal">
+   <div class="login_Modal_Content">
+      <img class='loginModalImg'>
+      <div class='loginModalNickName'></div>
+      <div class='loginModalEmail'></div>
+      <div class="loginModalMyPoint"></div>
+      <button type='button' class='myPageButton' onclick="goMyPage()" >마이페이지</button>
+      <button type="button" class="myPageButton" id="pointsCharge" data-toggle="modal" data-target="#staticBackdrop">포인트 충전</button>
+      <hr class='loginHr1'>
+      <div class='loginNewContent'></div>
+      <div class='myPointCheck'></div>
+      <hr class='loginHr2'>
+      <input type='button' class='logoutButton' value='로그아웃'>
+   </div>
+</div>
+
+<!-- Manager Modal -->
+<div id="Manager_login_modal" class="Manager_hide_modal">
+   <div class="Manager_Modal_Content">
+      <img class='loginModalImg' src='../images/managerIcon.jpg'>
+      <div class='loginModalNickName'>Manager</div>
+      <div class='loginModalEmail'>ACLAP</div>
+      <input type='button' class='myPageButton' onclick="goManagerPage()" value='매니저 페이지'>
+      <hr class='loginHr1'>
+      <div class='ManagerNewContent'></div>
+      <hr class='loginHr2'>
+      <input type='button' class='logoutButton' value='로그아웃'>
+   </div>
+</div>
+
+<!-- Point Charge Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width:auto;display:table">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: center;">
+        <b><h5 class="modal-title" id="staticBackdropLabel" style="text-align: center; font-size: 25px;" >포인트 충전</h5></b>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+     	<input id="chargeMoney" id="chargeMoney" type="text" placeholder="충전할 금액을 입력하세요" size="40" style="border:none; font-size: 25px"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+            <hr class="my-4">
+          	<div class="btn-group" role="group" aria-label="Basic example" style="margin-bottom: 30px">
+				  <button type="button" class="btn btn-light" value="1" onclick="charge(1);">+ 1만원</button>
+				  <button type="button" class="btn btn-light" value="3" onclick="charge(3);">+ 3만원</button>
+				  <button type="button" class="btn btn-light" value="5" onclick="charge(5);">+ 5만원</button>
+				  <button type="button" class="btn btn-light" value="10" onclick="charge(10);">+ 10만원</button>
+				  
+			</div><br>
+ 	       		
+            <small class="text-muted fw-light" style="margin-top: 30px">충전후 예상 포인트</small><h1 id="points" class="card-title pricing-card-title" style="margin-bottom: 30px"></h1>
+          <!--   <button id="check_module" type="button">카카오페이 결제</button> -->
+            <button type="button" id="check_module"class="w-100 btn btn-lg btn-outline-dark"  >충전하기</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#len5").hide();
+	$("#len6").hide();
+	$(".loginNewContent").hide();
+	
+	// 로그인 정보 가져오기
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); 
+	if(json != null){
+		$("#len4").hide();
+		
+		if(json.auth==3){
+			$("#len5").show();
+			$("#len5").attr('src', json.profilePic);
+			if(json.classMaster ==1)
+				$(".loginNewContent").show();
+		}
+		else if(json.auth==9){
+			$("#len6").show();
+		}
+	}	
+
+	
+	// 유저 모달창 띄우기
+	let chNum = 0;
+	$("#len5").click(function(){
+		$(".hide_modal").toggleClass("show_modal");	
+		$.ajax({
+			url:"http://localhost:3000/login", 
+			type:'post',
+			data : {email:email, pwd:json.pwd},
+			success:function( json ){			
+				$("#len5").attr('src', json.profilePic);
+				$(".loginModalImg").attr('src', json.profilePic);
+				$(".loginModalNickName").html(json.nickName);
+				$(".loginModalEmail").html(json.email);
+				$(".myPointCheck").html("내 포인트 " + json.myPoint);			
+				// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
+				$(".loginNewContent").html("새로운 클래스 신청자 : 0명")
+			},
+			error:function(){
+				alert("Google_Kakao_Regi ajax Error");
+			}
+		});
+		
+		if(chNum == 0){
+			$(".carousel-control-next").hide();	
+			chNum1 = 1;
+		}
+		else{
+			$(".carousel-control-next").show();	
+			chNum = 0;
+		}
+	});
+	
+	// 매니저 모달창 띄우기
+	$("#len6").click(function(){
+		$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
+		$.ajax({
+			url:"http://localhost:3000/login", 
+			type:'post',
+			data : {email:email, pwd:json.pwd},
+			success:function( json ){			
+				// 문의글 목록 보이는 코드 들어가야함
+				$(".ManagerNewContent").html('새 문의 글 : 0건');
+			},
+			error:function(){
+				alert("Google_Kakao_Regi ajax Error");
+			}
+		});		
+		
+		
+		if(chNum == 0){
+			$(".carousel-control-next").hide();	
+			chNum1 = 1;
+		}
+		else{
+			$(".carousel-control-next").show();	
+			chNum = 0;
+		}
+	});
+	
+	
+
+	// 로그아웃 
+	$(".logoutButton").click(function(){
+		sessionStorage.clear();
+		// location.reload();   
+		location.href="../main/main.html"
+	});
+
+});
+
+// 마이페이지 이동
+function goMyPage(){
+//	alert('click');
+	$(".hide_modal").toggleClass("show_modal");	
+	location.href="../myPageView/mypage.html";
+}
+
+// 매니저페이지 이동
+function goManagerPage(){
+//	alert('click');
+	$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
+	location.href="../adminPageView/managerPage.html";
+}
+</script>
+
+
+<script type="text/javascript">
+
+$(function(){
+    $("#psyClassList").load("card.html"); 
+  });
+$(function () {
+	$('#getInterestText').load("interestButton.html")
+});
+
+
+//$("#perfectGuy").load("***.html"); 
+/* 태민 네비 관련 */
+
+$(function(){
+  var str = '#len'; //increment by 1 up to 1-nelemnts
+  $(document).ready(function(){
+    var i, stop;
+    i = 0;
+    stop = 35; //num elements
+    setInterval(function(){
+      if (i > stop){
+        return;
+      }
+      $('#len'+(i++)).toggleClass('bounce');
+    }, 500)
+  });
+});
+
+$(".navTrigger").click(function () {
+    $(this).toggleClass("active");
+    console.log("Clicked menu");
+    $(".menuTop2").toggleClass("show_list");
+    $(".menuTop2").fadeIn();
+ });   
+
+function getInterestFunc() {
+	location.href="../interest/getInterest.html";
+}
+
+//FAQ클릭시
+function FAQ(){
+	location.href="../notice/noticeBbs.html";
+}
+//관리자페이지
+function admin() {
+	location.href="../adminPageView/managerPage.html";
+}
+
+//로고 클릭시 
+function ACLAP(){
+	location.href="../main/main.html";
+}
+
+//onedayClass Open View
+function goOnedayClassOpen(){
+	location.href="../onedayClassView/onedayClassOpen.html";
+}
+
+
+//클래스 클릭시
+function classView() {
+	location.href="../categoryPage/categoryViewPage.html";
+}
+function event(){
+	location.href="../event/event.html";
+}
+
+//////////////////////////////////////////////포인트 충전///////////////////////////////////////////////////////////////
+//로그인 세션
+let login = JSON.parse(sessionStorage.getItem("login"));
+let email = login.email;
+let name = login.userName;
+let phoneNum = login.phoneNum;
+let myPoint = login.myPoint;
+myPoint = parseInt(myPoint);
+let money = 0;
+$("#points").append("$" + myPoint);
+
+
+$("#pointsCharge").click(function(){
+	
+});
+
+
+
+//alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
+
+//충전할 금액 입력 후
+document.getElementById('chargeMoney').onmouseout = function(){
+	let money = document.getElementById('chargeMoney').value;
+	money = parseInt(money);
+	//    alert("MONEY타입"+ typeof money);
+	//    alert(money);
+	if(!money){
+		//	alert('금액없음');
+		money = 0;
+	}
+		$("#points").empty(); 	
+		$("#points").append("$" + (money+myPoint));
+}	
+
+//충전할 금액 버튼 눌렀을 때
+function charge(num){
+	//  alert(num*10000);
+	var chargemoney = $("#chargeMoney").val(num*10000);
+	money = parseInt(document.getElementById('chargeMoney').value);
+	//  alert(money);
+	
+	
+	$("#points").empty();
+	$("#points").append("$" + (money+myPoint));
+
+}
+//충전하기 버튼 눌렀을 때 
+$("#chargeBtn").click(function(){
+	alert("충전하시겠습니까?");
+	let money = document.getElementById('chargeMoney').value;
+	money = parseInt(money);
+	alert(money + typeof money);
+	
+	$.ajax({
+		url:"http://localhost:3000/chargePoints",
+		type: "get",
+		data:{ money:money, email:email},
+		success:function(){
+			alert("충전완료! 메인화면으로 이동합니다");
+			location.href = "main.html";
+		},
+		error:function(){
+			alert("에러임ㅜ");
+		}
+	}); 
+});
+//숫자 정규식
+function checkNumber(event) {
+	if(event.key === '.' 
+		|| event.key === '-'
+			|| event.key >= 0 && event.key <= 9) {
+		return true;
+	}
+	
+	return false;
+}
+
+//카카오페이 결제
+$("#check_module").click(function () {
+
+	var IMP = window.IMP; // 생략가능
+	IMP.init('imp57639826');
+	IMP.request_pay({
+		pg: 'kakao', 
+		pay_method: 'card',
+		merchant_uid: 'merchant_' + new Date().getTime(),
+		
+		//결제창에서 보여질 이름
+		name: 'ACLAP 포인트 충천',
+		amount: money,
+		
+		buyer_email: email,
+		buyer_name: name,
+		buyer_tel: phoneNum,
+		
+	}, 
+	function (rsp) {
+		if (rsp.success) {
+			var msg = '결제가 완료되었습니다.';
+			let money = document.getElementById('chargeMoney').value;
+			money = parseInt(money);
+			
+			$.ajax({
+				url:"http://localhost:3000/chargePoints",
+				type: "get",
+				data:{ money:money, email:email},
+				success:function(point){
+					
+					// alert(point);
+					$(".myPointCheck").html("내 포인트 " + point);
+					
+					
+				},
+				error:function(){
+					alert("에러임ㅜ");
+				}
+			}); 
+		} 
+		else {
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+			location.href = "main.html";
+		}
+		alert(msg);
+	});
+});
+
+
+</script>
+</body>
+</html>

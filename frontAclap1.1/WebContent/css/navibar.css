@@ -5,16 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap');
 
-
 /* 태민 css~~ */
 /* 헤더사이즈 */
 body,html {
-    margin: 0;
-    padding: 0;
-    top-margin:0; bottom-margin:0; left-margin:0; right-margin:0;
-    width: 100%;
-    overflow-x:hidden; 
-}
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+     
+} 
 div.header {
 
     margin: 0;
@@ -92,27 +90,16 @@ div.header nav.topMenu div.logoTop h2.aclap:nth-child(2) {
 		);
 	}
 }
-/* 가운데 텍스트  */
-/* div.header nav.topMenu div.midText {
- text-align: center;
- position: relative;
- color: white;
- float: left;
- margin-top: .5em;
- font-size: 35px;
- width: 30%;
- font-family: 'Amatic SC', cursive;
- 
-} */
+
 
 /* 헤더메뉴 리스트 */
 div.header nav.topMenu div.menuTop2 {
 	position: relative;
    	height: 80px;
     float: right !important;
-    width: 35%;
+    width: 65%;
     margin-top: 4px;
-    
+    left:500px;
     	
 }
 
@@ -139,6 +126,7 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem {
      height: 30px;
     line-height: 30px;
 }
+
 
 div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable {
   font-size: 14px;
@@ -226,93 +214,8 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
   animation-duration: 2s;
 }
 
-
-
-
-
-
-/* 배너공간.. */
-div.home {
-	
-	margin-top:80px;
-	margin-bottom: 80px;
-	width: 100%;
-	float: left;
-	
-	position: relative;
-	text-align: center;
-/* 	border: dashed;
-	border-color: purple; */
-	
-}
-
-
-/* 가운데 메뉴 네비 */
-div.midClassMenu {
-	 width: 75%;
-    margin: 0 auto;
-    position: center;
- 
-    height: 100%;
-	
-}
-
-div.midClassMenu ul.navListTop2 {
-
-    width: 100%;
-    padding: 0;
-    text-align: center;
-    font-size: 0;
-    
-}
-div.midClassMenu ul.navListTop2 li.listItem2 {
-	list-style: none;
-    font-family: Arial Black;
-    padding: 0px;
-    height: 40px;
-    width: 120px;
-    line-height: 40px;
-    border: none;
-    font-size: 20px;
-   
-    display:inline-block;
-}
-div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA{
-	 display: block;
-    color: black;
-    text-decoration: none;
-    width: 180px;
-}
-
-div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
-	color: #00E676;
-	cursor: pointer;
-}
-
 .navTrigger {
     display: none;
-}
-
-/* footer */
-footer.footer {
-	text-align: center;
-	background-color: black;
-	width: 100%;
-	height: 300px;
-	color: white;
-	position: relative;
-	float:left;
-	
-}
-
-
-
-footer.footer div.info-box{
-	padding-top: 100px;
-}
-.footer-white {
-	font-family: 'Amatic SC', cursive;
-	font-size: 26px;
 }
 
 /* 창 변환 사이즈값 */
@@ -379,10 +282,6 @@ footer.footer div.info-box{
         display: block;
     }
 }
-
-
-
-
 
 .navTrigger {
     cursor: pointer;
@@ -574,250 +473,13 @@ footer.footer div.info-box{
     }
 }
 
-/* 윤아 css~~ */
-.carousel-inner > .carousel-item > img{  width: 80%; height: 500px;  }
-
-* {box-sizing: border-box;}
-
-.mySlides {display: none;}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-
-#carouselExampleIndicators1{
-	width: 70%;
-	margin:auto;
-	float: center;
-	position: relative;
-	
-/* 	border: dashed;
-	border-color: green; */
-}
-#carouselExampleFade1{
-	width: 70%;
-	margin: auto;
-}
-#typing1 {
-   display: inline-block;
-   animation-name: cursor;
-   animation-duration: 0.3s;
-   animation-iteration-count: infinite;
- }
-@keyframes cursor{
-    0%{border-right: 1px solid #fff}
-    50%{border-right: 1px solid #000}
-    100%{border-right: 1px solid #fff}
-}
-
-/* 선생님이 되어보세요*/
-.teacherBox{
-	height:500px;
-	width:1240px;
-	border-radius:10px;
-	margin-left:334px;
-	margin-top:100px;
-	margin-bottom:50px;
-}
-
-#onedayClassOpenBtn{
- 	font-size:15px;
-	font-weight: 550;
-	border-radius:7px;
-	border:none;
-	height:50px;
-	width:130px;
-	margin-left:118px;
-	margin-top:250px;
-}
-#onedayClassOpenBtn:hover{
-	background-color:#FAF8DB;
-}
-
-#getInterest{
- 	position: absolute !important;
-	float: right;
-	width: 10%;
-
-   top:0 !important;
-   right:0 !important;
-   margin-top: 60px;
-   margin-right: 30px;
-  
-}
-
-#psyClassList{
-	position: relative;
-	
-}
-/* 선양css~~ */
-
-/* ------- 타이틀 설정 -------- */
-.s_mainTitle {
-   max-width: 1210px;F
-   width: 100%;
-   margin: 0 auto;
-   font-size: 40px;
-   font-weight: 900;
-}
-
-
-
-
-/* -------- 카드 프레임 설정 -------- */
-.sCard_container {
-   max-width: 1050px;
-   width: 100%;
-   padding: 0 4%;
-   margin: 0 auto;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-
-.s_Card {
-   width: 100%;
-   max-width: 380px;
-   min-width: 380px;
-   height: 430px;   /*메인 높이*/
-   background-color: #0C0C12;
-   margin: 20px;
-   color: white; 
-   border-radius: 10px;
-   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-   position: relative;
-   overflow: hidden; /*hover 이미지확대 시 공간을 벗어나지 않게 */
-}
-
-/*반응형*/
-@media screen and (max-width: 800px) {
-   .sCard_container {
-      flex-direction: column;
-   }
-}
-
-
-
-
-/* ----- slider controller 셋팅 ----- */
-.s_slider {text-align: center;}
-.s_slider i{color: black;}
-
-
-
-
-/* -------- 카드 세부 셋팅 --------- */
-/* 카드 이미지 이미지 셋팅 (자동 crop) */
-.s_img {
-   width: 380px;
-   height: 250px; 
-   overflow: hidden; /*넘치는 부분 보이지 않기*/
-}
-
-.s_img img{
-	width:100%; /*넓이 비율 맞춰 줌 */
-}
-
-
-/* 버튼 셋팅 */
-.s_new_best_like {
-	font-size: 12px; 
-	margin: 20px;
-	margin-top:14px;
-	margin-bottom: 14px;
-}
-
-.s_NewNBestBtn {
-	border:0;
-	border-radius: 3px;
-	font-size: 15px;  
-	width:52px;
-	padding: 5px;
-	margin-right: 3px;
-	font-weight: 600;
-	color:white;
-	background-color:red;
-}
-
-.s_likeBtn {
-	border:0;
-	border-radius: 3px;
-	font-size: 15px;  
-	width:52px;
-	padding: 5px;
-	font-weight: 600;
-	color:white;
-	background-color:gray;
-	cursor: pointer;
-}
-
-.s_overBtn {
-	border:0;
-	border-radius: 3px;
-	font-size: 15px;  
-	width:90px;
-	padding: 5px;
-	font-weight: 600;
-	color:white;
-	background-color:gray;
-	cursor: pointer;
-}
-
-
-/* 카드 이미지 텍스트 설정 */
-.s_title {
-	font-size: 22px;  
-	margin: 20px;
-	margin-bottom: 5px;
-	color: #F2F0EC;
-	height:60px; 
-	font-weight: 800;
-	cursor: pointer;
-}
-
-.s_teacher {
-	font-size: 13px;   
-	margin: 0 20px;
-	font-weight: 800;
-	color: lightgray;
-}
-
-.s_card_hr{
-	border: 0px;
-	height: 1px;
-	background-color: white;
-	opacity: .7;
-}
-
-
-
-
-/* --------hover---------- */
-/*위로 올라가기*/
-.s_Card:hover {
-   transform:translateY(-12px);  
-   position:relative;
-   transition: all 0.7s ease;   
-}
-
-/*이미지 확대*/
-.s_Card:hover .s_img{
-   	transition: all 0.7s ease;
-   	transform:scale(1.07);
-   	width: 100%;
-}
-
-/*좋아요 버튼*/
-.s_likeBtn:hover {
-	color:black;
-}
-
 
 /* --------마이페이지 버튼 및 모달 셋팅 ---------- */
 #len5{
 	border-radius: 50%;
 	width:50px;
 	height:50px;
+	object-fit: cover
 }
 #len5:hover{
 	cursor: pointer;
@@ -895,6 +557,7 @@ img {vertical-align: middle;}
 	border-radius: 50%;
 	width:90px;
 	height:90px;
+	object-fit: cover;
 	margin-top:10px;
 }
 .loginModalNickName{
@@ -947,4 +610,3 @@ img {vertical-align: middle;}
 	color:black;
 	border-color:#E6DFDC;
 }
-

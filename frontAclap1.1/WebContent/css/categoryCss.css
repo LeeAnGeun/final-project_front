@@ -1,0 +1,428 @@
+@charset "UTF-8";
+
+
+
+
+div.mainViewW {
+	
+	min-height: 100%;
+    overflow: hidden;
+	
+	
+}
+div.mainViewW div.midClassMenu {
+	 width: 75vw;
+    margin: 0 auto;
+    position: center;
+ 	
+    height: 10vh;
+	
+}
+
+div.mainViewW div.midClassMenu ul.navListTop2 {
+	margin-top: 100px;
+    width: 75vw;
+    padding: 0;
+    text-align: center;
+    font-size: 0;
+    position: relative;
+    
+
+}
+div.mainViewW div.midClassMenu ul.navListTop2 li.listItem2 {
+	list-style: none;
+    font-family: Arial Black;
+    padding: 0px;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    border: none;
+    font-size: 20px;
+   
+    display:inline-block;
+    
+    transform: translateY(-300px);
+    animation: slideDown 0.8s ease-in-out forwards 0.8s;
+    
+}
+div.mainViewW div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA{
+	 display: block;
+    color: black;
+    text-decoration: none;
+    width: 180px;
+}
+
+div.mainViewW div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
+	color: #00E676;
+	cursor: pointer;
+}
+
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+.categoryPage{
+
+ 	width: 100vw;
+ 	
+	
+}
+
+
+.hide {
+  display: none;
+ 
+}
+.allClass{
+   background: #8ab59b;
+  
+   width: 100vw;
+}
+/*  langClass
+-----------------------------------*/
+.langClass {
+	
+    background: #c5ca86;
+	
+ 	width: 100vw;
+}
+/*  createClass
+-----------------------------------*/
+.createClass {
+   background: #cc9e75;
+	
+ 	width: 100vw;
+}
+/*  cookingClass
+-----------------------------------*/
+.cookingClass {
+   background: #abede3;
+	
+ 	width: 100vw;
+}
+/*  programmingClass
+-----------------------------------*/
+.programmingClass {
+   background: #c4abe0;
+	
+ 	width: 100vw;
+}
+/*  sportsClass
+-----------------------------------*/
+.sportsClass {
+   background: #e094bf;
+	
+ 	width: 100vw;
+}
+/* animation sets */
+/* move from / to  */
+.pt-page-moveToLeft {
+	-webkit-animation: moveToLeft .6s ease both;
+	animation: moveToLeft .6s ease both;
+}
+.pt-page-moveFromLeft {
+	-webkit-animation: moveFromLeft .6s ease both;
+	animation: moveFromLeft .6s ease both;
+}
+.pt-page-moveToRight {
+	-webkit-animation: moveToRight .6s ease both;
+	animation: moveToRight .6s ease both;
+}
+.pt-page-moveFromRight {
+	-webkit-animation: moveFromRight .6s ease both;
+	animation: moveFromRight .6s ease both;
+}
+.pt-page-moveToTop {
+	-webkit-animation: moveToTop .6s ease both;
+	animation: moveToTop .6s ease both;
+}
+.pt-page-moveFromTop {
+	-webkit-animation: moveFromTop .6s ease both;
+	animation: moveFromTop .6s ease both;
+}
+.pt-page-moveToBottom {
+	-webkit-animation: moveToBottom .6s ease both;
+	animation: moveToBottom .6s ease both;
+}
+.pt-page-moveFromBottom {
+	-webkit-animation: moveFromBottom .6s ease both;
+	animation: moveFromBottom .6s ease both;
+}
+
+
+/********************************* keyframes **************************************/
+/* move from / to  */
+@-webkit-keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+@-webkit-keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); }
+}
+@keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+@-webkit-keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveToTop {
+	from { }
+	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+@-webkit-keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); }
+}
+@keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+@-webkit-keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); }
+}
+@keyframes moveToBottom {
+	from { }
+	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+@-webkit-keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); }
+}
+@keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+/* 검색정렬 */
+div.selectAndSearch{
+	width: auto;
+    position: relative;
+    margin-top: 30px !important;
+    margin: auto auto;
+    padding-top: 20px;
+    
+	
+}
+
+.search-box {
+  position: absolute;
+  
+  transform: translate(-50%,-50%);
+  background: black;
+  height: 50px;
+  border-radius: 50px;
+  float: left;
+    left: 30%;
+    top: 200%;
+  
+}
+
+.search-btn {
+  color: white;
+  float: right;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 2s;
+  top: 30%;
+}
+
+.fa-search {
+  background: black;
+  font-size: 24px;
+}
+
+.search-input {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 20px;
+  transition: 0.4s;
+  line-height: 50px;
+  width: 0;
+}
+
+.search-box:hover > .search-input {
+  width: 250px;
+  padding: 0 7px;
+}
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+ 
+  background: #2c3e50;
+  background-image: none;
+
+ 
+
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+	position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #2c3e50;
+    overflow: hidden;
+    border-radius: .25em;
+    float: left;
+    margin-left: 10px;
+  
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+  
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #34495e;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
+/* 클래스리스트들 */
+
+div.searchedClassListView{
+	
+	width: auto;
+	
+	position: relative;
+	
+	margin-top: 200px !important;
+	margin-bottom: 80px!important;
+	
+
+	padding-top: 80px;
+	padding-left: 50px;
+	padding-right: 50px;
+	
+	
+}
+
+div.classListTable{
+    width: auto;
+    height: auto;
+    position: relative;
+    margin-left: 300px;
+}
+div.classContainer{
+	position: relative;
+	float: left;
+	width: 600px;
+	height: 50px;
+}
+.classCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 300px;
+  height: 400px;
+ 
+    float: left;
+    position: relative;
+
+  margin-left: 20px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 25px;
+  
+  display: none;
+}
+
+.classCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.classContainer {
+  text-align: left;
+  padding-left: 10px;
+  width: 300px;
+  height: 120px;
+
+}
+.classImg {
+  width: 300px;
+  height: 280px;
+  object-fit: cover;
+	border-radius: 25px;
+}
+.seeMoreDiv{
+	width: 100vw;
+	margin: auto auto;
+	position: relative;
+	height: 300px;
+
+}
+a.seeMore{
+  display:block;
+  color:#fff;
+  line-height:50px;
+  width:30%;
+  border-radius:30px;
+  text-decoration:none;
+  border:3px #ee5f4a solid;
+  background:#ee5f4a;
+  opacity:0.7;
+  margin-bottom:50px;
+  position: relative;
+  float:left;
+  margin-top: 50px;
+}
+
+a.seeMore:hover{
+  opacity:1;
+}

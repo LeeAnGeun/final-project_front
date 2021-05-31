@@ -33,44 +33,47 @@ function goDetail(seq){
 }
 
 
+//dataformat 함수
+function dateFormat(date) {
+	let yyyy = date.getFullYear().toString();
+	let mm = (date.getMonth()+1).toString();
+	let dd  = date.getDate().toString();
+	
+	let mmChars = mm.charAt('');
+	let ddChars = mm.charAt('');
+	return yyyy+'-'+(mmChars[1]?mm:"0"+mmChars[0])+'-'+(ddChars[1]?dd:"0"+ddChars[0]);
+}
+
 
 $(document).ready(function(){
 
-	// 로그인 정보 가져오기 (여기 코드 다시 확인)
-	let login = sessionStorage.getItem("login");
-	let json = JSON.parse(login); // String -> json
-	let memSeq = 0;
-	if(json != null){
-		memSeq = json.memNum;
-	}
-	
-	/*
 	// 최신순 정보 불러오기
 	$.ajax({
-		url:"http://localhost:3000/써야함",  // 접근할 back 서버정보와 Controller value
+		url:"http://localhost:3000/getNewestClassList",  
 		type:"post",
-		data:{ page:0, memNum:memSeq },
 		success:function( data ){
-			alert('success')
-			
 			$.each(data, function(i, item){
 				$("#s_newImg"+i).attr('src', item.image1);
 				$("#new_classNum"+i).val(item.classNum);
 				$("#s_newTitle"+i).html(item.title);
-				$("#s_newTeacher"+i).html(item.instructor +" 선생님");
+				$("#s_newTeacher"+i).html(item.instructor +" 선생님");				
+
+				let date = new Date();
+				let today = dateFormat(date);
+				let endDate = item.endDate.substring(0,10);
 				
-				let today = new Date();
 				
 				// 기간만료되었다면
-				if(today > item.endDate){
+ 				if(today > endDate){
 					$("#newBtn"+i).removeClass('s_NewNBestBtn');
 					$("#newBtn"+i).addClass('s_overBtn');
 					$("#newBtn"+i).val('Class Over');
-				}
+				}  
 			});
+			
 		},
 		error:function(){
-			alert('ajax Error')
+			alert('getNewestClass ajax Error')
 		}
 	});	
 	
@@ -78,26 +81,27 @@ $(document).ready(function(){
 	
 	// 인기순 정보 불러오기
 	$.ajax({
-		url:"http://localhost:3000/써야함",  // 접근할 back 서버정보와 Controller value
+		url:"http://localhost:3000/getBestClassList",  
 		type:"post",
-		data:{ page:0, memNum:memSeq },
 		success:function( data ){
-			alert('success')
 			
 			$.each(data, function(i, item){
-				$("#s_bestImg"+i).attr('src', item.image1);
+								
+			 	$("#s_bestImg"+i).attr('src', item.image1);
 				$("#best_classNum"+i).val(item.classNum);
 				$("#s_bestTitle"+i).html(item.title);
 				$("#s_bestTeacher"+i).html(item.instructor +" 선생님");
 				
-				let today = new Date();
+				let date = new Date();
+				let today = dateFormat(date);
+				let endDate = item.endDate.substring(0,10);
 				
 				// 기간만료되었다면
-				if(today > item.endDate){
+				if(today > endDate){
 					$("#bestBtn"+i).removeClass('s_NewNBestBtn');
 					$("#bestBtn"+i).addClass('s_overBtn');
 					$("#bestBtn"+i).val('Class Over');
-				}
+				} 
 			});
 		},
 		error:function(){
@@ -105,31 +109,6 @@ $(document).ready(function(){
 		}
 	});	
 	
-	*/
-	
-	
-	// 이미지
-	$("#s_newImg0").attr('src', './images/test1.jpg');
-	$("#s_newImg1").attr('src', './images/test5.jpg');
-	$("#s_newImg2").attr('src', './images/test2.png');
-	$("#s_newImg3").attr('src', './images/test1.jpg');
-	$("#s_newImg4").attr('src', './images/test1.jpg');
-	$("#s_newImg5").attr('src', './images/test2.png');
-	$("#s_newImg6").attr('src', './images/test5.jpg');
-	$("#s_newImg7").attr('src', './images/test2.png');
-	$("#s_newImg8").attr('src', './images/test3.jpg');
-	
-	// BESE : like 높은순 3개
-	$("#s_bestImg0").attr('src', './images/test1.jpg');
-	$("#s_bestImg1").attr('src', './images/test5.jpg');
-	$("#s_bestImg2").attr('src', './images/test2.png');
-	$("#s_bestImg3").attr('src', './images/test1.jpg');
-	$("#s_bestImg4").attr('src', './images/test1.jpg');
-	$("#s_bestImg5").attr('src', './images/test2.png');
-	$("#s_bestImg6").attr('src', './images/test5.jpg');
-	$("#s_bestImg7").attr('src', './images/test2.png');
-	$("#s_bestImg8").attr('src', './images/test3.jpg');
-
 	
 	// slider controller hover
 	$(".fa-circle").mouseover(function(){
@@ -177,24 +156,16 @@ $(document).ready(function(){
 	})
 });	
 
-
-
-	
 </script>
 
 
 
-
-
 <body>
-
-
-<p class=s_mainTitle>신규 클래스</p> 
+<p class='s_mainTitle'>신규 클래스</p> 
 <!--Carousel Wrapper-->
 <div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
 <!--Slides-->
 <div class="carousel-inner" role="listbox">
-   
 <!--First slide-->
 <div class="carousel-item active">         
 <div class="sCard_container">
@@ -207,8 +178,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum0').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle0' onclick="goDetail($('#new_classNum0').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher0'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle0' onclick="goDetail($('#new_classNum0').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher0'></div>
      </div>
 
       <!-- card 2-->
@@ -220,8 +191,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum1').val())">LIKE</button> 		
        	</div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle1' onclick="goDetail($('#new_classNum1').val())" >타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher1'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle1' onclick="goDetail($('#new_classNum1').val())" ></div>
+       	<div class="s_teacher" id='s_newTeacher1'></div>
      </div>
 
       
@@ -234,8 +205,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum2').val())">LIKE</button> 
        	</div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle2' onclick="goDetail($('#new_classNum2').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher2'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle2' onclick="goDetail($('#new_classNum2').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher2'></div>
      </div>
 </div>
 </div>
@@ -252,8 +223,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum3').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle3' onclick="goDetail($('#new_classNum3').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher3'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle3' onclick="goDetail($('#new_classNum3').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher3'></div>
      </div>
 
       <!-- card 2-->
@@ -265,8 +236,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum4').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle4' onclick="goDetail($('#new_classNum4').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher4'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle4' onclick="goDetail($('#new_classNum4').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher4'></div>
      </div>
       
       <!-- card 3-->
@@ -278,8 +249,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum5').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle5' onclick="goDetail($('#new_classNum5').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher5'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle5' onclick="goDetail($('#new_classNum5').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher5'></div>
      </div>
 </div>
 </div>
@@ -296,8 +267,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum6').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle6' onclick="goDetail($('#new_classNum6').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher6'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle6' onclick="goDetail($('#new_classNum6').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher6'></div>
      </div>
 
       <!-- card 2-->
@@ -309,8 +280,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum7').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle7' onclick="goDetail($('#new_classNum7').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher7'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle7' onclick="goDetail($('#new_classNum7').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher7'></div>
      </div>
       
       <!-- card 3-->
@@ -322,14 +293,15 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum8').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_newTitle8' onclick="goDetail($('#new_classNum8').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_newTeacher1'>윤필용 선생님</div>
+       	<div class="s_title" id='s_newTitle8' onclick="goDetail($('#new_classNum8').val())"></div>
+       	<div class="s_teacher" id='s_newTeacher1'></div>
      </div>
 </div>
 </div>
 </div>
 
 <!-- Slider Controls -->
+<br>
 <div class=" s_slider">
     <a href="#s_new_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
     <a href="#s_new_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>
@@ -344,7 +316,7 @@ $(document).ready(function(){
 
 
 
-<p class=s_mainTitle>인기 클래스</p> 
+<p class='s_mainTitle'>인기 클래스</p> 
 <!--Carousel Wrapper-->
 <div id="s_best_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
 <!--Slides-->
@@ -362,8 +334,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum0').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle0' onclick="goDetail($('#best_classNum0').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher0'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle0' onclick="goDetail($('#best_classNum0').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher0'></div>
      </div>
 
       <!-- card 2-->
@@ -375,8 +347,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum1').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle1' onclick="goDetail($('#best_classNum1').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher1'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle1' onclick="goDetail($('#best_classNum1').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher1'></div>
      </div>
       
       <!-- card 3-->
@@ -388,8 +360,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum2').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle2' onclick="goDetail($('#best_classNum2').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher2'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle2' onclick="goDetail($('#best_classNum2').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher2'></div>
      </div>
 </div>
 </div>
@@ -406,8 +378,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum3').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle3' onclick="goDetail($('#best_classNum3').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher3'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle3' onclick="goDetail($('#best_classNum3').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher3'></div>
      </div>
 
       <!-- card 2-->
@@ -419,8 +391,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum4').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle4' onclick="goDetail($('#best_classNum4').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher4'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle4' onclick="goDetail($('#best_classNum4').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher4'></div>
      </div>
       
       <!-- card 3-->
@@ -432,8 +404,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum5').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle5' onclick="goDetail($('#best_classNum5').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher5'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle5' onclick="goDetail($('#best_classNum5').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher5'></div>
      </div>
 </div>
 </div>
@@ -450,8 +422,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum6').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle6' onclick="goDetail($('#best_classNum6').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher6'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle6' onclick="goDetail($('#best_classNum6').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher6'></div>
      </div>
 
       <!-- card 2-->
@@ -463,8 +435,8 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum7').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle7' onclick="goDetail($('#best_classNum7').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher7'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle7' onclick="goDetail($('#best_classNum7').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher7'></div>
      </div>
       
       <!-- card 3-->
@@ -476,14 +448,15 @@ $(document).ready(function(){
 			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum8').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
-       	<div class="s_title" id='s_bestTitle8' onclick="goDetail($('#best_classNum8').val())">타이틀타이틀타이틀타이틀타이틀타이틀</div>
-       	<div class="s_teacher" id='s_bestTeacher8'>윤필용 선생님</div>
+       	<div class="s_title" id='s_bestTitle8' onclick="goDetail($('#best_classNum8').val())"></div>
+       	<div class="s_teacher" id='s_bestTeacher8'></div>
      </div>
 </div>
 </div>
 </div>
 
 <!-- Slider Controls -->
+<br>
 <div class=" s_slider">
     <a href="#s_best_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
     <a href="#s_best_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>

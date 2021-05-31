@@ -12,6 +12,7 @@
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <!-- 커스텀 css -->
 <link rel="stylesheet" href="../css/onedayClassDetail.css">
 <!-- 카카오맵 -->
@@ -20,9 +21,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+
+
+<!-- bar-rating -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/fontawesome-stars.css">
+<script type="text/javascript" src="../js/jquery.barrating.min.js"></script>
 
 </head>
 <body>
+
+<div id='naviBar'></div>
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -55,15 +65,17 @@
 		</div>
 	</div>
 	
-	<!-- 레이어 선택 버튼 -->
-	 <!--  
+	<!-- 레이어 선택 버튼 -->	 
+	
+<!-- 	
 	<div class='onedayClassImageSelector'>
 		<br>
 		<input type=button class='layerBtnNonChoice' id='layer3' value='Layer3' onclick='showLayer3()'>
 		<input type=button class='layerBtnNonChoice' id='layer2' value='Layer2' onclick='showLayer2()'>
 		<input type=button class='layerBtnChoice' id='layer1' value='Layer1' onclick='showLayer1()'>
 	</div>
-	-->
+	 -->
+	
 	<!-- 이미지 박스 1 -->
 	<div class='onedayClassImageBoxA'>
 		<div style='float:left'>
@@ -109,6 +121,8 @@
 			</div>
 		</div>
 	</div>
+	
+
 
 	<!-- 이미지 박스 2 -->
 	<div class='onedayClassImageBoxB'>
@@ -188,7 +202,7 @@
 			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
 		   	<div class='ocImgFrameC4'>
 			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
+				    <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
 			    </label>
 			</div>
 
@@ -200,6 +214,35 @@
 			</div>
 		</div> 
 	</div>
+		
+		<!-- 이미지 확대 모달 -->
+		
+		<div class="image_hide_modal">
+		
+			<i class="fas fa-times"></i>
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="../images/flower.png" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="../images/test3.jpg" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="../images/취미1.png" class="d-block w-100 modalimg" alt="...">
+			    </div>
+			  </div>
+			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+		</div>
+
 	
 	<div class='onedayClassContentBox1'>
 		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
@@ -208,7 +251,17 @@
 		&nbsp;&nbsp;
 		<i class='material-icons'>people</i>
 		<span class='ocTxt1'> 5명</span>
+		&nbsp;&nbsp;
+      	<i class='material-icons'>check</i>
+      	<span class='ocTxt1'> 리코더</span>
+      	<div class='classInfo'>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      	</div>
+
 	</div>
+	
 	
 	<!-- 프로그램 -->
 	<div class='hrMargin'><hr></div>
@@ -267,6 +320,93 @@
 		<i class="fas fa-star" style='color: red;'></i>
 		<span id='reviewGrade'>4.8점(후기 10개)</span>
 	</span><br>
+		<div style='padding-top:15px;'>
+		<div style='float:left; margin-right:3px; margin-top:2px'>청결도</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Clstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Clstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Clstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Clstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Clstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Clstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Clstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Clstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Clstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Clstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>안전성 </div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Sfstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Sfstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Sfstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Sfstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Sfstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Sfstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Sfstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Sfstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Sfstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Sfstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>의사소통</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Cmstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Cmstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Cmstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Cmstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Cmstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Cmstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Cmstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Cmstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Cmstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Cmstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'>위치성</div>
+		<div style='float:left; margin-right:25px;'>
+			<form class="rating-star">
+			<input type="radio" id="Plstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" id="Plstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" id="Plstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" id="Plstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" id="Plstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" id="Plstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" id="Plstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" id="Plstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" id="Plstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" id="Plstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		
+				
+		<div style='float:left; margin-right:3px; margin-top:2px'>정확성</div>
+		<div style='float:left'>
+			<form class="rating-star">
+			<input type="radio" class='star5' id="Acstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
+			<input type="radio" class='star5' id="Acstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
+			<input type="radio" class='star5' id="Acstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
+			<input type="radio" class='star5' id="Acstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
+			<input type="radio" class='star5' id="Acstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
+			<input type="radio" class='star5' id="Acstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
+			<input type="radio" class='star5' id="Acstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
+			<input type="radio" class='star5' id="Acstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
+			<input type="radio" class='star5' id="Acstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
+			<input type="radio" class='star5' id="Acstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
+			</form>
+		</div>
+		<br><br><br>
+
+
+	
+	
 	
 	<div class='reviewBox'>
 		<div class='reviewItem' id='review1'>
@@ -392,8 +532,14 @@
 	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
 	<div align=center>
 		<input type='button' class='reviewModalBtn' value='후기 전체보기'>
+		<!-- 리뷰쓰기 버튼 -->
+	<!-- Button trigger modal -->
+	<button type="button" class="reviewBtn" data-toggle="modal" data-target="#exampleModal">
+	  후기쓰기
+	</button>
 	</div>
 	<hr>
+
 	
 	
 	<!-- 후기 전체보기 Modal -->
@@ -464,77 +610,347 @@
 		</div>
 	</div>
 	
-	<!-- 강의 신청하기 -->
-	<div class='ocSubTitle' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
-	<div class='classApplication_Container'>
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 1일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='coinNprice'>
-				<img class='coin' src="../images/coin.jpg">
-				<span class='caPrice'>150</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
+	<!-- 후기쓰기  모달-->	
+	<!--Review Modal -->
+	<div class="modal fade reviewModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content"> <!-- 크기에맞게 자동 조절 style="max-width: 100%; width: auto; display: table; -->
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Review</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      		<!-- 별점 자리 -->
+	      	<form id="reviewImages" name="reviewImages" method="post" enctype="multipart/form-data">
+	      		<input type="hidden" name="memNum" value="1">
+	      		<input type="hidden" name="name" value="이민형">
+	      		<input type="hidden" name="classNum" value="1">
+	      			<b>만족도</b>
+	       		<select id="satisfy" name="satisfy">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>청결도</b>
+	       		<select id="cleanness" name="cleanness">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>의사소통</b>
+	       		<select id="rComm" name="rComm">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>위치성</b>
+	       		<select id="rLocation" name="rLocation">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>정확성</b>
+	       		<select id="accuracy" name="accuracy">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<hr>
+				<b>후기 내용</b><br>
+				
+				<textarea rows="10" cols="60" id="rContent" name="rContent"></textarea><br>
+				<b>사진 업로드</b><br>
+				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">
+				 
+				</form>
+				 
+				 
+        <div id="preview"></div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-primary" id="reviewSubmit">제출</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 		
-		
-		
-		<div class='classApplicatoinBox'>
-		</div>
-		<div class='classApplicatoinBox'>
-		
-		</div>
-		<div class='classApplicatoinBox'>
-		
-		</div>
-				<div class='classApplicatoinBox'>
-		
-		</div>
+	<!-- 강의 신청 -->
+	<div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="false">
+	
+	<div>
+	<div class='ocSubTitle2' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
+	<!-- 이동버튼 -->
+	<div class="paginate_btn">
+	<a href="#s_new_slider" class="paginate left" data-slide="prev" >
+       <i></i>
+       <i></i>
+     </a>
+	<!-- 카운터 부분 -->
+	<div class="counter"></div>
+     <a href="#s_new_slider" class="paginate right" data-slide="next">
+       <i></i>
+       <i></i>
+    </a>
+    </div>
+    </div>
+    
+	<!--Slides-->
+	<div class="carousel-inner classScheduleList" role="listbox">
+	
 	</div>
 	
+	<!-- Slider Controls -->
+	<div class="carousel-indicators">
+	   <li data-target="#s_new_slider" data-slide-to="0" class="active"></li>
+       <li data-target="#s_new_slider" data-slide-to="1"></li>
+	</div>
 	
-<!-- 	
-	<div id="demo" class="carousel slide" data-ride="carousel" data-interval="false"> data-interval:자동으로 움직이기
-
-	 	
-	    Indicators
-	    <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
-	    </ul>
+	<div align=center>
+		<input type='button' class='allScheduleModalBtn' value='일정 전체보기'>
+	</div>
+	</div>
 	
-	  	The slideshow
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="la.jpg" alt="Los Angeles">
-			</div>
-			<div class="carousel-item">
-				<img src="chicago.jpg" alt="Chicago">
-			</div>
-			<div class="carousel-item">
-				<img src="ny.jpg" alt="New York">
-			</div>
-		</div>
-	
-	
-	이동버튼
-	 	<div style='float:right'>
-	 		<a href="#demo" data-slide="prev" style='margin-top:30px;'>
-		    <i class="fas fa-chevron-left"></i>
-	  		</a>
-	  		<a href="#demo" data-slide="next" style='margin-top:30px;'>
-	 		<i class="fas fa-chevron-right"></i>
-	 		</a>	
-	 	</div>
-	 	</div>
-	 -->
-<br><br><br><br><br><br><br><br><br><br><br>
-	
+	<div class='hrMargin'><hr></div>
 	
 </div>
 
+<div id='footer'></div>	
+
+<!-- 신청 결제 모달 -->
+<div class="modal fade" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="requestPage">
+                <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
+                <div class="px-4 py-5">
+                    <h3 class="text-uppercase">ACLAP</h3>
+                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> 
+                    
+                    <span class="theme-color">결제 내역</span>
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">보유 포인트</span> <span class="text-muted">10,000point</span> </div>
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">축구</span> <span class="text-muted">2,000point</span> </div>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3"> <span class="font-weight-bold">결제 후 잔여 포인트</span> <span class="font-weight-bold theme-color">8,000point</span> </div>
+                    <div class="text-center mt-5"> <button class="btn btn-primary" id="participate">참여하기</button> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 일정 전체보기 Modal -->
+<div class='schedule_hide_modal'>
+	<div class='schedule_Modal_Container'>
+		<i class='far fa-window-close schedule_modal_close'></i>
+		<div class="schedule_Modal_Content">
+			ddd
+		</div>
+	</div>
+</div>
+		
 <script>
+let login = sessionStorage.getItem("login");
+let json = JSON.parse(login); // String -> json 
+//alert(json.id);
+
+$(document).ready(function(){
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+	
+	$.ajax({
+	      url:"http://localhost:3000/classDtail", 
+	      type:'post',
+	      data:{classNum:3},
+	      success:function( dto ){
+	     
+				let pDate = new Date();
+				let fpDate = dateFormat(pDate);
+				alert("pDate : " + pDate.getDate());
+				let startDate = new Date((dto.startDate).substring(0,10));
+				let endDate = new Date((dto.endDate).substring(0,10));
+				
+				// startDate 와 endDate 비교
+		        let s_eDate = dateDiff(startDate, endDate);
+		         
+				// 현재 날과 startDate 비교
+				let s_pDate = dateDiff(startDate, pDate);
+				
+				if(s_pDate >= 0){
+					alert("이미시작함");
+					let len = s_eDate - s_pDate;
+					
+					if(len>30){
+						pDate.setDate(pDate.getDate() + 30);
+						// alert("endDate : " + dateFormat(startDate));
+						classSchedulList(dto.classNum, fpDate, dateFormat(pDate));
+					}else{
+						classSchedulList(dto.classNum, dateFormat, (dto.endDate).substring(0,10));
+					}
+				}else{
+					alert("아직 시작안함");
+					let len = s_eDate;
+					if(len>30){
+						startDate.setDate(startDate.getDate() + 30);
+						
+						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), dateFormat(startDate));
+					}else{
+						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10));
+					}
+				}
+	      },
+          error:function(){
+        	  alert("error");
+          }
+		           
+	});
+	
+	function classSchedulList(classNum, startDate, endDate){
+		
+		$.ajax({
+		      url:"http://localhost:3000/classSchedulList", 
+		      type:'post',
+		      data:{classNum:3, startDate:startDate, endDate:endDate},
+		      success:function( list ){
+		     
+					$(".classApplicatoinBox").remove();   
+					
+					let src = "<div class='carousel-item active'>"
+		                  					+ "<div class='classApplication_Container'>";
+		
+					for(let i=1; i < list.length+1; i++){
+						let classSchedule = list[i-1];
+						let rdate = (classSchedule.rdate).substring(0,10);
+						
+						let sbtn = "";
+						if(classSchedule.limitNum > 0){
+	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                    }else{
+	                    	sbtn += "<h3>마감</h3>";
+	                    }
+						
+						src += "<div class='classApplicatoinBox'>"
+						                     + "<div class='caDate'>" + rdate + "</div>"
+						                     + "<div class='caTime'> 수업 시간 : " + classSchedule.duration + "분</div>"
+						                     + "<div class='caMem'>예약 가능 인원 : " + classSchedule.limitNum + "</div>"
+						                     + "<div class='coinNprice'>"
+						                           + "<i class='fa fa-donate'></i>"
+						                           + "<span class='caPrice'>" + classSchedule.price + "point</span>"
+						                     + "</div>"
+						                     + sbtn
+						              	+ "</div>";
+						// 다음 슬라이드
+						if(i != 1 && i%5 == 0){
+							src += "</div></div>"
+									+ "<div class='carousel-item'>"
+										+ "<div class='classApplication_Container'>";
+						}	  
+						
+					}
+					src += "</div></div>";
+					
+					pagenation(list.length);
+					
+					$(".classScheduleList").append(src);
+		      },
+	        error:function(){
+	      	  alert("error");
+	        }
+			           
+		});
+	}
+	// 강의신청 Pagenation
+	// pagination
+	function pagenation(len){
+		let pr = document.querySelector( '.paginate.left' );
+		let pl = document.querySelector( '.paginate.right' );
+	
+		pr.onclick = slide.bind( this, -1 );
+		pl.onclick = slide.bind( this, 1 );
+		
+		let page = Math.floor(len/5); // 소수점 버림
+		// alert(page);
+		if(len%5 != 0){
+			page = page + 1;
+		}
+		if(page>6){
+			page = 6;
+		}
+		let index = 0, total = page;
+	
+		function slide(offset) {
+			index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+			if(index == 0){
+				$(".left").hide();
+			}else if(index == page-1){
+				$(".right").hide();
+			}else{
+				$(".left").show();
+				$(".right").show();
+			}
+			
+			document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+			
+			pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+			pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+		} 
+	
+		slide(0);
+	}
+	
+	// 두개의 날짜를 비교하여 차이를 알려준다.
+	function dateDiff(_date1, _date2) {
+	    let diffDate_1 = _date1 instanceof Date ? _date1 :new Date(_date1);
+	    let diffDate_2 = _date2 instanceof Date ? _date2 :new Date(_date2);
+	 
+	    diffDate_1 =new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
+	    diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
+	 
+	    let diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
+	    diff = Math.ceil(diff / (1000 * 3600 * 24));
+	 
+	    return diff;
+	}
+	
+	function dateFormat(date){
+	      // alert(date);
+	      let year = date.getFullYear();
+	      let month = date.getMonth()+1;
+	      let day = date.getDate();
+	      
+	      let sDate = year + "-" + two(month + "") + "-" + two(day + "");
+	      return sDate;
+	   }
+	   
+	   function two(msg){
+	      return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
+	   };
+	
+	$(".caSelectBtn").on("click", function () {
+		let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
+		// alert("caSelectBtn");
+		alert(classNum);
+	});
+})
+
 // 이미지 프레임 선택 버튼
 $(document).ready(function(){
 	$(".onedayClassImageBoxB").hide();
@@ -648,12 +1064,220 @@ geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(r
     } 
 });    
 
+//별점
+$(document).ready(function(){
+	$('#Clstar4half').attr('checked', 'checked');
+	$('#Sfstar3').attr('checked', 'checked');
+	$('#Cmstar5').attr('checked', 'checked');
+	$('#Plstar2half').attr('checked', 'checked');
+	$('#Acstar5').attr('checked', 'checked');
+});
 
+// 리뷰 모달 창 컨트롤
 $(".reviewModalBtn").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
 $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
+});
+
+//이미지 확대 모달창
+
+$(".image_hide_modal").hide();
+
+let modalCheck = true;
+$(".onedayClassImageBoxA").click(function(){
+      if(modalCheck){
+         $(".image_hide_modal").toggleClass("image_show_modal");   
+         $(".image_hide_modal").show();
+ 
+           $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
+           $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+           $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+           $('.ocImgA1').css("opacity","0.5)");
+           $('.ocImgA2').css("opacity","0.5)");
+           $('.ocImgA3').css("background-color","rgba(0, 0, 0, 0.02)");
+           
+         modalCheck=false;
+      };
+});
+   
+
+$(".fa-times").click(function(){
+   $(".image_hide_modal").toggleClass("image_show_modal");   
+
+$(".requestclose").click(function(){
+   $(".hide_modal").toggleClass("show_modal");   
+
+    $('body').css("background-color","");
+    $(".image_hide_modal").hide();
+    modalCheck = true;
+});
+
+
+//별점
+// 초기값 5점으로 설정....근데 오류남 ㅜ
+var satisfy, cleanness, rComm, rLocation, accuracy;
+
+
+
+/* var starPoint=cleanness=safety=rComm=5;
+var rLocation;
+var accuracy =5; */
+
+   $(function() {
+      $('#satisfy').barrating({
+        theme: 'fontawesome-stars',
+        initialRating : 5
+        	, onSelect: function(value, text, event){
+        		// 별점 클릭 후 처리는 여기서 코드
+        		// 선택한 별점 값을 value로 받음        	
+        		satisfy = parseInt(value);
+        	//	alert("satisfy: " + typeof satisfy);
+        	}
+      });
+      $('#cleanness').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		cleanness = parseInt(value);
+          	//	alert("cleanness: " + cleanness);
+          	}
+        });
+      
+
+      $('#rComm').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		rComm = parseInt(value);
+          	//	alert("rComm: " + rComm);
+          	}
+        });
+      $('#rLocation').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		rLocation = parseInt(value);
+          	//	alert("rLocation: " + rLocation);
+          	}
+        });
+      $('#accuracy').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		accuracy = parseInt(value);
+          	//	alert("accuracy: " + accuracy);
+          	}
+        });
+      
+   });
+
+// 다중이미지 미리보기
+$(document).ready(function (e){
+    $("input[type='file']").change(function(e){
+
+      //div 내용 비워주기
+      $('#preview').empty();
+
+      var files = e.target.files;
+      var arr =Array.prototype.slice.call(files);
+      
+      //업로드 가능 파일인지 체크
+      for(var i=0;i<files.length;i++){
+        if(!checkExtension(files[i].name,files[i].size)){
+          return false;
+        }
+      }
+      
+      preview(arr);
+      
+      
+    });//file change
+    
+    function checkExtension(fileName,fileSize){
+
+      var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+      var maxSize = 20971520;  //20MB
+      
+      if(fileSize >= maxSize){
+        alert('파일 사이즈 초과');
+        $("input[type='file']").val("");  //파일 초기화
+        return false;
+      }
+      
+      if(regex.test(fileName)){
+        alert('업로드 불가능한 파일이 있습니다.');
+        $("input[type='file']").val("");  //파일 초기화
+        return false;
+      }
+      return true;
+    }
+    
+    function preview(arr){
+      arr.forEach(function(f){
+        
+        //파일명이 길면 파일명...으로 처리
+        var fileName = f.name;
+        if(fileName.length > 10){
+          fileName = fileName.substring(0,7)+"...";
+        }
+        
+        //div에 이미지 추가
+        var str = '<div style="display: inline-flex; padding: 10px;"><li>';
+        str += '<span>'+fileName+'</span><br>';
+        
+        //이미지 파일 미리보기
+        if(f.type.match('image.*')){
+          var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+          reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+            //str += '<button type="button" class="delBtn" value="'+f.name+'" style="background: red">x</button><br>';
+            str += '<img src="'+e.target.result+'" title="'+f.name+'" width=100 height=100 />';
+            str += '</li></div>';
+            $(str).appendTo('#preview');
+          } 
+          reader.readAsDataURL(f);
+        }else{
+          str += '<img src="/resources/img/fileImg.png" title="'+f.name+'" width=100 height=100 />';
+          $(str).appendTo('#preview');
+        }
+      });//arr.forEach
+    }
+  });
+/*   
+//로그인 세션
+let login = JSON.parse(sessionStorage.getItem("login"));
+let memNum = login.memNum;
+let name = login.userName;
+   */
+//제출하기 버튼 클릭
+$("#reviewSubmit").click(function(){
+	  
+	  $.ajax({
+		 url:"http://localhost:3000/writeReview", 			
+		 type:"post",
+		 enctype: 'multipart/form-data', 
+		 data: new FormData($("#reviewImages")[0]),  // 필수 
+		 processData: false, // 필수
+		 contentType: false, // 필수 
+		 cache: false,
+		// dataType:"json",
+		 success: function(){
+			 alert('컨트롤러 갔다옴');
+		 },
+		 error: function(){
+			 alert('에러ㅠ6ㅠ');
+		 }
+
+	  });	  
+
+//리뷰 모달 창 컨트롤
+$(".allScheduleModalBtn").click(function(){
+	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
+});
+$(".schedule_modal_close").click(function(){
+	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
+
 });
 
 </script>

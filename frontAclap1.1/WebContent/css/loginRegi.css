@@ -429,4 +429,6 @@ label {
 /* 프로필이미지 등록*/
 .profile{
 	width: 150px;
+	height: 150px;
+	object-fit: cover;
 }
