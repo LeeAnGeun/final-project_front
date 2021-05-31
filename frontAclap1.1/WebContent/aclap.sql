@@ -17,6 +17,18 @@
 	SELECT*FROM ACLAPMEMBER
 
 
+	
+	
+	
+SELECT TRUNC(SYSDATE) - LEVEL + 1
+FROM   DUAL
+CONNECT BY LEVEL <= 30
+UNION ALL
+SELECT ADD_MONTHS( TRUNC(SYSDATE) - LEVEL + 1, -12 )
+FROM   DUAL
+CONNECT BY LEVEL <= 30;
+
+               
 --------------------------DB (table)--------------------------
 --DB는 각자 컴퓨터에 각자 만드세여--
 --어드민, //샘플 강의 2개// 샘플 문의 2개 //샘플 맴버2

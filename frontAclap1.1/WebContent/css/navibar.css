@@ -8,12 +8,11 @@
 /* 태민 css~~ */
 /* 헤더사이즈 */
 body,html {
-    margin: 0;
-    padding: 0;
-    top-margin:0; bottom-margin:0; left-margin:0; right-margin:0;
-    width: 100%;
-    overflow-x:hidden; 
-}
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+     
+} 
 div.header {
 
     margin: 0;
