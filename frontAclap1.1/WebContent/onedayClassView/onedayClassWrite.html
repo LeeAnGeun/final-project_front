@@ -3,8 +3,394 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- icon -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- font -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- 카카오맵 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92928f9e601c2b81c37ec8882d4901ac&libraries=services"></script>
+<!-- 커스텀 css -->
+<link rel="stylesheet" href="../css/onedayClassDetail.css">
+<!-- 커스텀 script  -->
+<script src="../js/onedayClassWrite.js"></script>
+
 </head>
-<body>
+<body style='background-color:#F1C50E'>
+
+<div id='naviBar'></div>
+
+<!-- 사이드 네비바 -->
+ <div id="OCbtn1" class="navBtn">
+ 	<h1 class='OCWriteTxt'>CHAPTER 1&nbsp;</h1>
+ </div>
+ <div id="OCbtn2" class="navBtn">
+ 	<h1 class='OCWriteTxt'>CHAPTER 2&nbsp;</h1>
+ </div>
+ <div id="OCbtn3" class="navBtn">
+ 	<h1 class='OCWriteTxt'>CHAPTER 3&nbsp;</h1>
+ </div> 
+ <div id="OCbtn4" class="navBtn">
+ 	<h1 class='OCWriteTxt'>CHAPTER 4&nbsp;</h1>
+ </div> 
+ <div id="OCbtn5" class="navBtn">
+ 	<h1 class='OCWriteTxt'>CHAPTER 5&nbsp;</h1>
+ </div>
+ <div class="OCSubmitBtn">
+ 	<h1 id='OCSubmitTxt' style='text-align:left' onclick='onedayClassWriteAf()'>
+ 	 &nbsp;작<br>&nbsp;성<br>&nbsp;완<br>&nbsp;료</h1>
+ </div>
+
+ 
+
+<div class='onedayClassContaier'>
+<form id='onedayClassWriteFrm'>
+<!-- hidden input -->
+<input type='hidden' name='masterNum' id='_masterNum'>
+<input type='hidden' name='layerSelect' id='_layerSelect' value='A'>
+<input type='hidden' name='location' id='_location'>
+<input type='hidden' name='aboutMe' id='_aboutMe'>
+<input type='hidden' name='youtubeLink' id='_youtubeLink'>
+<input type='hidden' name='secondaryCategory' id='_secondaryCategory'>
+<input type='hidden' name='noClassDayOfWeek' id='_noClassDayOfWeek'>
+
+	<!--/////////// chapter1. 카테고리, 제목, 간략한 수업소개  //////////-->
+	<div class='chapter1'>
+		<div class='chapterText'>Chapter 1</div>
+		<hr><br><br>
+		<div class='ExplicateText'>1. 클래스의 카테고리를 선택해주세요</div>
+		<select name = "primaryCategory" id="_primaryCategory" class='CategoryStyle'>
+			<option value='' checked>&nbsp;&nbsp;Primary Category</option>	
+	 		<option value='외국어'>&nbsp;&nbsp;외국어</option>		
+			<option value='크리에이티브'>&nbsp;&nbsp;크리에이티브</option>
+			<option value='요리'>&nbsp;&nbsp;요리</option>
+			<option value='프로그래밍'>&nbsp;&nbsp;프로그래밍</option>
+			<option value='스포츠/레저'>&nbsp;&nbsp;스포츠/레저</option>
+		</select>
+			
+		<select name = "secondaryCategory1" id='_secondaryCategory1' class='CategoryStyle'>
+			<option value='' checked>&nbsp;Secondary Category1</option>	
+		</select>
+		<select name = "SecondaryCategory2" id='_secondaryCategory2'class='CategoryStyle'>
+			<option value='' checked>&nbsp;Secondary Category2</option>	
+		</select>
+		<input type='text' id='_secondaryCategory3'class='CategoryStyle' placeholder="SecondaryCategory3">
+	
+		<br><br><br>
+		<div class='ExplicateText'>2. 클래스의 제목과 간략한 수업 소개를 작성해주세요</div>
+		<input type='text' name='title' placeholder="제목" id='_OCtitleInput'>
+		<textarea name='infomation' id='_OCinfomation'>간략한 수업 소개</textarea>
+		<div class='hrMargin'><hr></div>
+	</div>
+	
+	
+	<!--////////////////////// chapter2. 이미지 입력 ////////////////// -->
+	<div class='chapter2'>
+		<div class='chapterText'>Chapter 2</div>
+		<hr><br><br>
+		<div class='ExplicateText' style='float:left'>
+			<i class='fas fa-camera'></i>&nbsp;클래스를 소개할 수 있는 이미지를 입력하세요
+		</div>
+		<!-- 레이어 선택 버튼-->
+		<div class='onedayClassImageSelector'>
+			<br>
+			<input type=button class='layerBtnNonChoice' id='layer3' value='Layer3' onclick='showLayer3()'>
+			<input type=button class='layerBtnNonChoice' id='layer2' value='Layer2' onclick='showLayer2()'>
+			<input type=button class='layerBtnChoice' id='layer1' value='Layer1' onclick='showLayer1()'>
+		</div>
+		
+		<!--이미지박스1-->
+		<div class='onedayClassImageBoxA'>
+			<div style='float:left'>
+				<input type="file" name="imageA2" id="_classImgA2" style="display: none">	            
+			   	<div class='ocImgFrameA2'>
+				   	<label for="_classImgA2"> 
+				       <img id="_ocImgA2" class="ocImgA2" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			</div>
+			
+			<div style='float:left'>	
+				<input type="file" name="imageA1" id="_classImgA1" style="display: none">	            
+			   	<div class='ocImgFrameA1'>
+				   	<label for="_classImgA1"> 
+				       <img id="_ocImgA1" class="ocImgA1" src="../images/onedayClassImg1.png">
+				    </label>
+				</div>
+	
+				<input type="file" name="imageA3" id="_classImgA3" style="display: none">	            
+				<div class='ocImgFrameA3'>
+					 <label for="_classImgA3"> 
+					    <img id="_ocImgA3" class="ocImgA3" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div> 
+			
+			<div style='float:left'>
+				<input type="file" name="imageA4" id="_classImgA4" style="display: none">	            
+			   	<div class='ocImgFrameA4'>
+				   	<label for="_classImgA4"> 
+				       <img id="_ocImgA4" class="ocImgA4" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			</div>
+					
+			<div style='float:left'>
+				<input type="file" name="imageA5" id="_classImgA5" style="display: none">	            
+			   	<div class='ocImgFrameA5'>
+				   	<label for="_classImgA5"> 
+				       <img id="_ocImgA5" class="ocImgA5" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--이미지 박스 2-->
+		<div class='onedayClassImageBoxB'>
+			<div style='float:left'>
+	 			<input type="file" name="imageB1" id="_classImgB1" style="display: none">	            
+			   	<div class='ocImgFrameB1'>
+				   	<label for="_classImgB1"> 
+				       <img id="_ocImgB1" class="ocImgB1" src="../images/onedayClassImg1.png">
+				    </label>
+				</div>
+			
+				<input type="file" name="imageB2" id="_classImgB2" style="display: none">	            
+			   	<div class='ocImgFrameB2'>
+				   	<label for="_classImgB2"> 
+				       <img id="_ocImgB2" class="ocImgB2" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			</div>
+			 
+			<div style='float:left'>
+	 			<input type="file" name="imageB3" id="_classImgB3" style="display: none">	            
+				<div class='ocImgFrameB3'>
+					 <label for="_classImgB3"> 
+					    <img id="_ocImgB3" class="ocImgB3" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div>	
+				
+			<div style='float:left'>	
+				<input type="file" name="imageB4" id="_classImgB4" style="display: none">	            
+				<div class='ocImgFrameB4'>
+					 <label for="_classImgB4"> 
+					      <img id="_ocImgB4" class="ocImgB4" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div> 
+			
+			<div style='float:left'>	
+	 			<input type="file" name="imageB5" id="_classImgB5" style="display: none">	            
+				<div class='ocImgFrameB5'>
+					 <label for="_classImgB5"> 
+					      <img id="_ocImgB5" class="ocImgB5" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div> 
+		</div>
+	
+		 
+		<!--이미지 박스 3  -->
+		<div class='onedayClassImageBoxC'>
+			<div style='float:left'>
+	 			<input type="file" name="imageC2" id="_classImgC2" style="display: none">	            
+			   	<div class='ocImgFrameC2'>
+				   	<label for="_classImgC2"> 
+				       <img id="_ocImgC2" class="ocImgC2" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			
+	 			<input type="file" name="imageC3" id="_classImgC3" style="display: none">	            
+			   	<div class='ocImgFrameC3'>
+				   	<label for="_classImgC3"> 
+				       <img id="_ocImgC3" class="ocImgC3" src="../images/onedayClassImg2.png">
+				    </label>
+				</div>
+			</div>
+			 
+			<div style='float:left'>
+	 			<input type="file" name="imageC4" id="_classImgC4" style="display: none">	            
+				<div class='ocImgFrameC4'>
+					 <label for="_classImgC4"> 
+					    <img id="_ocImgC4" class="ocImgC4" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div>	
+				
+			<div style='float:left'>	
+	 			<input type="file" name="imageC1" id="_classImgC1" style="display: none">	            
+	 		   	<div class='ocImgFrameC1'>
+				   	<label for="_classImgC1"> 
+					    <img id="_ocImgC1" class="ocImgC1" src="../images/onedayClassImg1.png">
+				    </label>
+				</div>
+	
+	 			<input type="file" name="imageC5" id="_classImgC5" style="display: none">	            
+	 			<div class='ocImgFrameC5'>
+					 <label for="_classImgC5"> 
+					    <img id="_ocImgC5" class="ocImgC5" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div> 
+		</div>
+		<div class='hrMargin'><hr></div>
+ 	</div>
+
+	
+	<!--////////////////////// chapter3. 수업에 대한 구체적 정보 ////////////////// -->
+	<div class='chapter3'>
+		<div class='chapterText'>Chapter 3</div>
+		<hr><br><br>
+		<div class='ExplicateText'>1. 수업에 대한 구체적인 설명을 적어주세요</div>
+		<textarea name='content' id='_OCcontent'>수업 시작 시간 : 6PM..</textarea>
+		
+		<div class='ExplicateText'>2. 강의 시간과 참여인원, 준비물, 수강 포인트를 작성해주세요 </div>
+		<i class='material-icons OCIcon'>access_time</i>
+		<select name = "duration " id='_duration'>
+			<option value='' checked>&nbsp;강의시간</option>	
+			<option value='30'>&nbsp;30분</option>	
+			<option value='45'>&nbsp;45분</option>	
+			<option value='50'>&nbsp;50분</option>	
+			<option value='60'>&nbsp;60분</option>	
+			<option value='90'>&nbsp;90분</option>	
+			<option value='100'>&nbsp;100분</option>	
+			<option value='120'>&nbsp;120분</option>	
+		</select>
+		&nbsp;&nbsp;
+		<i class='material-icons OCIcon'>people</i>
+		<select name = "limitNum  " id='_limitNum'>
+			<option value='' checked>&nbsp;참여인원</option>	
+			<option value='1'>&nbsp;1명</option>	
+			<option value='2'>&nbsp;2명</option>	
+			<option value='3'>&nbsp;3명</option>	
+			<option value='4'>&nbsp;4명</option>	
+			<option value='5'>&nbsp;5명</option>	
+		</select>
+		&nbsp;&nbsp;
+      	<i class='material-icons OCIcon'>check</i>
+      	<input type='text' name='preparation' placeholder="준비물" id='_preparation'>
+		&nbsp;&nbsp;&nbsp;
+      	<i class='fas fa-coins'></i>
+      	<input type='text' name='price' placeholder="수강 포인트" id='_price'>
+
+		<div class='ExplicateText'>3. 강의 날짜를 선택하세요</div>
+		<i class='fas fa-hourglass-start'></i>
+		<span class='OCdateText'>START : </span><input type='date' class='OCdate' name='startDate' id='_startDate'>
+		<i class='fas fa-hourglass-end'></i>
+		<span class='OCdateText'>END : </span><input type='date' class='OCdate' name='endDate' id='_endDate'>
+		<br>
+		<i class='far fa-calendar-times' style='margin-top:10px;'></i>
+		<span class='OCdateText'>No Class Day of the week : </span> 
+		&nbsp;&nbsp;&nbsp;
+		<span class='noClassBox'>
+			<input type="checkbox" name="noClass" value="SUN">&nbsp;SUN &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="MON">&nbsp;MON &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="TUS">&nbsp;TUS &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="WED">&nbsp;WED &nbsp;&nbsp; 
+			<input type="checkbox" name="noClass" value="THU">&nbsp;THU &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="FRI">&nbsp;FRI &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="SAT">&nbsp;SAT &nbsp;&nbsp;
+		</span>	
+		<div class='hrMargin'><hr></div>
+	</div>
+
+	
+	</form>
+	
+	<!--////////////////////// chapter4. 수업장소 ////////////////// -->
+	<div class='chapter4'>
+		<div class='chapterText'>Chapter 4</div>
+		<hr><br><br>
+		<div class='ExplicateText'><i class='fas fa-map-marker-alt'>&nbsp;</i>수업 장소를 검색하세요</div>
+		<form class = 'form-inline' onsubmit="searchClass(); return false;">   
+			<input type="text" id="keyword" class="placeSearch" placeholder="정확한 주소를 입력해주세요">
+			<button class='placeBtn' type="submit">검색</button>  
+		</form>
+		<div id="map" style="width:100%;height:450px; border-radius:20px"></div>	
+		<div class='hrMargin'><hr></div>
+	</div>
+	
+	
+	
+	
+	<!--////////////////////// chapter5. 선생님 소개 ////////////////// -->
+	<div class='chapter5'>
+		<div class='chapterText'>Chapter 5</div>
+		<hr><br><br>
+		<img class='ocTeacherImg' id='_ocTeacherImg' style='float:left'>
+		<div style='float:left; padding-top:2px; padding-left:10px;'>
+			<span class='ocSubTitle' id='teacherTitle'></span><br>
+			<span class='ocTeacherMail'></span>
+		</div>
+		<br><br><br>
+		<textarea id='_aboutMeInput'>강사 소개글을 작성해주세요</textarea>
+		
+	
+		<div class='ExplicateText'>(선택)유투브 링크를 입력해주세요</div>
+		<input type='text' placeholder="유투브 링크" id='_youtubeLinkInput'>
+		<div class='hrMargin'><hr></div>
+	</div>
+	
+</div>
+<div id='footer'></div>	
+
+
+
+<script>
+//-------------- 카카오 맵 검색 ------------------ 
+var mapContainer = document.getElementById('map'), 
+mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도생성 	    	
+var geocoder = new kakao.maps.services.Geocoder();     // 주소 -> 좌표 변환
+
+function searchClass() {
+    let keyword =  $('#keyword').val();
+    if (keyword == null || keyword == "") {
+		alert('주소를 입력하세요');
+        return false;
+    }
+    else{
+	    let locatoin = $('#keyword').val();
+	    $('#_location').val(locatoin)
+		//주소로 좌표 검색
+		geocoder.addressSearch(locatoin, function(result, status) {
+			
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+				// 마커 표시
+				var marker = new kakao.maps.Marker({map: map, position: coords});
+				
+				// 장소 설명
+				 var infowindow = new kakao.maps.InfoWindow({
+				   	 content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'});
+				     infowindow.open(map, marker);
+				     map.setCenter(coords);
+				     
+					// -------- 주소를 저장하는 코드 넣기 ---------
+			}
+			else{
+				alert('정확한 주소를 입력해주세요');
+				$('#keyword').val("");
+				$('#keyword').focus();
+			}
+		});    
+	}
+}
+
+</script>	
 
 </body>
 </html>
