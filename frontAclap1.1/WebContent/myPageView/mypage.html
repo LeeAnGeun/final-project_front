@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
+ 
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -31,51 +31,6 @@
 
 <script>
 
-
-/*
-document.onkeydown = fkey;
-document.onkeypress = fkey
-document.onkeyup = fkey;
-
-let wasPressed = false; */
-
-/* $(document).keydown(function(e) {
-    if (e.which == 116 || e.keyCode == 82 && e.ctrlKey) { //116 = F5
-		
-			alert('클릭');
-			$("#perfectGuy").empty();
-			$("#perfectGuy").load("myPageView/mypage.html"); 
-			
-	        return false;
-	   
-
-    }
-});  */
-/* function fkey(e){
-        e = e || window.event;
-       if( wasPressed ) return; 
-
-        if (e.keyCode == 116) {
-            alert("f5 pressed");
-            $("#perfectGuy").load("myPageView/mypage.html"); 
-             wasPressed = true;
-             noEvent(e);
-        }else {
-        //  alert("Window closed");
-        }
-}
- 
-function noEvent(e) { // 새로 고침 방지
-    if (e.keyCode == 116) {
-        //alert("새로고침을 할 수 없습니다.");
-        e.keyCode = 2;
-        return false;
-    } else if (e.ctrlKey
-            && (e.keyCode == 78 || e.keyCode == 82)) {
-        return false;
-    }
-}
-document.onkeydown = noEvent; */
 ///////////////////////////// 정보 수정 (회원정보 확인)  /////////////////////////
 
 $(document).ready(function(){
@@ -330,8 +285,6 @@ $(document).ready(function(){
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >학생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >선생신분</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">정보 수정</a> </li>
-            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_stampTable">도장판</a> </li>
-            
         </ul> 	
     </div>
 </div>
@@ -410,7 +363,7 @@ $(document).ready(function(){
 </div>
 
 
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="reciptModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body" id="saveRecipt">
@@ -669,7 +622,7 @@ $(document).ready(function() {
 					$(".day").append("<div class='dday'><h5>" + month + "-" + day + "</h5></div>");
 					
 					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
-									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='./upload/" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
+									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
 									+ "<div class='d-flex flex-column tps'>"
 										+ "<div><b>" + classDto.title + "</b></div>"
 										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
@@ -690,7 +643,7 @@ $(document).ready(function() {
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
-		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#staticBackdrop'>결제 내역</button>"
+		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#reciptModal'>결제 내역</button>"
 		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>취소 신청</button>"
 	                        	 	+ "</div>"
 	             				+ "</div>";	
@@ -760,7 +713,7 @@ $(document).ready(function() {
 	    link.href = uri;
 	    document.body.appendChild(link);
 	    link.click();   
-	    //after creating link you should delete dynamic link
+	    //after creating link you should delete dFynamic link
 	    //clearDynamicLink(link); 
 	} */
 	
