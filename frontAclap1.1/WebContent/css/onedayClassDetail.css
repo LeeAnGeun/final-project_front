@@ -446,7 +446,7 @@
 	height: 200px;
 	/* background-color: #01579b; */
 	display: flex;        
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	margin-top:25px; 
 	/* border: 1px solid red; */
 }
@@ -456,12 +456,13 @@
 	background-color: white;
 	border: 1px solid #dcdcdc;
 	border-radius:10px;
+	margin-left: 40px;
 }
 .caDate{
 	padding-top:20px;
 	margin-bottom:-6px;
 	padding-left:35px;
-	font-size:25px;
+	font-size:20px;
 	font-weight: 600;
 }
 .caTime{
@@ -506,6 +507,45 @@
 	height:30px;
 	border:none;
 	border-radius: 5px;
+}
+
+.allScheduleModalBtn{
+	margin-top:30px;
+	margin-bottom:30px;
+	width:400px;
+	height:50px;
+	font-size:25px;
+	border-radius:20px;
+	border:none;
+	background-color:#F5F2F5;
+}
+
+.schedule_Modal_Container{
+	z-index:1;
+	position:fixed;
+ 	top:120px;
+	left:760px; 
+	border-radius:20px;
+	box-shadow: 3px 2px 5px #66676B;
+	background-color:#F5F2F5;
+	height:660px;
+	width:400px;
+}
+
+.schedule_Modal_Content{
+	height:600px;
+	width:400px;
+	background-color:#F5F2F5;
+	overflow: scroll;
+}
+
+.schedule_hide_modal{
+   opacity: 0;
+   visibility: hidden;
+}
+.schedule_show_modal {
+    opacity: 1;
+    visibility: visible;
 }
 
 /*----------- 5027 이미지 클릭시 모달창 -----*/
