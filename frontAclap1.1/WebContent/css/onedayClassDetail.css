@@ -466,7 +466,7 @@
 }
 .rating-star > label { 
   color: #ddd; 
-  float: right;
+ 
 }
 .rating-star > input:checked ~ label { 
   color: #FFD700;
@@ -688,7 +688,7 @@
 
 /*---- 이미지 클릭시 모달창 -----*/
 
-.hide_modal {
+.image_hide_modal {
    opacity: 0;
    visibility: hidden;
 
@@ -697,7 +697,7 @@
    overflow:hidden;
    margin:0 auto;
 }
-.show_modal {
+.image_show_modal {
    opacity: 1;
    visibility: visible;
    position: fixed; 
@@ -728,3 +728,21 @@
    height:600px;
 
 }
+
+/*---------------후기 버튼------------------*/
+.reviewBtn{
+	margin-top:30px;
+	margin-bottom:30px;
+	margin-left:30px;
+	width:400px;
+	height:50px;
+	font-size:25px;
+	border-radius:20px;
+	border:none;
+	background-color:#F5F2F5;
+}
+
+
+}
+
+
