@@ -46,7 +46,7 @@
       <div class='loginModalEmail'></div>
       <div class="loginModalMyPoint"></div>
       <button type='button' class='myPageButton' onclick="goMyPage()" >마이페이지</button>
-      <button type="button" class="myPageButton" data-toggle="modal" data-target="#staticBackdrop">포인트 충전</button>
+      <button type="button" class="myPageButton" id="pointsCharge" data-toggle="modal" data-target="#staticBackdrop">포인트 충전</button>
       <hr class='loginHr1'>
       <div class='loginNewContent'></div>
       <div class='myPointCheck'></div>
@@ -287,6 +287,13 @@ let myPoint = login.myPoint;
 myPoint = parseInt(myPoint);
 let money = 0;
 $("#points").append("$" + myPoint);
+
+
+$("#pointsCharge").click(function(){
+	
+});
+
+
 
 //alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
 

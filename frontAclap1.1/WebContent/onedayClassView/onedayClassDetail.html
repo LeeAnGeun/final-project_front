@@ -24,6 +24,11 @@
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 
+<!-- bar-rating -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/fontawesome-stars.css">
+<script type="text/javascript" src="../js/jquery.barrating.min.js"></script>
+
 </head>
 <body>
 
@@ -209,54 +214,10 @@
 			</div>
 		</div> 
 	</div>
-	
-	<!-- 이미지 확대 모달 -->
-      <div class="hide_modal">  
-         <i class="fas fa-times"></i>
-         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-           <div class="carousel-inner">
-             <div class="carousel-item active">
-               <img src="../images/flower.png" class="d-block w-100 modalimg" alt="...">
-             </div>
-             <div class="carousel-item">
-               <img src="../images/test3.jpg" class="d-block w-100 modalimg" alt="...">
-             </div>
-             <div class="carousel-item">
-               <img src="../images/취미1.png" class="d-block w-100 modalimg" alt="...">
-             </div>
-           </div>
-           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="sr-only">Previous</span>
-           </a>
-           <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-             <span class="sr-only">Next</span>
-           </a>
-         </div>
-      </div>
-	
-	<div class='onedayClassContentBox1'>
-		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
-		<i class='material-icons ocIcon'>access_time</i>
-		<span class='ocTxt1'> 30분</span>
-		&nbsp;&nbsp;
-		<i class='material-icons'>people</i>
-		<span class='ocTxt1'> 5명</span>
-		&nbsp;&nbsp;
-      	<i class='material-icons'>check</i>
-      	<span class='ocTxt1'> 리코더</span>
-      	<div class='classInfo'>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
-      	</div>
-
-	</div>
-	
+		
 		<!-- 이미지 확대 모달 -->
 		
-		<div class="hide_modal">
+		<div class="image_hide_modal">
 		
 			<i class="fas fa-times"></i>
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -281,6 +242,26 @@
 			  </a>
 			</div>
 		</div>
+
+	
+	<div class='onedayClassContentBox1'>
+		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
+		<i class='material-icons ocIcon'>access_time</i>
+		<span class='ocTxt1'> 30분</span>
+		&nbsp;&nbsp;
+		<i class='material-icons'>people</i>
+		<span class='ocTxt1'> 5명</span>
+		&nbsp;&nbsp;
+      	<i class='material-icons'>check</i>
+      	<span class='ocTxt1'> 리코더</span>
+      	<div class='classInfo'>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      		으어어어어어어인포자리<br>
+      	</div>
+
+	</div>
+	
 	
 	<!-- 프로그램 -->
 	<div class='hrMargin'><hr></div>
@@ -551,8 +532,14 @@
 	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
 	<div align=center>
 		<input type='button' class='reviewModalBtn' value='후기 전체보기'>
+		<!-- 리뷰쓰기 버튼 -->
+	<!-- Button trigger modal -->
+	<button type="button" class="reviewBtn" data-toggle="modal" data-target="#exampleModal">
+	  후기쓰기
+	</button>
 	</div>
 	<hr>
+
 	
 	
 	<!-- 후기 전체보기 Modal -->
@@ -623,6 +610,86 @@
 		</div>
 	</div>
 	
+	<!-- 후기쓰기  모달-->	
+	<!--Review Modal -->
+	<div class="modal fade reviewModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content"> <!-- 크기에맞게 자동 조절 style="max-width: 100%; width: auto; display: table; -->
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Review</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      		<!-- 별점 자리 -->
+	      	<form id="reviewImages" name="reviewImages" method="post" enctype="multipart/form-data">
+	      		<input type="hidden" name="memNum" value="1">
+	      		<input type="hidden" name="name" value="이민형">
+	      		<input type="hidden" name="classNum" value="1">
+	      			<b>만족도</b>
+	       		<select id="satisfy" name="satisfy">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>청결도</b>
+	       		<select id="cleanness" name="cleanness">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>의사소통</b>
+	       		<select id="rComm" name="rComm">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>위치성</b>
+	       		<select id="rLocation" name="rLocation">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+					<b>정확성</b>
+	       		<select id="accuracy" name="accuracy">	       		
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<hr>
+				<b>후기 내용</b><br>
+				
+				<textarea rows="10" cols="60" id="rContent" name="rContent"></textarea><br>
+				<b>사진 업로드</b><br>
+				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">
+				 
+				</form>
+				 
+				 
+        <div id="preview"></div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-primary" id="reviewSubmit">제출</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+		
 	<!-- 강의 신청 -->
 	<div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="false">
 	
@@ -1016,13 +1083,14 @@ $(".review_modal_close").click(function(){
 
 //이미지 확대 모달창
 
-$(".hide_modal").hide();
+$(".image_hide_modal").hide();
 
 let modalCheck = true;
 $(".onedayClassImageBoxA").click(function(){
       if(modalCheck){
-         $(".hide_modal").toggleClass("show_modal");   
-         $(".hide_modal").show();
+         $(".image_hide_modal").toggleClass("image_show_modal");   
+         $(".image_hide_modal").show();
+ 
            $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
            $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");
            $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");
@@ -1034,11 +1102,174 @@ $(".onedayClassImageBoxA").click(function(){
       };
 });
    
+
+$(".fa-times").click(function(){
+   $(".image_hide_modal").toggleClass("image_show_modal");   
+
 $(".requestclose").click(function(){
    $(".hide_modal").toggleClass("show_modal");   
+
     $('body').css("background-color","");
+    $(".image_hide_modal").hide();
     modalCheck = true;
 });
+
+
+//별점
+// 초기값 5점으로 설정....근데 오류남 ㅜ
+var satisfy, cleanness, rComm, rLocation, accuracy;
+
+
+
+/* var starPoint=cleanness=safety=rComm=5;
+var rLocation;
+var accuracy =5; */
+
+   $(function() {
+      $('#satisfy').barrating({
+        theme: 'fontawesome-stars',
+        initialRating : 5
+        	, onSelect: function(value, text, event){
+        		// 별점 클릭 후 처리는 여기서 코드
+        		// 선택한 별점 값을 value로 받음        	
+        		satisfy = parseInt(value);
+        	//	alert("satisfy: " + typeof satisfy);
+        	}
+      });
+      $('#cleanness').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		cleanness = parseInt(value);
+          	//	alert("cleanness: " + cleanness);
+          	}
+        });
+      
+
+      $('#rComm').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		rComm = parseInt(value);
+          	//	alert("rComm: " + rComm);
+          	}
+        });
+      $('#rLocation').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		rLocation = parseInt(value);
+          	//	alert("rLocation: " + rLocation);
+          	}
+        });
+      $('#accuracy').barrating({
+          theme: 'fontawesome-stars',
+          initialRating : 5
+          	, onSelect: function(value, text, event){
+          		accuracy = parseInt(value);
+          	//	alert("accuracy: " + accuracy);
+          	}
+        });
+      
+   });
+
+// 다중이미지 미리보기
+$(document).ready(function (e){
+    $("input[type='file']").change(function(e){
+
+      //div 내용 비워주기
+      $('#preview').empty();
+
+      var files = e.target.files;
+      var arr =Array.prototype.slice.call(files);
+      
+      //업로드 가능 파일인지 체크
+      for(var i=0;i<files.length;i++){
+        if(!checkExtension(files[i].name,files[i].size)){
+          return false;
+        }
+      }
+      
+      preview(arr);
+      
+      
+    });//file change
+    
+    function checkExtension(fileName,fileSize){
+
+      var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+      var maxSize = 20971520;  //20MB
+      
+      if(fileSize >= maxSize){
+        alert('파일 사이즈 초과');
+        $("input[type='file']").val("");  //파일 초기화
+        return false;
+      }
+      
+      if(regex.test(fileName)){
+        alert('업로드 불가능한 파일이 있습니다.');
+        $("input[type='file']").val("");  //파일 초기화
+        return false;
+      }
+      return true;
+    }
+    
+    function preview(arr){
+      arr.forEach(function(f){
+        
+        //파일명이 길면 파일명...으로 처리
+        var fileName = f.name;
+        if(fileName.length > 10){
+          fileName = fileName.substring(0,7)+"...";
+        }
+        
+        //div에 이미지 추가
+        var str = '<div style="display: inline-flex; padding: 10px;"><li>';
+        str += '<span>'+fileName+'</span><br>';
+        
+        //이미지 파일 미리보기
+        if(f.type.match('image.*')){
+          var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+          reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+            //str += '<button type="button" class="delBtn" value="'+f.name+'" style="background: red">x</button><br>';
+            str += '<img src="'+e.target.result+'" title="'+f.name+'" width=100 height=100 />';
+            str += '</li></div>';
+            $(str).appendTo('#preview');
+          } 
+          reader.readAsDataURL(f);
+        }else{
+          str += '<img src="/resources/img/fileImg.png" title="'+f.name+'" width=100 height=100 />';
+          $(str).appendTo('#preview');
+        }
+      });//arr.forEach
+    }
+  });
+/*   
+//로그인 세션
+let login = JSON.parse(sessionStorage.getItem("login"));
+let memNum = login.memNum;
+let name = login.userName;
+   */
+//제출하기 버튼 클릭
+$("#reviewSubmit").click(function(){
+	  
+	  $.ajax({
+		 url:"http://localhost:3000/writeReview", 			
+		 type:"post",
+		 enctype: 'multipart/form-data', 
+		 data: new FormData($("#reviewImages")[0]),  // 필수 
+		 processData: false, // 필수
+		 contentType: false, // 필수 
+		 cache: false,
+		// dataType:"json",
+		 success: function(){
+			 alert('컨트롤러 갔다옴');
+		 },
+		 error: function(){
+			 alert('에러ㅠ6ㅠ');
+		 }
+
+	  });	  
 
 //리뷰 모달 창 컨트롤
 $(".allScheduleModalBtn").click(function(){
@@ -1046,6 +1277,7 @@ $(".allScheduleModalBtn").click(function(){
 });
 $(".schedule_modal_close").click(function(){
 	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
+
 });
 
 </script>

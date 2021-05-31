@@ -425,7 +425,7 @@
 }
 .rating-star > label { 
   color: #ddd; 
-  float: right;
+ 
 }
 .rating-star > input:checked ~ label { 
   color: #FFD700;
@@ -677,8 +677,8 @@
 /*------------ 5027 이미지 클릭시 모달창 -------------*/
 
 /*---- 이미지 클릭시 모달창 -----*/
-/* 
-.hide_modal {
+
+.image_hide_modal {
    opacity: 0;
    visibility: hidden;
    width:800px;
@@ -686,7 +686,7 @@
    overflow:hidden;
    margin:0 auto;
 }
-.show_modal {
+.image_show_modal {
    opacity: 1;
    visibility: visible;
    position: fixed; 
@@ -716,7 +716,7 @@
    width:800px;
    height:600px;
 }
- */
+ 
  
  
  
@@ -890,6 +890,24 @@ div.OCSubmitBtn:hover {
 	font-size:20px;
 	font-weight: 600;
 }
+
+/*---------------후기 버튼------------------*/
+.reviewBtn{
+	margin-top:30px;
+	margin-bottom:30px;
+	margin-left:30px;
+	width:400px;
+	height:50px;
+	font-size:25px;
+	border-radius:20px;
+	border:none;
+	background-color:#F5F2F5;
+}
+
+
+}
+
+
 #_duration{
 	height:30px;
 	width:120px;
@@ -974,3 +992,4 @@ div.OCSubmitBtn:hover {
 	font-size:40px;
 	border-radius: 10px;
 }
+
