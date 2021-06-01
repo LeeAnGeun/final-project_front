@@ -8,6 +8,7 @@ $(document).ready(function(){
 	$("#teacherTitle").html(json.nickName + ' 선생님 소개');
 	$(".ocTeacherMail").html(json.email);
 	$("#_masterNum").val(json.memNum);
+	$("#_instructor").val(json.nickName);
 	
 	//hide setting
 	$(".chapter2").hide();
@@ -593,7 +594,7 @@ function onedayClassWriteAf(){
 	 });
 	
 	for (var i = 0; i < arr.length; i++) {
-		noClassDayOfWeek += arr[i]+'/';
+		noClassDayOfWeek += arr[i];
 	}
 		
 	
@@ -603,11 +604,14 @@ function onedayClassWriteAf(){
 	$("#_secondaryCategory").val(secondaryCategory);
 	$("#_noClassDayOfWeek").val(noClassDayOfWeek);
 	
+	alert(noClassDayOfWeek);
 	
 	// 오늘 날짜 구하기
 	let date = new Date();
 	let today = dateFormat(date);
-
+	
+	// 숫자 정규식
+	let nums = /[^0-9]/g;
 	
 	// 빈 값 체크 
 	if($('#_primaryCategory').val() == ''){
@@ -662,8 +666,11 @@ function onedayClassWriteAf(){
 		alert('(Chapter3) 준비물을 작성해주세요');
 	}	
 	else if($('#_price').val() == ""){
-		alert('(Chapter3) 수강 포인트를 작성해주세요');
+		alert('(Chapter3) 수강 포인트를 입력해주세요');
 	}	
+	else if(nums .test($("#_price").val())){
+		alert('(Chapter3) 포인트는 숫자만 입력 가능합니다');
+	}
 	else if($('#_startDate').val() == ""){
 		alert('(Chapter3) 수업 시작일을 선택해주세요');
 	}	
@@ -683,7 +690,6 @@ function onedayClassWriteAf(){
 		alert('(Chapter5) 강사 소개글을 입력해주세요');
 	}
 	else{
-		alert('123');
 		$.ajax({
 			url:"http://localhost:3000/onedayClassWrite", 
 			type:'post',
@@ -694,15 +700,15 @@ function onedayClassWriteAf(){
 			contentType : false,
 			cache : false,
 			success:function( data ){
-				alert(data);
+				if(data){
+					alert('성공적으로 작성 완료 되었습니다');
+					//location.href='' 작성한 내용 바로 보기
+				}
 			},
 			error:function(){
 				alert('onedayClassWrite ajax error');
 			}
 		});
-		
-		
-		
 	}
 };
  

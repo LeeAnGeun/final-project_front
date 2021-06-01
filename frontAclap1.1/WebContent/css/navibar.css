@@ -512,14 +512,8 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
 }
 .login_Modal_Content{
 	position: fixed; 
-	/*데스크탑*/
  	top: 8.6%;
 	left:74%;  
-	/*노트북*/
-	/*
- 	top: 9.2%;
-	left:66%;  
-	*/
 	z-index:1000; 	
 	padding: 1rem 1.5rem;
 	background-color:white;
@@ -531,14 +525,8 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
 }
 .Manager_Modal_Content{
 	position: fixed; 
-	/*데스크탑*/
  	top: 8.6%;
 	left:74%;  
-	/*노트북*/
-	/*
- 	top: 9.2%;
-	left:66%;  
-	*/
 	z-index:1000; 	
 	padding: 1rem 1.5rem;
 	background-color:white;
@@ -593,6 +581,10 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
 }
 .loginNewContent{
 	height:30px;
+	font-size:15px;
+	color:#5F6368;
+}
+.myPointCheck{
 	font-size:15px;
 	color:#5F6368;
 }

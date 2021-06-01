@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 제이쿼리 ui css -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- 제이쿼리 style css -->
+<link rel="stylesheet" href="/resources/demos/style.css">
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- 제이쿼리 ui js -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.css" rel="stylesheet"/>
+ 
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -12,7 +23,15 @@
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+
 <!-- 커스텀 css -->
 <link rel="stylesheet" href="../css/onedayClassDetail.css">
 <!-- 카카오맵 -->
@@ -20,19 +39,15 @@
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-
-
 <!-- bar-rating -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/fontawesome-stars.css">
-<script type="text/javascript" src="../js/jquery.barrating.min.js"></script>
+<script type="text/javascript" src="../js/jquery.barrating.min.js"></script> 
 
 </head>
 <body>
 
 <div id='naviBar'></div>
+<br><br><br>
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -65,185 +80,102 @@
 		</div>
 	</div>
 	
-	<!-- 레이어 선택 버튼 -->	 
+		<!--이미지박스1-->
+		<div class='onedayClassImageBoxA'>
+			<div style='float:left'>
+			   	<div class='ocImgFrameA2'>
+				       <img id="_ocImgA2" class="ocImgA2" src="../images/onedayClassImg2.png">
+				</div>
+			</div>
+			
+			<div style='float:left'>	
+			   	<div class='ocImgFrameA1'>
+				       <img id="_ocImgA1" class="ocImgA1" src="../images/onedayClassImg1.png">
+				</div>
 	
-<!-- 	
-	<div class='onedayClassImageSelector'>
-		<br>
-		<input type=button class='layerBtnNonChoice' id='layer3' value='Layer3' onclick='showLayer3()'>
-		<input type=button class='layerBtnNonChoice' id='layer2' value='Layer2' onclick='showLayer2()'>
-		<input type=button class='layerBtnChoice' id='layer1' value='Layer1' onclick='showLayer1()'>
-	</div>
-	 -->
-	
-	<!-- 이미지 박스 1 -->
-	<div class='onedayClassImageBoxA'>
-		<div style='float:left'>
-			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
-		   	<div class='ocImgFrameA1'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgA1" src="../images/onedayClassImg2.png">
-			    </label>
+				<div class='ocImgFrameA3'>
+					    <img id="_ocImgA3" class="ocImgA3" src="../images/onedayClassImg2.png">
+				</div>
+			</div> 
+			
+			<div style='float:left'>
+			   	<div class='ocImgFrameA4'>
+				       <img id="_ocImgA4" class="ocImgA4" src="../images/onedayClassImg2.png">
+				</div>
+			</div>
+					
+			<div style='float:left'>
+			   	<div class='ocImgFrameA5'>
+				       <img id="_ocImgA5" class="ocImgA5" src="../images/onedayClassImg2.png">
+				</div>
 			</div>
 		</div>
 		
-		<div style='float:left'>	
-			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
-		   	<div class='ocImgFrameA2'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgA2" src="../images/onedayClassImg1.png">
-			    </label>
-			</div>
-
-			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
-			<div class='ocImgFrameA3'>
-				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgA3" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div> 
 		
-		<div style='float:left'>
-			<input type="file" name="ClassImg4" id="ClassImg4" style="display: none">	            
-		   	<div class='ocImgFrameA4'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgA4" src="../images/onedayClassImg2.png">
-			    </label>
+		<!--이미지 박스 2-->
+		<div class='onedayClassImageBoxB'>
+			<div style='float:left'>
+			   	<div class='ocImgFrameB1'>
+				       <img id="_ocImgB1" class="ocImgB1" src="../images/onedayClassImg1.png">
+				</div>
+			
+			   	<div class='ocImgFrameB2'>
+				       <img id="_ocImgB2" class="ocImgB2" src="../images/onedayClassImg2.png">
+				</div>
 			</div>
-		</div>
+			 
+			<div style='float:left'>
+				<div class='ocImgFrameB3'>
+					    <img id="_ocImgB3" class="ocImgB3" src="../images/onedayClassImg2.png">
+				</div>
+			</div>	
 				
-		<div style='float:left'>
-			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
-		   	<div class='ocImgFrameA5'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgA5" src="../images/onedayClassImg2.png">
-			    </label>
-			</div>
-		</div>
-	</div>
-	
-
-
-	<!-- 이미지 박스 2 -->
-	<div class='onedayClassImageBoxB'>
-		<div style='float:left'>
-			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
-		   	<div class='ocImgFrameB1'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgB1" src="../images/onedayClassImg1.png">
-			    </label>
-			</div>
-		
-			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
-		   	<div class='ocImgFrameB2'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgB2" src="../images/onedayClassImg2.png">
-			    </label>
-			</div>
-		</div>
-		 
-		<div style='float:left'>
-			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
-			<div class='ocImgFrameB3'>
-				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgB3" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div>	
+			<div style='float:left'>	
+				<div class='ocImgFrameB4'>
+					     <img id="_ocImgB4" class="ocImgB4" src="../images/onedayClassImg2.png">
+				</div>
+			</div> 
 			
-		<div style='float:left'>	
-			<input type="file" name="ClassImg4" id="ClassImg4" style="display: none">	            
-			<div class='ocImgFrameB4'>
-				 <label for="_profilePic"> 
-				      <img id="profilePic" class="ocImgB4" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div> 
-		
-		<div style='float:left'>	
-			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
-			<div class='ocImgFrameB5'>
-				 <label for="_profilePic"> 
-				      <img id="profilePic" class="ocImgB5" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div> 
-	</div>
-
-	 
-	<!-- 이미지 박스 3 -->
-	<div class='onedayClassImageBoxC'>
-		<div style='float:left'>
-			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
-		   	<div class='ocImgFrameC1'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgC1" src="../images/onedayClassImg2.png">
-			    </label>
-			</div>
-		
-			<input type="file" name="ClassImg2" id="ClassImg2" style="display: none">	            
-		   	<div class='ocImgFrameC2'>
-			   	<label for="_profilePic"> 
-			       <img id="profilePic" class="ocImgC2" src="../images/onedayClassImg2.png">
-			    </label>
-			</div>
+			<div style='float:left'>	
+				<div class='ocImgFrameB5'>
+					      <img id="_ocImgB5" class="ocImgB5" src="../images/onedayClassImg2.png">
+				</div>
+			</div> 
 		</div>
-		 
-		<div style='float:left'>
-			<input type="file" name="ClassImg3" id="ClassImg3" style="display: none">	            
-			<div class='ocImgFrameC3'>
-				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgC3" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div>	
-			
-		<div style='float:left'>	
-			<input type="file" name="ClassImg1" id="ClassImg1" style="display: none">	            
-		   	<div class='ocImgFrameC4'>
-			   	<label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgC4" src="../images/onedayClassImg1.png">
-			    </label>
-			</div>
-
-			<input type="file" name="ClassImg5" id="ClassImg5" style="display: none">	            
-			<div class='ocImgFrameC5'>
-				 <label for="_profilePic"> 
-				    <img id="profilePic" class="ocImgC5" src="../images/onedayClassImg2.png">
-				 </label>
-			</div>
-		</div> 
-	</div>
-		
-		<!-- 이미지 확대 모달 -->
-		
-		<div class="image_hide_modal">
-		
-			<i class="fas fa-times"></i>
-			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-			  <div class="carousel-inner">
-			    <div class="carousel-item active">
-			      <img src="../images/flower.png" class="d-block w-100 modalimg" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="../images/test3.jpg" class="d-block w-100 modalimg" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="../images/취미1.png" class="d-block w-100 modalimg" alt="...">
-			    </div>
-			  </div>
-			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			</div>
-		</div>
-
 	
+		 
+		<!--이미지 박스 3  -->
+		<div class='onedayClassImageBoxC'>
+			<div style='float:left'>
+			   	<div class='ocImgFrameC2'>
+				       <img id="_ocImgC2" class="ocImgC2" src="../images/onedayClassImg2.png">
+				</div>
+			
+			   	<div class='ocImgFrameC3'>
+				       <img id="_ocImgC3" class="ocImgC3" src="../images/onedayClassImg2.png">
+				</div>
+			</div>
+			 
+			<div style='float:left'>
+				<div class='ocImgFrameC4'>
+					    <img id="_ocImgC4" class="ocImgC4" src="../images/onedayClassImg2.png">
+				</div>
+			</div>	
+				
+			<div style='float:left'>	
+	 		   	<div class='ocImgFrameC1'>
+					    <img id="_ocImgC1" class="ocImgC1" src="../images/onedayClassImg1.png">
+				</div>
+	
+	 			<input type="file" name="imageC5" id="_classImgC5" style="display: none">	            
+	 			<div class='ocImgFrameC5'>
+					 <label for="_classImgC5"> 
+					    <img id="_ocImgC5" class="ocImgC5" src="../images/onedayClassImg2.png">
+					 </label>
+				</div>
+			</div> 
+		</div>
+		<!--/////////////// 모달 들어가는 부분///////////// -->
 	<div class='onedayClassContentBox1'>
 		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
 		<i class='material-icons ocIcon'>access_time</i>
@@ -300,19 +232,8 @@
 	
 	<!-- 수업 장소 -->
 	<span class='ocSubTitle'>수업장소</span><br>
-	<!-- 출력용 버젼 -->	
 	<div style='margin-top:2px; font-size:15px'>서울 특별시 은평구 갈현 2동 521-22</div>
 	<div id="map" style="width:100%;height:450px; border-radius:20px; margin-top:20px;"> </div>		
-
-	<!-- 검색용 버젼 -->
-	<!-- 	 		
-	<form class = 'form-inline' onsubmit="searchClass(); return false;">   
-		<input type="text" id="keyword" class="placeSearch" placeholder="정확한 주소를 입력해주세요">
-		<button class='placeBtn' type="submit">검색</button>  
-	</form>
-	<div id="map" style="width:100%;height:450px; border-radius:20px"></div>	
-	-->
-		 
 		 
 	<!-- 후기(최신순으로 여섯개?) -->
    	<div class='hrMargin'><hr></div>
@@ -616,7 +537,7 @@
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content"> <!-- 크기에맞게 자동 조절 style="max-width: 100%; width: auto; display: table; -->
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Review</h5>
+	        <h4 class="modal-title" id="exampleModalLabel"">Review</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -627,43 +548,45 @@
 	      		<input type="hidden" name="memNum" value="1">
 	      		<input type="hidden" name="name" value="이민형">
 	      		<input type="hidden" name="classNum" value="1">
-	      			<b>만족도</b>
-	       		<select id="satisfy" name="satisfy">	       		
-					<option value="1">1</option>
+	      		<span class="reviewTitle"><b>참여하신 클래스는 어떠셨나요?</b></span><br>
+	      		<span class="subTitle">회원님이 남겨주신 후기는 다른분들에게 큰 도움이 됩니다.</span><hr>
+	      			<p class ="rating"><b>만족도</b></p>
+	       		<select id="satisfy" name="satisfy" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>청결도</b>
+					<p class ="rating"><b >청결도</b></p>
 	       		<select id="cleanness" name="cleanness">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>의사소통</b>
+					<p class ="rating"><b>의사소통</b></p>
 	       		<select id="rComm" name="rComm">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>위치성</b>
+					<p class ="rating"><b>위치성</b></p>
 	       		<select id="rLocation" name="rLocation">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>정확성</b>
+					<p class ="rating" style="margin-bottom: 10px;"><b>정확성</b></p>
 	       		<select id="accuracy" name="accuracy">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -671,20 +594,26 @@
 					<option value="4">4</option>
 					<option value="5">5</option>
 				</select>
-				<hr>
-				<b>후기 내용</b><br>
+				<br><hr>
+				<p class="rating"><b>후기 내용</b></p><br>
 				
-				<textarea rows="10" cols="60" id="rContent" name="rContent"></textarea><br>
-				<b>사진 업로드</b><br>
+				<textarea class="form-control"  rows="10" id="rContent" name="rContent"></textarea><br>
+				<label className="input-file-button" for="input-file" >사진 업로드</label><br>
+				
+				
+				
 				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">
 				 
+				 <br> 
+			
+ 			
 				</form>
 				 
 				 
         <div id="preview"></div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="submit" class="btn btn-primary" id="reviewSubmit">제출</button>
+	        <button type="submit" class="btn btn-dark" id="reviewSubmit">제출</button>
 	      </div>
 	    </div>
 	  </div>
@@ -694,7 +623,16 @@
 	<div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="false">
 	
 	<div>
-	<div class='ocSubTitle2' id='teacherTitle' style='padding-top:30px'>강의 신청하기</div>
+	<div class='ocSubTitle2' id='teacherTitle'>강의 신청하기</div>
+	<div class="memCounter">
+		<form class="memCounterFrm">
+			<fieldset>
+		        <input type="button" value="-" class="decrease" />
+		        <input type="text" size="1" id="maxMember" value="1" />
+		        <input type="button" value="+" class="increase" />
+	   	 	</fieldset>
+		</form>
+	</div>
 	<!-- 이동버튼 -->
 	<div class="paginate_btn">
 	<a href="#s_new_slider" class="paginate left" data-slide="prev" >
@@ -709,9 +647,9 @@
     </a>
     </div>
     </div>
-    
 	<!--Slides-->
 	<div class="carousel-inner classScheduleList" role="listbox">
+	
 	
 	</div>
 	
@@ -720,57 +658,66 @@
 	   <li data-target="#s_new_slider" data-slide-to="0" class="active"></li>
        <li data-target="#s_new_slider" data-slide-to="1"></li>
 	</div>
-	
+
 	<div align=center>
-		<input type='button' class='allScheduleModalBtn' value='일정 전체보기'>
+		<button type='button' class='allScheduleModalBtn' data-toggle="modal" onclick="" data-target="#allSchedule">일정 전체보기</button>
 	</div>
+
 	</div>
 	
 	<div class='hrMargin'><hr></div>
 	
 </div>
-
 <div id='footer'></div>	
 
+
 <!-- 신청 결제 모달 -->
-<div class="modal fade" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" style="z-index: 2000" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body" id="requestPage">
-                <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
-                <div class="px-4 py-5">
-                    <h3 class="text-uppercase">ACLAP</h3>
-                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> 
-                    
-                    <span class="theme-color">결제 내역</span>
-                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">보유 포인트</span> <span class="text-muted">10,000point</span> </div>
-                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">축구</span> <span class="text-muted">2,000point</span> </div>
-                    <div class="mb-3">
-                        <hr class="new1">
-                    </div>
-                    <div class="d-flex justify-content-between mt-3"> <span class="font-weight-bold">결제 후 잔여 포인트</span> <span class="font-weight-bold theme-color">8,000point</span> </div>
-                    <div class="text-center mt-5"> <button class="btn btn-primary" id="participate">참여하기</button> </div>
-                </div>
-            </div>
+        <div class="modal-content _requestPage">
+            
         </div>
     </div>
 </div>
 
+<!--allSchedule Modal -->
+<div class="modal fade allScheduleModal" id="allSchedule" tabindex="-1" aria-labelledby="allScheduleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="allScheduleModalLabel" style="text-align: center;">일정 전체보기</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body oneClsSche">
+      	<div>
+		 <font style="width: 15%; float: left;">Date: <input type="text" id="datepicker"></font>
+		<form  class="memCounterFrm">
+			<fieldset>
+		        <input type="button" value="-" class="decrease" />
+		        <input type="text" size="1" id="maxMember" value="1" />
+		        <input type="button" value="+" class="increase" />
+	   	 	</fieldset>
+		</form>
 
-<!-- 일정 전체보기 Modal -->
-<div class='schedule_hide_modal'>
-	<div class='schedule_Modal_Container'>
-		<i class='far fa-window-close schedule_modal_close'></i>
-		<div class="schedule_Modal_Content">
-			ddd
 		</div>
-	</div>
+      	 <hr>
+      	 <div class="allScheduleList">
+      	 	
+      	 </div>
+      </div>
+    </div>
+  </div>
 </div>
 		
+
+<!-- 일정 전체보기 Modal -->
+
+		
 <script>
-let login = sessionStorage.getItem("login");
-let json = JSON.parse(login); // String -> json 
-//alert(json.id);
+// let login = sessionStorage.getItem("login");
+// let json = JSON.parse(login); // String -> json 
 
 $(document).ready(function(){
 	$("#naviBar").load("../navibar.html");
@@ -781,10 +728,10 @@ $(document).ready(function(){
 	      type:'post',
 	      data:{classNum:3},
 	      success:function( dto ){
-	     
+	     	
 				let pDate = new Date();
 				let fpDate = dateFormat(pDate);
-				alert("pDate : " + pDate.getDate());
+				// alert("pDate : " + pDate.getDate());
 				let startDate = new Date((dto.startDate).substring(0,10));
 				let endDate = new Date((dto.endDate).substring(0,10));
 				
@@ -795,26 +742,16 @@ $(document).ready(function(){
 				let s_pDate = dateDiff(startDate, pDate);
 				
 				if(s_pDate >= 0){
-					alert("이미시작함");
+					// alert("이미시작함");
 					let len = s_eDate - s_pDate;
 					
-					if(len>30){
-						pDate.setDate(pDate.getDate() + 30);
-						// alert("endDate : " + dateFormat(startDate));
-						classSchedulList(dto.classNum, fpDate, dateFormat(pDate));
-					}else{
-						classSchedulList(dto.classNum, dateFormat, (dto.endDate).substring(0,10));
-					}
+					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10));
+					
 				}else{
-					alert("아직 시작안함");
+					// alert("아직 시작안함");
 					let len = s_eDate;
-					if(len>30){
-						startDate.setDate(startDate.getDate() + 30);
-						
-						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), dateFormat(startDate));
-					}else{
-						classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10));
-					}
+					
+					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10));
 				}
 	      },
           error:function(){
@@ -829,22 +766,35 @@ $(document).ready(function(){
 		      url:"http://localhost:3000/classSchedulList", 
 		      type:'post',
 		      data:{classNum:3, startDate:startDate, endDate:endDate},
-		      success:function( list ){
-		     
+		      success:function( map ){
+		     		let noDateArray = new Array();
+		     		let z = 0;
+		     		
+		     		let clist = map.clist;
+		     		let noDateList = map.noDateList;
+		     		
+		     		for(z=0; z<noDateList.length; z++){
+		     			noDateArray[z] =  (noDateList[z].rdate).substring(0,10);
+		     		}
+		     		
 					$(".classApplicatoinBox").remove();   
 					
+					// 강의 신청하기 list를 append해주는 src
 					let src = "<div class='carousel-item active'>"
 		                  					+ "<div class='classApplication_Container'>";
 		
-					for(let i=1; i < list.length+1; i++){
-						let classSchedule = list[i-1];
+					for(let i=1; i < clist.length+1; i++){
+						let classSchedule = clist[i-1];
 						let rdate = (classSchedule.rdate).substring(0,10);
 						
 						let sbtn = "";
+						
 						if(classSchedule.limitNum > 0){
 	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
 	                    }else{
-	                    	sbtn += "<h3>마감</h3>";
+	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    	noDateArray[z] = rdate;
+	                    	z = z+1;
 	                    }
 						
 						src += "<div class='classApplicatoinBox'>"
@@ -852,7 +802,7 @@ $(document).ready(function(){
 						                     + "<div class='caTime'> 수업 시간 : " + classSchedule.duration + "분</div>"
 						                     + "<div class='caMem'>예약 가능 인원 : " + classSchedule.limitNum + "</div>"
 						                     + "<div class='coinNprice'>"
-						                           + "<i class='fa fa-donate'></i>"
+						                           + "<i class='fas fa-donate'></i>"
 						                           + "<span class='caPrice'>" + classSchedule.price + "point</span>"
 						                     + "</div>"
 						                     + sbtn
@@ -867,14 +817,78 @@ $(document).ready(function(){
 					}
 					src += "</div></div>";
 					
-					pagenation(list.length);
+					pagenation(clist.length);
 					
 					$(".classScheduleList").append(src);
+					
+					$(".clsSchedule").remove();
+					
+					// 강의 전체보기를 append해주는 src2
+					let src2 = "";
+					
+					for(let i=1; i < clist.length+1; i++){
+						let classSchedule = clist[i-1];
+						let rdate = (classSchedule.rdate).substring(0,10);
+						
+						let sbtn = "";
+						if(classSchedule.limitNum > 0){
+	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                    }else{
+	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    }
+						
+						src2 += "<div class='clsSchedule'>"
+					      	 	+	"<div class='csDate'>"+ rdate +"</div>"
+								+	"<div class='csTime'>수업 시간 :"+ classSchedule.duration + "분</div>"
+								+	"<div class='csMem'>예약 가능 인원 :"+ classSchedule.limitNum +"명</div>"
+								+	"<div class='csCoin'>"
+						        +        "<i class='fas fa-donate'></i>"
+						        +        "<span class='csPrice'>"+ classSchedule.price +"point</span>"
+								+	"</div>"
+								+	sbtn
+				      	 	  + "</div>";
+					}
+					$(".allScheduleList").append(src2);
+					
+					datePicker(startDate, endDate, noDateArray);
+					
+					let myPoint = comma(10000-(clist[0].price));
+					$("#requestPage").remove();
+					
+					let src3 = "<div class='modal-body' id='requestPage'>"
+							 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+							 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+							 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+							 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+							 	+ "<span class='theme-color'>결제 내역</span>"
+							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(clist[0].price) + "point</span> </div>"
+							 	+ "<div class='mb-3'>"
+							 		+ "<hr class='new1'>"
+							 	+ "</div>"
+							 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + myPoint + "point</span> </div>"
+							 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' id='participate'>참여하기</button> </div>"
+							 + "</div>"
+							 + "</div>";
+	                
+	                $("._requestPage").append(src3);
+	                
+	                memberCounter(clist[0].duration);
+	                
+	                $("#participate").on("click", function(){
+	                //	alert("참여하니?");
+	                	let classNum = $(this).attr("classNum"); // 클릭한 classNum 가져옴
+						let memNum = $(this).attr("memNum"); // 클릭한 rdate 가져옴  ex) 2021-05-22
+			
+	                	alert(classNum);
+	                	alert(memNum);
+	                	
+	                });
+	                
 		      },
 	        error:function(){
 	      	  alert("error");
-	        }
-			           
+	        }         
 		});
 	}
 	// 강의신청 Pagenation
@@ -938,18 +952,95 @@ $(document).ready(function(){
 	      
 	      let sDate = year + "-" + two(month + "") + "-" + two(day + "");
 	      return sDate;
-	   }
+	}
 	   
-	   function two(msg){
-	      return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
-	   };
+   function two(msg){
+      return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
+   };
 	
 	$(".caSelectBtn").on("click", function () {
 		let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
 		// alert("caSelectBtn");
 		alert(classNum);
 	});
-})
+	
+	
+	function datePicker(startDate, endDate, noDateList){
+		// let noDateArray = ["2021-05-14","2021-05-15","2021-05-16"]
+		// alert(startDate + "," + endDate + "," + noDateArray);
+		
+		$.datepicker.setDefaults({
+	        dateFormat: 'yy-mm-dd',
+	        prevText: '이전 달',
+	        nextText: '다음 달',
+	        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	        showMonthAfterYear: true,
+	        yearSuffix: '년',
+	        monthRange:"06:07",
+	        minDate: new Date(startDate),
+	        maxDate: new Date(endDate),
+	       	beforeShowDay: function(date){
+		        let string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+		        return [ noDateList.indexOf(string) == -1 ]
+	        }
+	    });
+		
+		$( function() {
+			$( "#datepicker" ).datepicker();
+		});
+	}
+	
+	function comma(num){
+	    let len, point, str; 
+	       
+	    num = num + ""; 
+	    point = num.length % 3 ;
+	    len = num.length; 
+	   
+	    str = num.substring(0, point); 
+	    while (point < len) { 
+	        if (str != "") str += ","; 
+	        str += num.substring(point, point + 3); 
+	        point += 3; 
+	    } 
+	     
+	    return str;
+	}
+	
+	// 강의 신청 인원수 받기
+	function memberCounter(maxMember){
+		
+		$(function () {
+		    set_($('#maxMember'), maxMember);  //return 3 maximum digites
+	
+		    function set_(_this, max) {
+		        var block = _this.parent();
+	
+		        block.find(".increase").click(function () {
+		            var currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && (currentVal + 1) <= max) {
+		                _this.val(currentVal + 1);
+		            }
+		        });
+	
+		        block.find(".decrease").click(function () {
+		            var currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && currentVal != 0) {
+		                _this.val(currentVal - 1);
+		            }
+		        });
+		    }
+		});
+	}
+});
+</script>
+
+
+<script>
 
 // 이미지 프레임 선택 버튼
 $(document).ready(function(){
@@ -998,51 +1089,6 @@ function showLayer3(){
 		check3 = true;
 	}
 }
-
-		
-// 카카오 맵 검색용 버젼 
-/* 
-var mapContainer = document.getElementById('map'), 
-mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도생성 	    	
-var geocoder = new kakao.maps.services.Geocoder();     // 주소 -> 좌표 변환
-
-function searchClass() {
-    let keyword =  $('#keyword').val();
-    if (keyword == null || keyword == "") {
-		alert('주소를 입력하세요');
-        return false;
-    }
-    else{
-	    let locatoin = $('#keyword').val();
-		
-		//주소로 좌표를 검색합니다
-		geocoder.addressSearch(locatoin, function(result, status) {
-			
-			// 정상적으로 검색이 완료됐으면 
-			if (status === kakao.maps.services.Status.OK) {
-				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-				
-				// 마커 표시
-				var marker = new kakao.maps.Marker({map: map, position: coords});
-				
-				// 장소 설명
-				 var infowindow = new kakao.maps.InfoWindow({
-				   	 content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'});
-				     infowindow.open(map, marker);
-				     map.setCenter(coords);
-				     
-					// -------- 주소를 저장하는 코드 넣기 ---------
-			}
-			else{
-				alert('정확한 주소를 입력해주세요');
-				$('#keyword').val("");
-				$('#keyword').focus();
-			}
-		});    
-	}
-}
- */
  
 // 카카오맵 출력용 버젼
 var mapContainer = document.getElementById('map'), 
@@ -1081,6 +1127,43 @@ $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
 
+
+/*
+// 강의신청 Pagenation
+// pagination
+let pr = document.querySelector( '.paginate.left' );
+let pl = document.querySelector( '.paginate.right' );
+
+pr.onclick = slide.bind( this, -1 );
+pl.onclick = slide.bind( this, 1 );
+
+let index = 0, total = 6;
+
+function slide(offset) {
+	index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+	if(index == 0){
+		$(".left").hide();
+	}else if(index == 5){
+		$(".right").hide();
+	}else{
+		$(".left").show();
+		$(".right").show();
+	}
+	
+	document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+	
+	pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+	pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+} 
+
+slide(0); 
+
+*/
+
+// 페이지 로드시 리뷰 뿌려 줌
+$(document).ready(function(){
+	//alert("페이지 로딩 완!!");
+});
 //이미지 확대 모달창
 
 $(".image_hide_modal").hide();
@@ -1102,33 +1185,24 @@ $(".onedayClassImageBoxA").click(function(){
       };
 });
    
-
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
-
-$(".requestclose").click(function(){
-   $(".hide_modal").toggleClass("show_modal");   
-
     $('body').css("background-color","");
     $(".image_hide_modal").hide();
     modalCheck = true;
 });
 
-
 //별점
 // 초기값 5점으로 설정....근데 오류남 ㅜ
-var satisfy, cleanness, rComm, rLocation, accuracy;
 
+//var satisfy, cleanness, rComm, rLocation, accuracy;
 
-
-/* var starPoint=cleanness=safety=rComm=5;
-var rLocation;
-var accuracy =5; */
+var satisfy=cleanness=rComm=rLocation=accuracy=5;
 
    $(function() {
       $('#satisfy').barrating({
         theme: 'fontawesome-stars',
-        initialRating : 5
+        initialRating : 1
         	, onSelect: function(value, text, event){
         		// 별점 클릭 후 처리는 여기서 코드
         		// 선택한 별점 값을 value로 받음        	
@@ -1138,17 +1212,16 @@ var accuracy =5; */
       });
       $('#cleanness').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		cleanness = parseInt(value);
           	//	alert("cleanness: " + cleanness);
           	}
-        });
-      
+        });      
 
       $('#rComm').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		rComm = parseInt(value);
           	//	alert("rComm: " + rComm);
@@ -1156,7 +1229,7 @@ var accuracy =5; */
         });
       $('#rLocation').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		rLocation = parseInt(value);
           	//	alert("rLocation: " + rLocation);
@@ -1164,7 +1237,7 @@ var accuracy =5; */
         });
       $('#accuracy').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		accuracy = parseInt(value);
           	//	alert("accuracy: " + accuracy);
@@ -1252,6 +1325,9 @@ let name = login.userName;
    */
 //제출하기 버튼 클릭
 $("#reviewSubmit").click(function(){
+
+	alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
+	
 	  
 	  $.ajax({
 		 url:"http://localhost:3000/writeReview", 			
@@ -1262,24 +1338,34 @@ $("#reviewSubmit").click(function(){
 		 contentType: false, // 필수 
 		 cache: false,
 		// dataType:"json",
-		 success: function(){
-			 alert('컨트롤러 갔다옴');
+		 success: function(msg){
+			 if(msg == "uploaded"){
+			 alert('후기작성 완료!');
+			 location.reload();
+			 }else{
+				 alert("파일을 3개이하로 올려주세요");
+				 location.reload();
+			 }
 		 },
 		 error: function(){
 			 alert('에러ㅠ6ㅠ');
+			 location.reload();
 		 }
 
 	  });	  
-
-//리뷰 모달 창 컨트롤
-$(".allScheduleModalBtn").click(function(){
-	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
-});
-$(".schedule_modal_close").click(function(){
-	$(".schedule_hide_modal").toggleClass("schedule_show_modal");	
-
 });
 
+   
+//파일 첨부 
+
+
+	$(function(){
+		$('.upload_text').val('미리보여줄 텍스트.');
+		$('.input_file').change(function(){
+			var i = $(this).val();
+			$('.upload_text').val(i);
+		});
+	});
 </script>
 </body>
 </html>

@@ -248,7 +248,6 @@
 
 
 
-
 /*-------- 메인 컨텐츠 --------*/
 .onedayClassContentBox1{
 }
@@ -437,10 +436,15 @@
 
 /*---- 강의신청 ----*/
 .ocSubTitle2{
-	font-size:27px;
-	font-weight: 550;
-	margin-bottom:10px;
-	display: inline-block;
+	font-size: 27px;
+    font-weight: 550;
+    height: auto;
+    width: auto;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    padding-left: 40px;
 }
 .classApplication_Container{
 	height: 200px;
@@ -498,6 +502,17 @@
 	border:none;
 	border-radius: 5px;
 }
+
+.eaSelectBtn{
+	font-size:20px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#98A4A6;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
 .caSoldoutBtn{
 	font-size:20px;
 	margin-left:35px;
@@ -520,34 +535,82 @@
 	background-color:#F5F2F5;
 }
 
-.schedule_Modal_Container{
-	z-index:1;
-	position:fixed;
- 	top:120px;
-	left:760px; 
-	border-radius:20px;
-	box-shadow: 3px 2px 5px #66676B;
-	background-color:#F5F2F5;
-	height:660px;
-	width:400px;
-}
-
-.schedule_Modal_Content{
-	height:600px;
-	width:400px;
-	background-color:#F5F2F5;
+.allScheduleList{
+	width: 100%;
+	text-align: center;
 	overflow: scroll;
+	overflow-x: hidden;
+	scroll-snap-type: y mandatory;
+	height: 500px;
 }
 
-.schedule_hide_modal{
-   opacity: 0;
-   visibility: hidden;
-}
-.schedule_show_modal {
-    opacity: 1;
-    visibility: visible;
+.clsSchedule{
+	text-align: left;
+	margin: 10px 0px 0px 40px;
+	padding-left: 30px;
+	width: 700px;
+	height: 150px;
+	border-radius: 20px;
+	border: 2px solid #F5F2F5;
 }
 
+.csDate{
+	margin-bottom:-6px;
+	font-size:30px;
+	font-weight: 600;
+}
+
+.csTime{
+	
+}
+
+.csMem{
+	
+}
+
+.csCoin{
+	
+}
+
+.csPrice{
+	
+}
+
+.csSelectBtn{
+	font-size:20px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+
+.memCounter{
+	height: auto;
+    margin-left: 20px;
+    padding: 5px;
+    position: relative;
+    float: left;
+}
+
+fieldset, input[type="button"] {
+    border: 0;
+}
+input[type="button"] {
+    background-color: #F5F2F5;
+    color: #000;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+input[type="text"] {
+    border: 1px solid #F4F3F3;
+    height: 30px;
+    width: 50px;
+}
 /*----------- 5027 이미지 클릭시 모달창 -----*/
 
 
@@ -904,8 +967,29 @@ div.OCSubmitBtn:hover {
 	background-color:#F5F2F5;
 }
 
-
+/*---------------후기 모달------------------*/
+.rating{
+	font-size: 20px;	
+    margin-top: 25px;
+    font-family: 'Nanum Gothic Coding', monospace;
+	
 }
+.reviewTitle{
+	font-size: 30px;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+.modal-title{
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+.subTitle{
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+/*-----------------여기까지 후기모달---------------------*/
+
+
 
 
 #_duration{
