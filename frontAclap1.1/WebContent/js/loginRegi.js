@@ -82,7 +82,7 @@ $(document).ready(function(){
 					} 
 				},
 				error:function(){
-					alert('ajax error');
+					alert('login ajax error');
 				}
 			});
 		}
@@ -399,7 +399,7 @@ $("#_checkNickName").change(function() {
 		let nickName = $("#_nickName").val();
 		
 		$.ajax({
-			url:"http://localhost:3000/checkNickName", 
+			url:"http:/localhost:3000/checkNickName", 
 			type:'post',
 			data:{nickName:nickName},
 			success:function( data ){

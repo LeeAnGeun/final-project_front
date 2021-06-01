@@ -19,7 +19,7 @@
 <!-- 카카오맵 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92928f9e601c2b81c37ec8882d4901ac&libraries=services"></script>
 <!-- 커스텀 css -->
-<link rel="stylesheet" href="../css/onedayClassDetail.css">
+<link rel="stylesheet" href="../css/onedayClassWrite.css">
 <!-- 커스텀 script  -->
 <script src="../js/onedayClassWrite.js"></script>
 
@@ -49,12 +49,12 @@
  	 &nbsp;작<br>&nbsp;성<br>&nbsp;완<br>&nbsp;료</h1>
  </div>
 
- 
 
 <div class='onedayClassContaier'>
 <form id='onedayClassWriteFrm'>
 <!-- hidden input -->
 <input type='hidden' name='masterNum' id='_masterNum'>
+<input type='hidden' name='instructor' id='_instructor'>
 <input type='hidden' name='layerSelect' id='_layerSelect' value='A'>
 <input type='hidden' name='location' id='_location'>
 <input type='hidden' name='aboutMe' id='_aboutMe'>
@@ -87,8 +87,7 @@
 		<br><br><br>
 		<div class='ExplicateText'>2. 클래스의 제목과 간략한 수업 소개를 작성해주세요</div>
 		<input type='text' name='title' placeholder="제목" id='_OCtitleInput'>
-		<textarea name='infomation' id='_OCinfomation'>간략한 수업 소개</textarea>
-		<div class='hrMargin'><hr></div>
+		<textarea name='information' id='_OCinfomation'>간략한 수업 소개</textarea>
 	</div>
 	
 	
@@ -244,7 +243,6 @@
 				</div>
 			</div> 
 		</div>
-		<div class='hrMargin'><hr></div>
  	</div>
 
 	
@@ -294,15 +292,15 @@
 		<span class='OCdateText'>No Class Day of the week : </span> 
 		&nbsp;&nbsp;&nbsp;
 		<span class='noClassBox'>
-			<input type="checkbox" name="noClass" value="SUN">&nbsp;SUN &nbsp;&nbsp;
-			<input type="checkbox" name="noClass" value="MON">&nbsp;MON &nbsp;&nbsp;
-			<input type="checkbox" name="noClass" value="TUS">&nbsp;TUS &nbsp;&nbsp;
-			<input type="checkbox" name="noClass" value="WED">&nbsp;WED &nbsp;&nbsp; 
-			<input type="checkbox" name="noClass" value="THU">&nbsp;THU &nbsp;&nbsp;
-			<input type="checkbox" name="noClass" value="FRI">&nbsp;FRI &nbsp;&nbsp;
-			<input type="checkbox" name="noClass" value="SAT">&nbsp;SAT &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="0">&nbsp;SUN &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="1">&nbsp;MON &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="2">&nbsp;TUS &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="3">&nbsp;WED &nbsp;&nbsp; 
+			<input type="checkbox" name="noClass" value="4">&nbsp;THU &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="5">&nbsp;FRI &nbsp;&nbsp;
+			<input type="checkbox" name="noClass" value="6">&nbsp;SAT &nbsp;&nbsp;
 		</span>	
-		<div class='hrMargin'><hr></div>
+		<br><br><br><br><br>
 	</div>
 
 	
@@ -317,8 +315,7 @@
 			<input type="text" id="keyword" class="placeSearch" placeholder="정확한 주소를 입력해주세요">
 			<button class='placeBtn' type="submit">검색</button>  
 		</form>
-		<div id="map" style="width:100%;height:450px; border-radius:20px"></div>	
-		<div class='hrMargin'><hr></div>
+		<div id="map" style="width:100%;height:450px; border-radius:20px; margin-bottom:100px;"></div>	
 	</div>
 	
 	
@@ -333,13 +330,12 @@
 			<span class='ocSubTitle' id='teacherTitle'></span><br>
 			<span class='ocTeacherMail'></span>
 		</div>
-		<br><br><br>
+		<br><br><br><br>
 		<textarea id='_aboutMeInput'>강사 소개글을 작성해주세요</textarea>
 		
 	
 		<div class='ExplicateText'>(선택)유투브 링크를 입력해주세요</div>
 		<input type='text' placeholder="유투브 링크" id='_youtubeLinkInput'>
-		<div class='hrMargin'><hr></div>
 	</div>
 	
 </div>
@@ -389,7 +385,6 @@ function searchClass() {
 		});    
 	}
 }
-
 </script>	
 
 </body>
