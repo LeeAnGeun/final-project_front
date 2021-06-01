@@ -23,9 +23,15 @@
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+
 <!-- 커스텀 css -->
 <link rel="stylesheet" href="../css/onedayClassDetail.css">
 <!-- 카카오맵 -->
@@ -42,6 +48,7 @@
 
 <div id='naviBar'></div>
 <br><br><br>
+
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
 	
@@ -530,7 +537,7 @@
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content"> <!-- 크기에맞게 자동 조절 style="max-width: 100%; width: auto; display: table; -->
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Review</h5>
+	        <h4 class="modal-title" id="exampleModalLabel"">Review</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -541,43 +548,45 @@
 	      		<input type="hidden" name="memNum" value="1">
 	      		<input type="hidden" name="name" value="이민형">
 	      		<input type="hidden" name="classNum" value="1">
-	      			<b>만족도</b>
-	       		<select id="satisfy" name="satisfy">	       		
-					<option value="1">1</option>
+	      		<span class="reviewTitle"><b>참여하신 클래스는 어떠셨나요?</b></span><br>
+	      		<span class="subTitle">회원님이 남겨주신 후기는 다른분들에게 큰 도움이 됩니다.</span><hr>
+	      			<p class ="rating"><b>만족도</b></p>
+	       		<select id="satisfy" name="satisfy" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>청결도</b>
+					<p class ="rating"><b >청결도</b></p>
 	       		<select id="cleanness" name="cleanness">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>의사소통</b>
+					<p class ="rating"><b>의사소통</b></p>
 	       		<select id="rComm" name="rComm">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>위치성</b>
+					<p class ="rating"><b>위치성</b></p>
 	       		<select id="rLocation" name="rLocation">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
-				</select>
+				</select><hr>
 				
-					<b>정확성</b>
+					<p class ="rating" style="margin-bottom: 10px;"><b>정확성</b></p>
 	       		<select id="accuracy" name="accuracy">	       		
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -585,20 +594,26 @@
 					<option value="4">4</option>
 					<option value="5">5</option>
 				</select>
-				<hr>
-				<b>후기 내용</b><br>
+				<br><hr>
+				<p class="rating"><b>후기 내용</b></p><br>
 				
-				<textarea rows="10" cols="60" id="rContent" name="rContent"></textarea><br>
-				<b>사진 업로드</b><br>
+				<textarea class="form-control"  rows="10" id="rContent" name="rContent"></textarea><br>
+				<label className="input-file-button" for="input-file" >사진 업로드</label><br>
+				
+				
+				
 				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">
 				 
+				 <br> 
+			
+ 			
 				</form>
 				 
 				 
         <div id="preview"></div>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="submit" class="btn btn-primary" id="reviewSubmit">제출</button>
+	        <button type="submit" class="btn btn-dark" id="reviewSubmit">제출</button>
 	      </div>
 	    </div>
 	  </div>
@@ -633,8 +648,126 @@
     </div>
     </div>
 	<!--Slides-->
-	<div class="carousel-inner classScheduleList" role="listbox">
+	<div class="carousel-inner" role="listbox">
+	<!-- 첫번째 슬라이드 -->
+	<div class="carousel-item active">
+	<div class='classApplication_Container'>
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 1일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 2일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 3일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 4일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 5일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+	</div>
+	</div>
 	
+	<!-- 두번째 슬라이드 -->
+	<div class="carousel-item">
+	<div class='classApplication_Container'>
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 6일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 7일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 8일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 9일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+		
+		<div class='classApplicatoinBox'>
+			<div class='caDate'>5월 10일</div>
+			<div class='caTime'>오전 11시 30분</div>
+			<div class='caMem'>예약 가능 인원: 5명</div>
+			<div class='coinNprice'>
+				<i class="fa fa-donate"></i>
+				<span class='caPrice'>10,000point</span>
+			</div>
+			<input type='button' class='caSelectBtn' value='신청'>
+		</div>
+	</div>
+	</div>
 	</div>
 	
 	<!-- Slider Controls -->
@@ -642,17 +775,26 @@
 	   <li data-target="#s_new_slider" data-slide-to="0" class="active"></li>
        <li data-target="#s_new_slider" data-slide-to="1"></li>
 	</div>
-	
+
 	<div align=center>
 		<button type='button' class='allScheduleModalBtn' data-toggle="modal" onclick="" data-target="#allSchedule">일정 전체보기</button>
 	</div>
+
 	</div>
 	
 	<div class='hrMargin'><hr></div>
 	
 </div>
-
 <div id='footer'></div>	
+
+
+<script>
+$(document).ready(function(){
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+})
+
+
 
 <!-- 신청 결제 모달 -->
 <div class="modal fade" style="z-index: 2000" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1024,6 +1166,7 @@ $(document).ready(function(){
 
 
 <script>
+
 // 이미지 프레임 선택 버튼
 $(document).ready(function(){
 	$(".onedayClassImageBoxB").hide();
@@ -1109,6 +1252,43 @@ $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
 });
 
+
+/*
+// 강의신청 Pagenation
+// pagination
+let pr = document.querySelector( '.paginate.left' );
+let pl = document.querySelector( '.paginate.right' );
+
+pr.onclick = slide.bind( this, -1 );
+pl.onclick = slide.bind( this, 1 );
+
+let index = 0, total = 6;
+
+function slide(offset) {
+	index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+	if(index == 0){
+		$(".left").hide();
+	}else if(index == 5){
+		$(".right").hide();
+	}else{
+		$(".left").show();
+		$(".right").show();
+	}
+	
+	document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+	
+	pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+	pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+} 
+
+slide(0); 
+
+*/
+
+// 페이지 로드시 리뷰 뿌려 줌
+$(document).ready(function(){
+	//alert("페이지 로딩 완!!");
+});
 //이미지 확대 모달창
 
 $(".image_hide_modal").hide();
@@ -1130,33 +1310,24 @@ $(".onedayClassImageBoxA").click(function(){
       };
 });
    
-
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
-
-$(".requestclose").click(function(){
-   $(".hide_modal").toggleClass("show_modal");   
-
     $('body').css("background-color","");
     $(".image_hide_modal").hide();
     modalCheck = true;
 });
 
-
 //별점
 // 초기값 5점으로 설정....근데 오류남 ㅜ
-var satisfy, cleanness, rComm, rLocation, accuracy;
 
+//var satisfy, cleanness, rComm, rLocation, accuracy;
 
-
-/* var starPoint=cleanness=safety=rComm=5;
-var rLocation;
-var accuracy =5; */
+var satisfy=cleanness=rComm=rLocation=accuracy=5;
 
    $(function() {
       $('#satisfy').barrating({
         theme: 'fontawesome-stars',
-        initialRating : 5
+        initialRating : 1
         	, onSelect: function(value, text, event){
         		// 별점 클릭 후 처리는 여기서 코드
         		// 선택한 별점 값을 value로 받음        	
@@ -1166,17 +1337,16 @@ var accuracy =5; */
       });
       $('#cleanness').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		cleanness = parseInt(value);
           	//	alert("cleanness: " + cleanness);
           	}
-        });
-      
+        });      
 
       $('#rComm').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		rComm = parseInt(value);
           	//	alert("rComm: " + rComm);
@@ -1184,7 +1354,7 @@ var accuracy =5; */
         });
       $('#rLocation').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		rLocation = parseInt(value);
           	//	alert("rLocation: " + rLocation);
@@ -1192,7 +1362,7 @@ var accuracy =5; */
         });
       $('#accuracy').barrating({
           theme: 'fontawesome-stars',
-          initialRating : 5
+          initialRating : 1
           	, onSelect: function(value, text, event){
           		accuracy = parseInt(value);
           	//	alert("accuracy: " + accuracy);
@@ -1280,6 +1450,9 @@ let name = login.userName;
    */
 //제출하기 버튼 클릭
 $("#reviewSubmit").click(function(){
+
+	alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
+	
 	  
 	  $.ajax({
 		 url:"http://localhost:3000/writeReview", 			
@@ -1290,18 +1463,34 @@ $("#reviewSubmit").click(function(){
 		 contentType: false, // 필수 
 		 cache: false,
 		// dataType:"json",
-		 success: function(){
-			 alert('컨트롤러 갔다옴');
+		 success: function(msg){
+			 if(msg == "uploaded"){
+			 alert('후기작성 완료!');
+			 location.reload();
+			 }else{
+				 alert("파일을 3개이하로 올려주세요");
+				 location.reload();
+			 }
 		 },
 		 error: function(){
 			 alert('에러ㅠ6ㅠ');
+			 location.reload();
 		 }
 
 	  });	  
-
-});
 });
 
+   
+//파일 첨부 
+
+
+	$(function(){
+		$('.upload_text').val('미리보여줄 텍스트.');
+		$('.input_file').change(function(){
+			var i = $(this).val();
+			$('.upload_text').val(i);
+		});
+	});
 </script>
 </body>
 </html>

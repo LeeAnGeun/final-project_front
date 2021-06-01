@@ -967,8 +967,29 @@ div.OCSubmitBtn:hover {
 	background-color:#F5F2F5;
 }
 
-
+/*---------------후기 모달------------------*/
+.rating{
+	font-size: 20px;	
+    margin-top: 25px;
+    font-family: 'Nanum Gothic Coding', monospace;
+	
 }
+.reviewTitle{
+	font-size: 30px;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+.modal-title{
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+.subTitle{
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+/*-----------------여기까지 후기모달---------------------*/
+
+
 
 
 #_duration{
