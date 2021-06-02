@@ -499,8 +499,31 @@
 	font-size:15px;
 	font-weight: 500;
 }
+
 .caSelectBtn{
-	font-size:20px;
+	font-size:18px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+
+.cbSelectBtn{
+	font-size:18px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+
+.ccSelectBtn{
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#FE887A;
@@ -511,7 +534,7 @@
 }
 
 .eaSelectBtn{
-	font-size:20px;
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#98A4A6;
@@ -521,7 +544,7 @@
 	border-radius: 5px;
 }
 .caSoldoutBtn{
-	font-size:20px;
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#98A4A6;
@@ -616,7 +639,6 @@ input[type="button"] {
 input[type="text"] {
     border: 1px solid #F4F3F3;
     height: 30px;
-    width: 50px;
 }
 /*----------- 5027 이미지 클릭시 모달창 -----*/
 

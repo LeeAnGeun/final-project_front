@@ -20,10 +20,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
@@ -42,6 +42,18 @@
 <!-- bar-rating -->
 <link rel="stylesheet" href="../css/fontawesome-stars.css">
 <script type="text/javascript" src="../js/jquery.barrating.min.js"></script> 
+
+<script>
+let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+    return paramPair.split(/=(.+)?/).slice(0, 2);
+}).reduce(function(obj, pairArray) {
+    obj[pairArray[0]] = pairArray[1];
+    return obj;
+}, {});
+
+let seq = urlParams.seq;
+alert("seq" + seq);
+</script>
 
 </head>
 <body>
@@ -509,9 +521,9 @@
 	<div class="memCounter">
 		<form class="memCounterFrm">
 			<fieldset>
-		        <input type="button" value="-" class="decrease" />
-		        <input type="text" size="1" id="maxMember" value="1" />
-		        <input type="button" value="+" class="increase" />
+		        <input type="button" value="-" class="decrease">
+		        <input type="text" size="1" id="maxMember" value="1">
+		        <input type="button" value="+" class="increase">
 	   	 	</fieldset>
 		</form>
 	</div>
@@ -530,126 +542,9 @@
     </div>
     </div>
 	<!--Slides-->
-	<div class="carousel-inner" role="listbox">
-	<!-- 첫번째 슬라이드 -->
-	<div class="carousel-item active">
-	<div class='classApplication_Container'>
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 1일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 2일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 3일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 4일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 5일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-	</div>
-	</div>
+	<div class="carousel-inner classScheduleList" role="listbox">
 	
-	<!-- 두번째 슬라이드 -->
-	<div class="carousel-item">
-	<div class='classApplication_Container'>
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 6일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 7일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 8일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 9일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-		
-		<div class='classApplicatoinBox'>
-			<div class='caDate'>5월 10일</div>
-			<div class='caTime'>오전 11시 30분</div>
-			<div class='caMem'>예약 가능 인원: 5명</div>
-			<div class='coinNprice'>
-				<i class="fa fa-donate"></i>
-				<span class='caPrice'>10,000point</span>
-			</div>
-			<input type='button' class='caSelectBtn' value='신청'>
-		</div>
-	</div>
-	</div>
+	
 	</div>
 	
 	<!-- Slider Controls -->
@@ -670,14 +565,6 @@
 <div id='footer'></div>	
 
 
-<script>
-$(document).ready(function(){
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
-})
-
-
-
 <!-- 신청 결제 모달 -->
 <div class="modal fade" style="z-index: 2000" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -687,27 +574,28 @@ $(document).ready(function(){
     </div>
 </div>
 
+<!-- 일정 전체보기 Modal -->
 <!--allSchedule Modal -->
 <div class="modal fade allScheduleModal" id="allSchedule" tabindex="-1" aria-labelledby="allScheduleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="allScheduleModalLabel" style="text-align: center;">일정 전체보기</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" onclick="allScheduleHide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body oneClsSche">
       	<div>
-		 <font style="width: 15%; float: left;">Date: <input type="text" id="datepicker"></font>
-		<form  class="memCounterFrm">
+		 <font style="float: left;">Date: <input type="text" id="datepicker"></font>
+		<form  class="scMemCounterFrm" style="padding-left: 20px; float: left;">
 			<fieldset>
-		        <input type="button" value="-" class="decrease" />
-		        <input type="text" size="1" id="maxMember" value="1" />
-		        <input type="button" value="+" class="increase" />
+		        <input type="button" value="-" class="scDecrease" />
+		        <input type="text" size="1" id="scMaxMember" value="1" />
+		        <input type="button" value="+" class="scIncrease" />
 	   	 	</fieldset>
 		</form>
-
+		<button type='button' class='ccSelectBtn' style="width: 15%">신청</button>
 		</div>
       	 <hr>
       	 <div class="allScheduleList">
@@ -717,11 +605,7 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
-		
-
-<!-- 일정 전체보기 Modal -->
-
-		
+			
 <script>
 // let login = sessionStorage.getItem("login");
 // let json = JSON.parse(login); // String -> json 
@@ -797,7 +681,7 @@ $(document).ready(function(){
 						let sbtn = "";
 						
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                     	sbtn += "<button type='button' class='caSelectBtn' cDate='" + rdate + "'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    	noDateArray[z] = rdate;
@@ -839,7 +723,7 @@ $(document).ready(function(){
 						
 						let sbtn = "";
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    }
@@ -859,39 +743,202 @@ $(document).ready(function(){
 					
 					datePicker(startDate, endDate, noDateArray);
 					
-					let myPoint = comma(10000-(clist[0].price));
-					$("#requestPage").remove();
+					memberCounter(clist[0].duration);
+	                
 					
-					let src3 = "<div class='modal-body' id='requestPage'>"
-							 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
-							 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
-							 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
-							 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
-							 	+ "<span class='theme-color'>결제 내역</span>"
-							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
-							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(clist[0].price) + "point</span> </div>"
-							 	+ "<div class='mb-3'>"
-							 		+ "<hr class='new1'>"
-							 	+ "</div>"
-							 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + myPoint + "point</span> </div>"
-							 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' id='participate'>참여하기</button> </div>"
-							 + "</div>"
-							 + "</div>";
 	                
-	                $("._requestPage").append(src3);
-	                
-	                memberCounter(clist[0].duration);
-	                
-	                $("#participate").on("click", function(){
-	                //	alert("참여하니?");
-	                	let classNum = $(this).attr("classNum"); // 클릭한 classNum 가져옴
-						let memNum = $(this).attr("memNum"); // 클릭한 rdate 가져옴  ex) 2021-05-22
-			
-	                	alert(classNum);
-	                	alert(memNum);
+					$(".caSelectBtn").on("click", function(){
+	                	let joinNum = $("#maxMember").val(); // 사용자가 신청한 인원
+	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = 10000-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
+	                	if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	                	
+	                	for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+	                	$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" +  comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+								 + "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	                
+	                	$("#requestModal").modal('show');
+	                	
+	                	participate();
 	                });
 	                
+	               	$(".cbSelectBtn").on("click", function(){
+	               		let joinNum = $("#scMaxMember").val(); // 사용자가 신청한 인원
+	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = 10000-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	
+	               		if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	               		
+	               		for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+						$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+							 	+ "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	           
+	               		$("#requestModal").modal('show');
+	               		
+	               		participate();
+	                });
+	                
+	                $(".ccSelectBtn").on("click", function(){
+	                	let joinNum = $("#scMaxMember").val();	// 사용자가 신청한 인원
+	                	let cdate = $("#datepicker").val();	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = 10000-(clist[0].price*joinNum);	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	
+	                	if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	   					else if(cdate == ""){
+	                		alert("날짜를 선택하여 주세요");
+	                		return;
+	                	}
+	                	
+	                	for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+						$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+								 + "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	                	
+	                	$("#requestModal").modal('show');
+	                	
+	                	participate();
+	                });
+	                
+	                function participate(){
+		                $("#participate").on("click", function(){
+		                	let classNum = $(this).attr("classNum"); // 클릭한 classNum
+							let memNum = $(this).attr("memNum"); 	
+		                	let cdate = $(this).attr("cdate");
+							let myPoint = Number($(this).attr("myPoint")); // 결제 후 금액
+							let rPoint = Number($(this).attr("rPoint"));	// 결제 한 금액
+							let joinNum = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
+
+							// 자신이 가진 금액이 더 적을 경우
+							if(myPoint < 0){
+								myFunc();
+								return;
+							}
+							
+							$.ajax({
+								url:"http://localhost:3000/participate", 
+							    type:'post',
+							    data:{classNum:classNum, memNum:memNum, cDate:cdate, name:'홍길이', rPoint:rPoint, joinNum:joinNum},
+							    success: function(mag){
+							    	alert(mag);
+							    	$("#requestModal").modal('hide');
+								    $("#allSchedule").modal('hide');
+								    location.reload(true);
+							    },
+							    error: function(){
+							    	alert('error');
+							    }
+							});
+							
+		                });
+	                }
 		      },
 	        error:function(){
 	      	  alert("error");
@@ -965,13 +1012,6 @@ $(document).ready(function(){
       return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
    };
 	
-	$(".caSelectBtn").on("click", function () {
-		let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
-		// alert("caSelectBtn");
-		alert(classNum);
-	});
-	
-	
 	function datePicker(startDate, endDate, noDateList){
 		// let noDateArray = ["2021-05-14","2021-05-15","2021-05-16"]
 		// alert(startDate + "," + endDate + "," + noDateArray);
@@ -1022,28 +1062,63 @@ $(document).ready(function(){
 	function memberCounter(maxMember){
 		
 		$(function () {
-		    set_($('#maxMember'), maxMember);  //return 3 maximum digites
-	
+		    set_($('#maxMember'), maxMember);  
+		    set_($('#scMaxMember'), maxMember);  
+		    
 		    function set_(_this, max) {
-		        var block = _this.parent();
-	
+		        let block = _this.parent();
+		        
 		        block.find(".increase").click(function () {
-		            var currentVal = parseInt(_this.val());
+		            let currentVal = parseInt(_this.val());
 		            if (currentVal != NaN && (currentVal + 1) <= max) {
 		                _this.val(currentVal + 1);
 		            }
 		        });
 	
 		        block.find(".decrease").click(function () {
-		            var currentVal = parseInt(_this.val());
+		            let currentVal = parseInt(_this.val());
 		            if (currentVal != NaN && currentVal != 0) {
 		                _this.val(currentVal - 1);
 		            }
 		        });
+		        
+		        block.find(".scIncrease").click(function () {
+		            let currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && (currentVal + 1) <= max) {
+		                _this.val(currentVal + 1);
+		            }
+		        });
+	
+		        block.find(".scDecrease").click(function () {
+		            let currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && currentVal != 0) {
+		                _this.val(currentVal - 1);
+		            }
+		        });
+		        
 		    }
 		});
 	}
+	
+	function myFunc(){
+		   let test = confirm('금액이 모잘라요...결제를 하시겠습니까?');
+		   if(test){		     
+		      $("#requestModal").modal('hide');
+		      $("#allSchedule").modal('hide');
+		      $("#staticBackdrop").modal('show');
+		   }
+		   else{
+		      $("#requestModal").modal('hide');
+		      $("#allSchedule").modal('hide');
+		      $("#staticBackdrop").modal('show');
+		   }
+	}
+		
 });
+
+function allScheduleHide(){
+	$("#allSchedule").modal('hide');
+}
 </script>
 
 

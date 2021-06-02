@@ -596,8 +596,8 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				startDD = startDD.substring(0,10);
 				//<img class='classImg' src='"+val.image1+"' alt='no image'>"
 				app = "<div class='classCard'>"
-				//app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
-				app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
+				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
+				//app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
 				app += "<a href=# class='classDetailNum' value='"+val.classNum+"'><h4><b>" + val.title + "</b></h4></a>";
@@ -606,6 +606,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				app += "</div></div>";
 				
 			
+
 				
 				if(pcVal==''){
 					$(".classListTableAll").append(app);
@@ -614,6 +615,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 					
 					$('.classCard').slice(0, 4).show();
 					
+
 					
 					$(".seeMore").on("click", function(e) {
 				    	e.preventDefault();
@@ -622,6 +624,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				     	 $(".seeMore").fadeOut("slow");
 				     	
 				    	}
+
 				   		
 					});
 					
@@ -725,9 +728,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 //클래스 클릭시 디테일로~
 $(document).on("click", ".classDetailNum", function () { 
 	var tseq=$(this).attr('value');
-	alert('click');
-	alert(tseq);
-
+  location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq;
 
 });
 
