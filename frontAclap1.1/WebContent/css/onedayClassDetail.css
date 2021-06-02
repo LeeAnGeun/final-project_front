@@ -408,6 +408,13 @@
     display: none;
 }
 
+/*-----리뷰 모달창 수정삭제 버튼------*/
+.rBtn{
+	float: right;
+    margin-right: 10px;
+	
+}
+
 
 /* 별점 */
 .rating-star > input { display: none; } 
