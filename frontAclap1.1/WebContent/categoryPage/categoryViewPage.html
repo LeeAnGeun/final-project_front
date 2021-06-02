@@ -606,6 +606,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				app += "</div></div>";
 				
 			
+
 				
 				if(pcVal==''){
 					$(".classListTableAll").append(app);
@@ -614,6 +615,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 					
 					$('.classCard').slice(0, 4).show();
 					
+
 					
 					$(".seeMore").on("click", function(e) {
 				    	e.preventDefault();
@@ -622,6 +624,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				     	 $(".seeMore").fadeOut("slow");
 				     	
 				    	}
+
 				   		
 					});
 					
@@ -725,7 +728,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 //클래스 클릭시 디테일로~
 $(document).on("click", ".classDetailNum", function () { 
 	var tseq=$(this).attr('value');
-	location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq;
+  location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq;
 
 });
 
