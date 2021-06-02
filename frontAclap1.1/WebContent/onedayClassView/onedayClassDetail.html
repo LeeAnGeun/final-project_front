@@ -43,6 +43,18 @@
 <link rel="stylesheet" href="../css/fontawesome-stars.css">
 <script type="text/javascript" src="../js/jquery.barrating.min.js"></script> 
 
+<script>
+let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+    return paramPair.split(/=(.+)?/).slice(0, 2);
+}).reduce(function(obj, pairArray) {
+    obj[pairArray[0]] = pairArray[1];
+    return obj;
+}, {});
+
+let seq = urlParams.seq;
+alert("seq" + seq);
+</script>
+
 </head>
 <body>
 

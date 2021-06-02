@@ -603,9 +603,7 @@ function onedayClassWriteAf(){
 	$("#_youtubeLink").val($("#_youtubeLinkInput").val());
 	$("#_secondaryCategory").val(secondaryCategory);
 	$("#_noClassDayOfWeek").val(noClassDayOfWeek);
-	
-	alert(noClassDayOfWeek);
-	
+		
 	// 오늘 날짜 구하기
 	let date = new Date();
 	let today = dateFormat(date);
@@ -632,7 +630,6 @@ function onedayClassWriteAf(){
 			 $('#_ocImgA3').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgA4').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgA5').attr('src') == '../images/onedayClassImg2.png')){
-			 alert('A');
 		     alert('(Chapter2) 이미지를 모두 입력해주세요');		
 	}
 	else if($('#_layerSelect').val()=='B' && (
@@ -641,7 +638,6 @@ function onedayClassWriteAf(){
 			 $('#_ocImgB3').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgB4').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgB5').attr('src') == '../images/onedayClassImg2.png')){
-			 alert('B');
 		     alert('(Chapter2) 이미지를 모두 입력해주세요');		
 	}
 	else if($('#_layerSelect').val()=='C' && (
@@ -650,7 +646,6 @@ function onedayClassWriteAf(){
 			 $('#_ocImgC3').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgC4').attr('src') == '../images/onedayClassImg2.png' ||
 			 $('#_ocImgC5').attr('src') == '../images/onedayClassImg2.png')){
-			 alert('C');
 		     alert('(Chapter2) 이미지를 모두 입력해주세요');
 	}
 	else if($('#_OCcontent').val() == ''){
