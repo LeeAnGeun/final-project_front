@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+
+
+	/* 날씨정보 */
+.wtitle{
+	font-size: 14px;
+  text-align: center;
+}
+.content-slider {
+  width: 100%;
+  height: 360px;
+}
+.slider {
+    height: 80px;
+    width: 180px;
+    margin: auto 0;
+    overflow: visible;
+    position: relative;
+}
+.mask{
+    overflow: hidden;
+    height: 100px;
+}
+.slider ul.wul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.slider li {
+    width: 120px;
+    height: 80px;
+    position: absolute;
+    list-style: none;
+    
+}
+.slider .quote {
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<h1 class="wtitle">오늘의 날씨</h1>
+<div class="content-slider">
+
+	<div class="slider">
+	</div>
+</div>
+
+
+<script type="text/javascript">
+//--------------- 메인클래스 크롤링 화면 관련 js ----------------//
+getWeatherData();
+setInterval(function(){getWeatherData()},60000);
+
+function getWeatherData() {
+	//alert('날씨정보 가져오기');
+	
+	$.ajax({
+		url:"http://localhost:3000/weather",
+		type:"get",
+		success:function( list ){
+			//alert('success');
+			$(".wul").remove();
+			//alert(list);
+			let atab = "<ul class='wul'>";
+			$.each(list, function (i,	 val) {
+				atab += "<li class='anim"+i+"'><div class='quote'>"
+						+ "<p>"+ val.cities + "시 <br>" + val.temperature + "도 "+ val.winfo +"</p>"+ "</div></li>";
+					
+			});
+			atab += "</ul>";
+			
+			$("div.slider").append(atab);
+			weatherShowOff();
+			
+		},
+		error:function(){
+			alert('error');
+		}
+			
+		});
+}
+
+function weatherShowOff() {
+	$(".anim0").show();$(".anim1").hide();$(".anim2").hide();$(".anim3").hide();$(".anim4").hide();$(".anim5").hide();
+	$(".anim6").hide();$(".anim7").hide();$(".anim8").hide();$(".anim9").hide();$(".anim10").hide();$(".anim11").hide();
+	
+
+	
+
+		setTimeout(function(){ $(".anim11").hide(); $(".anim0").show(); }, 0);
+
+		setTimeout(function(){ $(".anim0").hide(); $(".anim1").show();  }, 5000);
+
+		setTimeout(function(){ $(".anim1").hide(); $(".anim2").show(); }, 10000);
+
+		setTimeout(function(){ $(".anim2").hide(); $(".anim3").show();  }, 15000);
+
+		setTimeout(function(){ $(".anim3").hide(); $(".anim4").show(); }, 20000);
+
+		setTimeout(function(){ $(".anim4").hide(); $(".anim5").show(); }, 25000);
+
+		setTimeout(function(){ $(".anim5").hide(); $(".anim6").show();  }, 30000);
+
+		setTimeout(function(){ $(".anim6").hide(); $(".anim7").show();  }, 35000);
+
+		setTimeout(function(){ $(".anim7").hide(); $(".anim8").show(); }, 40000);
+
+		setTimeout(function(){ $(".anim8").hide(); $(".anim9").show();  }, 45000);
+
+		setTimeout(function(){ $(".anim9").hide(); $(".anim10").show();  }, 50000);
+
+		setTimeout(function(){ $(".anim10").hide(); $(".anim11").show();  }, 55000);
+
+	
+};
+</script>
+</body>
+</html>
