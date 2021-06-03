@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 블로그 자료 */
+.btitle{
+	font-size: 14px;
+  text-align: center;
+}
+.content-slider3 {
+  width: auto;
+  height: auto;
+}
+.slider3 {
+    height: auto;
+    width: auto;
+    margin: auto 0;
+    
+    position: relative;
+}
+
+.slider3 ul.bul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+	position: absolute;
+	
+}
+.slider3 li {
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    float: left;
+    list-style: none;
+    
+}
+.slider3 .quote3 {
+    font-size: 14px;
+    
+    margin: 0 auto;
+	padding: 0;
+	
+	width: 180px;
+	
+   
+}
+a.blogContent{
+	
+	z-index: 10;
+}
+
+
+
+</style>
+</head>
+<body>
+<h1 class="btitle">블로그정보</h1>
+<div id="content-slider3">
+	<div class="slider3">
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+	
+	
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login);
+	let yourSeq = json.memNum;
+	
+	getYourInterest(yourSeq);
+	
+	setInterval(function(){getYourInterest(yourSeq)},15000);
+	
+	
+	
+function getYourInterest(yourSeq) {
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login);
+	
+	$.ajax({
+		url:"http://localhost:3000/getYourInterest",
+		type:"get",
+		data: {seq:yourSeq},
+		success:function(data){
+			//alert('success');
+			//alert(data);
+			
+			getBlogData(data);
+			
+		},
+		error:function(){
+			alert('error');
+		}
+		
+	});
+}
+	
+	
+	
+	
+function getBlogData(data) {
+		$.ajax({
+			url:"http://localhost:3000/blog",
+			type:"get",
+			data: {keyword:data},
+			success:function( list ){
+				//alert('success');
+				$(".bul").remove();
+				//alert(list);
+				let atab = "<ul class='bul'>";
+				$.each(list, function (i,	 val) {
+					
+					atab += "<li class='blogInfo' id='animC"+i+"'><div class='quote3'>"
+							+ "<a class='blogContent' href='"+val.url+"' target='_blank'>"+ val.title + " </a></div></li>";
+				
+					
+				});
+				atab += "</ul>";
+				
+				$("div.slider3").append(atab);
+				//blogShowOff();
+			},
+			error:function(){
+				//alert('error');
+			}
+				
+			});
+
+	}
+	
+	
+});
+
+function blogShowOff() {
+	$(".animC0").hide();$(".animC1").hide();$(".animC2").hide();$(".animC3").hide();$(".animC4").hide();$(".animC5").hide();
+	$(".animC6").hide();$(".animC7").hide();$(".animC8").hide();$(".animC9").hide();$(".animC10").hide();$(".animC11").hide();
+	
+	
+
+	
+
+		setTimeout(function(){ $(".animC8").hide();$(".animC9").hide();$(".animC10").hide();$(".animC11").hide(); 
+			$(".animC0").show();$(".animC1").show();$(".animC2").show();$(".animC3").show(); }, 0);
+
+		setTimeout(function(){ $(".animC0").hide();$(".animC1").hide();$(".animC2").hide();$(".animC3").hide();
+								$(".animC4").show(); $(".animC5").show();$(".animC6").show(); $(".animC7").show();  }, 5000);
+
+		setTimeout(function(){ $(".animC4").hide(); $(".animC5").hide();$(".animC6").hide(); $(".animC7").hide();
+								$(".animC8").show();$(".animC9").show();$(".animC10").show();$(".animC11").show(); }, 10000);
+
+		
+	
+};
+</script>
+</body>
+</html>

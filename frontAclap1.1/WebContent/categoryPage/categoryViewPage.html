@@ -619,7 +619,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 					
 					$(".seeMore").on("click", function(e) {
 				    	e.preventDefault();
-				    	$(".classCard:hidden").slice(0, 4).slideDown();
+				    	$(".classCard:hidden").slice(0, 4).show();
 				   		if (vari == 0) {
 				     	 $(".seeMore").fadeOut("slow");
 				     	
@@ -752,6 +752,9 @@ function imageGrid() {
 	$(".sportsClass").append(images);
 	
 };
+
+
+
 
 //메인에서 클릭으로 넘어올때
 if (window.location.hash === '#langClass') {
