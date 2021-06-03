@@ -17,7 +17,7 @@ body {
 	padding-bottom: 100px;
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+/* 	height: 100vh;  이거 지워야됨!!!!!!!!!!*/ 
 	overflow: auto;
 }
 
@@ -647,9 +647,66 @@ hr.new1 {
 }
 
 
-
-
-
+/*---------- Like Class --------*/
+.MLC_table{
+}
+.MLC_tr{
+	height:60px;
+	background-color:#7a7a7a;
+	color:white;
+}
+.MLC_teacher{
+	padding-left:15px;
+	width:250px;
+}
+.MLC_title{
+	width:600px;
+	padding-left:15px;
+}
+.MLC_category{
+	width:160px;
+	padding-left:15px;
+}
+.MLC_grade{
+	width:100px;
+	padding-left:15px;
+}
+.MLC_point{
+	width:120px;
+	padding-left:15px;
+}
+.MLC_trContent{
+	height:70px;
+	font-size:20px;
+}
+.MLC_trContent:hover{
+	background-color:#ececec;
+}
+.MLC_proFile{
+	margin-top:3px;
+	margin-left:15px;
+	border-radius: 25px;
+	height:45px;
+	width:45px;
+	object-fit: cover;
+}
+.MLC_nameTxt{
+	font-size:20px;
+	margin-left:10px;
+}
+.MLC_mailTxt{
+	font-size:12px;
+	margin-left:10px;
+}
+.MLC_titleTxt{
+	padding-left:15px;
+}
+.MLC_pointTxt{
+	padding-left:15px;
+}
+.MLC_titleInput:hover{
+	cursor: pointer;
+}
 
 
 
