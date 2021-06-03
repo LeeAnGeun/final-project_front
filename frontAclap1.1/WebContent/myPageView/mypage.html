@@ -367,17 +367,44 @@ $(document).ready(function(){
 <div class="modal fade" id="reciptModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-body" id="saveRecipt">
+            <div class="modal-body" >
                 <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
-                <div class="px-4 py-5">
+                <div class="px-4 py-5" id="saveRecipt">
                     <h3 class="text-uppercase">ACLAP</h3>
-                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> <span class="theme-color">결제 내역</span>
-                    
-                    <div class="d-flex justify-content-between"> <span class="font-weight-bold">축구</span> <span class="text-muted">$1750.00</span> </div>
+                    <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> 
+                    <span class="theme-coloid="classD"r">결제 내역</span>
                     <div class="mb-3">
                         <hr class="new1">
                     </div>
-                    <div class="d-flex justify-content-between mt-3"> <span class="font-weight-bold">전체 금액</span> <span class="font-weight-bold theme-color">$2125.00</span> </div>
+                    <div class="d-flex justify-content-between"> 
+	                    <span class="font-weight-bold">title</span>   
+	                    <span class="text-muted" id="classTitle"></span>
+                    </div>
+                    
+                     <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    
+                    <div class="d-flex justify-content-between"> 
+	                    <span class="text-muted" >결제일</span> 
+	                    <span class="text-muted" id="payDate"></span>
+                    </div>
+                    
+                     <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    
+                    <div class="d-flex justify-content-between"> 
+	                    <span class="text-muted" >수강일</span> 
+	                    <span class="text-muted" id="classDate"></span>
+                  	</div>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3"> 
+	                    <span class="font-weight-bold">전체 금액</span> 
+	                    <span class="font-weight-bold theme-color" id="rPoint"></span> 
+                    </div>
                     <div class="text-center mt-5"> <button class="btn btn-primary" id="_saveRecipt">영수증 저장</button> </div>
                 </div>
             </div>
@@ -527,6 +554,7 @@ $(document).ready(function() {
 	let date = new Date();
 	let syear = date.getFullYear();
 	let smonth = date.getMonth() + 1;
+	let sday = date.getDate();
 	
 	// 처음 mypage 들어올 경우 현재 달로 검색
 	getMySchedule(syear, smonth)
@@ -566,9 +594,10 @@ $(document).ready(function() {
 						let pmonth = date.getMonth() + 1;
 						let pday = date.getDate();
 						
-						pdate = Number(pyear + two(pmonth + "") + two(pday));
+						pdate = Number(pyear + two(pmonth + "") + two(pday+""));
 						
 						let rdate = Number(val.rdate.replace(/-/gi, ""));
+						
 						let cStatus = "";
 						if(pdate <= rdate){
 							cStatus = "<span class='text-primary a_cStatus'>expect</span>";
@@ -644,8 +673,8 @@ $(document).ready(function() {
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
-		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right' data-toggle='modal' data-target='#reciptModal'>결제 내역</button>"
-		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>취소 신청</button>"
+		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right'>결제 내역</button>"
+		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>일정 취소</button>"
 	                        	 	+ "</div>"
 	             				+ "</div>";	
 	             
@@ -653,6 +682,36 @@ $(document).ready(function() {
 	             	
 					let classDtail = "";
 					
+					$(".a_btn_recipt").on("click", function(){
+						let classDate =rdate;
+						let memNum = json.memNum;
+						
+						getReceiptData(classDate, classNum, memNum);
+						
+						
+					});
+					
+					$("#_btn_cancel").on("click", function(){
+						let pdate = new Date();
+						let pyear = date.getFullYear();
+						let pmonth = date.getMonth() + 1;
+						let pday = date.getDate();
+						
+						pdate = pyear + "-" + two(pmonth + "") + "-" + two(pday+"");
+						
+						let newRdate = new Date(rdate);
+						let newPdate = new Date(pdate);
+						
+						let r_mDate = dateDiff(newRdate, newPdate);
+						
+						if(r_mDate < 0){ // 3으로 바꿔야함!!!!!!!
+							alert("죄송합니다.\n\n 3일전에는 취소가 불가능 하므로 관리자에게 문의 바랍니다.");
+							return;
+						}else{
+							myFunc(classNum, rdate, classDto.price);
+						}
+						
+					});
 				},
 				error:function(){
 					alert('error');
@@ -662,6 +721,24 @@ $(document).ready(function() {
 		
 	}
 	
+	function getReceiptData(classDate, classNum, memNum) {
+		$.ajax({
+			url:"http://localhost:3000/getReceiptData", 
+			type:'post',
+			data:{classDate:classDate, classNum:classNum, memNum:memNum},
+			success:function( receipt ){
+				// alert(receiept.classDate);
+				$('#classTitle').text(receipt.title);
+				$("#payDate").text((receipt.payDate).substring(0,10));
+				$("#classDate").text((receipt.classDate).substring(0,10));
+				$("#rPoint").text(comma(receipt.rPoint) + " point");
+				$("#reciptModal").modal('show');
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+	}
 	// 달을 검색했을 경우
 	$("#_searchSchedules").click(function() {
 		let date = $("#_date").val();
@@ -707,16 +784,7 @@ $(document).ready(function() {
 		});
 	}); 
 	
-	/* function downloadURI(uri, name) {
-	    let link = document.createElement("a");
 
-	    link.download = name;
-	    link.href = uri;
-	    document.body.appendChild(link);
-	    link.click();   
-	    //after creating link you should delete dFynamic link
-	    //clearDynamicLink(link); 
-	} */
 	
 	function two(msg){
 		return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
@@ -727,6 +795,59 @@ $(document).ready(function() {
 		$(".show_table").attr('class', "hide_table");
 	});	
  	
+	$("#_btn_cancel").on("click", function(){
+		alert("취소하니?");
+	});
+	
+	// 두개의 날짜를 비교하여 차이를 알려준다.
+	function dateDiff(_date1, _date2) {
+	    let diffDate_1 = _date1 instanceof Date ? _date1 :new Date(_date1);
+	    let diffDate_2 = _date2 instanceof Date ? _date2 :new Date(_date2);
+	 
+	    diffDate_1 =new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
+	    diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
+	 
+	    let diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
+	    diff = Math.ceil(diff / (1000 * 3600 * 24));
+	 
+	    return diff;
+	}
+	
+	function myFunc(classNum, cDate, price){
+		let test = confirm('정말 일정을 취소하시겠습까?');
+		   if(test){
+		      $.ajax({
+		    	url:"http://localhost:3000/cancelSchedule", 			
+		  		type:"post",
+		  		data:{memNum:memNum, classNum:classNum, cDate:cDate, price:price},
+		  	 	success:function( count ){
+		  	 		alert('success');
+		  	 	},
+		  	 	error:function(){
+		  	 		alert('error');
+		  	 	}
+		      });
+		   }
+		   else{
+		   }
+	}
+	
+	function comma(num){
+	    let len, point, str; 
+	       
+	    num = num + ""; 
+	    point = num.length % 3 ;
+	    len = num.length; 
+	   
+	    str = num.substring(0, point); 
+	    while (point < len) { 
+	        if (str != "") str += ","; 
+	        str += num.substring(point, point + 3); 
+	        point += 3; 
+	    } 
+	     
+	    return str;
+	}
 });
 
 
