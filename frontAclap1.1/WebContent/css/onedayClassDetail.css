@@ -379,7 +379,7 @@
 	box-shadow: 3px 2px 5px #66676B;
 	background-color:#F5F2F5;
 	height:660px;
-	width:400px;
+	width:500px;
 }
 .review_modal_close{
 	font-size:30px;
@@ -624,6 +624,7 @@
     position: relative;
     float: left;
 }
+
 
 .decrease, .increase, .scDecrease, .scIncrease {
     background-color: #F5F2F5;
@@ -1016,6 +1017,15 @@ div.OCSubmitBtn:hover {
 
 /*-----------------여기까지 후기모달---------------------*/
 
+/*----리뷰 별점 평균----*/
+.clean .safety .communi .loca{
+	font-size: 5px;
+}
+.ratingAvg{
+	margin-top: 5px;
+	font-size: 15px;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
 
 
 
