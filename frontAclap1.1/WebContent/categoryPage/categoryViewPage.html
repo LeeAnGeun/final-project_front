@@ -606,6 +606,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				app += "</div></div>";
 				
 			
+
 				
 				if(pcVal==''){
 					$(".classListTableAll").append(app);
@@ -614,14 +615,16 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 					
 					$('.classCard').slice(0, 4).show();
 					
+
 					
 					$(".seeMore").on("click", function(e) {
 				    	e.preventDefault();
-				    	$(".classCard:hidden").slice(0, 4).slideDown();
+				    	$(".classCard:hidden").slice(0, 4).show();
 				   		if (vari == 0) {
 				     	 $(".seeMore").fadeOut("slow");
 				     	
 				    	}
+
 				   		
 					});
 					
@@ -725,9 +728,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 //클래스 클릭시 디테일로~
 $(document).on("click", ".classDetailNum", function () { 
 	var tseq=$(this).attr('value');
-	alert('click');
-	alert(tseq);
-
+  location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq;
 
 });
 
@@ -751,6 +752,9 @@ function imageGrid() {
 	$(".sportsClass").append(images);
 	
 };
+
+
+
 
 //메인에서 클릭으로 넘어올때
 if (window.location.hash === '#langClass') {

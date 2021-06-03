@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+
+
+	/* 코로나정보 */
+.ctitle{
+	font-size: 14px;
+  text-align: center;
+}
+.content-slider2 {
+  width: 100%;
+  height: 360px;
+}
+.slider2 {
+    height: 80px;
+    width: 180px;
+    margin: auto 0;
+    overflow: visible;
+    position: relative;
+}
+
+.slider2 ul.cul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.slider2 li {
+    width: 160px;
+    height: 80px;
+    position: absolute;
+    list-style: none;
+    
+}
+.slider2 .quote2 {
+    font-size: 14px;
+   
+}
+
+
+</style>
+</head>
+<body>
+<h1 class="ctitle">실시간 <br>코로나 현황</h1>
+<div class="content-slider2">
+
+	<div class="slider2">
+	</div>
+</div>
+<script type="text/javascript">
+//--------------- 메인클래스 크롤링 화면 관련 js ----------------//
+getCovidData();
+setInterval(function(){getCovidData()},90000);
+
+function getCovidData() {
+	//alert('날씨정보 가져오기');
+	
+	$.ajax({
+		url:"http://localhost:3000/covid",
+		type:"get",
+		success:function( list ){
+			//alert('success');
+			$(".cul").remove();
+			//alert(list);
+			let atab = "<ul class='cul'>";
+			$.each(list, function (i,	 val) {
+				atab += "<li class='animC"+i+"'><div class='quote2'>"
+						+ "<p>"+ val.cities + " : " + val.coronic + "명 </p></div></li>";
+					
+			});
+			atab += "</ul>";
+			
+			$("div.slider2").append(atab);
+			covidShowOff();
+			
+		},
+		error:function(){
+			alert('error');
+		}
+			
+		});
+}
+
+function covidShowOff() {
+	$(".animC0").show();$(".animC1").hide();$(".animC2").hide();$(".animC3").hide();$(".animC4").hide();$(".animC5").hide();
+	$(".animC6").hide();$(".animC7").hide();$(".animC8").hide();$(".animC9").hide();$(".animC10").hide();$(".animC11").hide();
+	$(".animC12").hide();$(".animC13").hide();$(".animC14").hide();$(".animC15").hide();$(".animC16").hide();
+	
+
+	
+
+		setTimeout(function(){ $(".animC16").hide(); $(".animC0").show(); }, 0);
+
+		setTimeout(function(){ $(".animC0").hide(); $(".animC1").show();  }, 5000);
+
+		setTimeout(function(){ $(".animC1").hide(); $(".animC2").show(); }, 10000);
+
+		setTimeout(function(){ $(".animC2").hide(); $(".animC3").show();  }, 15000);
+
+		setTimeout(function(){ $(".animC3").hide(); $(".animC4").show(); }, 20000);
+
+		setTimeout(function(){ $(".animC4").hide(); $(".animC5").show(); }, 25000);
+
+		setTimeout(function(){ $(".animC5").hide(); $(".animC6").show();  }, 30000);
+
+		setTimeout(function(){ $(".animC6").hide(); $(".animC7").show();  }, 35000);
+
+		setTimeout(function(){ $(".animC7").hide(); $(".animC8").show(); }, 40000);
+
+		setTimeout(function(){ $(".animC8").hide(); $(".animC9").show();  }, 45000);
+
+		setTimeout(function(){ $(".animC9").hide(); $(".animC10").show();  }, 50000);
+
+		setTimeout(function(){ $(".animC10").hide(); $(".animC11").show();  }, 60000);
+		setTimeout(function(){ $(".animC11").hide(); $(".animC12").show();  }, 65000);
+		setTimeout(function(){ $(".animC12").hide(); $(".animC13").show();  }, 70000);
+		setTimeout(function(){ $(".animC13").hide(); $(".animC14").show();  }, 75000);
+		setTimeout(function(){ $(".animC14").hide(); $(".animC15").show();  }, 80000);
+		setTimeout(function(){ $(".animC15").hide(); $(".animC16").show();  }, 85000);
+	
+};
+</script>
+</body>
+</html>

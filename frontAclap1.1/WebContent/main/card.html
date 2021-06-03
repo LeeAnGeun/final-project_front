@@ -15,152 +15,164 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 <!-- 커스텀 css -->
 <!-- <link rel="stylesheet" href="../css/s_card.css"> -->
+<!-- 커스텀 js -->
+<script src="../js/card.js"></script>
+
 </head>
 
-<script>
-// like btn seq 얻기
-let likeClassNum = 0;
-function likeBtnClick(seq){
-	alert('likeBtn');
-	likeClassNum = seq;
-}
-
-//디테일뷰로 이동
-let detailClassNum = 0;
-function goDetail(seq){
-	alert('detail')
-	detailClassNum = seq;
-}
-
-
-//dataformat 함수
-function dateFormat(date) {
-	let yyyy = date.getFullYear().toString();
-	let mm = (date.getMonth()+1).toString();
-	let dd  = date.getDate().toString();
-	
-	let mmChars = mm.charAt('');
-	let ddChars = mm.charAt('');
-	return yyyy+'-'+(mmChars[1]?mm:"0"+mmChars[0])+'-'+(ddChars[1]?dd:"0"+ddChars[0]);
-}
-
-
-$(document).ready(function(){
-
-	// 최신순 정보 불러오기
-	$.ajax({
-		url:"http://localhost:3000/getNewestClassList",  
-		type:"post",
-		success:function( data ){
-			$.each(data, function(i, item){
-				$("#s_newImg"+i).attr('src', item.image1);
-				$("#new_classNum"+i).val(item.classNum);
-				$("#s_newTitle"+i).html(item.title);
-				$("#s_newTeacher"+i).html(item.instructor +" 선생님");				
-
-				let date = new Date();
-				let today = dateFormat(date);
-				let endDate = item.endDate.substring(0,10);
-				
-				
-				// 기간만료되었다면
- 				if(today > endDate){
-					$("#newBtn"+i).removeClass('s_NewNBestBtn');
-					$("#newBtn"+i).addClass('s_overBtn');
-					$("#newBtn"+i).val('Class Over');
-				}  
-			});
-			
-		},
-		error:function(){
-			alert('main getNewestClass ajax Error')
-		}
-	});	
-	
-	
-	
-	// 인기순 정보 불러오기
-	$.ajax({
-		url:"http://localhost:3000/getBestClassList",  
-		type:"post",
-		success:function( data ){
-			
-			$.each(data, function(i, item){
-								
-			 	$("#s_bestImg"+i).attr('src', item.image1);
-				$("#best_classNum"+i).val(item.classNum);
-				$("#s_bestTitle"+i).html(item.title);
-				$("#s_bestTeacher"+i).html(item.instructor +" 선생님");
-				
-				let date = new Date();
-				let today = dateFormat(date);
-				let endDate = item.endDate.substring(0,10);
-				
-				// 기간만료되었다면
-				if(today > endDate){
-					$("#bestBtn"+i).removeClass('s_NewNBestBtn');
-					$("#bestBtn"+i).addClass('s_overBtn');
-					$("#bestBtn"+i).val('Class Over');
-				} 
-			});
-		},
-		error:function(){
-			alert('main BestList ajax Error')
-		}
-	});	
-	
-	
-	// slider controller hover
-	$(".fa-circle").mouseover(function(){
-		$(this).css('opacity', '.6');
-	});
-	$(".fa-circle").mouseout(function(){
-		$(this).css('opacity', '1.0');
-	});
-	
-	
-
-	// like 버튼 누르기
-	$(".s_likeBtn").click(function(){
-		
-		if($(this).html() == 'LIKE'){
-			//view 설정
-			let icon = $("<i class='fa fa-heart'>")
-			$(this).html(icon);
-			$(this).css('color', 'red');
-			$(this).css('background-color', 'white');
-			$(this).mouseover(function(){
-				$(this).css('color', 'black');
-			});
-			$(this).mouseout(function(){
-				$(this).css('color', 'red');
-			});
-			
-			// DB에 저장
-		} 
-		
-		else {
-			//view 설정
-			$(this).html('LIKE');
-			$(this).css('color', 'white');
-			$(this).css('background', 'grey');
-			$(this).mouseover(function(){
-				$(this).css('color', 'black');
-			});
-			$(this).mouseout(function(){
-				$(this).css('color', 'white');
-			});
-			
-			// DB 수정
-		}
-	})
-});	
-
-</script>
-
-
-
 <body>
+<div id='recommendClass'>
+<p class='s_mainTitle'>추천 클래스</p> 
+<!--Carousel Wrapper-->
+<div id="s_recommendClass_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
+<!--Slides-->
+<div class="carousel-inner" role="listbox">
+<!--First slide-->
+<div class="carousel-item active">         
+<div class="sCard_container">
+      <!-- card 1-->
+      <div class="s_Card">
+	    <div class="s_img"><img id="s_recommendImg0"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn0' value='BEST'>	
+			<input type='hidden' id='recommend_classNum0'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn0" onclick="likeBtnClick($('#recommend_classNum0').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle0' onclick="goDetail($('#new_classNum0').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher0'></div>
+     </div>
+
+      <!-- card 2-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg1"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn1' value='BEST'>			
+			<input type='hidden' id='recommend_classNum1'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn1" onclick="likeBtnClick($('#recommend_classNum1').val())">LIKE</button> 		
+       	</div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle1' onclick="goDetail($('#recommend_classNum1').val())" ></div>
+       	<div class="s_teacher" id='s_recommendTeacher1'></div>
+     </div>
+
+      
+      <!-- card 3-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg2"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn2' value='BEST'>			
+			<input type='hidden' id='recommend_classNum2'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn2" onclick="likeBtnClick($('#recommend_classNum2').val())">LIKE</button> 
+       	</div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle2' onclick="goDetail($('#recommend_classNum2').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher2'></div>
+     </div>
+</div>
+</div>
+
+<!--Second slide-->
+<div class="carousel-item">
+<div class="sCard_container">
+      <!-- card 1-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg3"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn3' value='BEST'>			
+			<input type='hidden' id='recommend_classNum3'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn3"onclick="likeBtnClick($('#recommend_classNum3').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle3' onclick="goDetail($('#recommend_classNum3').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher3'></div>
+     </div>
+
+      <!-- card 2-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg4"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn4' value='BEST'>			
+			<input type='hidden' id='recommend_classNum4'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn4"onclick="likeBtnClick($('#recommend_classNum4').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle4' onclick="goDetail($('#recommend_classNum4').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher4'></div>
+     </div>
+      
+      <!-- card 3-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg5"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn5'value='BEST'>			
+			<input type='hidden' id='recommend_classNum5'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn5" onclick="likeBtnClick($('#recommend_classNum5').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle5' onclick="goDetail($('#recommend_classNum5').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher5'></div>
+     </div>
+</div>
+</div>
+
+<!--third slide-->
+<div class="carousel-item">
+<div class="sCard_container">
+      <!-- card 1-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg6"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn6' value='BEST'>			
+			<input type='hidden' id='recommend_classNum6'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn6"onclick="likeBtnClick($('#recommend_classNum6').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle6' onclick="goDetail($('#recommend_classNum6').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher6'></div>
+     </div>
+
+      <!-- card 2-->
+      <div class="s_Card">
+	    <div class="s_img"><img src="" id="s_recommendImg7"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn7'value='BEST'>			
+			<input type='hidden' id='recommend_classNum7'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn7" onclick="likeBtnClick($('#recommend_classNum7').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle7' onclick="goDetail($('#recommend_classNum7').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher7'></div>
+     </div>
+      
+      <!-- card 3-->
+      <div class="s_Card">
+	    <div class="s_img"><img id="s_recommendImg8"></div>
+        <div class="s_new_best_like">
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn8' value='BEST'>			
+			<input type='hidden' id='recommend_classNum8'>		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn8" onclick="likeBtnClick($('#recommend_classNum8').val())">LIKE</button> 
+        </div>
+		<hr class="s_card_hr">
+       	<div class="s_title" id='s_recommendTitle8' onclick="goDetail($('#recommend_classNum8').val())"></div>
+       	<div class="s_teacher" id='s_recommendTeacher1'></div>
+     </div>
+</div>
+</div>
+</div>
+
+<!-- Slider Controls -->
+<br>
+<div class=" s_slider">
+    <a href="#s_recommendClass_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
+    <a href="#s_recommendClass_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>
+    <a href="#s_recommendClass_slider" data-slide-to="2"><i class="fa fa-circle"></i></a>      
+</div>
+</div>
+<br><br><br><br>
+</div>
+
+
 <p class='s_mainTitle'>신규 클래스</p> 
 <!--Carousel Wrapper-->
 <div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -175,7 +187,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn0" value='NEW'>	
 			<input type='hidden' id='new_classNum0'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum0').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn0" onclick="likeBtnClick($('#new_classNum0').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle0' onclick="goDetail($('#new_classNum0').val())"></div>
@@ -188,7 +200,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn1" value='NEW'>			
 			<input type='hidden' id='new_classNum1'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum1').val())">LIKE</button> 		
+			<button type='button' class='s_likeBtn' id="newLikeBtn1" onclick="likeBtnClick($('#new_classNum1').val())">LIKE</button> 		
        	</div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle1' onclick="goDetail($('#new_classNum1').val())" ></div>
@@ -202,7 +214,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn2" value='NEW'>			
 			<input type='hidden' id='new_classNum2'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum2').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn2" onclick="likeBtnClick($('#new_classNum2').val())">LIKE</button> 
        	</div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle2' onclick="goDetail($('#new_classNum2').val())"></div>
@@ -220,7 +232,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn3" value='NEW'>			
 			<input type='hidden' id='new_classNum3'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum3').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn3"onclick="likeBtnClick($('#new_classNum3').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle3' onclick="goDetail($('#new_classNum3').val())"></div>
@@ -233,7 +245,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn4" value='NEW'>			
 			<input type='hidden' id='new_classNum4'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum4').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn4"onclick="likeBtnClick($('#new_classNum4').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle4' onclick="goDetail($('#new_classNum4').val())"></div>
@@ -246,7 +258,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn5" value='NEW'>			
 			<input type='hidden' id='new_classNum5'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum5').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn5" onclick="likeBtnClick($('#new_classNum5').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle5' onclick="goDetail($('#new_classNum5').val())"></div>
@@ -264,7 +276,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn6" value='NEW'>			
 			<input type='hidden' id='new_classNum6'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum6').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn6"onclick="likeBtnClick($('#new_classNum6').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle6' onclick="goDetail($('#new_classNum6').val())"></div>
@@ -277,7 +289,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn7" value='NEW'>			
 			<input type='hidden' id='new_classNum7'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum7').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn7" onclick="likeBtnClick($('#new_classNum7').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle7' onclick="goDetail($('#new_classNum7').val())"></div>
@@ -290,7 +302,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="newBtn8" value='NEW'>			
 			<input type='hidden' id='new_classNum8'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#new_classNum8').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="newLikeBtn8" onclick="likeBtnClick($('#new_classNum8').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_newTitle8' onclick="goDetail($('#new_classNum8').val())"></div>
@@ -331,7 +343,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn0" value='BEST'>			
 			<input type='hidden' id='best_classNum0'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum0').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn0" onclick="likeBtnClick($('#best_classNum0').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle0' onclick="goDetail($('#best_classNum0').val())"></div>
@@ -344,7 +356,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn1" value='BEST'>			
 			<input type='hidden' id='best_classNum1'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum1').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn1" onclick="likeBtnClick($('#best_classNum1').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle1' onclick="goDetail($('#best_classNum1').val())"></div>
@@ -357,7 +369,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn2" value='BEST'>			
 			<input type='hidden' id='best_classNum2'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum2').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn2" onclick="likeBtnClick($('#best_classNum2').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle2' onclick="goDetail($('#best_classNum2').val())"></div>
@@ -375,7 +387,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn3" value='BEST'>			
 			<input type='hidden' id='best_classNum3'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum3').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn3" onclick="likeBtnClick($('#best_classNum3').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle3' onclick="goDetail($('#best_classNum3').val())"></div>
@@ -388,7 +400,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn4" value='BEST'>			
 			<input type='hidden' id='best_classNum4'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum4').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn4" onclick="likeBtnClick($('#best_classNum4').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle4' onclick="goDetail($('#best_classNum4').val())"></div>
@@ -401,7 +413,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn5" value='BEST'>			
 			<input type='hidden' id='best_classNum5'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum5').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn5" onclick="likeBtnClick($('#best_classNum5').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle5' onclick="goDetail($('#best_classNum5').val())"></div>
@@ -419,7 +431,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn6" value='BEST'>			
 			<input type='hidden' id='best_classNum6'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum6').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn6" onclick="likeBtnClick($('#best_classNum6').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle6' onclick="goDetail($('#best_classNum6').val())"></div>
@@ -432,7 +444,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn7" value='BEST'>			
 			<input type='hidden' id='best_classNum7'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum7').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn7" onclick="likeBtnClick($('#best_classNum7').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle7' onclick="goDetail($('#best_classNum7').val())"></div>
@@ -445,7 +457,7 @@ $(document).ready(function(){
         <div class="s_new_best_like">
 			<input type='button' class='s_NewNBestBtn' id="bestBtn8" value='BEST'>			
 			<input type='hidden' id='best_classNum8'>		
-			<button type='button' class='s_likeBtn' onclick="likeBtnClick($('#best_classNum8').val())">LIKE</button> 
+			<button type='button' class='s_likeBtn' id="bestLikeBtn8" onclick="likeBtnClick($('#best_classNum8').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_bestTitle8' onclick="goDetail($('#best_classNum8').val())"></div>

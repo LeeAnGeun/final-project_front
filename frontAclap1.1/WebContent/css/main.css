@@ -280,8 +280,52 @@ img {vertical-align: middle;}
    margin-right: 30px;
   
 }
-
+#crawlingProperties{
+	/* border: dashed;
+	border-color: blue; */
+	width: 10%;
+	height: 50%;
+	position: absolute;
+	top:0 !important;
+    left:0 !important;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+#coronaCrawling{
+	/* border: dashed;
+    border-color: red; */
+    width: 90%;
+    height: 80px;
+    position: relative;
+    float: left;
+    
+	
+}
+#weatherCrawling{
+	/* border: dashed;
+	border-color: green; */
+    width: 90%;
+    height: 80px;
+    position: relative;
+    float: left;
+    margin-top: 10px;
+    margin: auto;
+	overflow: hidden;
+}
+#blogCrawling{
+	/* border: dashed;
+	border-color: blue; */
+	width: 10%;
+	height: 1200px;
+	position: absolute;
+	top:0 !important;
+    right:0 !important;
+    margin-top: 200px;
+    margin-right: 30px;
+	
+}
 #psyClassList{
 	position: relative;
 	
 }
+

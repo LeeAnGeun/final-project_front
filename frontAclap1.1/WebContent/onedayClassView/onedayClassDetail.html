@@ -20,10 +20,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <!-- font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
@@ -43,6 +43,17 @@
 <link rel="stylesheet" href="../css/fontawesome-stars.css">
 <script type="text/javascript" src="../js/jquery.barrating.min.js"></script> 
 
+<script>
+let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+    return paramPair.split(/=(.+)?/).slice(0, 2);
+}).reduce(function(obj, pairArray) {
+    obj[pairArray[0]] = pairArray[1];
+    return obj;
+}, {});
+
+let seq = urlParams.seq;
+</script>
+
 </head>
 <body>
 
@@ -54,24 +65,18 @@
 	
 		<!-- 상단 제목 -->
 		<div class='onedayClassMainText'>
-			<i id='pCategory' class="fas fa-language">&nbsp;외국어</i>
-			<!-- 			
-			<i class="fas fa-palette"></i>&nbsp;요리
-			<i class="fas fa-utensils"></i>&nbsp;요리
-			<i class="fas fa-code"></i>&nbsp;프로그래밍
-			<i class="fas fa-dumbbell"></i>&nbsp;스포츠/레져
-			-->
+			<i id='pCategory' class="fas fa-language">&nbsp;</i>
 		</div>
 		<div class='onedayClassTitle'>
-			메인 타이틀이 들어가는 자리입니다
+			
 		</div>
 		<div class='onedayClassMainText3'>
 			<i class="fas fa-star" style='color: red;'></i>
 			<span id='starGrade' style='font-weight: 600;'>
-				4.8<span id='starGradeCount' style='font-weight: 300;'>(10)</span>
+				<span id='starGradeCount' style='font-weight: 300;'>(10)</span>
 			</span>	
 			<span id='DetailLocation'>
-				서울 특별시 은평구 갈현 2동 하나블루힐스
+				
 			</span>
 			<span>                            
 				<button class='DetailLikeBtn'><i class="fas fa-heart">&nbsp;저장</i></button>
@@ -177,19 +182,17 @@
 		</div>
 		<!--/////////////// 모달 들어가는 부분///////////// -->
 	<div class='onedayClassContentBox1'>
-		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
+		<div class='ocSubTitle' id='nickNameTit'></div>
 		<i class='material-icons ocIcon'>access_time</i>
-		<span class='ocTxt1'> 30분</span>
+		<span class='ocTxt1' id="classTime"> 30분</span>
 		&nbsp;&nbsp;
 		<i class='material-icons'>people</i>
-		<span class='ocTxt1'> 5명</span>
+		<span class='ocTxt1' id="classMaxNum"> 5명</span>
 		&nbsp;&nbsp;
       	<i class='material-icons'>check</i>
-      	<span class='ocTxt1'> 리코더</span>
+      	<span class='ocTxt1' id="classSupplie"> 리코더</span>
       	<div class='classInfo'>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
+      		
       	</div>
 
 	</div>
@@ -198,15 +201,16 @@
 	<!-- 프로그램 -->
 	<div class='hrMargin'><hr></div>
 	<div class='ocSubTitle'>프로그램</div>
-	<div class='scProgramTxt' style='padding-top:10px;'>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-	</div>
-	<div class='hrMargin'><hr></div>
+	<div class='scProgramTxt' id="program" style='padding-top:10px;'>
 	
+	</div>
+	
+	<!-- youtube -->
+	<div class='hrMargin' id="youTubeLine"><hr></div>
+	<div class='ocSubTitle' id="youTubeTitle">YouTube</div>
+	 <iframe id="youtubeLink" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+	<div class='hrMargin'><hr></div>
 	<!-- 선생님 소개 -->
 	<img class='ocTeacherImg' id='_ocTeacherImg' src="../images/profileSample.png" style='float:left'>
 	<div style='float:left; padding-top:2px; padding-left:10px;'>
@@ -219,136 +223,110 @@
 		<span class='teacherTxt'>후기 10개</span> 
 		&nbsp;&nbsp;&nbsp;
 		<i class="fas fa-chalkboard-teacher"></i>
-		<span class='teacherTxt'>개설클래스 3개</span> 
+		<span class='teacherTxt' id="masterClass">개설클래스 3개</span> 
 		
 	</div>
 	<div class='scProgramTxt' id='TeacherInfo'>
-		강사소개를 써주세요 강사소개를 써주세요 <br>
-		강사소개를 써주세요 강사소개를 써주세요 강 <br>
-		강사소개를 써주세요 강사소개를 써주세요 강사소개를  <br>
-		강사소개를 써주세요 강사소개를 써주세요 강사소개를 써주세요 강사소개를 써주세요 <br>
+		
 	</div>
 	<div class='hrMargin'><hr></div>
 	
 	<!-- 수업 장소 -->
 	<span class='ocSubTitle'>수업장소</span><br>
-	<div style='margin-top:2px; font-size:15px'>서울 특별시 은평구 갈현 2동 521-22</div>
+	<div style='margin-top:2px; font-size:15px' id="location"></div>
 	<div id="map" style="width:100%;height:450px; border-radius:20px; margin-top:20px;"> </div>		
 		 
 	<!-- 후기(최신순으로 여섯개?) -->
    	<div class='hrMargin'><hr></div>
 	<span class='ocSubTitle' id='teacherTitle'>
 		<i class="fas fa-star" style='color: red;'></i>
-		<span id='reviewGrade'>4.8점(후기 10개)</span>
+		<span id='reviewGrade'></span>
 	</span><br>
 		<div style='padding-top:15px;'>
-		<div style='float:left; margin-right:3px; margin-top:2px'>청결도</div>
+		<div style='float:left; margin-right:3px; margin-top:2px;'><p class="ratingAvg" id="saAvg"><b>만족도</b></p></div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Clstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Clstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Clstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Clstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Clstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Clstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Clstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Clstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Clstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Clstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
+			<select id="satisfaction" name="satify" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<div id="saAvg"></div>
 		</div>
 		
-		<div style='float:left; margin-right:3px; margin-top:2px'>안전성 </div>
+		<div style='float:left; margin-right:3px; margin-top:2px;'><p class="ratingAvg" id="clAvg"><b>청결도</b></p></div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Sfstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Sfstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Sfstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Sfstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Sfstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Sfstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Sfstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Sfstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Sfstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Sfstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
+			<select id="clean" name="clean" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			
 		</div>
 		
-		<div style='float:left; margin-right:3px; margin-top:2px'>의사소통</div>
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="safAvg"><b>안전성</b></p> </div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Cmstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Cmstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Cmstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Cmstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Cmstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Cmstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Cmstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Cmstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Cmstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Cmstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
-		</div>
-		</div>
-		
-		<div style='float:left; margin-right:3px; margin-top:2px'>위치성</div>
-		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Plstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Plstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Plstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Plstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Plstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Plstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Plstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Plstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Plstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Plstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
-		</div>
-		
+			<select id="safety" name="safety" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
 				
-		<div style='float:left; margin-right:3px; margin-top:2px'>정확성</div>
-		<div style='float:left'>
-			<form class="rating-star">
-			<input type="radio" class='star5' id="Acstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" class='star5' id="Acstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" class='star5' id="Acstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" class='star5' id="Acstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" class='star5' id="Acstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" class='star5' id="Acstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" class='star5' id="Acstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" class='star5' id="Acstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" class='star5' id="Acstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" class='star5' id="Acstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
 		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="coAvg"><b>의사소통</b><a></a></div>
+		<div style='float:left; margin-right:25px;'>
+			<select id="communi" name="communi" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="loAvg"><b>위치성</b></p></div>
+		<div style='float:left; margin-right:25px;'>
+			<select id="loca" name="loca" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+		</div>
+		</div>
+	
+		
 		<br><br><br>
 
 
 	
-	
+	<!-- 간략후기 -->
 	
 	<div class='reviewBox'>
-		<div class='reviewItem' id='review1'>
+	 	<div class='reviewItem' id='review1'>
+	 	
 			<div style='float:left'>
 				<img src="../images/managerIcon.jpg" class='reviewImg'>
 			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
+			 <div style='float:left;'>
+				<div class='reviewId'>이름</div>
+				<div class='reviewDate'>날짜</div>
 			</div>
 			<br><br><br>
 			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
+				내용들어갈 자리
+			</div> 
 		</div>
-		
+		 
 		<div class='reviewItem' id='review2'>
 			<div style='float:left'>
 				<img src="../images/managerIcon.jpg" class='reviewImg'>
@@ -369,86 +347,7 @@
 		</div>
 	</div>
 	
-	<div class='reviewBox'>
-		<div class='reviewItem' id='review3'>
-			<div style='float:left'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
-		</div>
-		
-		<div class='reviewItem' id='review4'>
-			<div style='float:left'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
-		</div>
-	</div>
-	
-	<div class='reviewBox'>
-		<div class='reviewItem' id='review5'>
-			<div style='float:left'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
-		</div>
-		
-		<div class='reviewItem'>
-			<div style='float:left' id='review5'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
-		</div>
-	</div>
-	
+	<!-- 이 div 살리지마.... -->
 	
 	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
 	<div align=center>
@@ -469,26 +368,9 @@
 			<i class='far fa-window-close review_modal_close'></i>
 			<div class="review_Modal_Content">
 			   <!-- 리뷰내용 -->
-			   <div class='reviewModalItem'>
-			   		<div style='float:left'>
-						<img src="../images/managerIcon.jpg" class='reviewImg'>
-					</div>
-					<div style='float:left;'>
-						<div class='reviewId'>이안근짱</div>
-						<div class='reviewDate'>5월 26일</div>
-					</div>
-					<br><br><br>
-					<div class='reviewContent'>
-						또 참여하고 싶다능~~~<br>
-						크크코쿄쿜콬킼킄
-						또 참여하고 싶다능~~~<br>
-						크크코쿄쿜콬킼킄
-						또 참여하고 싶다능~~~<br>
-						크크코쿄쿜콬킼킄
-					</div>
-				</div>
-				
-			    <!-- 리뷰내용 -->		
+			   
+				<!-- 
+				리뷰내용		
 				<div class='reviewModalItem'>
 					<div style='float:left'>
 						<img src="../images/managerIcon.jpg" class='reviewImg'>
@@ -506,27 +388,7 @@
 						또 참여하고 싶다능~~~<br>
 						크크코쿄쿜콬킼킄
 					</div>
-				</div>
-				
-				<!-- 리뷰내용 -->		
-				<div class='reviewModalItem'>
-					<div style='float:left'>
-						<img src="../images/managerIcon.jpg" class='reviewImg'>
-					</div>
-					<div style='float:left;'>
-						<div class='reviewId'>이안근짱</div>
-						<div class='reviewDate'>5월 26일</div>
-					</div>
-					<br><br><br>
-					<div class='reviewContent'>
-						또 참여하고 싶다능~~~213213213213213213<br>
-						크크코쿄쿜콬킼킄
-						또 참여하고 싶다능~~~<br>
-						크크코쿄쿜콬킼킄
-						또 참여하고 싶다능~~~<br>
-						크크코쿄쿜콬킼킄
-					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -552,7 +414,7 @@
 	      		<span class="subTitle">회원님이 남겨주신 후기는 다른분들에게 큰 도움이 됩니다.</span><hr>
 	      			<p class ="rating"><b>만족도</b></p>
 	       		<select id="satisfy" name="satisfy" background-color="red">	       		
-					<option background-color="red"; value="1">1</option>
+					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
@@ -614,6 +476,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="submit" class="btn btn-dark" id="reviewSubmit">제출</button>
+	        <button type="submit" class="btn btn-dark" id="reviewUpSub">수정</button>
 	      </div>
 	    </div>
 	  </div>
@@ -627,9 +490,9 @@
 	<div class="memCounter">
 		<form class="memCounterFrm">
 			<fieldset>
-		        <input type="button" value="-" class="decrease" />
-		        <input type="text" size="1" id="maxMember" value="1" />
-		        <input type="button" value="+" class="increase" />
+		        <input type="button" value="-" class="decrease">
+		        <input type="text" size="1" id="maxMember" value="1">
+		        <input type="button" value="+" class="increase">
 	   	 	</fieldset>
 		</form>
 	</div>
@@ -666,7 +529,7 @@
 	</div>
 	
 	<div class='hrMargin'><hr></div>
-	
+
 </div>
 <div id='footer'></div>	
 
@@ -680,27 +543,28 @@
     </div>
 </div>
 
+<!-- 일정 전체보기 Modal -->
 <!--allSchedule Modal -->
 <div class="modal fade allScheduleModal" id="allSchedule" tabindex="-1" aria-labelledby="allScheduleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="allScheduleModalLabel" style="text-align: center;">일정 전체보기</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" onclick="allScheduleHide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body oneClsSche">
       	<div>
-		 <font style="width: 15%; float: left;">Date: <input type="text" id="datepicker"></font>
-		<form  class="memCounterFrm">
+		 <font style="float: left;">Date: <input type="text" id="datepicker"></font>
+		<form  class="scMemCounterFrm" style="padding-left: 20px; float: left;">
 			<fieldset>
-		        <input type="button" value="-" class="decrease" />
-		        <input type="text" size="1" id="maxMember" value="1" />
-		        <input type="button" value="+" class="increase" />
+		        <input type="button" value="-" class="scDecrease" />
+		        <input type="text" size="1" id="scMaxMember" value="1" />
+		        <input type="button" value="+" class="scIncrease" />
 	   	 	</fieldset>
 		</form>
-
+		<button type='button' class='ccSelectBtn' style="width: 15%">신청</button>
 		</div>
       	 <hr>
       	 <div class="allScheduleList">
@@ -710,25 +574,115 @@
     </div>
   </div>
 </div>
-		
-
-<!-- 일정 전체보기 Modal -->
-
-		
+			
 <script>
-// let login = sessionStorage.getItem("login");
-// let json = JSON.parse(login); // String -> json 
+$("#naviBar").load("../navibar.html");
+$("#footer").load("../footer.html");
+
+let memPoint = "";
 
 $(document).ready(function(){
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json
 	
+	if(login != null){
+		getMemDto(json.memNum);
+	}
 	$.ajax({
 	      url:"http://localhost:3000/classDtail", 
 	      type:'post',
-	      data:{classNum:3},
+	      data:{classNum:seq},
 	      success:function( dto ){
-	     	
+	    	 	
+	    	  	// 1. 제목 부분
+	    	  	// 스몰로고 
+				if(dto.primaryCategory == '외국어'){
+					$("#pCategory").attr("class", "fas fa-language");
+					$("#pCategory").html("&nbsp;외국어");
+				}else if(dto.primaryCategory = '크리에이티브'){
+					$("#pCategory").attr("class", "fas fa-palette");
+					$("#pCategory").html("&nbsp;크리에이티브");
+				}else if(dto.primaryCategory = '요리'){
+					$("#pCategory").attr("class", "fas fa-utensils");
+					$("#pCategory").html("&nbsp;요리");
+				}else if(dto.primaryCategory = '프로그래밍'){
+					$("#pCategory").attr("class", "fas fa-code");
+					$("#pCategory").html("&nbsp;프로그래밍");
+				}else if(dto.primaryCategory = '스포츠/레져'){
+					$("#pCategory").attr("class", "fas fa-dumbbell");
+					$("#pCategory").html("&nbsp;스포츠/레져");
+				}
+	    	  	
+	    	  	$(".onedayClassTitle").text(dto.title);
+				$("#starGrade").html(dto.avgPoint + "<span id='starGradeCount' style='font-weight: 300;'>(10)</span>");
+	    	  	$("#DetailLocation").text(dto.location);
+	    	  	
+	    	  	// 2. 이미지 부분
+	    	  	if(dto.layerSelect=='A'){
+	    	  		$(".onedayClassImageBoxA").show();
+	    	  		$(".onedayClassImageBoxB").hide();
+	    	  		$(".onedayClassImageBoxC").hide();
+	    	  		$("#_ocImgA1").attr("src", dto.image1);
+	    	  		$("#_ocImgA2").attr("src", dto.image2);
+	    	  		$("#_ocImgA3").attr("src", dto.image3);
+	    	  		$("#_ocImgA4").attr("src", dto.image4);
+	    	  		$("#_ocImgA5").attr("src", dto.image5);
+	    	  	}else if(dto.layerSelect=='B'){
+	    	  		$(".onedayClassImageBoxB").show();
+	    	  		$(".onedayClassImageBoxA").hide();
+	    	  		$(".onedayClassImageBoxC").hide();
+	    	  		$("#_ocImgB1").attr("src", dto.image1);
+	    	  		$("#_ocImgB2").attr("src", dto.image2);
+	    	  		$("#_ocImgB3").attr("src", dto.image3);
+	    	  		$("#_ocImgB4").attr("src", dto.image4);
+	    	  		$("#_ocImgB5").attr("src", dto.image5);
+	    	  	}else if(dto.layerSelect=='C'){
+	    	  		$(".onedayClassImageBoxC").show();
+	    	  		$(".onedayClassImageBoxA").hide();
+	    	  		$(".onedayClassImageBoxB").hide();
+	    	  		$("#_ocImgC1").attr("src", dto.image1);
+	    	  		$("#_ocImgC2").attr("src", dto.image2);
+	    	  		$("#_ocImgC3").attr("src", dto.image3);
+	    	  		$("#_ocImgC4").attr("src", dto.image4);
+	    	  		$("#_ocImgC5").attr("src", dto.image5);
+	    	  	}
+	    	  	
+	    	  	// 3. ~~님이 개설한 클래스
+	    	  	$("#nickNameTit").text(dto.instructor + " 님이 개설한 클래스");
+	    	  	
+	    	  	$("#classTime").text(dto.duration + "분");
+	    	  	$("#classMaxNum").text(dto.limitNum + "명");
+	    	  	$("#classSupplie").text(dto.preparation);
+	    	  	
+	    	  	$(".classInfo").html(dto.information);
+	    	    
+	    	  	// 4. 프로그램 설명
+	    	  	$("#program").html(dto.content);
+	    	  	
+	    	  	// 5. YouTube
+	    	  	if(dto.youtubeLink == null){
+	    	  		$("#youTubeLine").hide();
+	    	  		$("#youTubeTitle").hide();
+	    	  		$("#youtubeLink").hide();
+	    	  	}else{
+		    	  	let youtubeLink = dto.youtubeLink;
+		    	  	let nYoutubeLink = youtubeLink.replace("watch?v=", "embed/");
+		    	  	$("#youtubeLink").attr("src", nYoutubeLink);
+	    	  	}
+	    	  	
+	    	  	// 6. 선생님 소개
+	    	  	$("#_ocTeacherImg").attr("src", dto.profilePic);
+	    	  	$("#teacherTitle").text(dto.instructor + " 선생님 소개");
+	    	  	$(".ocTeacherMail").text(dto.email);
+	    	  	masterClass(dto.email);
+	    	  	$("#TeacherInfo").html(dto.aboutMe);
+	    	  	
+	    	  	// 7. 수업 장소
+	    	  	$("#location").text(dto.location);
+	    	  	addressSearch(dto.location);
+	    	  	
+	    	  	
+	    	    // 9. class 일정 뿌려주는 부분---------------------------------------------------------------------
 				let pDate = new Date();
 				let fpDate = dateFormat(pDate);
 				// alert("pDate : " + pDate.getDate());
@@ -765,7 +719,7 @@ $(document).ready(function(){
 		$.ajax({
 		      url:"http://localhost:3000/classSchedulList", 
 		      type:'post',
-		      data:{classNum:3, startDate:startDate, endDate:endDate},
+		      data:{classNum:classNum, startDate:startDate, endDate:endDate},
 		      success:function( map ){
 		     		let noDateArray = new Array();
 		     		let z = 0;
@@ -790,7 +744,7 @@ $(document).ready(function(){
 						let sbtn = "";
 						
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                     	sbtn += "<button type='button' class='caSelectBtn' cDate='" + rdate + "'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    	noDateArray[z] = rdate;
@@ -832,7 +786,7 @@ $(document).ready(function(){
 						
 						let sbtn = "";
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' data-toggle='modal' data-target='#requestModal'>신청</button>";
+	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    }
@@ -852,39 +806,215 @@ $(document).ready(function(){
 					
 					datePicker(startDate, endDate, noDateArray);
 					
-					let myPoint = comma(10000-(clist[0].price));
-					$("#requestPage").remove();
+					memberCounter(clist[0].limitNum);
 					
-					let src3 = "<div class='modal-body' id='requestPage'>"
-							 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
-							 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
-							 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
-							 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
-							 	+ "<span class='theme-color'>결제 내역</span>"
-							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
-							 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(clist[0].price) + "point</span> </div>"
-							 	+ "<div class='mb-3'>"
-							 		+ "<hr class='new1'>"
-							 	+ "</div>"
-							 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + myPoint + "point</span> </div>"
-							 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' id='participate'>참여하기</button> </div>"
-							 + "</div>"
-							 + "</div>";
-	                
-	                $("._requestPage").append(src3);
-	                
-	                memberCounter(clist[0].duration);
-	                
-	                $("#participate").on("click", function(){
-	                //	alert("참여하니?");
-	                	let classNum = $(this).attr("classNum"); // 클릭한 classNum 가져옴
-						let memNum = $(this).attr("memNum"); // 클릭한 rdate 가져옴  ex) 2021-05-22
-			
-	                	alert(classNum);
-	                	alert(memNum);
+					$(".caSelectBtn").on("click", function(){
+						if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}else{
+								
+						}
+						
+	                	let joinNum = $("#maxMember").val(); // 사용자가 신청한 인원
+	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
+	                	if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	                	
+	                	for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+	                	$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" +  comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+								 + "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	                
+	                	$("#requestModal").modal('show');
+	                	
+	                	participate();
 	                });
 	                
+	               	$(".cbSelectBtn").on("click", function(){
+	               		if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}
+	               		let joinNum = $("#scMaxMember").val(); // 사용자가 신청한 인원
+	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	
+	               		if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	               		
+	               		for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+						$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+							 	+ "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	           
+	               		$("#requestModal").modal('show');
+	               		
+	               		participate();
+	                });
+	                
+	                $(".ccSelectBtn").on("click", function(){
+	                	if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}
+	                	let joinNum = $("#scMaxMember").val();	// 사용자가 신청한 인원
+	                	let cdate = $("#datepicker").val();	// 사용자가 신청한 날짜
+	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
+	                	let myPoint = memPoint-(clist[0].price*joinNum);	// 신청 후 나의 잔액
+	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	
+	                	if(joinNum==0){
+	                		alert("인원수를 다시한번 확인해주세요");
+	                		return;
+	                	}
+	   					else if(cdate == ""){
+	                		alert("날짜를 선택하여 주세요");
+	                		return;
+	                	}
+	                	
+	                	for(let i=1; i < clist.length+1; i++){
+							let classSchedule = clist[i-1];
+							let rdate = (classSchedule.rdate).substring(0,10);
+							
+							if(rdate==cdate){
+								classMaxNum = classSchedule.limitNum;
+								break;
+							}
+	               		}
+	                	
+	                	if(classMaxNum < joinNum){
+	                		alert("예약 가능 인원을 초과하였습니다. 죄송합니다.");
+	                		return;
+	                	}
+	                	
+						$("#requestPage").remove();
+	                	
+	                	let src3 = "<div class='modal-body' id='requestPage'>"
+									 +"<div class='text-right'> <i class='fa fa-times close' data-dismiss='modal'></i> </div>"
+									 + "<div class='px-4 py-5' style='border: 1px solid #d2d2d2; margin-top:20px; border-radius:20px;'>"
+									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
+									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
+									 	+ "<span class='theme-color'>결제 내역</span>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='mb-3'>"
+									 		+ "<hr class='new1'>"
+									 	+ "</div>"
+									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 + "</div>"
+								 + "</div>";
+	                
+	               		$("._requestPage").append(src3);
+	                	
+	                	$("#requestModal").modal('show');
+	                	
+	                	participate();
+	                });
+	                
+	                function participate(){
+		                $("#participate").on("click", function(){
+		                	let classNum = $(this).attr("classNum"); // 클릭한 classNum
+							let memNum = $(this).attr("memNum"); 	
+		                	let cdate = $(this).attr("cdate");
+							let myPoint = Number($(this).attr("myPoint")); // 결제 후 금액
+							let rPoint = Number($(this).attr("rPoint"));	// 결제 한 금액
+							let joinNum = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
+
+							// 자신이 가진 금액이 더 적을 경우
+							if(myPoint < 0){
+								myFunc();
+								return;
+							}
+							
+							$.ajax({
+								url:"http://localhost:3000/participate", 
+							    type:'post',
+							    data:{classNum:classNum, memNum:json.memNum, cDate:cdate, name:json.nickName, rPoint:rPoint, paticipants:joinNum},
+							    success: function(mag){
+							    	//alert(mag);json.myPoint
+							    	$("#requestModal").modal('hide');
+								    $("#allSchedule").modal('hide');
+								    location.reload(true);
+							    },
+							    error: function(){
+							    	alert('error');
+							    }
+							});
+							
+		                });
+	                }
 		      },
 	        error:function(){
 	      	  alert("error");
@@ -912,9 +1042,9 @@ $(document).ready(function(){
 	
 		function slide(offset) {
 			index = Math.min( Math.max( index + offset, 0 ), total - 1 );
-			if(index == 0){
+			if(index == 0 && page != 2){
 				$(".left").hide();
-			}else if(index == page-1){
+			}else if(index == page-1 && page != 2){
 				$(".right").hide();
 			}else{
 				$(".left").show();
@@ -957,13 +1087,6 @@ $(document).ready(function(){
    function two(msg){
       return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
    };
-	
-	$(".caSelectBtn").on("click", function () {
-		let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
-		// alert("caSelectBtn");
-		alert(classNum);
-	});
-	
 	
 	function datePicker(startDate, endDate, noDateList){
 		// let noDateArray = ["2021-05-14","2021-05-15","2021-05-16"]
@@ -1015,28 +1138,78 @@ $(document).ready(function(){
 	function memberCounter(maxMember){
 		
 		$(function () {
-		    set_($('#maxMember'), maxMember);  //return 3 maximum digites
-	
+		    set_($('#maxMember'), maxMember);  
+		    set_($('#scMaxMember'), maxMember);  
+		    
 		    function set_(_this, max) {
-		        var block = _this.parent();
-	
+		        let block = _this.parent();
+		        
 		        block.find(".increase").click(function () {
-		            var currentVal = parseInt(_this.val());
+		            let currentVal = parseInt(_this.val());
 		            if (currentVal != NaN && (currentVal + 1) <= max) {
 		                _this.val(currentVal + 1);
 		            }
 		        });
 	
 		        block.find(".decrease").click(function () {
-		            var currentVal = parseInt(_this.val());
+		            let currentVal = parseInt(_this.val());
 		            if (currentVal != NaN && currentVal != 0) {
 		                _this.val(currentVal - 1);
 		            }
 		        });
+		        
+		        block.find(".scIncrease").click(function () {
+		            let currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && (currentVal + 1) <= max) {
+		                _this.val(currentVal + 1);
+		            }
+		        });
+	
+		        block.find(".scDecrease").click(function () {
+		            let currentVal = parseInt(_this.val());
+		            if (currentVal != NaN && currentVal != 0) {
+		                _this.val(currentVal - 1);
+		            }
+		        });
+		        
 		    }
 		});
 	}
+	
+	function myFunc(){
+		   let test = confirm('금액이 모잘라요...결제를 하시겠습니까?');
+		   if(test){		     
+		      $("#requestModal").modal('hide');
+		      $("#allSchedule").modal('hide');
+		      $("#staticBackdrop").modal('show');
+		   }
+		   else{
+		      $("#requestModal").modal('hide');
+		      $("#allSchedule").modal('hide');
+		      $("#staticBackdrop").modal('show');
+		   }
+	}
+	
+
 });
+
+function getMemDto(memNum){
+	$.ajax({
+		url:"http://localhost:3000/getMemberDto", 			
+		type:"post",
+		data:{memNum:memNum},
+	 	success:function( memDto ){
+	 		memPoint = memDto.myPoint;
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
+
+function allScheduleHide(){
+	$("#allSchedule").modal('hide');
+}
 </script>
 
 
@@ -1089,27 +1262,44 @@ function showLayer3(){
 		check3 = true;
 	}
 }
- 
+
+// 개설클래스 append해주는 부분
+function masterClass(email){
+	$.ajax({
+		url:"http://localhost:3000/masterClassCounter", 			
+		type:"post",
+		data:{email:email},
+	 	success:function( count ){
+	 		// alert(count);
+	 		$("#masterClass").text("개설클래스 " + count + "개");	
+	 	},
+	 	error:function(){
+	 		alert('error');
+	 	}
+		
+	});
+}
 // 카카오맵 출력용 버젼
 var mapContainer = document.getElementById('map'), 
     mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 var geocoder = new kakao.maps.services.Geocoder();
 
-geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(result, status) {
-
-     if (status === kakao.maps.services.Status.OK) {
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        var marker = new kakao.maps.Marker({map: map, position: coords});
-
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
-        });
-        infowindow.open(map, marker);
-        map.setCenter(coords);
-    } 
-});    
-
+function addressSearch(location){
+	geocoder.addressSearch(location, function(result, status) {
+	
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	        var marker = new kakao.maps.Marker({map: map, position: coords});
+	
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
+	        });
+	        infowindow.open(map, marker);
+	        map.setCenter(coords);
+	    } 
+	});    
+}
 //별점
 $(document).ready(function(){
 	$('#Clstar4half').attr('checked', 'checked');
@@ -1160,10 +1350,6 @@ slide(0);
 
 */
 
-// 페이지 로드시 리뷰 뿌려 줌
-$(document).ready(function(){
-	//alert("페이지 로딩 완!!");
-});
 //이미지 확대 모달창
 
 $(".image_hide_modal").hide();
@@ -1192,10 +1378,8 @@ $(".fa-times").click(function(){
     modalCheck = true;
 });
 
-//별점
-// 초기값 5점으로 설정....근데 오류남 ㅜ
 
-//var satisfy, cleanness, rComm, rLocation, accuracy;
+//------별점---------------------------
 
 var satisfy=cleanness=rComm=rLocation=accuracy=5;
 
@@ -1235,6 +1419,7 @@ var satisfy=cleanness=rComm=rLocation=accuracy=5;
           	//	alert("rLocation: " + rLocation);
           	}
         });
+      
       $('#accuracy').barrating({
           theme: 'fontawesome-stars',
           initialRating : 1
@@ -1290,6 +1475,7 @@ $(document).ready(function (e){
     function preview(arr){
       arr.forEach(function(f){
         
+    	  4.
         //파일명이 길면 파일명...으로 처리
         var fileName = f.name;
         if(fileName.length > 10){
@@ -1317,16 +1503,16 @@ $(document).ready(function (e){
       });//arr.forEach
     }
   });
-/*   
+   
 //로그인 세션
 let login = JSON.parse(sessionStorage.getItem("login"));
 let memNum = login.memNum;
-let name = login.userName;
-   */
+let userName = login.userName;
+   
 //제출하기 버튼 클릭
 $("#reviewSubmit").click(function(){
 
-	alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
+	// alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
 	
 	  
 	  $.ajax({
@@ -1357,8 +1543,6 @@ $("#reviewSubmit").click(function(){
 
    
 //파일 첨부 
-
-
 	$(function(){
 		$('.upload_text').val('미리보여줄 텍스트.');
 		$('.input_file').change(function(){
@@ -1366,6 +1550,191 @@ $("#reviewSubmit").click(function(){
 			$('.upload_text').val(i);
 		});
 	});
+	
+	
+
+//~~~~~~ 리뷰 별점평균 뿌리기~~~~~
+
+//	alert("페이지 로딩" + seq);
+	$.ajax({
+		url:"http://localhost:3000/getAvg", 			
+		type:"get",
+		data:{classNum:seq},
+		success:function(map){
+		//	alert('별점 평균 컨트롤러 갔다옴');
+			let avg = map.avg;
+			let sAvg = map.sAvg;
+		//	alert(sAvg.cleanness);
+			let satis = sAvg.satisfy;
+			let clean = sAvg.cleanness;
+			let safety = sAvg.safety
+			let communi = sAvg.rComm;
+			let loca = sAvg.rLocation;
+			let sati = sAvg.satisfy;
+			
+			$("#saAvg").append("  "+satis + " 점");
+			$("#clAvg").append(clean);
+			
+			alert(typeof clean +"라고한다");
+			
+//--------------------------------별점 평균---------------------------------------
+			$(function(){
+				$('#satisfaction').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : sati,
+			        readonly : true 
+			        	, onSelect: function(value, text, event){
+			        		// 별점 클릭 후 처리는 여기서 코드
+			        		// 선택한 별점 값을 value로 받음        	
+			        		clean = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#clean').barrating({
+				        theme: 'fontawesome-stars',
+				        initialRating : clean,
+				        readonly : true 
+				        	, onSelect: function(value, text, event){
+				        		// 별점 클릭 후 처리는 여기서 코드
+				        		// 선택한 별점 값을 value로 받음        	
+				        		clean = parseInt(value);
+				        	//	alert("satisfy: " + typeof satisfy);
+				        	}
+				      });
+				
+				$('#safety').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : safety,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		safety = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#communi').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : communi,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		communi = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#loca').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : loca,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		loca = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+			});
+			 
+			alert("별점 평균" + avg);
+			
+			$("#reviewGrade").prepend(avg + "점");
+		},
+		error:function(){
+			alert('별점 평균 에러ㅜㅜ');
+		}
+	});	
+
+	
+
+	// 리뷰 리스트 뿌리기~~~~~
+	$.ajax({
+		url:"http://localhost:3000/getReviewList", 			
+		type:"get",
+		data:{classNum:seq},
+	 	success:function(list){
+			alert("리뷰갯수"+Object.keys(list).length);
+			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
+
+		//	if(Object.keys(list).length > 6){	
+ 
+			$.each(list, function(i, val){
+				let str ="<div class='reviewModalItem'></div>";
+				str +="<div style='float:left'><img src='../images/managerIcon.jpg' class='reviewImg'></div>" 
+				str += "<div style='float:left;'><div class='reviewId'>"+val.name+"</div>";
+				str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
+				str += "<br><br><br>";
+				str += "<div class='reviewContent'>"+val.rContent+"</div>";
+		//		if(val.name == userName){
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel'>삭제</button>"	;
+				str += "<img src=" + val.image1 + " alt=" + ">"	;
+			//	str += "<img src=" + val.image2 + " alt=" + ">"	;
+			//	str += "<img src=" + val.image3 + " alt=" + ">"	;
+			//	}
+	
+					
+			//	alert(str);
+			$(".review_Modal_Content").append(str);
+			});// 반복문 끝
+			
+	//	}
+	 	},
+		error:function(){
+			alert("오류를 잡아라~!");
+		}		
+	});
+
+	
+	$("#reviewUpSub").hide();
+function reviewUp(seq){
+	alert(seq);
+	
+	$.ajax({
+		url:"http://localhost:3000/getReview",
+		type: "get",
+		data: {reviewSeq:seq},
+		success:function(data){
+			alert("컨트롤러 갔ㄷㅏ옴");
+			alert(typeof (JSON.stringify(data.satisfy)));
+			var satisfy = parseInt(data.satisfy)
+			alert(typeof satisfy )
+			//모달로 뿌러줘야하는데.............
+			$(".reviewBtn").trigger('click');
+		//	$("#satisfy").val(data.satisfy);  이거 안됨 ㅜㅜ별점 으악~~~~
+			$("#rContent").val(data.rContent); 
+			$("#reviewSubmit").hide();	// 제출 버튼 안보이게해줘
+			$("#reviewUpSub").show();
+				$("#reviewUpSub").click(function(){
+					alert("수정하기 버튼 클릭");
+					
+					$.ajax({
+						url:"http://localhost:3000/updateReview",
+						type: "post",
+						data: new FormData($("#reviewImages")[0]),  // 필수 
+						processData: false, // 필수
+						contentType: false, // 필수 
+						cache: false,
+						success:function(){
+							alert("컨트롤러는 잘 다녀옴");
+						},
+						error:function(){
+							alert('에러야그만보자~');
+						}						
+						
+						
+					});//ajax
+				});//제출하기버튼
+				
+			},
+		error:function(){
+			alert("내이름은 에러^ㅠ^");
+		}
+	});
+
+	
+
+}
+
+	 
 </script>
 </body>
 </html>

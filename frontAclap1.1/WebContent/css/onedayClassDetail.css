@@ -379,7 +379,7 @@
 	box-shadow: 3px 2px 5px #66676B;
 	background-color:#F5F2F5;
 	height:660px;
-	width:400px;
+	width:500px;
 }
 .review_modal_close{
 	font-size:30px;
@@ -406,6 +406,13 @@
 /* 스크롤바 숨기기 */ 
 ::-webkit-scrollbar	{
     display: none;
+}
+
+/*-----리뷰 모달창 수정삭제 버튼------*/
+.rBtn{
+	float: right;
+    margin-right: 10px;
+	
 }
 
 
@@ -492,8 +499,31 @@
 	font-size:15px;
 	font-weight: 500;
 }
+
 .caSelectBtn{
-	font-size:20px;
+	font-size:18px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+
+.cbSelectBtn{
+	font-size:18px;
+	margin-left:35px;
+	margin-top:2px;
+	background-color:#FE887A;
+	width:80px;
+	height:30px;
+	border:none;
+	border-radius: 5px;
+}
+
+.ccSelectBtn{
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#FE887A;
@@ -504,7 +534,7 @@
 }
 
 .eaSelectBtn{
-	font-size:20px;
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#98A4A6;
@@ -514,7 +544,7 @@
 	border-radius: 5px;
 }
 .caSoldoutBtn{
-	font-size:20px;
+	font-size:18px;
 	margin-left:35px;
 	margin-top:2px;
 	background-color:#98A4A6;
@@ -595,21 +625,19 @@
     float: left;
 }
 
-fieldset, input[type="button"] {
-    border: 0;
-}
-input[type="button"] {
+
+.decrease, .increase, .scDecrease, .scIncrease {
     background-color: #F5F2F5;
     color: #000;
     cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 5px;
+    border: 0;
 }
-input[type="text"] {
+.maxMember {
     border: 1px solid #F4F3F3;
     height: 30px;
-    width: 50px;
 }
 /*----------- 5027 이미지 클릭시 모달창 -----*/
 
@@ -989,6 +1017,15 @@ div.OCSubmitBtn:hover {
 
 /*-----------------여기까지 후기모달---------------------*/
 
+/*----리뷰 별점 평균----*/
+.clean .safety .communi .loca{
+	font-size: 5px;
+}
+.ratingAvg{
+	margin-top: 5px;
+	font-size: 15px;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
 
 
 

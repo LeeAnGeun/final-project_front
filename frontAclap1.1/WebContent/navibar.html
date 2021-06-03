@@ -106,12 +106,12 @@ $(document).ready(function(){
 	$("#len6").hide();
 	$(".loginNewContent").hide();
 	
-	// 로그인 정보 가져오기
+	// 로그인 버튼
 	let login = sessionStorage.getItem("login");
-	let json = JSON.parse(login); 
-	if(json != null){
-		$("#len4").hide();
+	if(login != null){
+		let json = JSON.parse(login);
 		
+		$("#len4").hide();
 		if(json.auth==3){
 			$("#len5").show();
 			$("#len5").attr('src', json.profilePic);
@@ -126,59 +126,64 @@ $(document).ready(function(){
 	// 유저 모달창 띄우기
 	let chNum = 0;
 	$("#len5").click(function(){
-		$(".hide_modal").toggleClass("show_modal");	
-		$.ajax({
-			url:"http://localhost:3000/login", 
-			type:'post',
-			data : {email:email, pwd:json.pwd},
-			success:function( json ){			
-				$("#len5").attr('src', json.profilePic);
-				$(".loginModalImg").attr('src', json.profilePic);
-				$(".loginModalNickName").html(json.nickName);
-				$(".loginModalEmail").html(json.email);
-				$(".myPointCheck").html("내 포인트 " + json.myPoint);			
-				// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
-				$(".loginNewContent").html("새로운 클래스 신청자 : 0명")
-			},
-			error:function(){
-				alert("Google_Kakao_Regi ajax Error");
+		$(".hide_modal").toggleClass("show_modal");			
+		if(login != null){
+			let json = JSON.parse(login);
+			$.ajax({
+				url:"http://localhost:3000/login", 
+				type:'post',
+				data : {email:json.email, pwd:json.pwd},
+				success:function( json ){			
+					$("#len5").attr('src', json.profilePic);
+					$(".loginModalImg").attr('src', json.profilePic);
+					$(".loginModalNickName").html(json.nickName);
+					$(".loginModalEmail").html(json.email);
+					$(".myPointCheck").html("내 포인트 " + json.myPoint);			
+					// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
+					$(".loginNewContent").html("새로운 클래스 신청자 : 0명")
+				},
+				error:function(){
+					alert("Google_Kakao_Regi ajax Error");
+				}
+			});
+			
+			if(chNum == 0){
+				$(".carousel-control-next").hide();	
+				chNum1 = 1;
 			}
-		});
-		
-		if(chNum == 0){
-			$(".carousel-control-next").hide();	
-			chNum1 = 1;
-		}
-		else{
-			$(".carousel-control-next").show();	
-			chNum = 0;
+			else{
+				$(".carousel-control-next").show();	
+				chNum = 0;
+			}
 		}
 	});
 	
 	// 매니저 모달창 띄우기
 	$("#len6").click(function(){
 		$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
-		$.ajax({
-			url:"http://localhost:3000/login", 
-			type:'post',
-			data : {email:email, pwd:json.pwd},
-			success:function( json ){			
-				// 문의글 목록 보이는 코드 들어가야함
-				$(".ManagerNewContent").html('새 문의 글 : 0건');
-			},
-			error:function(){
-				alert("Google_Kakao_Regi ajax Error");
+		if(login != null){
+			let json = JSON.parse(login);
+			$.ajax({
+				url:"http://localhost:3000/login", 
+				type:'post',
+				data : {email:json.email, pwd:json.pwd},
+				success:function( json ){			
+					// 문의글 목록 보이는 코드 들어가야함
+					$(".ManagerNewContent").html('새 문의 글 : 0건');
+				},
+				error:function(){
+					alert("Google_Kakao_Regi ajax Error");
+				}
+			});		
+			
+			if(chNum == 0){
+				$(".carousel-control-next").hide();	
+				chNum1 = 1;
 			}
-		});		
-		
-		
-		if(chNum == 0){
-			$(".carousel-control-next").hide();	
-			chNum1 = 1;
-		}
-		else{
-			$(".carousel-control-next").show();	
-			chNum = 0;
+			else{
+				$(".carousel-control-next").show();	
+				chNum = 0;
+			}
 		}
 	});
 	
@@ -206,10 +211,7 @@ function goManagerPage(){
 	$(".Manager_hide_modal").toggleClass("Manager_show_modal");	
 	location.href="../adminPageView/managerPage.html";
 }
-</script>
 
-
-<script type="text/javascript">
 
 $(function(){
     $("#psyClassList").load("card.html"); 
@@ -245,7 +247,10 @@ $(".navTrigger").click(function () {
  });   
 
 function getInterestFunc() {
-	location.href="../interest/getInterest.html";
+	if(json != null)
+		location.href="../interest/getInterest.html";
+	else
+		alert('로그인이 필요합니다');
 }
 
 //FAQ클릭시
@@ -278,16 +283,19 @@ function event(){
 
 //////////////////////////////////////////////포인트 충전///////////////////////////////////////////////////////////////
 //로그인 세션
-let login = JSON.parse(sessionStorage.getItem("login"));
-let email = login.email;
-let name = login.userName;
-let phoneNum = login.phoneNum;
-let myPoint = login.myPoint;
-myPoint = parseInt(myPoint);
-let money = 0;
-$("#points").append("$" + myPoint);
+let json = sessionStorage.getItem("login");
+if(json != null){
+	let login = JSON.parse(json); 
+	let email = login.email;
+	let name = login.userName;
+	let phoneNum = login.phoneNum;
+	let myPoint = login.myPoint;
+	myPoint = parseInt(myPoint);
+	let money = 0;
+	$("#points").append("$" + myPoint);
+};
 
-
+// ???????????? 이거 뭐에영
 $("#pointsCharge").click(function(){
 	
 });
