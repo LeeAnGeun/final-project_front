@@ -52,7 +52,7 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
 }, {});
 
 let seq = urlParams.seq;
-alert("seq" + seq);
+alert("seq" + seq);		// classNum
 </script>
 
 </head>
@@ -251,90 +251,71 @@ alert("seq" + seq);
    	<div class='hrMargin'><hr></div>
 	<span class='ocSubTitle' id='teacherTitle'>
 		<i class="fas fa-star" style='color: red;'></i>
-		<span id='reviewGrade'>4.8점(후기 10개)</span>
+		<span id='reviewGrade'></span>
 	</span><br>
 		<div style='padding-top:15px;'>
-		<div style='float:left; margin-right:3px; margin-top:2px'>청결도</div>
+		<div style='float:left; margin-right:3px; margin-top:2px;'><p class="ratingAvg" id="saAvg"><b>만족도</b></p></div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Clstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Clstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Clstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Clstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Clstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Clstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Clstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Clstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Clstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Clstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
+			<select id="satisfaction" name="satify" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<div id="saAvg"></div>
 		</div>
 		
-		<div style='float:left; margin-right:3px; margin-top:2px'>안전성 </div>
+		<div style='float:left; margin-right:3px; margin-top:2px;'><p class="ratingAvg" id="clAvg"><b>청결도</b></p></div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Sfstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Sfstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Sfstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Sfstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Sfstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Sfstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Sfstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Sfstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Sfstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Sfstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
+			<select id="clean" name="clean" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			
 		</div>
 		
-		<div style='float:left; margin-right:3px; margin-top:2px'>의사소통</div>
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="safAvg"><b>안전성</b></p> </div>
 		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Cmstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Cmstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Cmstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Cmstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Cmstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Cmstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Cmstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Cmstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Cmstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Cmstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
-		</div>
-		</div>
-		
-		<div style='float:left; margin-right:3px; margin-top:2px'>위치성</div>
-		<div style='float:left; margin-right:25px;'>
-			<form class="rating-star">
-			<input type="radio" id="Plstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" id="Plstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" id="Plstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" id="Plstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" id="Plstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" id="Plstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" id="Plstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" id="Plstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" id="Plstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" id="Plstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
-		</div>
-		
+			<select id="safety" name="safety" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
 				
-		<div style='float:left; margin-right:3px; margin-top:2px'>정확성</div>
-		<div style='float:left'>
-			<form class="rating-star">
-			<input type="radio" class='star5' id="Acstar5" name="rating" value="5" onclick="return(false);"/><label class = "full" for="star5"></label>
-			<input type="radio" class='star5' id="Acstar4half" name="rating" value="4.5" onclick="return(false);"/><label class="half" for="star4half"></label>
-			<input type="radio" class='star5' id="Acstar4" name="rating" value="4" onclick="return(false);"/><label class = "full" for="star4"></label>
-			<input type="radio" class='star5' id="Acstar3half" name="rating" value="3.5" onclick="return(false);"/><label class="half" for="star3half"></label>
-			<input type="radio" class='star5' id="Acstar3" name="rating" value="3" onclick="return(false);"/><label class = "full" for="star3"></label>
-			<input type="radio" class='star5' id="Acstar2half" name="rating" value="2.5" onclick="return(false);"/><label class="half" for="star2half"></label>
-			<input type="radio" class='star5' id="Acstar2" name="rating" value="2" onclick="return(false);"/><label class = "full" for="star2"></label>
-			<input type="radio" class='star5' id="Acstar1half" name="rating" value="1.5" onclick="return(false);"/><label class="half" for="star1half"></label>
-			<input type="radio" class='star5' id="Acstar1" name="rating" value="1" onclick="return(false);"/><label class = "full" for="star1"></label>
-			<input type="radio" class='star5' id="Acstarhalf" name="rating" value="0.5" onclick="return(false);"/><label class="half" for="starhalf"></label>
-			</form>
 		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="coAvg"><b>의사소통</b><a></a></div>
+		<div style='float:left; margin-right:25px;'>
+			<select id="communi" name="communi" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+		</div>
+		
+		<div style='float:left; margin-right:3px; margin-top:2px'><p class="ratingAvg" id="loAvg"><b>위치성</b></p></div>
+		<div style='float:left; margin-right:25px;'>
+			<select id="loca" name="loca" background-color="red">	       		
+					<option background-color="red"; value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+		</div>
+		</div>
+	
+		
 		<br><br><br>
 
 
@@ -446,7 +427,7 @@ alert("seq" + seq);
 	      		<span class="subTitle">회원님이 남겨주신 후기는 다른분들에게 큰 도움이 됩니다.</span><hr>
 	      			<p class ="rating"><b>만족도</b></p>
 	       		<select id="satisfy" name="satisfy" background-color="red">	       		
-					<option background-color="red"; value="1">1</option>
+					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
@@ -508,6 +489,7 @@ alert("seq" + seq);
 	      </div>
 	      <div class="modal-footer">
 	        <button type="submit" class="btn btn-dark" id="reviewSubmit">제출</button>
+	        <button type="submit" class="btn btn-dark" id="reviewUpSub">수정</button>
 	      </div>
 	    </div>
 	  </div>
@@ -1270,10 +1252,8 @@ $(".fa-times").click(function(){
     modalCheck = true;
 });
 
-//별점
-// 초기값 5점으로 설정....근데 오류남 ㅜ
 
-//var satisfy, cleanness, rComm, rLocation, accuracy;
+//------별점---------------------------
 
 var satisfy=cleanness=rComm=rLocation=accuracy=5;
 
@@ -1313,6 +1293,7 @@ var satisfy=cleanness=rComm=rLocation=accuracy=5;
           	//	alert("rLocation: " + rLocation);
           	}
         });
+      
       $('#accuracy').barrating({
           theme: 'fontawesome-stars',
           initialRating : 1
@@ -1368,6 +1349,7 @@ $(document).ready(function (e){
     function preview(arr){
       arr.forEach(function(f){
         
+    	  4.
         //파일명이 길면 파일명...으로 처리
         var fileName = f.name;
         if(fileName.length > 10){
@@ -1395,12 +1377,12 @@ $(document).ready(function (e){
       });//arr.forEach
     }
   });
-/*   
+   
 //로그인 세션
 let login = JSON.parse(sessionStorage.getItem("login"));
 let memNum = login.memNum;
-let name = login.userName;
-   */
+let userName = login.userName;
+   
 //제출하기 버튼 클릭
 $("#reviewSubmit").click(function(){
 
@@ -1444,15 +1426,105 @@ $("#reviewSubmit").click(function(){
 	});
 	
 	
-	// 리뷰 리스트 뿌리기~~~~~
-	alert("페이지 로딩");
+//~~~~~~ 리뷰 별점평균 뿌리기~~~~~
+
+//	alert("페이지 로딩" + seq);
+	$.ajax({
+		url:"http://localhost:3000/getAvg", 			
+		type:"get",
+		data:{classNum:seq},
+		success:function(map){
+		//	alert('별점 평균 컨트롤러 갔다옴');
+			let avg = map.avg;
+			let sAvg = map.sAvg;
+		//	alert(sAvg.cleanness);
+			let satis = sAvg.satisfy;
+			let clean = sAvg.cleanness;
+			let safety = sAvg.safety
+			let communi = sAvg.rComm;
+			let loca = sAvg.rLocation;
+			let sati = sAvg.satisfy;
+			
+			$("#saAvg").append("  "+satis + " 점");
+			$("#clAvg").append(clean);
+			
+			alert(typeof clean +"라고한다");
+			
+//--------------------------------별점 평균---------------------------------------
+			$(function(){
+				$('#satisfaction').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : sati,
+			        readonly : true 
+			        	, onSelect: function(value, text, event){
+			        		// 별점 클릭 후 처리는 여기서 코드
+			        		// 선택한 별점 값을 value로 받음        	
+			        		clean = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#clean').barrating({
+				        theme: 'fontawesome-stars',
+				        initialRating : clean,
+				        readonly : true 
+				        	, onSelect: function(value, text, event){
+				        		// 별점 클릭 후 처리는 여기서 코드
+				        		// 선택한 별점 값을 value로 받음        	
+				        		clean = parseInt(value);
+				        	//	alert("satisfy: " + typeof satisfy);
+				        	}
+				      });
+				
+				$('#safety').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : safety,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		safety = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#communi').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : communi,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		communi = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+				
+				$('#loca').barrating({
+			        theme: 'fontawesome-stars',
+			        initialRating : loca,
+			        readonly : true
+			        	, onSelect: function(value, text, event){
+			        		loca = parseInt(value);
+			        	//	alert("satisfy: " + typeof satisfy);
+			        	}
+			      });
+			});
+			 
+			alert("별점 평균" + avg);
+			
+			$("#reviewGrade").prepend(avg + "점");
+		},
+		error:function(){
+			alert('별점 평균 에러ㅜㅜ');
+		}
+	});	
 	
+
+	// 리뷰 리스트 뿌리기~~~~~
 	$.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
-		data:{classNum:1},
+		data:{classNum:seq},
 	 	success:function(list){
-			alert(Object.keys(list).length);
+			alert("리뷰갯수"+Object.keys(list).length);
+			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 		//	if(Object.keys(list).length > 6){	
  
 			$.each(list, function(i, val){
@@ -1462,11 +1534,14 @@ $("#reviewSubmit").click(function(){
 				str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 				str += "<br><br><br>";
 				str += "<div class='reviewContent'>"+val.rContent+"</div>";
-		//		if(val.name == 로그인세션){
-				str += "<button type='button' class='btn btn-light btn-sm rBtn'>수정</button>"	;
-				str += "<button type='button' class='btn btn-light btn-sm rBtn'>삭제</button>"	;
-					
+		//		if(val.name == userName){
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel'>삭제</button>"	;
+				str += "<img src=" + val.image1 + " alt=" + ">"	;
+			//	str += "<img src=" + val.image2 + " alt=" + ">"	;
+			//	str += "<img src=" + val.image3 + " alt=" + ">"	;
 			//	}
+	
 					
 			//	alert(str);
 			$(".review_Modal_Content").append(str);
@@ -1476,36 +1551,60 @@ $("#reviewSubmit").click(function(){
 	 	},
 		error:function(){
 			alert("오류를 잡아라~!");
-		}
-		 
-		
+		}		
 	});
+
 	
-	
-/* $(document).ready(function(){
-	alert("페이지 로딩");
+	$("#reviewUpSub").hide();
+function reviewUp(seq){
+	alert(seq);
 	
 	$.ajax({
-		url:"http://localhost:3000/getReviewList", 			
-		type:"get",
-		data:{classNum:1},
-		success:function(list){
-			alert(Object.keys(list).length);
-			if(Object.keys(list).length > 6){
-				for(var i=0; i > 6; i++){
-					var str =
-				}
-			}
-			
-		},
+		url:"http://localhost:3000/getReview",
+		type: "get",
+		data: {reviewSeq:seq},
+		success:function(data){
+			alert("컨트롤러 갔ㄷㅏ옴");
+			alert(typeof (JSON.stringify(data.satisfy)));
+			var satisfy = parseInt(data.satisfy)
+			alert(typeof satisfy )
+			//모달로 뿌러줘야하는데.............
+			$(".reviewBtn").trigger('click');
+		//	$("#satisfy").val(data.satisfy);  이거 안됨 ㅜㅜ별점 으악~~~~
+			$("#rContent").val(data.rContent); 
+			$("#reviewSubmit").hide();	// 제출 버튼 안보이게해줘
+			$("#reviewUpSub").show();
+				$("#reviewUpSub").click(function(){
+					alert("수정하기 버튼 클릭");
+					
+					$.ajax({
+						url:"http://localhost:3000/updateReview",
+						type: "post",
+						data: new FormData($("#reviewImages")[0]),  // 필수 
+						processData: false, // 필수
+						contentType: false, // 필수 
+						cache: false,
+						success:function(){
+							alert("컨트롤러는 잘 다녀옴");
+						},
+						error:function(){
+							alert('에러야그만보자~');
+						}						
+						
+						
+					});//ajax
+				});//제출하기버튼
+				
+			},
 		error:function(){
-			alert("오류를 잡아라~!");
+			alert("내이름은 에러^ㅠ^");
 		}
-		 
-		
 	});
-});
-	 */
+
+	
+
+}
+
 	 
 </script>
 </body>
