@@ -52,7 +52,6 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
 }, {});
 
 let seq = urlParams.seq;
-alert("seq" + seq);		// classNum
 </script>
 
 </head>
@@ -66,24 +65,18 @@ alert("seq" + seq);		// classNum
 	
 		<!-- 상단 제목 -->
 		<div class='onedayClassMainText'>
-			<i id='pCategory' class="fas fa-language">&nbsp;외국어</i>
-			<!-- 			
-			<i class="fas fa-palette"></i>&nbsp;요리
-			<i class="fas fa-utensils"></i>&nbsp;요리
-			<i class="fas fa-code"></i>&nbsp;프로그래밍
-			<i class="fas fa-dumbbell"></i>&nbsp;스포츠/레져
-			-->
+			<i id='pCategory' class="fas fa-language">&nbsp;</i>
 		</div>
 		<div class='onedayClassTitle'>
-			메인 타이틀이 들어가는 자리입니다
+			
 		</div>
 		<div class='onedayClassMainText3'>
 			<i class="fas fa-star" style='color: red;'></i>
 			<span id='starGrade' style='font-weight: 600;'>
-				4.8<span id='starGradeCount' style='font-weight: 300;'>(10)</span>
+				<span id='starGradeCount' style='font-weight: 300;'>(10)</span>
 			</span>	
 			<span id='DetailLocation'>
-				서울 특별시 은평구 갈현 2동 하나블루힐스
+				
 			</span>
 			<span>                            
 				<button class='DetailLikeBtn'><i class="fas fa-heart">&nbsp;저장</i></button>
@@ -189,19 +182,17 @@ alert("seq" + seq);		// classNum
 		</div>
 		<!--/////////////// 모달 들어가는 부분///////////// -->
 	<div class='onedayClassContentBox1'>
-		<div class='ocSubTitle'>akkeSun님이 개설한 클래스</div>
+		<div class='ocSubTitle' id='nickNameTit'></div>
 		<i class='material-icons ocIcon'>access_time</i>
-		<span class='ocTxt1'> 30분</span>
+		<span class='ocTxt1' id="classTime"> 30분</span>
 		&nbsp;&nbsp;
 		<i class='material-icons'>people</i>
-		<span class='ocTxt1'> 5명</span>
+		<span class='ocTxt1' id="classMaxNum"> 5명</span>
 		&nbsp;&nbsp;
       	<i class='material-icons'>check</i>
-      	<span class='ocTxt1'> 리코더</span>
+      	<span class='ocTxt1' id="classSupplie"> 리코더</span>
       	<div class='classInfo'>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
-      		으어어어어어어인포자리<br>
+      		
       	</div>
 
 	</div>
@@ -210,15 +201,16 @@ alert("seq" + seq);		// classNum
 	<!-- 프로그램 -->
 	<div class='hrMargin'><hr></div>
 	<div class='ocSubTitle'>프로그램</div>
-	<div class='scProgramTxt' style='padding-top:10px;'>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-		프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 프로그램 내용을 써주세요 하하 <br>
-	</div>
-	<div class='hrMargin'><hr></div>
+	<div class='scProgramTxt' id="program" style='padding-top:10px;'>
 	
+	</div>
+	
+	<!-- youtube -->
+	<div class='hrMargin' id="youTubeLine"><hr></div>
+	<div class='ocSubTitle' id="youTubeTitle">YouTube</div>
+	 <iframe id="youtubeLink" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+	<div class='hrMargin'><hr></div>
 	<!-- 선생님 소개 -->
 	<img class='ocTeacherImg' id='_ocTeacherImg' src="../images/profileSample.png" style='float:left'>
 	<div style='float:left; padding-top:2px; padding-left:10px;'>
@@ -231,20 +223,17 @@ alert("seq" + seq);		// classNum
 		<span class='teacherTxt'>후기 10개</span> 
 		&nbsp;&nbsp;&nbsp;
 		<i class="fas fa-chalkboard-teacher"></i>
-		<span class='teacherTxt'>개설클래스 3개</span> 
+		<span class='teacherTxt' id="masterClass">개설클래스 3개</span> 
 		
 	</div>
 	<div class='scProgramTxt' id='TeacherInfo'>
-		강사소개를 써주세요 강사소개를 써주세요 <br>
-		강사소개를 써주세요 강사소개를 써주세요 강 <br>
-		강사소개를 써주세요 강사소개를 써주세요 강사소개를  <br>
-		강사소개를 써주세요 강사소개를 써주세요 강사소개를 써주세요 강사소개를 써주세요 <br>
+		
 	</div>
 	<div class='hrMargin'><hr></div>
 	
 	<!-- 수업 장소 -->
 	<span class='ocSubTitle'>수업장소</span><br>
-	<div style='margin-top:2px; font-size:15px'>서울 특별시 은평구 갈현 2동 521-22</div>
+	<div style='margin-top:2px; font-size:15px' id="location"></div>
 	<div id="map" style="width:100%;height:450px; border-radius:20px; margin-top:20px;"> </div>		
 		 
 	<!-- 후기(최신순으로 여섯개?) -->
@@ -358,9 +347,7 @@ alert("seq" + seq);		// classNum
 		</div>
 	</div>
 	
-		
-	</div>
-	
+	<!-- 이 div 살리지마.... -->
 	
 	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
 	<div align=center>
@@ -542,7 +529,7 @@ alert("seq" + seq);		// classNum
 	</div>
 	
 	<div class='hrMargin'><hr></div>
-	
+
 </div>
 <div id='footer'></div>	
 
@@ -589,19 +576,113 @@ alert("seq" + seq);		// classNum
 </div>
 			
 <script>
-// let login = sessionStorage.getItem("login");
-// let json = JSON.parse(login); // String -> json 
+$("#naviBar").load("../navibar.html");
+$("#footer").load("../footer.html");
+
+let memPoint = "";
 
 $(document).ready(function(){
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
+	let login = sessionStorage.getItem("login");
+	let json = JSON.parse(login); // String -> json
 	
+	if(login != null){
+		getMemDto(json.memNum);
+	}
 	$.ajax({
 	      url:"http://localhost:3000/classDtail", 
 	      type:'post',
-	      data:{classNum:3},
+	      data:{classNum:seq},
 	      success:function( dto ){
-	     	
+	    	 	
+	    	  	// 1. 제목 부분
+	    	  	// 스몰로고 
+				if(dto.primaryCategory == '외국어'){
+					$("#pCategory").attr("class", "fas fa-language");
+					$("#pCategory").html("&nbsp;외국어");
+				}else if(dto.primaryCategory = '크리에이티브'){
+					$("#pCategory").attr("class", "fas fa-palette");
+					$("#pCategory").html("&nbsp;크리에이티브");
+				}else if(dto.primaryCategory = '요리'){
+					$("#pCategory").attr("class", "fas fa-utensils");
+					$("#pCategory").html("&nbsp;요리");
+				}else if(dto.primaryCategory = '프로그래밍'){
+					$("#pCategory").attr("class", "fas fa-code");
+					$("#pCategory").html("&nbsp;프로그래밍");
+				}else if(dto.primaryCategory = '스포츠/레져'){
+					$("#pCategory").attr("class", "fas fa-dumbbell");
+					$("#pCategory").html("&nbsp;스포츠/레져");
+				}
+	    	  	
+	    	  	$(".onedayClassTitle").text(dto.title);
+				$("#starGrade").html(dto.avgPoint + "<span id='starGradeCount' style='font-weight: 300;'>(10)</span>");
+	    	  	$("#DetailLocation").text(dto.location);
+	    	  	
+	    	  	// 2. 이미지 부분
+	    	  	if(dto.layerSelect=='A'){
+	    	  		$(".onedayClassImageBoxA").show();
+	    	  		$(".onedayClassImageBoxB").hide();
+	    	  		$(".onedayClassImageBoxC").hide();
+	    	  		$("#_ocImgA1").attr("src", dto.image1);
+	    	  		$("#_ocImgA2").attr("src", dto.image2);
+	    	  		$("#_ocImgA3").attr("src", dto.image3);
+	    	  		$("#_ocImgA4").attr("src", dto.image4);
+	    	  		$("#_ocImgA5").attr("src", dto.image5);
+	    	  	}else if(dto.layerSelect=='B'){
+	    	  		$(".onedayClassImageBoxB").show();
+	    	  		$(".onedayClassImageBoxA").hide();
+	    	  		$(".onedayClassImageBoxC").hide();
+	    	  		$("#_ocImgB1").attr("src", dto.image1);
+	    	  		$("#_ocImgB2").attr("src", dto.image2);
+	    	  		$("#_ocImgB3").attr("src", dto.image3);
+	    	  		$("#_ocImgB4").attr("src", dto.image4);
+	    	  		$("#_ocImgB5").attr("src", dto.image5);
+	    	  	}else if(dto.layerSelect=='C'){
+	    	  		$(".onedayClassImageBoxC").show();
+	    	  		$(".onedayClassImageBoxA").hide();
+	    	  		$(".onedayClassImageBoxB").hide();
+	    	  		$("#_ocImgC1").attr("src", dto.image1);
+	    	  		$("#_ocImgC2").attr("src", dto.image2);
+	    	  		$("#_ocImgC3").attr("src", dto.image3);
+	    	  		$("#_ocImgC4").attr("src", dto.image4);
+	    	  		$("#_ocImgC5").attr("src", dto.image5);
+	    	  	}
+	    	  	
+	    	  	// 3. ~~님이 개설한 클래스
+	    	  	$("#nickNameTit").text(dto.instructor + " 님이 개설한 클래스");
+	    	  	
+	    	  	$("#classTime").text(dto.duration + "분");
+	    	  	$("#classMaxNum").text(dto.limitNum + "명");
+	    	  	$("#classSupplie").text(dto.preparation);
+	    	  	
+	    	  	$(".classInfo").html(dto.information);
+	    	    
+	    	  	// 4. 프로그램 설명
+	    	  	$("#program").html(dto.content);
+	    	  	
+	    	  	// 5. YouTube
+	    	  	if(dto.youtubeLink == null){
+	    	  		$("#youTubeLine").hide();
+	    	  		$("#youTubeTitle").hide();
+	    	  		$("#youtubeLink").hide();
+	    	  	}else{
+		    	  	let youtubeLink = dto.youtubeLink;
+		    	  	let nYoutubeLink = youtubeLink.replace("watch?v=", "embed/");
+		    	  	$("#youtubeLink").attr("src", nYoutubeLink);
+	    	  	}
+	    	  	
+	    	  	// 6. 선생님 소개
+	    	  	$("#_ocTeacherImg").attr("src", dto.profilePic);
+	    	  	$("#teacherTitle").text(dto.instructor + " 선생님 소개");
+	    	  	$(".ocTeacherMail").text(dto.email);
+	    	  	masterClass(dto.email);
+	    	  	$("#TeacherInfo").html(dto.aboutMe);
+	    	  	
+	    	  	// 7. 수업 장소
+	    	  	$("#location").text(dto.location);
+	    	  	addressSearch(dto.location);
+	    	  	
+	    	  	
+	    	    // 9. class 일정 뿌려주는 부분---------------------------------------------------------------------
 				let pDate = new Date();
 				let fpDate = dateFormat(pDate);
 				// alert("pDate : " + pDate.getDate());
@@ -638,7 +719,7 @@ $(document).ready(function(){
 		$.ajax({
 		      url:"http://localhost:3000/classSchedulList", 
 		      type:'post',
-		      data:{classNum:3, startDate:startDate, endDate:endDate},
+		      data:{classNum:classNum, startDate:startDate, endDate:endDate},
 		      success:function( map ){
 		     		let noDateArray = new Array();
 		     		let z = 0;
@@ -725,15 +806,20 @@ $(document).ready(function(){
 					
 					datePicker(startDate, endDate, noDateArray);
 					
-					memberCounter(clist[0].duration);
-	                
+					memberCounter(clist[0].limitNum);
 					
-	                
 					$(".caSelectBtn").on("click", function(){
+						if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}else{
+								
+						}
+						
 	                	let joinNum = $("#maxMember").val(); // 사용자가 신청한 인원
 	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
-	                	let myPoint = 10000-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
 	                	if(joinNum==0){
@@ -764,13 +850,13 @@ $(document).ready(function(){
 									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" +  comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"
 									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
-									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
 									 + "</div>"
 								 + "</div>";
 	                
@@ -782,10 +868,14 @@ $(document).ready(function(){
 	                });
 	                
 	               	$(".cbSelectBtn").on("click", function(){
+	               		if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}
 	               		let joinNum = $("#scMaxMember").val(); // 사용자가 신청한 인원
 	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
-	                	let myPoint = 10000-(clist[0].price*joinNum)	// 신청 후 나의 잔액
+	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
 	               		if(joinNum==0){
@@ -816,13 +906,13 @@ $(document).ready(function(){
 									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"
 									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
-									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
 									 + "</div>"
 							 	+ "</div>";
 	                
@@ -834,10 +924,14 @@ $(document).ready(function(){
 	                });
 	                
 	                $(".ccSelectBtn").on("click", function(){
+	                	if(login == null){
+							location.href="../loginRegi/loginRegi.html"
+							return;
+						}
 	                	let joinNum = $("#scMaxMember").val();	// 사용자가 신청한 인원
 	                	let cdate = $("#datepicker").val();	// 사용자가 신청한 날짜
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
-	                	let myPoint = 10000-(clist[0].price*joinNum);	// 신청 후 나의 잔액
+	                	let myPoint = memPoint-(clist[0].price*joinNum);	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
 	                	if(joinNum==0){
@@ -872,13 +966,13 @@ $(document).ready(function(){
 									 	+ "<h3 class='text-uppercase'>ACLAP</h3>"
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(10000) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"
 									 	+ " <div class='d-flex justify-content-between mt-3'> <span class='font-weight-bold'>결제 후 잔여 포인트</span> <span class='font-weight-bold theme-color'> " + comma(myPoint) + "point</span> </div>"
-									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + 1 + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
+									 	+ "<div class='text-center mt-5'> <button class='btn btn-primary' classNum='" + classNum + "' memNum='" + json.memNum + "' myPoint='" + myPoint + "' rPoint='" + rPoint + "' cdate='" + cdate + "' joinNum='" +joinNum+ "' id='participate'>참여하기</button> </div>"
 									 + "</div>"
 								 + "</div>";
 	                
@@ -907,9 +1001,9 @@ $(document).ready(function(){
 							$.ajax({
 								url:"http://localhost:3000/participate", 
 							    type:'post',
-							    data:{classNum:classNum, memNum:memNum, cDate:cdate, name:'홍길이', rPoint:rPoint, joinNum:joinNum},
+							    data:{classNum:classNum, memNum:json.memNum, cDate:cdate, name:json.nickName, rPoint:rPoint, paticipants:joinNum},
 							    success: function(mag){
-							    	alert(mag);
+							    	//alert(mag);json.myPoint
 							    	$("#requestModal").modal('hide');
 								    $("#allSchedule").modal('hide');
 								    location.reload(true);
@@ -948,9 +1042,9 @@ $(document).ready(function(){
 	
 		function slide(offset) {
 			index = Math.min( Math.max( index + offset, 0 ), total - 1 );
-			if(index == 0){
+			if(index == 0 && page != 2){
 				$(".left").hide();
-			}else if(index == page-1){
+			}else if(index == page-1 && page != 2){
 				$(".right").hide();
 			}else{
 				$(".left").show();
@@ -1095,8 +1189,23 @@ $(document).ready(function(){
 		      $("#staticBackdrop").modal('show');
 		   }
 	}
-		
+	
+
 });
+
+function getMemDto(memNum){
+	$.ajax({
+		url:"http://localhost:3000/getMemberDto", 			
+		type:"post",
+		data:{memNum:memNum},
+	 	success:function( memDto ){
+	 		memPoint = memDto.myPoint;
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
 
 function allScheduleHide(){
 	$("#allSchedule").modal('hide');
@@ -1153,27 +1262,44 @@ function showLayer3(){
 		check3 = true;
 	}
 }
- 
+
+// 개설클래스 append해주는 부분
+function masterClass(email){
+	$.ajax({
+		url:"http://localhost:3000/masterClassCounter", 			
+		type:"post",
+		data:{email:email},
+	 	success:function( count ){
+	 		// alert(count);
+	 		$("#masterClass").text("개설클래스 " + count + "개");	
+	 	},
+	 	error:function(){
+	 		alert('error');
+	 	}
+		
+	});
+}
 // 카카오맵 출력용 버젼
 var mapContainer = document.getElementById('map'), 
     mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 var geocoder = new kakao.maps.services.Geocoder();
 
-geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(result, status) {
-
-     if (status === kakao.maps.services.Status.OK) {
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        var marker = new kakao.maps.Marker({map: map, position: coords});
-
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
-        });
-        infowindow.open(map, marker);
-        map.setCenter(coords);
-    } 
-});    
-
+function addressSearch(location){
+	geocoder.addressSearch(location, function(result, status) {
+	
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	        var marker = new kakao.maps.Marker({map: map, position: coords});
+	
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
+	        });
+	        infowindow.open(map, marker);
+	        map.setCenter(coords);
+	    } 
+	});    
+}
 //별점
 $(document).ready(function(){
 	$('#Clstar4half').attr('checked', 'checked');
@@ -1386,7 +1512,7 @@ let userName = login.userName;
 //제출하기 버튼 클릭
 $("#reviewSubmit").click(function(){
 
-	alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
+	// alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
 	
 	  
 	  $.ajax({
@@ -1426,6 +1552,7 @@ $("#reviewSubmit").click(function(){
 	});
 	
 	
+
 //~~~~~~ 리뷰 별점평균 뿌리기~~~~~
 
 //	alert("페이지 로딩" + seq);
@@ -1515,6 +1642,7 @@ $("#reviewSubmit").click(function(){
 			alert('별점 평균 에러ㅜㅜ');
 		}
 	});	
+
 	
 
 	// 리뷰 리스트 뿌리기~~~~~
@@ -1525,6 +1653,7 @@ $("#reviewSubmit").click(function(){
 	 	success:function(list){
 			alert("리뷰갯수"+Object.keys(list).length);
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
+
 		//	if(Object.keys(list).length > 6){	
  
 			$.each(list, function(i, val){

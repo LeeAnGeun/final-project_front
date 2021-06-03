@@ -18,14 +18,13 @@
 <!-- 커스텀 js -->
 <script src="../js/card.js"></script>
 
-
 </head>
 
 <body>
 <div id='recommendClass'>
 <p class='s_mainTitle'>추천 클래스</p> 
 <!--Carousel Wrapper-->
-<div id="s_new_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div id="s_recommendClass_slider" class="carousel slide carousel-multi-item" data-ride="carousel">
 <!--Slides-->
 <div class="carousel-inner" role="listbox">
 <!--First slide-->
@@ -35,9 +34,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img id="s_recommendImg0"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>	
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn0' value='BEST'>	
 			<input type='hidden' id='recommend_classNum0'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn0" onclick="likeBtnClick($('#recommend_classNum0').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn0" onclick="likeBtnClick($('#recommend_classNum0').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle0' onclick="goDetail($('#new_classNum0').val())"></div>
@@ -48,9 +47,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg1"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn1' value='BEST'>			
 			<input type='hidden' id='recommend_classNum1'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn1" onclick="likeBtnClick($('#recommend_classNum1').val())">UP</button> 		
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn1" onclick="likeBtnClick($('#recommend_classNum1').val())">LIKE</button> 		
        	</div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle1' onclick="goDetail($('#recommend_classNum1').val())" ></div>
@@ -62,9 +61,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg2"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn2' value='BEST'>			
 			<input type='hidden' id='recommend_classNum2'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn2" onclick="likeBtnClick($('#recommend_classNum2').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn2" onclick="likeBtnClick($('#recommend_classNum2').val())">LIKE</button> 
        	</div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle2' onclick="goDetail($('#recommend_classNum2').val())"></div>
@@ -80,9 +79,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg3"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn3' value='BEST'>			
 			<input type='hidden' id='recommend_classNum3'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn3"onclick="likeBtnClick($('#recommend_classNum3').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn3"onclick="likeBtnClick($('#recommend_classNum3').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle3' onclick="goDetail($('#recommend_classNum3').val())"></div>
@@ -93,9 +92,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg4"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn4' value='BEST'>			
 			<input type='hidden' id='recommend_classNum4'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn4"onclick="likeBtnClick($('#recommend_classNum4').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn4"onclick="likeBtnClick($('#recommend_classNum4').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle4' onclick="goDetail($('#recommend_classNum4').val())"></div>
@@ -106,9 +105,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg5"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn'value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn5'value='BEST'>			
 			<input type='hidden' id='recommend_classNum5'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn5" onclick="likeBtnClick($('#recommend_classNum5').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn5" onclick="likeBtnClick($('#recommend_classNum5').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle5' onclick="goDetail($('#recommend_classNum5').val())"></div>
@@ -124,9 +123,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg6"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn6' value='BEST'>			
 			<input type='hidden' id='recommend_classNum6'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn6"onclick="likeBtnClick($('#recommend_classNum6').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn6"onclick="likeBtnClick($('#recommend_classNum6').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle6' onclick="goDetail($('#recommend_classNum6').val())"></div>
@@ -137,9 +136,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img src="" id="s_recommendImg7"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn7'value='BEST'>			
 			<input type='hidden' id='recommend_classNum7'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn7" onclick="likeBtnClick($('#recommend_classNum7').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn7" onclick="likeBtnClick($('#recommend_classNum7').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle7' onclick="goDetail($('#recommend_classNum7').val())"></div>
@@ -150,9 +149,9 @@
       <div class="s_Card">
 	    <div class="s_img"><img id="s_recommendImg8"></div>
         <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' value='BEST'>			
+			<input type='button' class='s_NewNBestBtn' id='recommendBtn8' value='BEST'>			
 			<input type='hidden' id='recommend_classNum8'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn8" onclick="likeBtnClick($('#recommend_classNum8').val())">UP</button> 
+			<button type='button' class='s_likeBtn' id="recommendLikeBtn8" onclick="likeBtnClick($('#recommend_classNum8').val())">LIKE</button> 
         </div>
 		<hr class="s_card_hr">
        	<div class="s_title" id='s_recommendTitle8' onclick="goDetail($('#recommend_classNum8').val())"></div>
@@ -165,9 +164,9 @@
 <!-- Slider Controls -->
 <br>
 <div class=" s_slider">
-    <a href="#s_new_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
-    <a href="#s_new_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>
-    <a href="#s_new_slider" data-slide-to="2"><i class="fa fa-circle"></i></a>      
+    <a href="#s_recommendClass_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
+    <a href="#s_recommendClass_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>
+    <a href="#s_recommendClass_slider" data-slide-to="2"><i class="fa fa-circle"></i></a>      
 </div>
 </div>
 <br><br><br><br>

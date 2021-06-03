@@ -625,16 +625,15 @@
     float: left;
 }
 
-fieldset, input[type="button"] {
-    border: 0;
-}
-.decrease, .increase {
+
+.decrease, .increase, .scDecrease, .scIncrease {
     background-color: #F5F2F5;
     color: #000;
     cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 5px;
+    border: 0;
 }
 .maxMember {
     border: 1px solid #F4F3F3;

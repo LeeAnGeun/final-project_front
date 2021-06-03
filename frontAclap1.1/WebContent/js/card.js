@@ -145,10 +145,12 @@ $(document).ready(function(){
 	
 	
 	
-	// 추천 클래스 불러오기 : secondary category + 인기순 
+	// 추천 클래스 불러오기 
 	if(login != null){
+		let json = JSON.parse(login); 
 		$.ajax({
-			url:"http://localhost:3000/getRecommendClassList",  // 주소 뭐할지?
+			url:"http://localhost:3000/getRecommendClassList", 
+			data:{interest1:json.interest1, interest2:json.interest2, interest3:json.interest3},
 			type:"post",
 			success:function( data ){
 				
@@ -165,9 +167,9 @@ $(document).ready(function(){
 					
 					// 기간만료되었다면
 					if(today > endDate){
-						$("#bestBtn"+i).removeClass('s_NewNBestBtn');
-						$("#bestBtn"+i).addClass('s_overBtn');
-						$("#bestBtn"+i).val('Class Over');
+						$("#recommendBtn"+i).removeClass('s_NewNBestBtn');
+						$("#recommendBtn"+i).addClass('s_overBtn');
+						$("#recommendBtn"+i).val('Class Over');
 					}
 					
 					// like 유무 체크
@@ -179,14 +181,14 @@ $(document).ready(function(){
 						success:function(result){
 							if(result){
 								let icon = $("<i class='fa fa-heart'>")
-								$("#bestLikeBtn"+i).html(icon);
-								$("#bestLikeBtn"+i).css('color', 'red');
-								$("#bestLikeBtn"+i).css('background-color', 'white');
-								$("#bestLikeBtn"+i).mouseover(function(){
-									$("#bestLikeBtn"+i).css('color', 'black');
+								$("#recommendLikeBtn"+i).html(icon);
+								$("#recommendLikeBtn"+i).css('color', 'red');
+								$("#recommendLikeBtn"+i).css('background-color', 'white');
+								$("#recommendLikeBtn"+i).mouseover(function(){
+									$("#recommendLikeBtn"+i).css('color', 'black');
 								});
-								$("#bestLikeBtn"+i).mouseout(function(){
-									$("#bestLikeBtn"+i).css('color', 'red');
+								$("#recommendLikeBtn"+i).mouseout(function(){
+									$("#recommendLikeBtn"+i).css('color', 'red');
 								});
 							}
 						},

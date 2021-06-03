@@ -292,8 +292,13 @@ table.customTable thead {
 <script type="text/javascript">
 	$("#naviBar").load("../navibar.html");
 	$("#footer").load("../footer.html");
+
+$(document).ready(function () {
+	
+
 //사이드 유저리스트 검색했을 때
-$("#goUserList").click(function(){
+$(document).on("click", "#goUserList", function () { 
+
 	$("#mainScr").load("../adminPageView/adminCListUList.html");
    $(".card-header").text("User List");
    $("#managerPage").text("User List")
@@ -351,7 +356,8 @@ $(function(){
       });
    });
 // 유저 이름 검색했을 때 
-$("#btnSearch").click(function(){
+$(document).on("click", "#btnSearch", function () { 
+
 	$("#mainScr").load("../adminPageView/adminCListUList.html");
    $.ajax({
       url:"http://localhost:3000/memlist",
@@ -385,7 +391,8 @@ $("#btnSearch").click(function(){
 });
 
 //사이드바  원데이 클래스 클릭시 
-$("#goClassList").click(function(){
+$(document).on("click", "#goClassList", function () { 
+
     $("#mainScr").load("../adminPageView/adminCListUList.html");
 
 	$(".card-header").text("One-Day Class List");
@@ -458,7 +465,8 @@ $("#goClassList").click(function(){
 	
 
 // 검색했을때 리스트
-$("#btnSearch").click(function(){
+$(document).on("click", "#btnSearch", function () { 
+
 	$("#mainScr").load("../adminPageView/adminCListUList.html");
 			$.ajax({
 				url:"http://localhost:3000/classlist",
@@ -603,7 +611,7 @@ function loadPage( totalCount ) {
 		}
 	});	
 }
-
+});
 //아이디..
 $(document).ready(function () {
 
