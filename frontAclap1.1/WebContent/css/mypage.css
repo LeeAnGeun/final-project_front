@@ -228,6 +228,19 @@ body {
 	width: 50%;
 }
 
+.a_btn_participate{
+	color: #fff;
+    background-color: #004cb9;
+    border-color: #004cb9;
+    padding: 12px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 1px;
+    font-size: 17px;
+	width: 50%;
+	align-content: center;
+}
+
 .a_cStatus{
 	margin-left: 10px;
 }

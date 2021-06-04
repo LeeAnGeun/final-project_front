@@ -580,6 +580,7 @@ $("#naviBar").load("../navibar.html");
 $("#footer").load("../footer.html");
 
 let memPoint = "";
+let includMem = "";	// 해당 수업에 이미 참여중인지 유무
 
 $(document).ready(function(){
 	let login = sessionStorage.getItem("login");
@@ -660,7 +661,7 @@ $(document).ready(function(){
 	    	  	$("#program").html(dto.content);
 	    	  	
 	    	  	// 5. YouTube
-	    	  	if(dto.youtubeLink == null){
+	    	  	if(dto.youtubeLink == null || dto.youtubeLink == "" || dto.youtubeLink == '0'){
 	    	  		$("#youTubeLine").hide();
 	    	  		$("#youTubeTitle").hide();
 	    	  		$("#youtubeLink").hide();
@@ -699,13 +700,13 @@ $(document).ready(function(){
 					// alert("이미시작함");
 					let len = s_eDate - s_pDate;
 					
-					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10));
+					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum);
 					
 				}else{
 					// alert("아직 시작안함");
 					let len = s_eDate;
 					
-					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10));
+					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10), dto.limitNum);
 				}
 	      },
           error:function(){
@@ -714,7 +715,7 @@ $(document).ready(function(){
 		           
 	});
 	
-	function classSchedulList(classNum, startDate, endDate){
+	function classSchedulList(classNum, startDate, endDate, limitNum){
 		
 		$.ajax({
 		      url:"http://localhost:3000/classSchedulList", 
@@ -806,14 +807,12 @@ $(document).ready(function(){
 					
 					datePicker(startDate, endDate, noDateArray);
 					
-					memberCounter(clist[0].limitNum);
+					memberCounter(limitNum);
 					
 					$(".caSelectBtn").on("click", function(){
 						if(login == null){
 							location.href="../loginRegi/loginRegi.html"
 							return;
-						}else{
-								
 						}
 						
 	                	let joinNum = $("#maxMember").val(); // 사용자가 신청한 인원
@@ -822,11 +821,18 @@ $(document).ready(function(){
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
+	                	getIncludMember(json.memNum, seq, cdate);
+	                	
 	                	if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
 	                		return;
 	                	}
 	                	
+	                	if(includMem>0 ){
+	                		alert("이미 신청 한 날짜 입니다. 다시 한번 확인 부탁드립니다.");
+							return;
+						}
+	                
 	                	for(let i=1; i < clist.length+1; i++){
 							let classSchedule = clist[i-1];
 							let rdate = (classSchedule.rdate).substring(0,10);
@@ -872,16 +878,25 @@ $(document).ready(function(){
 							location.href="../loginRegi/loginRegi.html"
 							return;
 						}
+	               		
+	          
 	               		let joinNum = $("#scMaxMember").val(); // 사용자가 신청한 인원
 	                	let cdate = $(this).attr("cdate");	// 사용자가 신청한 날짜
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	
+	                	getIncludMember(json.memNum, seq, cdate);
+	                	
 	               		if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
 	                		return;
 	                	}
+	                	
+	               		if(includMem>0 ){
+	               			alert("이미 신청 한 날짜 입니다. 다시 한번 확인 부탁드립니다.");
+							return;
+						}
 	               		
 	               		for(let i=1; i < clist.length+1; i++){
 							let classSchedule = clist[i-1];
@@ -928,11 +943,14 @@ $(document).ready(function(){
 							location.href="../loginRegi/loginRegi.html"
 							return;
 						}
+	                	
 	                	let joinNum = $("#scMaxMember").val();	// 사용자가 신청한 인원
 	                	let cdate = $("#datepicker").val();	// 사용자가 신청한 날짜
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
 	                	let myPoint = memPoint-(clist[0].price*joinNum);	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	
+	                	getIncludMember(json.memNum, seq, cdate);
 	                	
 	                	if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
@@ -942,6 +960,12 @@ $(document).ready(function(){
 	                		alert("날짜를 선택하여 주세요");
 	                		return;
 	                	}
+	                	
+	                	if(includMem>0 ){
+							alert("이미 신청 한 날짜 입니다. 다시 한번 확인 부탁드립니다.");
+							return;
+						}
+	               		
 	                	
 	                	for(let i=1; i < clist.length+1; i++){
 							let classSchedule = clist[i-1];
@@ -990,7 +1014,7 @@ $(document).ready(function(){
 		                	let cdate = $(this).attr("cdate");
 							let myPoint = Number($(this).attr("myPoint")); // 결제 후 금액
 							let rPoint = Number($(this).attr("rPoint"));	// 결제 한 금액
-							let joinNum = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
+							let participants = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
 
 							// 자신이 가진 금액이 더 적을 경우
 							if(myPoint < 0){
@@ -1001,7 +1025,7 @@ $(document).ready(function(){
 							$.ajax({
 								url:"http://localhost:3000/participate", 
 							    type:'post',
-							    data:{classNum:classNum, memNum:json.memNum, cDate:cdate, name:json.nickName, rPoint:rPoint, paticipants:joinNum},
+							    data:{classNum:classNum, memNum:json.memNum, classDate:cdate, name:json.nickName, rPoint:rPoint, participants:participants},
 							    success: function(mag){
 							    	//alert(mag);json.myPoint
 							    	$("#requestModal").modal('hide');
@@ -1200,6 +1224,21 @@ function getMemDto(memNum){
 		data:{memNum:memNum},
 	 	success:function( memDto ){
 	 		memPoint = memDto.myPoint;
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
+
+function getIncludMember(memNum, classNum, classDate){
+	$.ajax({
+		url:"http://localhost:3000/getIncludMember", 			
+		type:"post",
+		data:{memNum:memNum, classNum:classNum, rdate:classDate},
+		async:false,
+	 	success:function( count ){
+	 		includMem = count;
 		},
 		error:function(){
 			alert('error');
