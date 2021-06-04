@@ -332,7 +332,6 @@ $(document).ready(function(){
 			
 			<!-- Like Class View -->   
 			<div id='_myLikeClassView'>
-				<img src="">
 				<table class='MLC_table' id="_MLC_table">
 					<tr class='MLC_tr'>
 						<th class='MLC_teacher'>TEACHER</th>
@@ -341,118 +340,9 @@ $(document).ready(function(){
 						<th class='MLC_grade'>GRADE</th>
 						<th class='MLC_point'>POINT</th>
 					</tr>	
-					
-					<tr class='MLC_trContent'>
-						<td>
-							<div style='float:left'>
-							<img src="../images/profileSample.png" class="MLC_proFile">
-							</div>
-							<div style='float:left'>
-								<div class='MLC_nameTxt'>akkesun</div>
-								<div class="MLC_mailTxt">akkessun@gmial.com</div>
-							 </div>
-						</td>
-						<td class='MLC_titleTxt MLC_titleInput' seq="2">제목이 들어가는 자리입니다</td>
-						<td class='MLC_titleTxt' id='MLC_categoryInput'>요리</td>
-						<td class='MLC_titleTxt'>
-							<i class="fas fa-star" style='color: red;'></i>
-							<span id='MLC_gradeInput'>3.6</span>
-						</td>
-						<td class='MLC_pointTxt'>
-							<i class='fas fa-coins'></i>
-							<span id='MLC_pointInput'>10000</span>
-						</td>
-					</tr>	
-					
-					<tr class='MLC_trContent'>
-						<td>
-							<div style='float:left'>
-							<img src="../images/profileSample.png" class="MLC_proFile">
-							</div>
-							<div style='float:left'>
-								<div class='MLC_nameTxt'>akkesun</div>
-								<div class="MLC_mailTxt">akkessun@gmial.com</div>
-							 </div>
-						</td>
-						<td class='MLC_titleTxt MLC_titleInput' seq="5">제목이 들어가는 자리입니다</td>
-						<td class='MLC_titleTxt' id='MLC_categoryInput'>크리에이티브</td>
-						<td class='MLC_titleTxt'>
-							<i class="fas fa-star" style='color: red;'></i>
-							<span id='MLC_gradeInput'>3.6</span>
-						</td>
-						<td class='MLC_pointTxt'>
-							<i class='fas fa-coins'></i>
-							<span id='MLC_pointInput'>10000</span>
-						</td>
-					</tr>
-						
-					<tr class='MLC_trContent'>
-						<td>
-							<div style='float:left'>
-							<img src="../images/profileSample.png" class="MLC_proFile">
-							</div>
-							<div style='float:left'>
-								<div class='MLC_nameTxt'>akkesun</div>
-								<div class="MLC_mailTxt">akkessun@gmial.com</div>
-							 </div>
-						</td>
-						<td class='MLC_titleTxt MLC_titleInput' seq="5">제목이 들어가는 자리입니다</td>
-						<td class='MLC_titleTxt' id='MLC_categoryInput'>크리에이티브</td>
-						<td class='MLC_titleTxt'>
-							<i class="fas fa-star" style='color: red;'></i>
-							<span id='MLC_gradeInput'>3.6</span>
-						</td>
-						<td class='MLC_pointTxt'>
-							<i class='fas fa-coins'></i>
-							<span id='MLC_pointInput'>10000</span>
-						</td>
-					</tr>	
-					<tr class='MLC_trContent'>
-						<td>
-							<div style='float:left'>
-							<img src="../images/profileSample.png" class="MLC_proFile">
-							</div>
-							<div style='float:left'>
-								<div class='MLC_nameTxt'>akkesun</div>
-								<div class="MLC_mailTxt">akkessun@gmial.com</div>
-							 </div>
-						</td>
-						<td class='MLC_titleTxt MLC_titleInput' seq="5">제목이 들어가는 자리입니다</td>
-						<td class='MLC_titleTxt' id='MLC_categoryInput'>크리에이티브</td>
-						<td class='MLC_titleTxt'>
-							<i class="fas fa-star" style='color: red;'></i>
-							<span id='MLC_gradeInput'>3.6</span>
-						</td>
-						<td class='MLC_pointTxt'>
-							<i class='fas fa-coins'></i>
-							<span id='MLC_pointInput'>10000</span>
-						</td>
-					</tr>	
-					<tr class='MLC_trContent'>
-						<td>
-							<div style='float:left'>
-							<img src="../images/profileSample.png" class="MLC_proFile">
-							</div>
-							<div style='float:left'>
-								<div class='MLC_nameTxt'>akkesun</div>
-								<div class="MLC_mailTxt">akkessun@gmial.com</div>
-							 </div>
-						</td>
-						<td class='MLC_titleTxt MLC_titleInput' seq="5">제목이 들어가는 자리입니다</td>
-						<td class='MLC_titleTxt' id='MLC_categoryInput'>크리에이티브</td>
-						<td class='MLC_titleTxt'>
-							<i class="fas fa-star" style='color: red;'></i>
-							<span id='MLC_gradeInput'>3.6</span>
-						</td>
-						<td class='MLC_pointTxt'>
-							<i class='fas fa-coins'></i>
-							<span id='MLC_pointInput'>10000</span>
-						</td>
-					</tr>	
-
 				</table>
-				
-				<div class="container">
+				<br><br>
+				<div class="container navStyle">
 					<nav aria-lable="Page navigation">
 						<ul class="pagination" id="pagination2" style="justify-content:center;"></ul>
 					</nav>
@@ -463,11 +353,11 @@ $(document).ready(function(){
     </div>
 	   	
 <script>	 
+//------- Like Class 처리 ---------
 let log = sessionStorage.getItem("login");
 let log2 = JSON.parse(log); // String -> json 
 let memNum = log2.memNum;
 
-//------- Like Class 처리 ---------
 getLikeClass(0); 
 getLikeClassCount();
 function getLikeClass(pNumber){
@@ -478,7 +368,7 @@ function getLikeClass(pNumber){
 		success:function( data ){
 
 			//페이징 클릭 시 이전에 불러온 테이블은 지우고 다시 시작하기 
-/* 			$(".MLC_trContent").remove();			
+ 			$(".MLC_trContent").remove();			
 			                      //index, 변수
 			$.each(data, function (i, item) {
 				let app = "";
@@ -492,11 +382,11 @@ function getLikeClass(pNumber){
 									"<div class='MLC_mailTxt'>"+ item.email +"</div>"+ 
 						 		"</div>"+
 								"</td>"+
-								"<td class='MLC_titleTxt MLC_titleInput' seq="+item.classNum+">"+ item.title +"</td>"+
-								"<td class='MLC_titleTxt' id='MLC_categoryInput'>"+item.primaryCategory+"</td>"+
+								"<td class='MLC_titleTxt MLC_titleInput' onclick='goLikeClassDetail("+item.classNum+")'>"+ item.title +"</td>"+
+								"<td class='MLC_titleTxt ' id='MLC_categoryInput'>"+item.primaryCategory+"</td>"+
 								"<td class='MLC_titleTxt'>"+
 									"<i class='fas fa-star' style='color: red;'></i>"+
-									"<span id='MLC_gradeInput'>"+평점+"</span>"+ // JOIN
+									"<span id='MLC_gradeInput'>"+item.avgPoint+"</span>"+ 
 								"</td>"+
 								"<td class='MLC_pointTxt'>"+
 									"<i class='fas fa-coins'></i>"+
@@ -504,14 +394,13 @@ function getLikeClass(pNumber){
 								"</td>"+
 							"</tr>"					
 				$("#_MLC_table").append(app);	
-			});		 */
+			});		 
 		},
 		error:function(){
 			alert('getLikeClassList ajax error');
 		}
 	});
 }
-
 
 
 // 글의 총 수 
@@ -568,18 +457,12 @@ $("#_myLikeClass").click(function(){
 	$("#calendar").hide();
 	$(".mainView").hide();
 	$("#_myLikeClassView").show();
-
 });
 
-	
-	
-	$(".MLC_titleInput").click(function(){
-		let seq = $(this).attr('seq');
-		alert(seq);
-	});
 
-
-
+function goLikeClassDetail(seq){
+	location.href='../onedayClassView/onedayClassDetail.html?seq='+seq;
+}
 </script>
 
 	    
@@ -1008,6 +891,7 @@ $(document).ready(function() {
 		
 		// calendar을 숨김
 		$("#calendar").hide();	
+		$("#_myLikeClassView").hide();
 	});
 	
 	/////////////////////////// 자신이 개설한 수업  ///////////////////////////////
@@ -1224,6 +1108,7 @@ function loadPage( memNum, totalCount  ) {
 		 */
 	$("#_myClass").click(function(){
 		$(".mainView").hide();
+		$("#_myLikeClassView").hide();
 		$('#_myClass').css('color', 'green');
 		$('#_mySchedules').css('color', 'black');
 		

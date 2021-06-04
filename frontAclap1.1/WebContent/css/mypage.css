@@ -648,6 +648,9 @@ hr.new1 {
 
 
 /*---------- Like Class --------*/
+#_myLikeClassView{
+	padding-top:20px;
+}
 .MLC_table{
 }
 .MLC_tr{
@@ -706,6 +709,23 @@ hr.new1 {
 }
 .MLC_titleInput:hover{
 	cursor: pointer;
+}
+.navStyle{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+/* 전체 레이어 디자인 */
+.pagination a {
+    padding: 0 14px;
+    line-height: 34px;
+    border: 1px solid #ddd;
+    border-left-width: 0;
+}
+.pagination a:hover{
+	color:black;
+}
+.active a{
+	color:black;
 }
 
 
