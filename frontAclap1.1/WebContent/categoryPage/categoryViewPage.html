@@ -601,7 +601,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
 				app += "<a href=# class='classDetailNum' value='"+val.classNum+"'><h4><b>" + val.title + "</b></h4></a>";
-				app += "<font>" + val.primaryCategory + "/" + val.secondaryCategory + "</font><br>";
+				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
 				
