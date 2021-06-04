@@ -990,7 +990,7 @@ $(document).ready(function(){
 		                	let cdate = $(this).attr("cdate");
 							let myPoint = Number($(this).attr("myPoint")); // 결제 후 금액
 							let rPoint = Number($(this).attr("rPoint"));	// 결제 한 금액
-							let joinNum = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
+							let participants = $(this).attr("joinNum"); // 사용자가 신청한 사람 수
 
 							// 자신이 가진 금액이 더 적을 경우
 							if(myPoint < 0){
@@ -1001,7 +1001,7 @@ $(document).ready(function(){
 							$.ajax({
 								url:"http://localhost:3000/participate", 
 							    type:'post',
-							    data:{classNum:classNum, memNum:json.memNum, cDate:cdate, name:json.nickName, rPoint:rPoint, paticipants:joinNum},
+							    data:{classNum:classNum, memNum:json.memNum, classDate:cdate, name:json.nickName, rPoint:rPoint, participants:participants},
 							    success: function(mag){
 							    	//alert(mag);json.myPoint
 							    	$("#requestModal").modal('hide');

@@ -327,7 +327,40 @@ $(document).ready(function(){
             	
             </div>
             
-            <!-- nav 선생신분 calendar div -->
+            <!-- 선생신분 calendar div -->
+            <div class="row pl-lg-5 pt-md-0 pt-sm-2 mainView2">
+            	 <div class="col-md-6 py-md-3 subView1" >
+                    <div class="d-flex flex-row justify-content-start align-items-center pt-md-4 pb-md-3 pt-sm-2 border-bottom timeline">
+                        <div class="p-md-2 pl-sm-2 mt-sm-1 font-weight-bold">My Class Info</div>
+                        
+                    </div>
+                    <div class="text-secondary">
+                    	<span class="a_date"></span>
+                    </div>
+                    <div class="schdulelist2">
+	                   
+                    </div>            
+                </div>
+                
+                <div class="col-md-6 pt-md-0 mt-5 subView2" >
+                    <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
+                    <div class="bg-white border rounded view">
+                        <div class="d-flex flex-row align-items-center b_info2">
+                            <div class="d-flex flex-column align-items-center px-md-4 px-3 day2">
+                                <div class="dday">
+                                 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="d-flex flex-row justify-content-center ct_info2">
+                            
+                        </div>
+                    </div>
+                </div>
+            	
+            </div>
+            <br><br>
 			<div id='calendar' style="position : relative;"></div> 
 			
 			<!-- Like Class View -->   
@@ -805,13 +838,14 @@ $(document).ready(function() {
 	let sday = date.getDate();
 	
 	// 처음 mypage 들어올 경우 현재 달로 검색
-	getMySchedule(syear, smonth)
+	getMySchedule(syear, smonth);
 	
+	//---------------------------------------여기가 학생신분 내용 뿌려주는 부분---------------------------------------------//
 	// 자신이 신청한 수업 Schedule을 위한 function
 	function getMySchedule(syear, smonth){
 		let mdate = syear + "-" +two(smonth + "");
 		
-		
+		$(".mainView2").hide();
 		$("#_date").val(mdate);
 		
 		$.ajax({
@@ -1003,9 +1037,11 @@ $(document).ready(function() {
 	$("#_mySchedules").on("click", function() {
 		// 기존 학생신분 부분을 보여줌
 		$(".mainView").show();
+		$(".mainView2").hide();
 		$('#_mySchedules').css('color', 'green');
 		$('#_myClass').css('color', 'black');
 		
+		getMySchedule(syear, smonth)
 		// calendar을 숨김
 		$("#calendar").hide();	
 	});
@@ -1227,9 +1263,12 @@ function loadPage( memNum, totalCount  ) {
 		$('#_myClass').css('color', 'green');
 		$('#_mySchedules').css('color', 'black');
 		
+		$(".mainView2").show();
 		$("#calendar").show();
 
 		let memNum = json.memNum;
+		
+		
 
 		// alert('hi');
 		var calendarEl = document.getElementById('calendar');
@@ -1274,14 +1313,120 @@ function loadPage( memNum, totalCount  ) {
 	});
 			
 	calendar.render();
-	  
+	
+	getMyClassList(memNum);
+	
+	
+	
+	
+	
+	
 	});	
 });	
 
-	
 
+//내가 개설한 클래스의 모든 목록을 가져온다
+function getMyClassList() {
+	$.ajax({
+		url:"http://localhost:3000/getMyClassList",
+		type:"get",
+		data:{masterNum:memNum},
+		success:function( list ){
+			//alert('success');
+			
+			$(".line").remove();
+			let classInfo = '';
+
+			if( list.length==0){
+				classInfo = "<div class='d-flex flex-row pt-2 line'>"
+							+ "개설한 클래스 정보가 없습니다"+"</div>";
+				$(".schdulelist2").append(classInfo);
+				} else {
+					
+					$.each(list, function (i, val) {
+						classInfo = "<div class='d-flex flex-row pt-2 line'>"
+								+ "<div>" + val.startDate.substring(0,10) + "<br>" +val.endDate.substring(0,10)+"</div>"
+								+ "<div class='progress vertical-progress'>"
+								+ "<div class='_dot' id='dot'></div>"
+								+ "</div>"
+								+ "<div class='ufcTitle'><a href='#' class='classDetailClick' val='"+val.classNum+"'>"
+								+ "<span class='text-info a_cStatus'>" + val.title + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
+								+ "</span></a>"
+								+ "<a href='#' class='myClassEdit' val='"+val.classNum+"'><span class='text-primary a_cStatus'>수정</span></a>"
+								+ "<a href='#' class='myClassStop' val='"+val.classNum+"'><span class='text-danger a_cStatus'>중단</span></a>"
+								+ "<a href='#' class='myClassCheck' val='"+val.classNum+"'><span class='text-success a_cStatus'>바로가기</span></a></div>"					
+								+ "</div>"
+					  + "</div>";
+								
+					});
+					
+					$(".schdulelist2").append(classInfo);
+				}
+			
+			
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}	
+//내가 개설한 클래스 목록에서 바로가기 클릭시...
+$(document).on("click", ".myClassCheck", function () { 
+
+		alert("클래스로 이동");
+		let classNum = $(this).attr("val");
+		//location.href = "onedayclassupdate.html?classnum"
+	});
+//내가 개설한 클래스 목록에서 수정 클릭시...
+$(document).on("click", ".myClassEdit", function () { 
+
+		alert("수정");
+		let classNum = $(this).attr("val");
+	});
+//내가 개설한 클래스 목록에서 중단 클릭시...
+$(document).on("click", ".myClassStop", function () { 
 	
-	
+		alert("중단하기");
+		let classNum = $(this).attr("val");
+	});
+//내가 개설한 클래스를 클릭시 디테일부분에 뿌려지는 내 클래스 수강생 신청인 정보 목록
+$(document).on("click", ".classDetailClick", function () { 
+		
+		let classNum = $(this).attr("val");
+		
+		$.ajax({
+			url:"http://localhost:3000/getMyClassParticipants",
+			type:"get",
+			data:{classNum:classNum},
+			success:function( list ){
+				alert('success');
+				$(".dday").remove();
+				$(".m_info").remove();
+				
+				
+				let ddd="";
+				let pts ="";
+				$.each(list, function(i,val){
+					/* let month = val.rdate.substring(5,7);
+					let day = val.rdate.substring(8,10); */
+					ddd = "<div class='dday'><h5>"+val.rdate.substring(0,10)+"</h5></div>"
+					pts = "<div class='d-flex flex-row align-items-center m_info'>"
+						+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + val.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
+						+ "<div class='d-flex flex-column tps'>"
+						+ "<div><b>" + val.name + "("+val.nickName+")</b></div>"
+						+ "<div id='small-font'>" + val.email + "&nbsp;참가인원"+val.participants+"</div>"
+						+ "</div>"
+			  			 + "</div>";
+				});
+			$(".day2").append(ddd);
+			$(".b_info2").append(pts);
+				
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	});
 </script>
 
 

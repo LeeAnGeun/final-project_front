@@ -707,7 +707,9 @@ hr.new1 {
 .MLC_titleInput:hover{
 	cursor: pointer;
 }
-
+.ufcTitle{
+	padding-top: 12px;
+}
 
 
 
