@@ -521,7 +521,7 @@ function getLikeClassCount(){
 		type:"post",
 		data:{memNum:memNum},
 		success:function( count ){
-			alert(count);
+			// alert(count);
 			loadPages(count); 
 		},
 		error:function(){
@@ -853,6 +853,10 @@ $(document).ready(function() {
 							cStatus = "<span class='text-danger a_cStatus'>end</span>";
 						}
 						
+						if(val.del == 1){
+							cStatus = "<span class='text-danger a_cStatus'>cancle</span>";
+						}
+						
 						str1 += "<div class='d-flex flex-row pt-2 line'>"
 									+ "<div class='d-flex flex-column mdot'>"
 										+ "<div>" + val.rdate + "</div>"
@@ -860,7 +864,7 @@ $(document).ready(function() {
 									+ "<div class='progress vertical-progress'>"
 										+ "<div class='_dot' id='dot'></div>"
 									+ "</div>"
-									+ "<div class='d-flex flex-column border bg-white ml-md-5 p-sm-0 status' id='status' rdate='" + val.rdate + "' class_seq='"+ val.classNum +"'>"
+									+ "<div class='d-flex flex-column border bg-white ml-md-5 p-sm-0 status' id='status' rdate='" + val.rdate + "' class_seq='"+ val.classNum +"' classDel='" + val.del + "'>"
 										+ "<div class='_arrow' id='arrow'></div>"
 										
 										+ "<div class='text-dark pl-sm-2 _title'>" + val.title 
@@ -883,6 +887,7 @@ $(document).ready(function() {
 	 	$(".status").on("click", function() {
 			let classNum = $(this).attr("class_seq"); // 클릭한 classNum 가져옴
 			let rdate = $(this).attr("rdate"); // 클릭한 rdate 가져옴  ex) 2021-05-22
+			let classDel = $(this).attr("classDel"); // 클릭한 스케줄이 삭제되었는지 유무
 			
 			$.ajax({
 				url:"http://localhost:3000/classDtail", 
@@ -908,7 +913,14 @@ $(document).ready(function() {
 							   + "</div>";
 							   
 	             	$(".b_info").append(b_info);
-	  
+	  				
+	             	classBtn = ""
+	             	if(classDel == 1){
+	             		classBtn += "<button type='button' class='btn a_btn_participate' style='margin-left: 80px;' classNum='" + classNum + "' >다시 신청</button>"
+	             	}else{
+	             		classBtn += "<button type='button' class='btn a_btn_recipt' id='border-right'>결제 내역</button>"
+	             				  + "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>일정 취소</button>"
+	             	}
 	             	let ct_info = "<div class='d-flex flex-column justify-content-center mct_info'>"
 	             					+ "<div class='pb-2'><span class='fa fa-book-reader' style='margin-right: 10px'></span><b>선생 소개</b></div>"
 	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
@@ -921,8 +933,7 @@ $(document).ready(function() {
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
-		          						+ "<button type='button' class='btn a_btn_recipt' id='border-right'>결제 내역</button>"
-		          						+ "<button type='button' class='btn a_btn_cancel' id='_btn_cancel'>일정 취소</button>"
+		          						+ classBtn;
 	                        	 	+ "</div>"
 	             				+ "</div>";	
 	             
@@ -935,9 +946,8 @@ $(document).ready(function() {
 						let memNum = json.memNum;
 						
 						getReceiptData(classDate, classNum, memNum);
-						
-						
 					});
+					
 					
 					$("#_btn_cancel").on("click", function(){
 						let pdate = new Date();
@@ -959,6 +969,18 @@ $(document).ready(function() {
 							myFunc(classNum, rdate, classDto.price);
 						}
 						
+					});
+					
+					$(".a_btn_participate").on("click", function () {
+						let classNum = $(this).attr("classNum");
+						
+						let test = confirm('다시 신청을 위해 해당 수업으로 이동하시겠습니까?');
+						   if(test){
+							   location.href='../onedayClassView/onedayClassDetail.html?seq='+classNum;
+						   }
+						   else{
+							   
+						   }
 					});
 				},
 				error:function(){
@@ -1061,15 +1083,16 @@ $(document).ready(function() {
 	    return diff;
 	}
 	
-	function myFunc(classNum, cDate, price){
+	function myFunc(classNum, classDate, price){
 		let test = confirm('정말 일정을 취소하시겠습까?');
 		   if(test){
 		      $.ajax({
 		    	url:"http://localhost:3000/cancelSchedule", 			
 		  		type:"post",
-		  		data:{memNum:memNum, classNum:classNum, cDate:cDate, price:price},
+		  		data:{memNum:memNum, classNum:classNum, classDate:classDate, rPoint:price},
 		  	 	success:function( count ){
 		  	 		alert('success');
+		  	 		location.reload(true);
 		  	 	},
 		  	 	error:function(){
 		  	 		alert('error');
