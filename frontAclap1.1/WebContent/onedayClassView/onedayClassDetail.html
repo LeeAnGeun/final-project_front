@@ -51,7 +51,10 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
     return obj;
 }, {});
 
-let seq = urlParams.seq;
+let seq = urlParams.seq;	//classNnum
+alert("클래스 넘버 :" + seq );
+
+
 </script>
 
 </head>
@@ -310,43 +313,9 @@ let seq = urlParams.seq;
 
 	
 	<!-- 간략후기 -->
+	<div class="reviewAppend">
 	
-	<div class='reviewBox'>
-	 	<div class='reviewItem' id='review1'>
-	 	
-			<div style='float:left'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			 <div style='float:left;'>
-				<div class='reviewId'>이름</div>
-				<div class='reviewDate'>날짜</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				내용들어갈 자리
-			</div> 
-		</div>
-		 
-		<div class='reviewItem' id='review2'>
-			<div style='float:left'>
-				<img src="../images/managerIcon.jpg" class='reviewImg'>
-			</div>
-			<div style='float:left;'>
-				<div class='reviewId'>이안근짱</div>
-				<div class='reviewDate'>5월 26일</div>
-			</div>
-			<br><br><br>
-			<div class='reviewContent'>
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-				또 참여하고 싶다능~~~<br>
-				크크코쿄쿜콬킼킄
-			</div>
-		</div>
 	</div>
-	
 	<!-- 이 div 살리지마.... -->
 	
 	<!-- 후기 전체보기 버튼 (리뷰가 여섯개 이상이면 버튼 보이기) -->
@@ -354,7 +323,7 @@ let seq = urlParams.seq;
 		<input type='button' class='reviewModalBtn' value='후기 전체보기'>
 		<!-- 리뷰쓰기 버튼 -->
 	<!-- Button trigger modal -->
-	<button type="button" class="reviewBtn" data-toggle="modal" data-target="#exampleModal">
+	<button type="button" class="reviewBtn" data-toggle="modal" data-target="#exampleModal"> <!--  data-toggle="modal" data-target="#exampleModal" -->
 	  후기쓰기
 	</button>
 	</div>
@@ -407,9 +376,10 @@ let seq = urlParams.seq;
 	      <div class="modal-body">
 	      		<!-- 별점 자리 -->
 	      	<form id="reviewImages" name="reviewImages" method="post" enctype="multipart/form-data">
-	      		<input type="hidden" name="memNum" value="1">
-	      		<input type="hidden" name="name" value="이민형">
-	      		<input type="hidden" name="classNum" value="1">
+	      		<input type="hidden" name="memNum" id="memNum" value="">
+	      		<input type="hidden" name="name" id="name" value="">
+	      		<input type="hidden" name="classNum" id="classNum" value="">
+	      		<input type="hidden" name="reviewSeq" id="reviewSeq" value="">
 	      		<span class="reviewTitle"><b>참여하신 클래스는 어떠셨나요?</b></span><br>
 	      		<span class="subTitle">회원님이 남겨주신 후기는 다른분들에게 큰 도움이 됩니다.</span><hr>
 	      			<p class ="rating"><b>만족도</b></p>
@@ -464,11 +434,8 @@ let seq = urlParams.seq;
 				
 				
 				
-				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">
-				 
-				 <br> 
-			
- 			
+				 <input type="file" name="uploadFile" id="uploadFile" multiple="true">			 
+				 <br> 			
 				</form>
 				 
 				 
@@ -681,6 +648,8 @@ $(document).ready(function(){
 	    	  	$("#location").text(dto.location);
 	    	  	addressSearch(dto.location);
 	    	  	
+	    	  	// 8. 리뷰 부분
+	    	  	checkMember();
 	    	  	
 	    	    // 9. class 일정 뿌려주는 부분---------------------------------------------------------------------
 				let pDate = new Date();
@@ -1300,14 +1269,7 @@ function addressSearch(location){
 	    } 
 	});    
 }
-//별점
-$(document).ready(function(){
-	$('#Clstar4half').attr('checked', 'checked');
-	$('#Sfstar3').attr('checked', 'checked');
-	$('#Cmstar5').attr('checked', 'checked');
-	$('#Plstar2half').attr('checked', 'checked');
-	$('#Acstar5').attr('checked', 'checked');
-});
+
 
 // 리뷰 모달 창 컨트롤
 $(".reviewModalBtn").click(function(){
@@ -1318,39 +1280,7 @@ $(".review_modal_close").click(function(){
 });
 
 
-/*
-// 강의신청 Pagenation
-// pagination
-let pr = document.querySelector( '.paginate.left' );
-let pl = document.querySelector( '.paginate.right' );
-
-pr.onclick = slide.bind( this, -1 );
-pl.onclick = slide.bind( this, 1 );
-
-let index = 0, total = 6;
-
-function slide(offset) {
-	index = Math.min( Math.max( index + offset, 0 ), total - 1 );
-	if(index == 0){
-		$(".left").hide();
-	}else if(index == 5){
-		$(".right").hide();
-	}else{
-		$(".left").show();
-		$(".right").show();
-	}
-	
-	document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
-	
-	pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
-	pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
-} 
-
-slide(0); 
-
-*/
-
-//이미지 확대 모달창
+//~~~~~~~~~~~~~이미지 확대 모달창
 
 $(".image_hide_modal").hide();
 
@@ -1431,7 +1361,7 @@ var satisfy=cleanness=rComm=rLocation=accuracy=5;
       
    });
 
-// 다중이미지 미리보기
+// ~~~~~~~~~~다중이미지 미리보기
 $(document).ready(function (e){
     $("input[type='file']").change(function(e){
 
@@ -1504,16 +1434,18 @@ $(document).ready(function (e){
     }
   });
    
-//로그인 세션
+//~~~~~~~~~~~~로그인 세션~~~~~~~~~~~~~~~~
 let login = JSON.parse(sessionStorage.getItem("login"));
 let memNum = login.memNum;
 let userName = login.userName;
-   
-//제출하기 버튼 클릭
+
+//~~~~~~~~~~~리뷰제출하기 버튼 클릭~~~~~~~~~~~
 $("#reviewSubmit").click(function(){
 
 	// alert(satisfy+" "+cleanness+" "+ rComm+" "+ rLocation+" "+ accuracy);
-	
+	$("#memNum").val(memNum);
+	$("#name").val(userName);
+	$("#classNum").val(seq);
 	  
 	  $.ajax({
 		 url:"http://localhost:3000/writeReview", 			
@@ -1575,7 +1507,7 @@ $("#reviewSubmit").click(function(){
 			$("#saAvg").append("  "+satis + " 점");
 			$("#clAvg").append(clean);
 			
-			alert(typeof clean +"라고한다");
+		//	alert(typeof clean +"라고한다");
 			
 //--------------------------------별점 평균---------------------------------------
 			$(function(){
@@ -1645,38 +1577,72 @@ $("#reviewSubmit").click(function(){
 
 	
 
-	// 리뷰 리스트 뿌리기~~~~~
+	// ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
 	$.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){
-			alert("리뷰갯수"+Object.keys(list).length);
+			alert("리뷰갯수" + list.length);
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
-
-		//	if(Object.keys(list).length > 6){	
- 
+			
+			// 후기 전체보기
+ 			let str ="";
+ 		//	if(Object.keys(list).length < 6 && list.del == 0){	//리뷰갯수가 6개 넘으면 후기 전체보기 모달에 다 보이게함
+ 				
 			$.each(list, function(i, val){
-				let str ="<div class='reviewModalItem'></div>";
+				 str ="<div class='reviewModalItem'></div>";
 				str +="<div style='float:left'><img src='../images/managerIcon.jpg' class='reviewImg'></div>" 
 				str += "<div style='float:left;'><div class='reviewId'>"+val.name+"</div>";
 				str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 				str += "<br><br><br>";
 				str += "<div class='reviewContent'>"+val.rContent+"</div>";
-		//		if(val.name == userName){
-				str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
-				str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel'>삭제</button>"	;
 				str += "<img src=" + val.image1 + " alt=" + ">"	;
-			//	str += "<img src=" + val.image2 + " alt=" + ">"	;
-			//	str += "<img src=" + val.image3 + " alt=" + ">"	;
-			//	}
+				str += "<img src=" + val.image2 + " alt=" + ">"	;
+				str += "<img src=" + val.image3 + " alt=" + ">"	;
+			if(val.name == userName){
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
+				str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
+				}
 	
+			});
+ 			
+ 			$(".review_Modal_Content").append(str);
+ 		
+			// 리뷰 
+			alert("리뷰갯수 6개 이하임");
+			let sr = "<div class='reviewBox'>";
+			$.each(list, function(i, val){
+				if(i%2==0 && i!=0 ){
+					sr += "</div><div class='reviewBox'>";
+				}
+				sr += "<div class='reviewItem' >"
+			 			+ "<div style='float:left'>"
+						+ "<img src='../images/managerIcon.jpg' class='reviewImg'>"
+						+ "</div>"
+						+ "<div style='float:left;'>"
+						+	"<div class='reviewId'>"+val.name+"</div>"
+						+	"<div class='reviewDate'>"+val.wDate+"</div>"
+						+ "</div>"
+						+ "<br><br><br>"
+						+ "<div class='reviewContent'>"
+						+	val.rContent
+						+ "</div>";
+				if(val.name == userName){
+					sr += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"
+					 	+ "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>";
+							
+				}
+				sr 	+= "</div>";
 					
-			//	alert(str);
-			$(".review_Modal_Content").append(str);
-			});// 반복문 끝
+				if(i==5){
+					return false; 
+				}
+			});
 			
-	//	}
+			sr += "</div>";
+			$(".reviewAppend").append(sr);
+			
 	 	},
 		error:function(){
 			alert("오류를 잡아라~!");
@@ -1685,24 +1651,35 @@ $("#reviewSubmit").click(function(){
 
 	
 	$("#reviewUpSub").hide();
-function reviewUp(seq){
-	alert(seq);
-	
+
+//~~~~~~~~~ 리뷰 수정  ~~~~~~~~~~~~~~
+function reviewUp(reviewSeq){
+	alert("리뷰시퀀스" + reviewSeq);
+
 	$.ajax({
 		url:"http://localhost:3000/getReview",
 		type: "get",
-		data: {reviewSeq:seq},
+		data: {reviewSeq:reviewSeq},
 		success:function(data){
 			alert("컨트롤러 갔ㄷㅏ옴");
-			alert(typeof (JSON.stringify(data.satisfy)));
-			var satisfy = parseInt(data.satisfy)
-			alert(typeof satisfy )
+	//		alert(typeof (JSON.stringify(data.satisfy)));
+	//		var satisfy = parseInt(data.satisfy)
+	//		alert(typeof satisfy )
+			alert("리뷰시퀀스" + data.reviewSeq);
 			//모달로 뿌러줘야하는데.............
-			$(".reviewBtn").trigger('click');
+			$(".reviewBtn").show();
+			
 		//	$("#satisfy").val(data.satisfy);  이거 안됨 ㅜㅜ별점 으악~~~~
 			$("#rContent").val(data.rContent); 
-			$("#reviewSubmit").hide();	// 제출 버튼 안보이게해줘
-			$("#reviewUpSub").show();
+			$("#reviewSubmit").hide();	//리뷰 쓰기에 제출 버튼 안보이게해줘
+			$("#reviewUpSub").show();	// 리뷰 수정버튼 보이게해줘
+			$(".reviewBtn").trigger('click');
+			
+			
+			$("#memNum").val(memNum);
+			$("#name").val(userName);
+			$("#classNum").val(data.classNum);
+			$("#reviewSeq").val(data.reviewSeq);
 				$("#reviewUpSub").click(function(){
 					alert("수정하기 버튼 클릭");
 					
@@ -1715,6 +1692,8 @@ function reviewUp(seq){
 						cache: false,
 						success:function(){
 							alert("컨트롤러는 잘 다녀옴");
+							$("#rContent").val("");
+							 location.reload();
 						},
 						error:function(){
 							alert('에러야그만보자~');
@@ -1730,10 +1709,47 @@ function reviewUp(seq){
 		}
 	});
 
+}
+//~~~~~~리뷰 삭제~~~~~~~~~
+function reviewDel(reviewSeq){
 	
-
+	$.ajax({
+		url:"http://localhost:3000/reviewDel",
+		type:"get",
+		data:{reviewSeq:reviewSeq},
+		success:function(){
+			alert("삭제컨트롤러 다녀옴");
+		},
+		error:function(){
+			alert("삭제 오류");
+		}
+	});
 }
 
+
+//~~~~~~~~수강생 아니면 리뷰작성 막아놈~~~~~~~~~~~~~
+ function checkMember(){
+	if(login == null){
+		$(".reviewBtn").hide();
+		return;
+	}
+	$.ajax({
+		url:"http://localhost:3000/checkMember",
+		type:"post",
+		data:{classNum:seq, memNum:memNum}, 
+		success:function( count ){
+		//	alert(count);
+			if(count>0){
+				$(".reviewBtn").show();
+			}else{
+				$(".reviewBtn").hide();
+			}
+		},
+		error:function(){
+			alert("error");
+		}
+	});	 
+}
 	 
 </script>
 </body>
