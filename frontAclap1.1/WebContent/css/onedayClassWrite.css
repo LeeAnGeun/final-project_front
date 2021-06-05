@@ -218,18 +218,37 @@
 
 	
 /*-----------  주소검색 -------*/
-.placeSearch{
+#keyword1{
+	margin-left:6px;
 	margin-top:15px;
 	margin-bottom:15px;
 	border:none;
 	background-color: #F5F2F5;
-	width:350px;
+	width:300px;
 	height:30px;
+	border-radius: 5px;
+}
+#keyword2{
+	margin-left:3px;
+	margin-top:15px;
+	margin-bottom:15px;
+	border:none;
+	background-color: #F5F2F5;
+	width:150px;
+	height:30px;
+	border-radius: 5px;
+}
+.placeSav{
+	margin-left:2px;
+	height:32px;
+	width:60px;
+	border:none;
+	background-color: white;
 	border-radius: 5px;
 }
 .placeBtn{
 	height:32px;
-	width:50px;
+	width:100px;
 	border:none;
 	background-color: white;
 	border-radius: 5px;
@@ -493,4 +512,3 @@ div.OCSubmitBtn:hover {
 	font-size:40px;
 	border-radius: 10px;
 }
-

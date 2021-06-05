@@ -578,21 +578,22 @@ function dateFormat(date) {
 function onedayClassWriteAf(){
 
 	// Secondary Category 만들기
-	let secondaryCategory 
-	  = $("#_secondaryCategory1").val()+"#"+
-	    $("#_secondaryCategory2").val()+"#"+
-	    $("#_secondaryCategory3").val();
-	
+	let secondaryCategory = "#"+ $("#_secondaryCategory1").val();
+	if ($("#_secondaryCategory2").val() != "")
+		secondaryCategory += "#"+$("#_secondaryCategory2").val();
+	if ($("#_secondaryCategory3").val() != "")
+		secondaryCategory += "#"+$("#_secondaryCategory3").val();
+		
 	// noClasDayOfWeek 만들기
-	let arr = [];
-	let noClassDayOfWeek = "";
-	 $("input[name='noClass']:checked").each(function(){
+	let arr = []; 
+	let noClassStr = "";
+	 $("input[name='noClassdayofWeek']:checked").each(function(){
 		let chk = $(this).val();
 		arr.push(chk);
 	 });
 	
 	for (var i = 0; i < arr.length; i++) {
-		noClassDayOfWeek += arr[i];
+		noClassStr += arr[i];
 	}
 		
 	
@@ -600,7 +601,7 @@ function onedayClassWriteAf(){
 	$("#_aboutMe").val($("#_aboutMeInput").val());
 	$("#_youtubeLink").val($("#_youtubeLinkInput").val());
 	$("#_secondaryCategory").val(secondaryCategory);
-	$("#_noClassDayOfWeek").val(noClassDayOfWeek);
+	$("#_noClassDayOfWeek").val(noClassStr);
 		
 	// 오늘 날짜 구하기
 	let date = new Date();
@@ -677,7 +678,7 @@ function onedayClassWriteAf(){
 		alert('(Chapter3) 수업 시작일은 오늘보다 이를 수 없습니다');
 	}	
 	else if($('#_location').val() == ""){
-		alert('(Chapter4) 수업 장소를 입력해주세요');
+		alert('(Chapter4) 수업 장소 검색 후 저장하세요');
 	}	
 	else if($('#_aboutMeInput').val()==""){
 		alert('(Chapter5) 강사 소개글을 입력해주세요');
@@ -692,9 +693,9 @@ function onedayClassWriteAf(){
 			contentType : false,
 			cache : false,
 			success:function( seq ){
-				if(seq != 0){
+				if(seq > 0){
 					alert('성공적으로 작성 완료 되었습니다');
-					location.href='/onedayClassView/onedayClasDetail.html?seq='+ seq;
+					location.href= 'onedayClassDetail.html?seq='+seq;
 				}
 			},
 			error:function(){
