@@ -531,7 +531,7 @@ alert("클래스 넘버 :" + seq );
 		        <input type="button" value="+" class="scIncrease" />
 	   	 	</fieldset>
 		</form>
-		<button type='button' class='ccSelectBtn' style="width: 15%">신청</button>
+		<button type='button' class='ccSelectBtn' classtitle="" style="width: 15%">신청</button>
 		</div>
       	 <hr>
       	 <div class="allScheduleList">
@@ -583,7 +583,7 @@ $(document).ready(function(){
 	    	  	
 	    	  	$(".onedayClassTitle").text(dto.title);
 				$("#starGrade").html(dto.avgPoint + "<span id='starGradeCount' style='font-weight: 300;'>(10)</span>");
-	    	  	$("#DetailLocation").text(dto.location);
+	    	  	$("#DetailLocation").text((dto.location).replace("#", " "));
 	    	  	
 	    	  	// 2. 이미지 부분
 	    	  	if(dto.layerSelect=='A'){
@@ -646,8 +646,9 @@ $(document).ready(function(){
 	    	  	$("#TeacherInfo").html(dto.aboutMe);
 	    	  	
 	    	  	// 7. 수업 장소
-	    	  	$("#location").text(dto.location);
-	    	  	addressSearch(dto.location);
+	    	  	$("#location").text((dto.location).replace("#", " "));
+	    	  	let location = (dto.location).split('#');
+	    	  	addressSearch(location[0]);
 	    	  	
 	    	  	// 8. 리뷰 부분
 	    	  	checkMember();
@@ -665,17 +666,18 @@ $(document).ready(function(){
 				// 현재 날과 startDate 비교
 				let s_pDate = dateDiff(startDate, pDate);
 				
+				$(".ccSelectBtn").attr("classtitle", dto.title);
 				if(s_pDate >= 0){
 					// alert("이미시작함");
 					let len = s_eDate - s_pDate;
 					
-					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum);
+					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum, dto.title);
 					
 				}else{
 					// alert("아직 시작안함");
 					let len = s_eDate;
 					
-					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10), dto.limitNum);
+					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10), dto.limitNum, dto.title);
 				}
 	      },
           error:function(){
@@ -684,7 +686,7 @@ $(document).ready(function(){
 		           
 	});
 	
-	function classSchedulList(classNum, startDate, endDate, limitNum){
+	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle){
 		
 		$.ajax({
 		      url:"http://localhost:3000/classSchedulList", 
@@ -714,7 +716,7 @@ $(document).ready(function(){
 						let sbtn = "";
 						
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' cDate='" + rdate + "'>신청</button>";
+	                     	sbtn += "<button type='button' class='caSelectBtn' title='' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    	noDateArray[z] = rdate;
@@ -756,7 +758,7 @@ $(document).ready(function(){
 						
 						let sbtn = "";
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "'>신청</button>";
+	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
 	                    }else{
 	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
 	                    }
@@ -789,6 +791,7 @@ $(document).ready(function(){
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	let classTitle = $(this).attr("classtitle");
 	                	
 	                	getIncludMember(json.memNum, seq, cdate);
 	                	
@@ -826,7 +829,7 @@ $(document).ready(function(){
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" +  comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>"+ classTitle +"</span> <span class='text-muted'>" +  comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"
@@ -854,6 +857,7 @@ $(document).ready(function(){
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	let classTitle = $(this).attr("classtitle");
 	                	
 	                	getIncludMember(json.memNum, seq, cdate);
 	                	
@@ -891,7 +895,7 @@ $(document).ready(function(){
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>"+classTitle+"</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"
@@ -918,6 +922,7 @@ $(document).ready(function(){
 	                	let classMaxNum = "";				// 그 날에 예약 가능 인원
 	                	let myPoint = memPoint-(clist[0].price*joinNum);	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
+	                	let classTitle = $(this).attr("classtitle");
 	                	
 	                	getIncludMember(json.memNum, seq, cdate);
 	                	
@@ -960,7 +965,7 @@ $(document).ready(function(){
 									 	+ "<h5 class='mt-5 theme-color mb-5'>수업에 참여해 주셔서 감사합니다.</h5>"
 									 	+ "<span class='theme-color'>결제 내역</span>"
 									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>보유 포인트</span> <span class='text-muted'>" + comma(memPoint) + "point</span> </div>"
-									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>축구</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
+									 	+ "<div class='d-flex justify-content-between'> <span class='font-weight-bold'>"+classTitle+"</span> <span class='text-muted'>" + comma(rPoint) + "point</span> </div>"
 									 	+ "<div class='mb-3'>"
 									 		+ "<hr class='new1'>"
 									 	+ "</div>"

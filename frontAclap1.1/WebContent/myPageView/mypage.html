@@ -650,6 +650,24 @@ function goLikeClassDetail(seq){
 </div>
 <div id="footer"></div>
 
+<!-- Modal HTML -->
+<div id="cancleScheduleMoal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="canclelogo">
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+				</div>					
+				<h4 class="modal-title w-100">정말 일정 취소를 하시겠습니까?</h4>	
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" id="cancleYES">YES</button>
+				<button type="button" class="btn btn-danger" id="cancleNO" data-dismiss="modal">NO</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
 $("#naviBar").load("../navibar.html");
 $("#footer").load("../footer.html");
@@ -883,7 +901,12 @@ $(document).ready(function() {
 							alert("죄송합니다.\n\n 3일전에는 취소가 불가능 하므로 관리자에게 문의 바랍니다.");
 							return;
 						}else{
-							myFunc(classNum, rdate, classDto.price);
+							$("#cancleYES").attr('classNum', classNum);
+							$("#cancleYES").attr('rdate', rdate);
+							$("#cancleYES").attr('price', classDto.price);
+							
+							$("#cancleScheduleMoal").modal('show');
+							// myFunc(classNum, rdate, classDto.price);
 						}
 						
 					});
@@ -984,10 +1007,7 @@ $(document).ready(function() {
 	$(".close_Table").click(function(){
 		$(".show_table").attr('class', "hide_table");
 	});	
- 	
-	$("#_btn_cancel").on("click", function(){
-		alert("취소하니?");
-	});
+
 	
 	// 두개의 날짜를 비교하여 차이를 알려준다.
 	function dateDiff(_date1, _date2) {
@@ -1003,25 +1023,25 @@ $(document).ready(function() {
 	    return diff;
 	}
 	
-	function myFunc(classNum, classDate, price){
-		let test = confirm('정말 일정을 취소하시겠습까?');
-		   if(test){
-		      $.ajax({
-		    	url:"http://localhost:3000/cancelSchedule", 			
-		  		type:"post",
-		  		data:{memNum:memNum, classNum:classNum, classDate:classDate, rPoint:price},
-		  	 	success:function( count ){
-		  	 		alert('success');
-		  	 		location.reload(true);
-		  	 	},
-		  	 	error:function(){
-		  	 		alert('error');
-		  	 	}
-		      });
-		   }
-		   else{
-		   }
-	}
+	// function myFunc(classNum, classDate, price){
+	$("#cancleYES").on("click", function(){	
+		let classNum = $(this).attr("classNum");
+		let classDate = $(this).attr("rdate");
+		let price = $(this).attr("price");
+    	
+		$.ajax({
+			url:"http://localhost:3000/cancelSchedule", 			
+			type:"post",
+			data:{memNum:memNum, classNum:classNum, classDate:classDate, rPoint:price},
+			success:function( count ){
+				alert('success');
+				location.reload(true);
+			},
+			error:function(){
+				alert('error');
+			}
+		}); 
+	})
 	
 	function comma(num){
 	    let len, point, str; 
