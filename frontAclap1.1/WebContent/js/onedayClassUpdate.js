@@ -7,10 +7,9 @@ $(document).ready(function(){
 	    obj[pairArray[0]] = pairArray[1];
 	    return obj;
 	}, {});
-	
 	$("#_classNum").val(urlParams.seq);
 	
-	// laviBar, footer load
+	// naviBar, footer load
 	$("#naviBar").load("../navibar.html");
 	$("#footer").load("../footer.html");
 	
@@ -104,17 +103,15 @@ $(document).ready(function(){
 				);
 			}
 			
-			
-			
 			let SC = data.secondaryCategory;
 			let secondary = SC.split('#');
 			alert(secondary);
 			
-			$("#_secondaryCategory1").val(secondary[0]);
+			$("#_secondaryCategory1").val(secondary[1]);
 			if(secondary[1] != null)
-				$("#_secondaryCategory2").val(secondary[1]);
+				$("#_secondaryCategory2").val(secondary[2]);
 			if(secondary[2] != null)
-				$("#_secondaryCategory3").val(secondary[2]);
+				$("#_secondaryCategory3").val(secondary[3]);
 
 
 			// 제목
@@ -193,7 +190,10 @@ $(document).ready(function(){
 										    noClassDate[5],
 										    noClassDate[6]]);
 			// 수업 장소
-			$("#keyword").val(data.location);
+			let loc = data.location.split("#");
+			$("#_location").val(data.location);
+			$("#keyword1").val(loc[0]);
+			$("#keyword2").val(loc[1]);
 			searchClass();
 			
 			// 강사 소개
@@ -747,28 +747,29 @@ function dateFormat(date) {
 function onedayClassWriteAf(){
 	
 	// Secondary Category 만들기
-	let secondaryCategory 
-	  = $("#_secondaryCategory1").val()+"#"+
-	    $("#_secondaryCategory2").val()+"#"+
-	    $("#_secondaryCategory3").val();
-	
+	let secondaryCategory = "#"+ $("#_secondaryCategory1").val();
+	if ($("#_secondaryCategory2").val() != "")
+		secondaryCategory += "#"+$("#_secondaryCategory2").val();
+	if ($("#_secondaryCategory3").val() != "")
+		secondaryCategory += "#"+$("#_secondaryCategory3").val();
+		
 	// noClasDayOfWeek 만들기
-	let arr = [];
-	let noClassDayOfWeek = "";
-	 $("input[name='noClass']:checked").each(function(){
+	let arr = []; 
+	let noClassStr = "";
+	 $("input[name='noClassdayofWeek']:checked").each(function(){
 		let chk = $(this).val();
 		arr.push(chk);
 	 });
 	
 	for (var i = 0; i < arr.length; i++) {
-		noClassDayOfWeek += arr[i];
+		noClassStr += arr[i];
 	}
 		
 	// hidden값 넣어주기
 	$("#_aboutMe").val($("#_aboutMeInput").val());
 	$("#_youtubeLink").val($("#_youtubeLinkInput").val());
 	$("#_secondaryCategory").val(secondaryCategory);
-	$("#_noClassDayOfWeek").val(noClassDayOfWeek);
+	$("#_noClassDayOfWeek").val(noClassStr);
 		
 	// 오늘 날짜 구하기
 	let date = new Date();
@@ -814,6 +815,7 @@ function onedayClassWriteAf(){
 			 $('#_ocImgC5').attr('src') == '../images/onedayClassImg2.png')){
 		     alert('(Chapter2) 이미지를 모두 입력해주세요');
 	}
+	// 여기에 조건 주기
 	else if($('#_OCcontent').val() == ''){
 		alert('(Chapter3) 수업 소개글을 입력해주세요');
 	}	
@@ -845,7 +847,7 @@ function onedayClassWriteAf(){
 		alert('(Chapter3) 수업 시작일은 오늘보다 이를 수 없습니다');
 	}	
 	else if($('#_location').val() == ""){
-		alert('(Chapter4) 수업 장소를 입력해주세요');
+		alert('(Chapter4) 수업 장소 검색 후 저장하세요');
 	}	
 	else if($('#_aboutMeInput').val()==""){
 		alert('(Chapter5) 강사 소개글을 입력해주세요');
@@ -859,14 +861,12 @@ function onedayClassWriteAf(){
 			processData : false,
 			contentType : false,
 			cache : false,
-			success:function( data ){
-				alert(data);
-				/*
-				if(data){
-					alert('성공적으로 수정 완료 되었습니다');
-					//location.href='' 마이페이지로 이동
+			success:function( seq ){
+				alert(seq);
+				if(seq>0){
+					alert('성공적으로 수정이 완료 되었습니다');
+					location.href= 'onedayClassDetail.html?seq='+seq;
 				}
-				*/
 			},
 			error:function(){
 				alert('onedayClassWrite ajax error');
