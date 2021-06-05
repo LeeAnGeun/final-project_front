@@ -346,16 +346,20 @@ $(document).ready(function(){
                     <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
                     <div class="bg-white border rounded view">
                         <div class="d-flex flex-row align-items-center b_info2">
-                            <div class="d-flex flex-column align-items-center px-md-4 px-3 day2">
-                                <div class="dday">
-                                 
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex flex-row justify-content-center ct_info2">
+                            <table class="pppInfoTable" style="width: 100%; text-align: center">
+                            <colgroup>
+                            <col style="width: 20%; height: 60px;"><col style="width: 70%; height: 60px;"><col style="width: 20%; height: 60px;">
                             
+                            </colgroup>	
+                            	<thead>
+                            	<tr>
+                            		<th>수강일자</th><th>신청자정보</th><th>인원수</th>
+                            	</tr>
+                            	</thead>
+                            	
+                            </table>
                         </div>
+                        
                     </div>
                 </div>
             	
@@ -1252,7 +1256,7 @@ function getMyClassList() {
 				} else {
 					
 					$.each(list, function (i, val) {
-						classInfo = "<div class='d-flex flex-row pt-2 line'>"
+						classInfo += "<div class='d-flex flex-row pt-2 line'>"
 								+ "<div>" + val.startDate.substring(0,10) + "<br>" +val.endDate.substring(0,10)+"</div>"
 								+ "<div class='progress vertical-progress'>"
 								+ "<div class='_dot' id='dot'></div>"
@@ -1263,7 +1267,7 @@ function getMyClassList() {
 								+ "<a href='#' class='myClassEdit' val='"+val.classNum+"'><span class='text-primary a_cStatus'>수정</span></a>"
 								+ "<a href='#' class='myClassStop' val='"+val.classNum+"'><span class='text-danger a_cStatus'>중단</span></a>"
 								+ "<a href='#' class='myClassCheck' val='"+val.classNum+"'><span class='text-success a_cStatus'>바로가기</span></a></div>"					
-								+ "</div>"
+							
 					  + "</div>";
 								
 					});
@@ -1308,26 +1312,22 @@ $(document).on("click", ".classDetailClick", function () {
 			data:{classNum:classNum},
 			success:function( list ){
 				alert('success');
-				$(".dday").remove();
-				$(".m_info").remove();
+				$(".pInfo").remove();
+
 				
 				
-				let ddd="";
-				let pts ="";
+				let ppp="<tbody class='pInfo'>";
 				$.each(list, function(i,val){
 					/* let month = val.rdate.substring(5,7);
 					let day = val.rdate.substring(8,10); */
-					ddd = "<div class='dday'><h5>"+val.rdate.substring(0,10)+"</h5></div>"
-					pts = "<div class='d-flex flex-row align-items-center m_info'>"
-						+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + val.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
-						+ "<div class='d-flex flex-column tps'>"
-						+ "<div><b>" + val.name + "("+val.nickName+")</b></div>"
-						+ "<div id='small-font'>" + val.email + "&nbsp;참가인원"+val.participants+"</div>"
-						+ "</div>"
-			  			 + "</div>";
+					ppp += "<tr><td>"+val.rdate.substring(0,10)+"</td>"
+						+ "<td> <img src='" + val.profilePic + "' alt='' width='50' height='50' class='myPageProfile'>"
+						+ "<b>" + val.name + "("+val.nickName+")</b>" + val.email + "</td><td>"+val.participants+"</td>"
+			  			 + "</tr>";
 				});
-			$(".day2").append(ddd);
-			$(".b_info2").append(pts);
+				ppp += "</tbody>";
+			$(".pppInfoTable").append(ppp);
+			
 				
 			},
 			error:function(){
