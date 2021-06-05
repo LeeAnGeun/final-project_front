@@ -1,24 +1,217 @@
 $(document).ready(function(){
-	// 로그인 정보 가져오기
-	let login = sessionStorage.getItem("login");
-	let json = JSON.parse(login); 
-	$(".ocTeacherImg").attr('src', json.profilePic);
-	$("#teacherTitle").html(json.nickName + ' 선생님 소개');
-	$(".ocTeacherMail").html(json.email);
-	$("#_masterNum").val(json.memNum);
-	$("#_instructor").val(json.nickName);
+	
+	// classSeq 가져오기
+	let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+	    return paramPair.split(/=(.+)?/).slice(0, 2);
+	}).reduce(function(obj, pairArray) {
+	    obj[pairArray[0]] = pairArray[1];
+	    return obj;
+	}, {});
+	$("#_classNum").val(urlParams.seq);
+	
+	// naviBar, footer load
+	$("#naviBar").load("../navibar.html");
+	$("#footer").load("../footer.html");
+	
 	
 	//hide setting
 	$(".chapter2").hide();
 	$(".chapter3").hide();
 	$(".chapter4").hide();
 	$(".chapter5").hide();
-	$(".onedayClassImageBoxB").hide();
-	$(".onedayClassImageBoxC").hide();
 	
-	// laviBar, footer load
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
+	//----------------------- 저장된 클래스 정보 뿌려주기 -------------------------
+	let seq = urlParams.seq;	
+	$.ajax({
+		url:"http://localhost:3000/onedayClassInfo", 
+		type:'post',
+		data : {classNum:seq}, 
+		success:function( data ){			
+			// Primary Category
+			$("#_primaryCategory").val(data.primaryCategory);
+			// Secondary Category Setting 
+			if($("#_primaryCategory").val()=='외국어'){
+				$('#_secondaryCategory1').children('option:not(:first)').remove();
+				$('#_secondaryCategory2').children('option:not(:first)').remove();
+				$("#_secondaryCategory1").append(
+			 		"<option value='자격증' hide>&nbsp;자격증</option>" +
+			 		"<option value='일상회화'>&nbsp;일상회화</option>"+
+					"<option value='비지니스회화'>&nbsp;비지니스 회화</option>"
+				);
+				$("#_secondaryCategory2").append(
+						"<option value='자격증' hide>&nbsp;자격증</option>" +
+						"<option value='일상회화'>&nbsp;일상회화</option>"+
+						"<option value='비지니스회화'>&nbsp;비지니스 회화</option>"
+				);
+			}
+			else if($("#_primaryCategory").val()=='크리에이티브'){
+				$('#_secondaryCategory1').children('option:not(:first)').remove();
+				$('#_secondaryCategory2').children('option:not(:first)').remove();
+				$("#_secondaryCategory1").append(
+						"<option value='음악'>&nbsp;음악</option>"+
+						"<option value='미용'>&nbsp;미용</option>"+
+						"<option value='미술'>&nbsp;미술</option>"+
+						"<option value='공예'>&nbsp;공예</option>"
+				);
+				$("#_secondaryCategory2").append(
+						"<option value='음악'>&nbsp;음악</option>"+
+						"<option value='미용'>&nbsp;미용</option>"+
+						"<option value='미술'>&nbsp;미술</option>"+
+						"<option value='공예'>&nbsp;공예</option>"
+				);
+			}
+			else if($("#_primaryCategory").val()=='요리'){
+				$('#_secondaryCategory1').children('option:not(:first)').remove();
+				$('#_secondaryCategory2').children('option:not(:first)').remove();
+				$("#_secondaryCategory1").append(
+						"<option value='디저트'>&nbsp;디저트</option>"+
+						"<option value='음료/커피'>&nbsp;음료/커피</option>"+
+						"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+						"<option value='양식'>&nbsp;양식</option>"
+				);
+				$("#_secondaryCategory2").append(
+						"<option value='디저트'>&nbsp;디저트</option>"+
+						"<option value='음료/커피'>&nbsp;음료/커피</option>"+
+						"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+						"<option value='양식'>&nbsp;양식</option>"
+				);
+			}
+			else if($("#_primaryCategory").val()=='프로그래밍'){
+				$('#_secondaryCategory1').children('option:not(:first)').remove();
+				$('#_secondaryCategory2').children('option:not(:first)').remove();
+				$("#_secondaryCategory1").append(
+						"<option value='frontEnd'>&nbsp;front end</option>"+
+						"<option value='backEnd'>&nbsp;back end</option>"
+				);
+				$("#_secondaryCategory2").append(
+						"<option value='frontEnd'>&nbsp;front end</option>"+
+						"<option value='backEnd'>&nbsp;back end</option>"
+				);
+			}
+			else if($("#_primaryCategory").val()=='스포츠/레저'){
+				$('#_secondaryCategory1').children('option:not(:first)').remove();
+				$('#_secondaryCategory2').children('option:not(:first)').remove();
+				$("#_secondaryCategory1").append(
+						"<option value='익스트림'>&nbsp;익스트림</option>"+
+						"<option value='아웃도어'>&nbsp;아웃도어</option>"+
+						"<option value='라이프스타일'>&nbsp;라이프스타일</option>"
+				);
+				$("#_secondaryCategory2").append(
+						"<option value='익스트림'>&nbsp;익스트림</option>"+
+						"<option value='아웃도어'>&nbsp;아웃도어</option>"+
+						"<option value='라이프스타일'>&nbsp;라이프스타일</option>"
+				);
+			}
+			
+			let SC = data.secondaryCategory;
+			let secondary = SC.split('#');
+			alert(secondary);
+			
+			$("#_secondaryCategory1").val(secondary[1]);
+			if(secondary[1] != null)
+				$("#_secondaryCategory2").val(secondary[2]);
+			if(secondary[2] != null)
+				$("#_secondaryCategory3").val(secondary[3]);
+
+
+			// 제목
+			$("#_OCtitleInput").val(data.title);
+			// 간략한 수업 소개
+			$("#_OCinfomation").val(data.information.replaceAll('<br>',''));
+			// 이미지
+			$("#_layerSelect").val(data.layerSelect);
+			if(data.layerSelect=='A'){
+				$("#layer1").removeClass('layerBtnNonChoice');
+				$("#layer2").removeClass('layerBtnChoice');
+				$("#layer3").removeClass('layerBtnChoice');
+				$("#layer1").addClass('layerBtnChoice');				
+				$("#layer2").addClass('layerBtnNonChoice');				
+				$("#layer3").addClass('layerBtnNonChoice');		
+				$(".onedayClassImageBoxB").hide();
+				$(".onedayClassImageBoxC").hide();
+				$("#_ocImgA1").attr('src', data.image1);
+				$("#_ocImgA2").attr('src', data.image2);
+				$("#_ocImgA3").attr('src', data.image3);
+				$("#_ocImgA4").attr('src', data.image4);
+				$("#_ocImgA5").attr('src', data.image5);
+			}
+			else if(data.layerSelect=='B'){
+				$("#layer2").removeClass('layerBtnNonChoice');
+				$("#layer1").removeClass('layerBtnChoice');
+				$("#layer3").removeClass('layerBtnChoice');
+				$("#layer2").addClass('layerBtnChoice');				
+				$("#layer1").addClass('layerBtnNonChoice');				
+				$("#layer3").addClass('layerBtnNonChoice');			
+				$(".onedayClassImageBoxA").hide();
+				$(".onedayClassImageBoxC").hide();
+				$("#_ocImgB1").attr('src', data.image1);
+				$("#_ocImgB2").attr('src', data.image2);
+				$("#_ocImgB3").attr('src', data.image3);
+				$("#_ocImgB4").attr('src', data.image4);
+				$("#_ocImgB5").attr('src', data.image5);
+			}
+			else if(data.layerSelect=='C'){
+				$("#layer3").removeClass('layerBtnNonChoice');
+				$("#layer1").removeClass('layerBtnChoice');
+				$("#layer2").removeClass('layerBtnChoice');
+				$("#layer3").addClass('layerBtnChoice');				
+				$("#layer1").addClass('layerBtnNonChoice');				
+				$("#layer2").addClass('layerBtnNonChoice');				
+				$(".onedayClassImageBoxA").hide();
+				$(".onedayClassImageBoxB").hide();
+				$("#_ocImgC1").attr('src', data.image1);
+				$("#_ocImgC2").attr('src', data.image2);
+				$("#_ocImgC3").attr('src', data.image3);
+				$("#_ocImgC4").attr('src', data.image4);
+				$("#_ocImgC5").attr('src', data.image5);
+			}
+			
+			// 수업에 대한 구체적인 설명
+			$("#_OCcontent").val(data.content.replaceAll('<br>',''));
+			// 강의시간
+			$("#_limitNum").val(data.limitNum);
+			// 참여인원
+			$("#_duration").val(data.duration);
+			// 준비물
+			$("#_preparation").val(data.preparation);
+			// 수강포인트
+			$("#_price").val(data.price);
+			// 강의 시작일
+			$("#_startDate").val(data.startDate.substring(0,10));
+			// 강의 종료일
+			$("#_endDate").val(data.endDate.substring(0,10));
+			// noClassDate
+			let noClassDate = data.noClass.split('');
+			$("input[name='noClass']").val([noClassDate[0],
+										    noClassDate[1], 
+										    noClassDate[2],
+										    noClassDate[3],
+										    noClassDate[4],
+										    noClassDate[5],
+										    noClassDate[6]]);
+			// 수업 장소
+			let loc = data.location.split("#");
+			$("#_location").val(data.location);
+			$("#keyword1").val(loc[0]);
+			$("#keyword2").val(loc[1]);
+			searchClass();
+			
+			// 강사 소개
+			$(".ocTeacherImg").attr('src', data.profilePic);
+			$("#teacherTitle").html(data.instructor + ' 선생님 소개');
+			$(".ocTeacherMail").html(data.email);
+			$("#_aboutMeInput").val(data.aboutMe.replaceAll('<br>',''));
+			
+			// 유투브 링크
+			$("#_youtubeLinkInput").val(data.youtubeLint);
+		},
+		
+		error:function(){
+			alert('onedayClassInfo ajax error');
+		}
+	});
+	
+	
 	
 	//--------------- 사이드바 컨트롤---------------
 	$("#OCbtn1").click(function(){
@@ -443,30 +636,6 @@ $(document).ready(function(){
 			);
 		}
 	}
-	
-	//------------------ 카카오맵 출력용 버젼 -----------------
-/*	var mapContainer = document.getElementById('map'), 
-	    mapOption = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 1};  
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	var geocoder = new kakao.maps.services.Geocoder();
-
-	geocoder.addressSearch("서울특별시 은평구 갈현2동 521-22", function(result, status) {
-
-	     if (status === kakao.maps.services.Status.OK) {
-	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	        var marker = new kakao.maps.Marker({map: map, position: coords});
-
-	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">수업 장소</div>'
-	        });
-	        infowindow.open(map, marker);
-	        map.setCenter(coords);
-	    } 
-	});    
-	
-	
-	*/
-	
 
 }); // document 끝
 
@@ -574,9 +743,9 @@ function dateFormat(date) {
 	return yyyy+'-'+(mmChars[1]?mm:"0"+mmChars[0])+'-'+(ddChars[1]?dd:"0"+ddChars[0]);
 }
 
-//-------------------- 글쓰기 완료 --------------------		
+//-------------------- 클래스 수정 완료 --------------------		
 function onedayClassWriteAf(){
-
+	
 	// Secondary Category 만들기
 	let secondaryCategory = "#"+ $("#_secondaryCategory1").val();
 	if ($("#_secondaryCategory2").val() != "")
@@ -596,7 +765,6 @@ function onedayClassWriteAf(){
 		noClassStr += arr[i];
 	}
 		
-	
 	// hidden값 넣어주기
 	$("#_aboutMe").val($("#_aboutMeInput").val());
 	$("#_youtubeLink").val($("#_youtubeLinkInput").val());
@@ -647,6 +815,7 @@ function onedayClassWriteAf(){
 			 $('#_ocImgC5').attr('src') == '../images/onedayClassImg2.png')){
 		     alert('(Chapter2) 이미지를 모두 입력해주세요');
 	}
+	// 여기에 조건 주기
 	else if($('#_OCcontent').val() == ''){
 		alert('(Chapter3) 수업 소개글을 입력해주세요');
 	}	
@@ -685,7 +854,7 @@ function onedayClassWriteAf(){
 	}
 	else{
 		$.ajax({
-			url:"http://localhost:3000/onedayClassWrite", 
+			url:"http://localhost:3000/onedayClassUpdate", 
 			type:'post',
 			data : new FormData($("#onedayClassWriteFrm")[0]), 
 			enctype : 'multipart/form-data',
@@ -693,8 +862,9 @@ function onedayClassWriteAf(){
 			contentType : false,
 			cache : false,
 			success:function( seq ){
-				if(seq > 0){
-					alert('성공적으로 작성 완료 되었습니다');
+				alert(seq);
+				if(seq>0){
+					alert('성공적으로 수정이 완료 되었습니다');
 					location.href= 'onedayClassDetail.html?seq='+seq;
 				}
 			},

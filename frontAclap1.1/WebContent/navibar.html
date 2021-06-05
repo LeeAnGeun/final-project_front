@@ -26,7 +26,7 @@
 				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="#" onclick="classView();return false;">클래스</a></li>
  		   		<li class="listItem"><a id="len4" class="hoverable" href="../loginRegi/loginRegi.html">로그인/회원가입</a>
-				<li class="listItem"><img class='trigger' id="len5"></li>
+				<li class="listItem"><img class='trigger' id="len5"><span class="badge red">!</span></li>
  		   		<li class="listItem"><img class='trigger' id="len6" src="../images/managerIcon.jpg"></li>
             </ul>
 			<span class="navTrigger">
@@ -100,6 +100,7 @@
 </div>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
 
 	$("#len5").hide();
@@ -123,6 +124,7 @@ $(document).ready(function(){
 		}
 	}	
 	
+	
 	// 유저 모달창 띄우기
 	let chNum = 0;
 	$("#len5").click(function(){
@@ -140,7 +142,11 @@ $(document).ready(function(){
 					$(".loginModalEmail").html(json.email);
 					$(".myPointCheck").html("내 포인트 " + json.myPoint);			
 					// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
-					$(".loginNewContent").html("새로운 클래스 신청자 : 0명")
+					$(".loginNewContent").html("새로운 클래스 신청자 : 0명");
+					$("#points").append("$" + json.myPoint);
+					
+			
+					
 				},
 				error:function(){
 					alert("Google_Kakao_Regi ajax Error");
@@ -283,19 +289,19 @@ function event(){
 
 //////////////////////////////////////////////포인트 충전///////////////////////////////////////////////////////////////
 //로그인 세션
-let json = sessionStorage.getItem("login");
-if(json != null){
-	let login = JSON.parse(json); 
+	let login = JSON.parse(sessionStorage.getItem("login"));
 	let email = login.email;
-	let name = login.userName;
-	let phoneNum = login.phoneNum;
 	let myPoint = login.myPoint;
+	let phoneNum = login.phoneNum;
 	myPoint = parseInt(myPoint);
-	let money = 0;
-	$("#points").append("$" + myPoint);
-};
+	
+//	 $("#points").append("$" + myPoint);
+	
+//	alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
 
-// ???????????? 이거 뭐에영
+
+
+// ???????????? 이거 뭐에영  ----음...모루겠어여 뭐지ㅣ...
 $("#pointsCharge").click(function(){
 	
 });
@@ -343,7 +349,7 @@ $("#chargeBtn").click(function(){
 		data:{ money:money, email:email},
 		success:function(){
 			alert("충전완료! 메인화면으로 이동합니다");
-			location.href = "main.html";
+			location.href = "index.html";
 		},
 		error:function(){
 			alert("에러임ㅜ");
@@ -394,7 +400,8 @@ $("#check_module").click(function () {
 					
 					// alert(point);
 					$(".myPointCheck").html("내 포인트 " + point);
-					
+					alert("충전완료! 메인화면으로 이동합니다");
+					location.href = './main.html';
 					
 				},
 				error:function(){
@@ -410,6 +417,24 @@ $("#check_module").click(function () {
 		alert(msg);
 	});
 });
+
+
+//알림아이콘 프로필사진에 뜨는 것 조사
+function checkAlertBadge() {
+	let lgSession = JSON.parse(login);
+	$.ajax({
+		url:"http://localhost:3000/checkAlertBadge",
+		type:"get",
+		data:{memNum:lgSession.memNum},
+		success:function(n){
+			alert("success");
+			
+		},
+		error:function(){
+			alert("error");
+		}
+	});
+}
 
 
 </script>

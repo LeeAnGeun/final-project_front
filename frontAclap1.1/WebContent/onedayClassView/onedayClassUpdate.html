@@ -23,7 +23,7 @@
 <!-- 커스텀 css -->
 <link rel="stylesheet" href="../css/onedayClassWrite.css">
 <!-- 커스텀 script  -->
-<script src="../js/onedayClassWrite.js"></script>
+<script src="../js/onedayClassUpdate.js"></script>
 
 </head>
 <body style='background-color:#F1C50E'>
@@ -48,15 +48,15 @@
  </div>
  <div class="OCSubmitBtn">
  	<h1 id='OCSubmitTxt' style='text-align:left' onclick='onedayClassWriteAf()'>
- 	 &nbsp;작<br>&nbsp;성<br>&nbsp;완<br>&nbsp;료</h1>
+ 	 &nbsp;수<br>&nbsp;정<br>&nbsp;완<br>&nbsp;료</h1>
  </div>
 
 
 <div class='onedayClassContaier'>
 <form id='onedayClassWriteFrm'>
 <!-- hidden input -->
-<input type='hidden' name='masterNum' id='_masterNum'>
-<input type='hidden' name='instructor' id='_instructor'>
+
+<input type='hidden' name='classNum' id='_classNum'>
 <input type='hidden' name='layerSelect' id='_layerSelect' value='A'>
 <input type='hidden' name='location' id='_location'>
 <input type='hidden' name='aboutMe' id='_aboutMe'>
@@ -294,7 +294,7 @@
 		<span class='OCdateText'>No Class Day of the week : </span> 
 		&nbsp;&nbsp;&nbsp;
 		<span class='noClassBox'>
-			<input type="checkbox" name="noClassdayofWeek" value="7">&nbsp;SUN &nbsp;&nbsp;
+			<input type="checkbox" name="noClassdayofWeek" value="0">&nbsp;SUN &nbsp;&nbsp;
 			<input type="checkbox" name="noClassdayofWeek" value="1">&nbsp;MON &nbsp;&nbsp;
 			<input type="checkbox" name="noClassdayofWeek" value="2">&nbsp;TUS &nbsp;&nbsp;
 			<input type="checkbox" name="noClassdayofWeek" value="3">&nbsp;WED &nbsp;&nbsp; 
@@ -426,5 +426,6 @@ function placeSave(){
 	alert('저장되었습니다');
 }
 </script>	
+
 </body>
 </html>
