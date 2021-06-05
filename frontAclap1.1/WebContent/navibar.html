@@ -26,7 +26,7 @@
 				<li class="listItem"><a id="len2" class="hoverable" href="javascript:event()">이벤트</a></li>
 				<li class="listItem"><a id="len3" class="hoverable" href="#" onclick="classView();return false;">클래스</a></li>
  		   		<li class="listItem"><a id="len4" class="hoverable" href="../loginRegi/loginRegi.html">로그인/회원가입</a>
-				<li class="listItem"><img class='trigger' id="len5"></li>
+				<li class="listItem"><img class='trigger' id="len5"><span class="badge red">!</span></li>
  		   		<li class="listItem"><img class='trigger' id="len6" src="../images/managerIcon.jpg"></li>
             </ul>
 			<span class="navTrigger">
@@ -123,6 +123,7 @@ $(document).ready(function(){
 			$("#len6").show();
 		}
 	}	
+	
 	
 	// 유저 모달창 띄우기
 	let chNum = 0;
@@ -416,6 +417,24 @@ $("#check_module").click(function () {
 		alert(msg);
 	});
 });
+
+
+//알림아이콘 프로필사진에 뜨는 것 조사
+function checkAlertBadge() {
+	let lgSession = JSON.parse(login);
+	$.ajax({
+		url:"http://localhost:3000/checkAlertBadge",
+		type:"get",
+		data:{memNum:lgSession.memNum},
+		success:function(n){
+			alert("success");
+			
+		},
+		error:function(){
+			alert("error");
+		}
+	});
+}
 
 
 </script>
