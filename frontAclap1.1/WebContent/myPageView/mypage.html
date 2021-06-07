@@ -900,8 +900,8 @@ $(document).ready(function() {
 						
 						let r_mDate = dateDiff(newRdate, newPdate);
 						
-						if(r_mDate < 0){ // 3으로 바꿔야함!!!!!!!
-							alert("죄송합니다.\n\n 3일전에는 취소가 불가능 하므로 관리자에게 문의 바랍니다.");
+						if(r_mDate <= 2){ // 3으로 바꿔야함!!!!!!!
+							alert("죄송합니다.\n\n 2일전에는 취소가 불가능 하므로 관리자에게 문의 바랍니다.");
 							return;
 						}else{
 							$("#cancleYES").attr('classNum', classNum);
@@ -1031,7 +1031,7 @@ $(document).ready(function() {
 		let classNum = $(this).attr("classNum");
 		let classDate = $(this).attr("rdate");
 		let price = $(this).attr("price");
-    	
+   
 		$.ajax({
 			url:"http://localhost:3000/cancelSchedule", 			
 			type:"post",
