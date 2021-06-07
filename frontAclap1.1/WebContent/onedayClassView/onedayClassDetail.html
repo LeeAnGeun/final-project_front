@@ -1828,9 +1828,9 @@ $("#reviewSubmit").click(function(){
 					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 					str += "<br><br><br>";
 					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-					str += "<img src=" + val.image1 + " alt=" + ">"	;
-					str += "<img src=" + val.image2 + " alt=" + ">"	;
-					str += "<img src=" + val.image3 + " alt=" + ">"	;
+					str += "<img src=" + val.image1 + " alt=" + " id='rImg'>"	;
+					str += "<img src=" + val.image2 + " alt=" + " id='rImg'>"	;
+					str += "<img src=" + val.image3 + " alt=" + " id='rImg'>"	;
 				if(val.name == userName){
 					str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
 					str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
@@ -1973,14 +1973,18 @@ function reviewDel(reviewSeq){
 		data:{classNum:seq, memNum:memNum}, 
 		success:function( count ){
 		//	alert(count);
-			if(count>0){
+			if(count == true){
+			
+				alert('true');
 				$(".reviewBtn").show();
 			}else{
+
+				alert('false');
 				$(".reviewBtn").hide();
 			}
 		},
 		error:function(){
-			alert("error");
+			alert("리뷰작성가능error");
 		}
 	});	 
 }
