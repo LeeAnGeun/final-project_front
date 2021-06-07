@@ -11,17 +11,6 @@ function goDetail(seq){
 }
 
 
-//dataformat 함수
-function dateFormat(date) {
-	let yyyy = date.getFullYear().toString();
-	let mm = (date.getMonth()+1).toString();
-	let dd  = date.getDate().toString();
-	
-	let mmChars = mm.charAt('');
-	let ddChars = mm.charAt('');
-	return yyyy+'-'+(mmChars[1]?mm:"0"+mmChars[0])+'-'+(ddChars[1]?dd:"0"+ddChars[0]);
-}
-
 
 $(document).ready(function(){
 	let login = sessionStorage.getItem("login");
@@ -39,17 +28,6 @@ $(document).ready(function(){
 				$("#new_classNum"+i).val(item.classNum);
 				$("#s_newTitle"+i).html(item.title);
 				$("#s_newTeacher"+i).html(item.instructor +" 선생님");				
-
-				let date = new Date();
-				let today = dateFormat(date);
-				let endDate = item.endDate.substring(0,10);
-				
-				// 기간만료되었다면
- 				if(today > endDate){
-					$("#newBtn"+i).removeClass('s_NewNBestBtn');
-					$("#newBtn"+i).addClass('s_overBtn');
-					$("#newBtn"+i).val('Class Over');
-				}  
  				
 				// like 유무 체크
 				if(login != null){
@@ -98,18 +76,7 @@ $(document).ready(function(){
 				$("#best_classNum"+i).val(item.classNum);
 				$("#s_bestTitle"+i).html(item.title);
 				$("#s_bestTeacher"+i).html(item.instructor +" 선생님");
-				
-				let date = new Date();
-				let today = dateFormat(date);
-				let endDate = item.endDate.substring(0,10);
-				
-				// 기간만료되었다면
-				if(today > endDate){
-					$("#bestBtn"+i).removeClass('s_NewNBestBtn');
-					$("#bestBtn"+i).addClass('s_overBtn');
-					$("#bestBtn"+i).val('Class Over');
-				}
-				
+			
 				// like 유무 체크
 				if(login != null){
 					let json = JSON.parse(login); 
@@ -144,13 +111,23 @@ $(document).ready(function(){
 	});	
 	
 	
-	
 	// 추천 클래스 불러오기 
 	if(login != null){
 		let json = JSON.parse(login); 
+		let int1= sessionStorage.getItem("myInterest1");
+		let int2= sessionStorage.getItem("myInterest2");
+		let int3= sessionStorage.getItem("myInterest3");
+		let input1 = json.interest1;
+		let input2 = json.interest2;
+		let input3 = json.interest3;
+		if(int1 != null){
+			input1 = int1;
+			input2 = int2;
+			input3 = int3;
+		}
 		$.ajax({
 			url:"http://localhost:3000/getRecommendClassList", 
-			data:{interest1:json.interest1, interest2:json.interest2, interest3:json.interest3},
+			data:{interest1:input1, interest2:input2, interest3:input3},
 			type:"post",
 			success:function( data ){
 				
@@ -160,18 +137,7 @@ $(document).ready(function(){
 					$("#recommend_classNum"+i).val(item.classNum);
 					$("#s_recommendTitle"+i).html(item.title);
 					$("#s_recommendTeacher"+i).html(item.instructor +" 선생님");
-					
-					let date = new Date();
-					let today = dateFormat(date);
-					let endDate = item.endDate.substring(0,10);
-					
-					// 기간만료되었다면
-					if(today > endDate){
-						$("#recommendBtn"+i).removeClass('s_NewNBestBtn');
-						$("#recommendBtn"+i).addClass('s_overBtn');
-						$("#recommendBtn"+i).val('Class Over');
-					}
-					
+
 					// like 유무 체크
 					let json = JSON.parse(login); 
 					$.ajax({
@@ -193,7 +159,7 @@ $(document).ready(function(){
 							}
 						},
 						error:function(){
-							alert("checkLike ajax error");
+							alert("getRecommendClassList ajax error");
 						}
 					});
 				});

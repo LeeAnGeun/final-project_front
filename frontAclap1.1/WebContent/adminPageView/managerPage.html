@@ -12,6 +12,9 @@
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- pagination -->
+<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
+
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -537,7 +540,7 @@ $(document).on("click", "#btnSearch", function () {
 								+ "</tr>";
 						$("#classList").append(str);	
 					});			
-				},
+				},    
 				error:function(){
 					alert('에러임 ㅜ');
 				}		
