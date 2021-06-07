@@ -32,6 +32,15 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 
+<!-- pagination -->
+<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
+
+<script type="text/javascript">
+(function() {
+emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
+})();
+</script>
+
 <style type="text/css">
 .card mb-4{
 	width: 80%
@@ -174,6 +183,51 @@ table.customTable td, table.customTable th {
 table.customTable thead {
   background-color: #F8EB95;
 }
+
+
+
+
+
+
+div.mainTable{
+	width: 100%;
+	height: 80%;
+	position: relative;
+	float: center;
+	
+}
+table.customTable {
+  width: 70%;
+  background-color: #FFFCE6;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #FFFFFF;
+  border-style: groove;
+  color: #000000;
+  margin: auto;
+ 
+}
+
+table.customTable td, table.customTable th {
+  border-width: 2px;
+  border-color: #FFFFFF;
+  border-style: groove;
+  padding: 5px;
+}
+
+table.customTable thead {
+  background-color: #F8EB95;
+}
+
+
+
+#noticeCheckCheck{
+	display: none;
+}
+
+#layoutSidenav_content{
+	display: none;
+}
 </style>
 </head>
 
@@ -232,11 +286,7 @@ table.customTable thead {
 	                            					</tr>
 	                            				</table>
 	                            			</label>
-	                            			<div class="container">
-											<nav aria-label="Page navigation">
-												<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
-											</nav>
-								         </div>
+	                            			
 	                            		</div>
                             		</div>
                             	</div>
@@ -261,12 +311,80 @@ table.customTable thead {
                                         </tbody>
                                        	
                                     </table>
+                                    <div class="container">
+										<nav aria-label="Page navigation">
+											<ul class="pagination2" style="justify-content:center;"></ul>
+										</nav>
+								    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
             </div>
+            
+            <!-- 유저노티스체크 -->
+            
+         <div id="noticeCheckCheck">
+            
+            <div style="padding-top: 100px;">
+						<!-- 검색 -->
+			
+			<div class="search">
+			<table style="margin: auto;">
+			<tr>
+				
+				<td style="padding-left: 5px">
+					<select id="_choice" name="choice" class="form-select">
+						<option value="" selected="selected">검색 선택</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="writer">작성자</option>
+					</select>
+				</td>
+				<td style="padding-left: 5px">
+					<input type="text" id="_searchWord" name="searchWord">
+				</td>
+				<td style="padding-left: 5px">
+					<span class="button blue">
+						<button type="button" id="btnSearch" class="btn btn-secondary">검색</button>
+					</span>
+				</td>
+			</tr>
+			</table>
+			</div>
+			<div class="mainTable">
+				<table class="customTable" id="noticeTable">
+				<colgroup>
+					
+					
+					<col style="width:70px">
+					<col style="width:70px">
+					<col style="width:70px">
+					<col style="width:70px">
+				</colgroup>	
+				
+				<tr>
+					<th>번호</th><th>제목</th><th>작성자</th><th>이메일</th>
+				</tr>
+				
+				</table>
+			</div>
+				
+				<br><br>
+
+		<div class="container">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" style="justify-content:center;"></ul>
+			</nav>
+		</div>
+		</div>
+            
+       
+       </div>
+       
+       
+            
         </div>
 
 
@@ -336,216 +454,257 @@ table.customTable thead {
 
  
 <script type="text/javascript">
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
+$("#naviBar").load("../navibar.html");
+$("#footer").load("../footer.html");
+
 
 $(document).ready(function () {
+	goClassList();	
 	
-
-//사이드 유저리스트 검색했을 때
-$(document).on("click", "#goUserList", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-   $(".card-header").text("User List");
-   $("#managerPage").text("User List")
-   
-   $("#dataTable").empty();
-   let table = "<thead>"
-            + "<tr>"
-            + "<th>#</th>"
-            + "<th>이름</th>"
-            + "<th>닉네임</th>"
-            + "<th>마스터</th>"
-            + "<th>포인트</th>"
-            + "<th>이메일</th>"
-            + "<th>전화번호</th>"
-            + "</tr>"
-            + "</thead>";
-   
-            $("#dataTable").append(table);
-            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
-            
-   
-// 처음에 유저목록 다 보여줌
-$(function(){
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-      $.ajax({
-         url:"http://localhost:3000/memlist",
-         type:"get",
-         data:{ name:$("#userName").val(), page:0},
-         success:function(list){
-            //alert(list);
-            
-            
-            $.each(list, function(i, list){
-               let str = "<tr>"
-                     + "<td>" + (i+1) + "</td>"
-                     + "<td>" + list.userName + "</td>"
-                     + "<td>" + list.nickName + "</td>"
-                     + "<td>" + list.classMaster + "</td>"
-                     + "<td>" + list.myPoint + "</td>"
-                     + "<td>" + list.email + "</td>"
-                     + "<td>" + list.phoneNum + "</td>"
-                     + "</tr>";
-               $("#classList").append(str);                  
-            });         
-            
-            $("#memDelete").click(function(){
-               alert($("#memDelete").val());               
-            });
-         
-         },
-         error:function(){
-            alert('userlist실패쓰ㅜ');
-         }
-      });
-   });
-// 유저 이름 검색했을 때 
-$(document).on("click", "#btnSearch", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-   $.ajax({
-      url:"http://localhost:3000/memlist",
-      type:"get",
-      data:{ name:$("#userName").val(), page:0},
-      success:function(list){
-         //alert(JSON.stringify(list));
-         alert("성공쓰~!");
-         $("#classList").empty();
-         
-         $.each(list, function(i, list){
-            let str = "<tr>"
-               + "<td>" + (i+1) + "</td>"
-               + "<td>" + list.userName + "</td>"
-               + "<td>" + list.nickName + "</td>"
-               + "<td>" + list.classMaster + "</td>"
-               + "<td>" + list.myPoint + "</td>"
-               + "<td>" + list.email + "</td>"
-               + "<td>" + list.phoneNum + "</td>"
-               + "<td><button type='button' class='btn btn-light' id='memDelete' value='" + list.nickName+ "'>탈퇴</button>"
-               + "</tr>";
-         $("#classList").append(str);      
-         });         
-      },
-      error:function(){
-         alert('유저검색에러임 ㅜ');
-      }      
-   });   
-});
-
-});
-
-//사이드바  원데이 클래스 클릭시 
-$(document).on("click", "#goClassList", function () { 
-
-    $("#mainScr").load("../adminPageView/adminCListUList.html");
-
-	$(".card-header").text("One-Day Class List");
-	$("#managerPage").text("One-Day Class List");
-	$("#dataTable").empty();
+	$("#goClassList").on('click', function(){
+		goClassList();
+	});
+	
+	$("#goUserList").on('click',function(){
+		goUserList();
+	});
+	
+	//--------------------------사이드 유저리스트 검색했을 때
+	function goUserList(){	
+		$("#layoutSidenav_content").show();
+		$("#noticeCheckCheck").hide();
+		
+		$('.pagination2').attr('class', 'userPageNation');
+		$('#btnClassSearch').attr('class', 'btnSearchUser');
+	   $(".card-header").text("User List");
+	   $("#managerPage").text("User List");
+	   
+	   $("#dataTable").empty();
 	   let table = "<thead>"
 	            + "<tr>"
 	            + "<th>#</th>"
-	            + "<th>개설자</th>"
-	            + "<th>제목</th>"
-	            + "<th>대분류</th>"
-	            + "<th>소분류</th>"
-	            + "<th>시작 날짜</th>"
-	            + "<th>마지막 날짜</th>"
-	            + "<th>장소</th>"
+	            + "<th>이름</th>"
+	            + "<th>닉네임</th>"
+	            + "<th>마스터</th>"
+	            + "<th>포인트</th>"
+	            + "<th>이메일</th>"
+	            + "<th>전화번호</th>"
 	            + "</tr>"
 	            + "</thead>";
 	   
 	            $("#dataTable").append(table);
 	            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
+	
+	            getUserListData(0);
+	            countUserList();
+	// 처음에 유저목록 다 보여줌
+	function getUserListData(pgNumber){
+		//$("#mainScr").load("../adminPageView/adminCListUList.html");
+	      $.ajax({
+	         url:"http://localhost:3000/memlist",
+	         type:"get",
+	         data:{ name:$("#userName").val(), page:pgNumber},
+	         success:function(list){
+	            //alert(list);
+	            $('.classtrtrtr').remove();
+	            $('.usertrtrtr').remove();
+	            $.each(list, function(i, list){
+	               let str = "<tr class='usertrtrtr'>"
+	                     + "<td>" + (i+1) + "</td>"
+	                     + "<td>" + list.userName + "</td>"
+	                     + "<td>" + list.nickName + "</td>"
+	                     + "<td>" + list.classMaster + "</td>"
+	                     + "<td>" + list.myPoint + "</td>"
+	                     + "<td>" + list.email + "</td>"
+	                     + "<td>" + list.phoneNum + "</td>"
+	                     + "</tr>";
+	               $("#classList").append(str);                  
+	            });         
+	            
+	         
+	            $("#memDelete").click(function(){
+	               alert($("#memDelete").val());               
+	            });
+	            
+	         },
+	         error:function(){
+	            alert('userlist실패쓰ㅜ');
+	         }
+	      });
+	}
 	            
 	
-
-	$(function classlist() {
-//		alert('실행');
+	
+	function countUserList() {
+		$.ajax({
+			url:"http://localhost:3000/countUserList",
+			type:"get",
+			data:{page:0, name:$("#userName").val() },
+			success:function(count){
+				loadPage3(count);
+			},
+			error:function(){
+				alert("우짜냐 에러다ㅜ");
+			}
+		}); 
+	}
+	//paging class 처리
+	function loadPage3( totalCount ) {
+	
+		let pageSize = 10;
+		let nowPage = 1;
 		
+		let _totalPages = totalCount / pageSize;
+		if(totalCount % pageSize > 0){
+			_totalPages++;
+		}
+		$(".pagination2").twbsPagination('destroy'); //페이지 갱신: 초기화
+		
+		$(".pagination2").twbsPagination({
+		//	startPage: 1,
+			totalPages: _totalPages,
+			visiblePages: 10,
+			first:'<span sria-hidden="true">«</span>',
+			prev:"이전",
+			next:"다음",
+			last:'<span sria-hidden="true">»</span>',
+			initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
+			onPageClick:function(event, page){
+				nowPage = page;
+			//	alert('nowPage:' + page);
+				getUserListData( page - 1 );
+			}
+		});	
+	}
+	
+	// 유저 이름 검색했을 때 
+	$(document).on("click", "#btnSearchUser", function () { 
+	
+		 getUserListData(0);
+         countUserList();
+	}
+	
+	//----------------------------사이드바  원데이 클래스 클릭시 
+	function goClassList(){
+	    //$("#mainScr").load("../adminPageView/adminCListUList.html");
+		$("#layoutSidenav_content").show();
+		$("#noticeCheckCheck").hide();
+		
+		$(".card-header").text("One-Day Class List");
+		$("#managerPage").text("One-Day Class List");
+		$("#dataTable").empty();
+		   let table = "<thead>"
+		            + "<tr>"
+		            + "<th>#</th>"
+		            + "<th>개설자</th>"
+		            + "<th>제목</th>"
+		            + "<th>대분류</th>"
+		            + "<th>소분류</th>"
+		            + "<th>시작 날짜</th>"
+		            + "<th>마지막 날짜</th>"
+		            + "<th>장소</th>"
+		            + "</tr>"
+		            + "</thead>";
+		   
+		    $("#dataTable").append(table);
+		    $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
+	
+		    $('#btnSearch').attr('id', 'btnClassSearch');    
+					
+		    classlist(0);
+		    countClassList();
+		        
+	}            
+		
+	function classlist(pNum) {
 		$.ajax({
 			url:"http://localhost:3000/classlist",
 			type:"get",
-			data:{ name:$("#userName").val(), page:0},
+			data:{ name:$("#userName").val(), page:pNum},
 			success:function(list){
 				//alert(JSON.stringify(list));
 				//alert("성공쓰~!");
+				$('.classtrtrtr').remove();
 				
 				$.each(list, function(i, list){
-					let str = "<tr>"
+					let startDate = (list.startDate).substring(0, 10);
+					let endDate = (list.endDate).substring(0, 10);
+					let str = "<tr class='classtrtrtr'>"
 							+ "<td>" + (i+1) + "</td>"
 							+ "<td>" + list.instructor + "</td>"
 							+ "<td>" + list.title + "</td>"
 							+ "<td>" + list.primaryCategory + "</td>"
 							+ "<td>" + list.secondaryCategory + "</td>"
-							+ "<td>" + list.startDate + "</td>"
-							+ "<td>" + list.endDate + "</td>"
+							+ "<td>" + startDate + "</td>"
+							+ "<td>" + endDate  + "</td>"
 							+ "<td>" + list.location + "</td>"
 							+ "</tr>";
 					$("#classList").append(str);	
-				});			
+				});
+				
 			},
 			error:function(){
 				alert('에러임 ㅜ');
 			}		
-		});		
-	});	
- 	//클래스 총 수 
-	$(function(){
-		
+				
+		});	
+	}
+	
+	function countClassList() {
 		$.ajax({
 			url:"http://localhost:3000/classCount",
 			type:"get",
 			data:{page:0, name:$("#userName").val() },
 			success:function(count){
-			//	alert("성공쓰~!");
-				alert(count);
+				loadPage2(count);
 			},
 			error:function(){
-			//	alert("우짜냐 에러다ㅜ");
+				alert("우짜냐 에러다ㅜ");
 			}
 		}); 
-	}); 
+	}
+	//paging class 처리
+	function loadPage2( totalCount ) {
 	
-
-// 검색했을때 리스트
-$(document).on("click", "#btnSearch", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-			$.ajax({
-				url:"http://localhost:3000/classlist",
-				type:"get",
-				data:{ name:$("#userName").val(), page:0},
-				success:function(list){
-					//alert(JSON.stringify(list));
-					alert("성공쓰~!");
-					$("#classList").empty();
-					
-					$.each(list, function(i, list){
-						let str = "<tr>"
-								+ "<td>" + (i+1) + "</td>"
-								+ "<td>" + list.instructor + "</td>"
-								+ "<td>" + list.title + "</td>"
-								+ "<td>" + list.primaryCategory + "</td>"
-								+ "<td>" + list.secondaryCategory + "</td>"
-								+ "<td>" + list.startDate + "</td>"
-								+ "<td>" + list.endDate + "</td>"
-								+ "<td>" + list.location + "</td>"
-								+ "</tr>";
-						$("#classList").append(str);	
-					});			
-				},
-				error:function(){
-					alert('에러임 ㅜ');
-				}		
-			});	
-		});
-
-	
+		let pageSize = 10;
+		let nowPage = 1;
+		
+		let _totalPages = totalCount / pageSize;
+		if(totalCount % pageSize > 0){
+			_totalPages++;
+		}
+		$(".pagination2").twbsPagination('destroy'); //페이지 갱신: 초기화
+		
+		$(".pagination2").twbsPagination({
+		//	startPage: 1,
+			totalPages: _totalPages,
+			visiblePages: 10,
+			first:'<span sria-hidden="true">«</span>',
+			prev:"이전",
+			next:"다음",
+			last:'<span sria-hidden="true">»</span>',
+			initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
+			onPageClick:function(event, page){
+				nowPage = page;
+			//	alert('nowPage:' + page);
+				classlist( page - 1 );
+			}
+		});	
+	}
+	// 검색했을때 리스트
+	$("#btnClassSearch").on("click", function () { 
+		classlist(0);
+	    countClassList();
+	});
 });
+
+
+
+
+
+
+
+
 //--------------------------------------문의사항----------------------------- 
 $("#goQnaList").click(function(){
 	$(".card-header").text("QnA List");
@@ -557,7 +716,8 @@ $("#goQnaList").click(function(){
 
 
 function adminNoticeCheck() {
-	$("#mainScr").load("../adminPageView/adminNoticeCheck.html");
+	$("#layoutSidenav_content").hide();
+	$("#noticeCheckCheck").show();
 	let loginid;
 
 	noticeListData(0);
@@ -586,7 +746,7 @@ function noticeListData( pNumber ) {
 			$(".list_col").remove();
 		
 			$.each(list, function (i, val) {
-				let app = "<tr>"
+				let app = "<tr class='list_col'>"
 							+ "<td>" + (i + 1) + "</td>"
 							+ "<td>";
 							
@@ -640,9 +800,9 @@ function loadPage( totalCount ) {
 	if(totalCount % pageSize > 0){
 		_totalPages++;
 	}
-	$("#pagination").twbsPagination('destroy'); //페이지 갱신: 초기화
+	$(".pagination").twbsPagination('destroy'); //페이지 갱신: 초기화
 	
-	$("#pagination").twbsPagination({
+	$(".pagination").twbsPagination({
 	//	startPage: 1,
 		totalPages: _totalPages,
 		visiblePages: 10,
@@ -658,7 +818,9 @@ function loadPage( totalCount ) {
 		}
 	});	
 }
-});
+
+
+
 //아이디..
 $(document).ready(function () {
 
