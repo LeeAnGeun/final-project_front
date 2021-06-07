@@ -492,6 +492,11 @@ $("#_myLikeClassView").hide();
 $("#_myLikeClass").click(function(){
 	$("#calendar").hide();
 	$(".mainView").hide();
+	$(".mainView2").hide();
+	$('#_myLikeClass').css('color', 'green');
+	$('#_mySchedules').css('color', 'black');
+	$('#_myClass').css('color', 'black');
+	
 	$("#_myLikeClassView").show();
 });
 
@@ -971,7 +976,7 @@ $(document).ready(function() {
 		$(".mainView2").hide();
 		$('#_mySchedules').css('color', 'green');
 		$('#_myClass').css('color', 'black');
-		
+		$('#_myLikeClass').css('color', 'black');
 		getMySchedule(syear, smonth)
 		// calendar을 숨김
 		$("#calendar").hide();	
@@ -1193,7 +1198,7 @@ function loadPage( memNum, totalCount  ) {
 		$("#_myLikeClassView").hide();
 		$('#_myClass').css('color', 'green');
 		$('#_mySchedules').css('color', 'black');
-		
+		$('#_myLikeClass').css('color', 'black');
 		$(".mainView2").show();
 		$("#calendar").show();
 

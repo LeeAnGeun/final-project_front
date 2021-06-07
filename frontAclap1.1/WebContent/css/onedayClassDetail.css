@@ -1214,6 +1214,12 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 	color: #000;
 	animation: animate 4s ease-in-out infinite;
 }
+#rImg{
+	width: 30px;
+	height: 30px;
+}
+
+
 @keyframes animate {
 	0%,
 	100% {
@@ -1243,4 +1249,111 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 			0% 100%
 		);
 	}
+}
+
+/*=========== 문의사항 버튼 ===========*/
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.detailViewQuestContainer{
+	width:240px;
+	height:270px;
+ 	position:fixed;
+	background-color:#ecede7;
+	top:250px;
+	left:60px;
+}
+.dText1{
+	margin-top:44px;
+	text-align:center;
+	font-size:20px;
+	font-family: GongGothicMedium;
+}
+.dText2{
+	position:relative;
+	top:-4px;
+	text-align:center;
+	font-size:33px;
+	font-family: GongGothicMedium;
+}
+.dText3{
+	position:relative;
+	top:-17px;
+	text-align:center;
+	font-size:48px;
+	font-family: GongGothicMedium;
+	
+}
+.dText4{
+	position:relative;
+	top:-12px;
+	text-align:center;
+	font-size:30px;
+	font-family: GongGothicMedium;
+}
+.dText4:hover{
+	cursor: pointer;
+	color: #9872fc;
+	font-size:45px;
+	position:relative;
+	top:-14px;
+}
+.dqModal{
+	z-index:99;
+	width:400px;
+	height:330px;
+	background-color:#f4fdd7;
+	position:fixed;
+	top:250px;
+	left:700px; 
+	border-radius: 10px;
+}
+.dqMain{
+	margin-top:44px;
+	text-align:center;
+	font-size:20px;
+	font-family: GongGothicMedium;
+}
+#dqContent{
+	padding-left:10px;
+	position:relative;
+	top:20px;
+	left:50px; 
+	width:300px;
+	height:130px;
+	border:none;
+	border-radius: 10px;
+	font-family: GongGothicLight;
+}
+#dqTitle{
+	padding-left:10px;
+	position:relative;
+	top:10px;
+	left:50px; 
+	width:300px;
+	height:40px;
+	border:none;
+	border-radius: 10px;
+	font-family: GongGothicLight;
+}
+.dqBtns{
+	position:relative;
+	top:20px;
+	left:244px; 
+	border-radius: 10px;
+	font-family: GongGothicLight;
+}
+.dqBtn{
+	width:50px;
+	height:30px;
+	background-color:white;
+	border:none;
+	border-radius:3px;
+}
+.dqBtn:hover{
+	background-color:gray;
+	color:white;
 }

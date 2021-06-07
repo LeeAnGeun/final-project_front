@@ -12,6 +12,9 @@
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- pagination -->
+<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
+
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -235,38 +238,68 @@ table.customTable thead {
 
 
 <div id='naviBar'></div>
-        <div id="layoutSidenav">
-        
-            <div id="layoutSidenav_nav">
-            	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Manager Page</div>
-                            <a class="nav-link" href="javascript:void(0);" id="goClassList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Class List
-                            </a>
-                            <a class="nav-link" href="javascript:void(0);" id="goUserList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Users
-                            </a>
-                            <a class="nav-link" href="javascript:void(0)" id="goQnaList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Questions
-                            </a>
-                           
-                        </div>
-                    </div>
-                </nav>
-            
-              
+
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_nav">
+    	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Manager Page</div>
+                    <a class="nav-link" href="javascript:void(0);" id="goClassList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Class List
+                    </a>
+                    <a class="nav-link" href="javascript:void(0);" id="goUserList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Users
+                    </a>
+                    <a class="nav-link" href="javascript:void(0)" id="goQnaList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Questions
+                    </a>
+                   
+                </div>
             </div>
-           
-            <div id="layoutSidenav_content">
-                            <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4" id="managerPage">Manager Page</h1>
+        </nav>
+    
+      
+    </div>
+   
+    <div id="layoutSidenav_content">
+          <main>
+            <div class="container-fluid">
+                <h1 class="mt-4" id="managerPage">Manager Page</h1>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                   One-Day Class List
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    	<div class="row">
+                    		<div class="col-sm-12 col-md-6">
+                     		<div id="dataTable_filter" class="dataTables_filter">
+                     			<label>
+                     				<table>
+                     					<tr>
+                     						<td>Name: </td>
+                     						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
+                     						<td><button type="button" id="btnSearch" class="btn btn-light">search</button></td>
+                     					</tr>
+                     				</table>
+                     			</label>
+                     			<div class="container">
+									<nav aria-label="Page navigation">
+										<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+									</nav>
+						       </div>
+                     		</div>
+                    		</div>
+                    	</div>
                         
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -318,10 +351,12 @@ table.customTable thead {
 								    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
+
             
             <!-- 유저노티스체크 -->
             
@@ -386,6 +421,8 @@ table.customTable thead {
        
             
         </div>
+
+
 
 
         
@@ -459,6 +496,7 @@ $("#footer").load("../footer.html");
 
 
 $(document).ready(function () {
+
 	goClassList();	
 	
 	$("#goClassList").on('click', function(){
@@ -478,6 +516,7 @@ $(document).ready(function () {
 		$('#btnClassSearch').attr('class', 'btnSearchUser');
 	   $(".card-header").text("User List");
 	   $("#managerPage").text("User List");
+
 	   
 	   $("#dataTable").empty();
 	   let table = "<thead>"
@@ -494,6 +533,7 @@ $(document).ready(function () {
 	   
 	            $("#dataTable").append(table);
 	            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
+
 	
 	            getUserListData(0);
 	            countUserList();
@@ -590,6 +630,7 @@ $(document).ready(function () {
 		$("#layoutSidenav_content").show();
 		$("#noticeCheckCheck").hide();
 		
+
 		$(".card-header").text("One-Day Class List");
 		$("#managerPage").text("One-Day Class List");
 		$("#dataTable").empty();
@@ -606,6 +647,7 @@ $(document).ready(function () {
 		            + "</tr>"
 		            + "</thead>";
 		   
+
 		    $("#dataTable").append(table);
 		    $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
 	
@@ -723,28 +765,40 @@ function adminNoticeCheck() {
 	noticeListData(0);
 
 	noticeListCount();
+
 	
-	//seq받아오기
-	let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
-	    return paramPair.split(/=(.+)?/).slice(0, 2);
-	}).reduce(function(obj, pairArray) {
-	    obj[pairArray[0]] = pairArray[1];
-	    return obj;
-	}, {});
-}
-function noticeListData( pNumber ) {
+		$("#mainScr").load("../adminPageView/adminCListUList.html");
+				$.ajax({
+					url:"http://localhost:3000/classlist",
+					type:"get",
+					data:{ name:$("#userName").val(), page:0},
+					success:function(list){
+						//alert(JSON.stringify(list));
+						alert("성공쓰~!");
+						$("#classList").empty();
+						
+						$.each(list, function(i, list){
+							let str = "<tr>"
+									+ "<td>" + (i+1) + "</td>"
+									+ "<td>" + list.instructor + "</td>"
+									+ "<td>" + list.title + "</td>"
+									+ "<td>" + list.primaryCategory + "</td>"
+									+ "<td>" + list.secondaryCategory + "</td>"
+									+ "<td>" + list.startDate + "</td>"
+									+ "<td>" + list.endDate + "</td>"
+									+ "<td>" + list.location + "</td>"
+									+ "</tr>";
+							$("#classList").append(str);	
+						});			
+					},    
+					error:function(){
+						alert('에러임 ㅜ');
+					}		
+				});	
+			});
 	
-	$.ajax({
-		url:"http://localhost:3000/noticeListData",
-		type:"get",
-		data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
-		success:function( list ){
-			//alert('success');
-			//alert(list);
-			
-			
-			$(".list_col").remove();
 		
+
 			$.each(list, function (i, val) {
 				let app = "<tr class='list_col'>"
 							+ "<td>" + (i + 1) + "</td>"
@@ -771,35 +825,67 @@ function noticeListData( pNumber ) {
 			alert('error');
 		}
 	});
-}
-
-//글의 총수를 취득
-function noticeListCount() {
 	
-	$.ajax({
-		url:"http://localhost:3000/noticeListCount",
-		type:"get",
-		data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
-		success:function( count ){
-			//alert('success');
-			loadPage(count);
-		},
-		error:function(){
-			alert('error');
-		}		
-	});
-}
-
-//paging 처리
-function loadPage( totalCount ) {
-
-	let pageSize = 10;
-	let nowPage = 1;
 	
-	let _totalPages = totalCount / pageSize;
-	if(totalCount % pageSize > 0){
-		_totalPages++;
+	
+	
+	function adminNoticeCheck() {
+		$("#mainScr").load("../adminPageView/adminNoticeCheck.html");
+		let loginid;
+	
+		noticeListData(0);
+	
+		noticeListCount();
+		
+		//seq받아오기
+		let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+		    return paramPair.split(/=(.+)?/).slice(0, 2);
+		}).reduce(function(obj, pairArray) {
+		    obj[pairArray[0]] = pairArray[1];
+		    return obj;
+		}, {});
 	}
+	function noticeListData( pNumber ) {
+		
+		$.ajax({
+			url:"http://localhost:3000/noticeListData",
+			type:"get",
+			data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
+			success:function( list ){
+				//alert('success');
+				//alert(list);
+				
+				
+				$(".list_col").remove();
+			
+				$.each(list, function (i, val) {
+					let app = "<tr>"
+								+ "<td>" + (i + 1) + "</td>"
+								+ "<td>";
+								
+						if(val.del == 0){	// 삭제되지 않은 글	
+							app += "<a href='javascript:;' id='_seq' value='"+val.noticeNum+"'>&nbsp;" 
+							+ val.nTitle + "</a>";
+						}else{				// 삭제된 글
+							app += "<font color='#ff0000'>* 이 글은 작성자에 의해서 삭제되었습니다 *</font>";
+						}
+						app += "</td>";
+						
+						app += "<td>" + val.username + "</td>";
+						app += "<td>" + val.email + "</td>"; 
+						app += "</tr>";
+							
+					$("#noticeTable").append(app);	
+				});	
+				
+				
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	}
+
 	$(".pagination").twbsPagination('destroy'); //페이지 갱신: 초기화
 	
 	$(".pagination").twbsPagination({
