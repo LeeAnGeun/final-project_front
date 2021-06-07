@@ -98,10 +98,10 @@ series.data = [ {
 	"tag": "디저트",
 	"weight": 70
 }, {
-	"tag": "음료/커피",
+	"tag": "음료&커피",
 	"weight": 50
 }, {
-	"tag": "한식/일식",
+	"tag": "한식&일식",
 	"weight": 50
 }, {
 	"tag": "양식",
@@ -226,12 +226,12 @@ function next() {
 		let json = JSON.parse(login); // String -> json
 		//alert(json.id);
 		let memNum = json.memNum;
-		alert(memNum);
+		//alert(memNum);
 		
 	if($('#selected1').val()==null || $('#interest1').val()==''){
 		alert('최소 1개의 관심사를 선택해 주세요')
 	} else {
-		alert('완료');
+		//alert('관심사 설정 완료');
 		
 		$.ajax({
 			url: 'http://localhost:3000/interestComplete',
@@ -244,7 +244,7 @@ function next() {
 				memNum:memNum
 			},
 			success: function(data) {
-				alert('success');
+				//alert('success');
 				
 				
 				sessionStorage.setItem("myInterest", $('#selected1').val());
@@ -268,7 +268,7 @@ function next() {
 
 
 <div class = mainBB align="center">
-	<font>WHAT ARE YOUR INTERESTS IN LIFE?</font>
+	<font>관심사 선택</font>
 </div>
 	
 <div id="chartdiv" align="center"></div>

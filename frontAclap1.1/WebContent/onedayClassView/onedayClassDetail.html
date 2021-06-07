@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- 제이쿼리 ui css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- 제이쿼리 style css -->
 <link rel="stylesheet" href="/resources/demos/style.css">
-<!-- jquary -->
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <!-- 제이쿼리 ui js -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -27,6 +28,9 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
+<!-- 클립보드 복사 -->
+<script src="../js/clipboard.min.js"></script>
 
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 
@@ -81,11 +85,15 @@ let seq = urlParams.seq
 				
 			</span>
 			<span>                            
-				<button class='DetailLikeBtn'><i class="fas fa-heart">&nbsp;저장</i></button>
-				<button class=DetailShareBtn><i class="fas fa-share">&nbsp;공유하기</i></button>
+				<button class='DetailLikeBtn' check="no" onclick='DetailLike()'><i class="fas fa-heart">&nbsp;저장</i></button>
+				<button class=DetailShareBtn onclick='DetailShare()'  data-clipboard-text=""><i class="fas fa-share">&nbsp;공유하기</i></button>
 			</span>
 		</div>
 	</div>
+	
+	
+	
+	
 	
 		<!--이미지박스1-->
 		<div class='onedayClassImageBoxA'>
@@ -582,7 +590,26 @@ let seq = urlParams.seq
     </div>
   </div>
 </div>
-			
+
+<!-- 금액이 모자를 경우 충전하는 것으로 이동할지 여부를 묻는 모달 -->
+<div id="addChargeMoal" style="z-index: 2001" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="addChargelogo">
+					<h2 class="addChargelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+					<h2 class="addChargelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+				</div>					
+				<h4 class="modal-title w-100">금액이 모잘라요...충전을 하시겠습니까?</h4>	
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" id="addChargeYES">YES</button>
+				<button type="button" class="btn btn-danger" id="addChargeNO" data-dismiss="modal">NO</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 $("#naviBar").load("../navibar.html");
 $("#footer").load("../footer.html");
@@ -707,19 +734,22 @@ $(document).ready(function(){
 		         
 				// 현재 날과 startDate 비교
 				let s_pDate = dateDiff(startDate, pDate);
-				
+				// alert(s_pDate);
 				$(".ccSelectBtn").attr("classtitle", dto.title);
+			
 				if(s_pDate >= 0){
-					// alert("이미시작함");
-					let len = s_eDate - s_pDate;
+					//alert("이미시작함");
 					
 					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum, dto.title);
 					
 				}else{
-					// alert("아직 시작안함");
-					let len = s_eDate;
+					//alert("아직 시작안함");
+					let startDate = new Date((dto.startDate).substring(0,10));
+				
+					startDate.setDate(startDate.getDate() -1);
 					
-					classSchedulList(dto.classNum, (dto.startDate).substring(0,10), (dto.endDate).substring(0,10), dto.limitNum, dto.title);
+					startDate = dateFormat(startDate);
+					classSchedulList(dto.classNum, startDate, (dto.endDate).substring(0,10), dto.limitNum, dto.title);
 				}
 				
 				//10. 이미지 클릭시 확대 모달
@@ -729,6 +759,21 @@ $(document).ready(function(){
         	  alert("error");
           }
 		           
+	});
+	// Like 유무 체크
+	$.ajax({
+		url:"http://localhost:3000/checkLike",  
+		type:"post",
+		data:{memNum:json.memNum, classNum:seq},
+		success:function(result){
+			if(result){
+				$(".DetailLikeBtn").css("color", "red");
+				$(".DetailLikeBtn").attr('check', 'yes');
+			}
+		},
+		error:function(){
+			alert("checkLike ajax error");
+		}
 	});
 	
 	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle){
@@ -821,7 +866,11 @@ $(document).ready(function(){
 					}
 					$(".allScheduleList").append(src2);
 					
-					datePicker(startDate, endDate, noDateArray);
+					let setStartDate = new Date(startDate);
+					setStartDate.setDate(setStartDate.getDate() +1);
+					setStartDate = dateFormat(setStartDate);
+					
+					datePicker(setStartDate, endDate, noDateArray);
 					
 					memberCounter(limitNum);
 					
@@ -1037,7 +1086,7 @@ $(document).ready(function(){
 
 							// 자신이 가진 금액이 더 적을 경우
 							if(myPoint < 0){
-								myFunc();
+								$("#addChargeMoal").modal('show');
 								return;
 							}
 							
@@ -1075,6 +1124,11 @@ $(document).ready(function(){
 		
 		let page = Math.floor(len/5); // 소수점 버림
 		// alert(page);
+
+		if(page==0){
+			$(".left").hide();
+			$(".right").hide();
+		}
 		if(len%5 != 0){
 			page = page + 1;
 		}
@@ -1111,7 +1165,7 @@ $(document).ready(function(){
 	    diffDate_1 =new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
 	    diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
 	 
-	    let diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
+	    let diff = diffDate_2.getTime() - diffDate_1.getTime();
 	    diff = Math.ceil(diff / (1000 * 3600 * 24));
 	 
 	    return diff;
@@ -1219,19 +1273,12 @@ $(document).ready(function(){
 		});
 	}
 	
-	function myFunc(){
-		   let test = confirm('금액이 모잘라요...결제를 하시겠습니까?');
-		   if(test){		     
-		      $("#requestModal").modal('hide');
-		      $("#allSchedule").modal('hide');
-		      $("#staticBackdrop").modal('show');
-		   }
-		   else{
-		      $("#requestModal").modal('hide');
-		      $("#allSchedule").modal('hide');
-		      $("#staticBackdrop").modal('show');
-		   }
-	}
+	$("#addChargeYES").on("click", function(){
+		$("#requestModal").modal('hide');
+	    $("#allSchedule").modal('hide');
+	    $("#addChargeMoal").modal('hide');
+	    $("#staticBackdrop").modal('show');
+	});
 	
 
 });
@@ -1528,7 +1575,8 @@ let json = JSON.parse(sessionStorage.getItem("login"));
 let memNum = json.memNum;
 let userName = json.userName;
 
-alert("멤버넘" + memNum);
+//alert("멤버넘" + memNum);
+
 //~~~~~~~~~~~리뷰제출하기 버튼 클릭~~~~~~~~~~~
 $("#reviewSubmit").click(function(){
 
@@ -1658,7 +1706,7 @@ $("#reviewSubmit").click(function(){
 			      });
 			});
 			 
-			alert("별점 평균" + avg);
+			//alert("별점 평균" + avg);
 			
 			$("#reviewGrade").prepend(avg + "점");
 		},
@@ -1675,7 +1723,8 @@ $("#reviewSubmit").click(function(){
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){
-			alert("리뷰갯수" + list.length);
+			//alert("리뷰갯수" + list.length);
+
 			// 삭제한 리뷰 갯수 안보여야 함.................
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
@@ -1752,7 +1801,7 @@ $("#reviewSubmit").click(function(){
 
 //~~~~~~~~~ 리뷰 수정  ~~~~~~~~~~~~~~
 function reviewUp(reviewSeq){
-	alert("리뷰시퀀스" + reviewSeq);
+	//alert("리뷰시퀀스" + reviewSeq);
 $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' value=''>");
 	$.ajax({
 		url:"http://localhost:3000/getReview",
@@ -1848,7 +1897,49 @@ function reviewDel(reviewSeq){
 		}
 	});	 
 }
-	 
+
+
+// 저장버튼 
+function DetailLike (){
+	if(login == null){  
+		alert('로그인이 필요합니다');
+	}
+	else{
+		if($(".DetailLikeBtn").attr('check')=='no'){
+			$(".DetailLikeBtn").css("color", "red");
+			$(".DetailLikeBtn").attr('check', 'yes');
+			$.ajax({
+				url:"http://localhost:3000/addLike",  
+				type:"post",
+				data:{memNum:memNum, classNum:seq},
+				error:function(){
+					alert("addLike ajax error");
+				}
+			});
+		}
+		else{
+			$(".DetailLikeBtn").css("color", "black");
+			$(".DetailLikeBtn").attr('check', 'no');
+			$.ajax({
+				url:"http://localhost:3000/delLike",  
+				type:"post",
+				data:{memNum:memNum, classNum:seq},
+				error:function(){
+					alert("delLike ajax error");
+				}
+			});
+		}
+	}
+}	
+
+// 공유하기
+new ClipboardJS('.DetailShareBtn'); 
+function DetailShare(){
+	let url = window.location.href;
+	$(".DetailShareBtn").attr('data-clipboard-text', url);
+	alert('주소가 저장 되었습니다');
+};
+	
 </script>
 </body>
 </html>

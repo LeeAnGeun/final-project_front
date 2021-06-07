@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="../css/navibar.css">
 
 <!-- iamport -->
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
-
+<!-- <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+ -->
 </head>
 <body>
 <div class="header">
@@ -80,7 +80,7 @@
         </button>
       </div>
       <div class="modal-body" style="text-align: center;">
-     	<input id="chargeMoney" id="chargeMoney" type="text" placeholder="충전할 금액을 입력하세요" size="40" style="border:none; font-size: 25px"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+     	<input id="chargeMoney" type="text" placeholder="충전할 금액을 입력하세요" size="40" style="border:none; font-size: 25px"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
             <hr class="my-4">
           	<div class="btn-group" role="group" aria-label="Basic example" style="margin-bottom: 30px">
 				  <button type="button" class="btn btn-light" value="1" onclick="charge(1);">+ 1만원</button>
@@ -102,7 +102,8 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-
+	$('.badge').hide();
+	
 	$("#len5").hide();
 	$("#len6").hide();
 	$(".loginNewContent").hide();
@@ -112,15 +113,22 @@ $(document).ready(function(){
 	if(login != null){
 		let json = JSON.parse(login);
 		
+		
+		
 		$("#len4").hide();
 		if(json.auth==3){
 			$("#len5").show();
 			$("#len5").attr('src', json.profilePic);
+						
+			checkAlertBadge(json.memNum);
+			
 			if(json.classMaster ==1)
 				$(".loginNewContent").show();
+
 		}
 		else if(json.auth==9){
 			$("#len6").show();
+			$('.badge').hide();
 		}
 	}	
 	
@@ -253,7 +261,7 @@ $(".navTrigger").click(function () {
  });   
 
 function getInterestFunc() {
-	if(json != null)
+	if(login != null)
 		location.href="../interest/getInterest.html";
 	else
 		alert('로그인이 필요합니다');
@@ -300,46 +308,62 @@ function event(){
 //	alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
 
 
+$(document).ready(function(){
+	
+	//alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
+	let money = 0;
+	//충전할 금액 입력 후
+	document.getElementById('chargeMoney').onmouseout = function(){
+		money = document.getElementById('chargeMoney').value;
+		money = parseInt(money);
+		//    alert("MONEY타입"+ typeof money);
+		  //  alert(money);
+		if(!money){
+			//	alert('금액없음');
+			money = 0;
+		}
+			$("#points").empty(); 	
+			$("#points").append("$" + (money+myPoint));
+	}	
 
-// ???????????? 이거 뭐에영  ----음...모루겠어여 뭐지ㅣ...
-$("#pointsCharge").click(function(){
+	
+	// 포인트 충전하기 클릭시 충전 금액 초기화 
+	$("#pointsCharge").click(function(){
+	//	alert("포인트충전하기 클릭");
+		$("#chargeMoney").val(""); 	
+	});
 	
 });
 
 
 
-//alert("마이포인트타입"+ typeof myPoint + "현재 포인트" + myPoint);
-
-//충전할 금액 입력 후
-document.getElementById('chargeMoney').onmouseout = function(){
-	let money = document.getElementById('chargeMoney').value;
-	money = parseInt(money);
-	//    alert("MONEY타입"+ typeof money);
-	//    alert(money);
-	if(!money){
-		//	alert('금액없음');
-		money = 0;
-	}
-		$("#points").empty(); 	
-		$("#points").append("$" + (money+myPoint));
-}	
+let chargeNum = 0;
 
 //충전할 금액 버튼 눌렀을 때
 function charge(num){
-	//  alert(num*10000);
-	var chargemoney = $("#chargeMoney").val(num*10000);
+//	  alert(num*10000);
+	chargeNum = chargeNum + num;
+	var chargemoney = $("#chargeMoney").val(chargeNum*10000);
+	
 	money = parseInt(document.getElementById('chargeMoney').value);
-	//  alert(money);
+	
+	
 	
 	
 	$("#points").empty();
-	$("#points").append("$" + (money+myPoint));
+	$("#points").append("$" + (money+myPoint));	// 충전 후 예상 포인
 
+
+/* 	 const money = document.getElementById('#chargeMoney');
+	 alert(parseInt(money));
+ */
 }
 //충전하기 버튼 눌렀을 때 
 $("#chargeBtn").click(function(){
 	alert("충전하시겠습니까?");
-	let money = document.getElementById('chargeMoney').value;
+	
+	
+	money = document.getElementById('chargeMoney').value;
 	money = parseInt(money);
 	alert(money + typeof money);
 	
@@ -369,6 +393,8 @@ function checkNumber(event) {
 
 //카카오페이 결제
 $("#check_module").click(function () {
+	let money = document.getElementById('chargeMoney').value;
+	money = parseInt(money);
 
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp57639826');
@@ -389,9 +415,6 @@ $("#check_module").click(function () {
 	function (rsp) {
 		if (rsp.success) {
 			var msg = '결제가 완료되었습니다.';
-			let money = document.getElementById('chargeMoney').value;
-			money = parseInt(money);
-			
 			$.ajax({
 				url:"http://localhost:3000/chargePoints",
 				type: "get",
@@ -400,8 +423,8 @@ $("#check_module").click(function () {
 					
 					// alert(point);
 					$(".myPointCheck").html("내 포인트 " + point);
-					alert("충전완료! 메인화면으로 이동합니다");
-					location.href = './main.html';
+			
+					location.reload(true);
 					
 				},
 				error:function(){
@@ -412,7 +435,7 @@ $("#check_module").click(function () {
 		else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
-			location.href = "main.html";
+			location.reload(true);
 		}
 		alert(msg);
 	});
@@ -420,20 +443,37 @@ $("#check_module").click(function () {
 
 
 //알림아이콘 프로필사진에 뜨는 것 조사
-function checkAlertBadge() {
-	let lgSession = JSON.parse(login);
-	$.ajax({
-		url:"http://localhost:3000/checkAlertBadge",
-		type:"get",
-		data:{memNum:lgSession.memNum},
-		success:function(n){
-			alert("success");
-			
-		},
-		error:function(){
-			alert("error");
-		}
+function checkAlertBadge(memNum) {
+
+ $.ajax({
+    url:"http://localhost:3000/checkAlertBadge",
+    type:"get",
+    data:{memNum:memNum},
+    success:function(chkBadge){
+      // alert("success");
+       
+       let oldN = [];
+       let newN = [];
+ 		
+
+       $.each(chkBadge, function (i,val) {
+    	 
+    	   
+    	   oldN[i] = val.oldRegNum;
+    	   newN[i] = val.newRegNum;
+    	      
 	});
+     // alert(newN[1]);
+      if(oldN != newN){
+    	  $('.badge').show();
+      } 
+
+       
+    },
+    error:function(){
+       alert("error");
+    }
+ });
 }
 
 

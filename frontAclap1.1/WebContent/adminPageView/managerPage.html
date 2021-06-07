@@ -209,14 +209,60 @@ table.customTable thead {
             </div>
            
             <div id="layoutSidenav_content">
-                <main>
+                            <main>
                     <div class="container-fluid">
                         <h1 class="mt-4" id="managerPage">Manager Page</h1>
                         
-                        <div id="mainScr" class="card mb-4">
-      
-      
-      
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                           One-Day Class List
+                            </div>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                            	<div class="row">
+                            		<div class="col-sm-12 col-md-6">
+	                            		<div id="dataTable_filter" class="dataTables_filter">
+	                            			<label>
+	                            				<table>
+	                            					<tr>
+	                            						<td>Name: </td>
+	                            						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
+	                            						<td><button type="button" id="btnSearch" class="btn btn-light">search</button></td>
+	                            					</tr>
+	                            				</table>
+	                            			</label>
+	                            			<div class="container">
+											<nav aria-label="Page navigation">
+												<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+											</nav>
+								         </div>
+	                            		</div>
+                            		</div>
+                            	</div>
+                                
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                            	<!-- <th>#</th>
+                                                <th>개설자</th>
+                                                <th>제목</th>
+                                                <th>대분류</th>
+                                                <th>소분류</th>
+                                                <th>시작일</th>
+                                                <th>종료일</th>
+                                                <th>장소</th> -->
+                                              
+                                             </tr>
+                                        </thead>
+                            
+                                        <tbody id="classList">
+                                            
+                                        </tbody>
+                                       	
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -417,7 +463,7 @@ $(document).on("click", "#goClassList", function () {
 	            
 	
 
-	$(function() {
+	$(function classlist() {
 //		alert('실행');
 		
 		$.ajax({
@@ -447,7 +493,7 @@ $(document).on("click", "#goClassList", function () {
 			}		
 		});		
 	});	
-/* 	//클래스 총 수 
+ 	//클래스 총 수 
 	$(function(){
 		
 		$.ajax({
@@ -459,9 +505,10 @@ $(document).on("click", "#goClassList", function () {
 				alert(count);
 			},
 			error:function(){
-				alert("우짜냐 에러다ㅜ");
+			//	alert("우짜냐 에러다ㅜ");
 			}
-		}); */
+		}); 
+	}); 
 	
 
 // 검색했을때 리스트

@@ -2,14 +2,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <title>Insert title here</title>
+<script src="js/clipboard.min.js"></script>
 </head>
 <body>
-<input type=button onclick='func()' value='수정으어어'>
-<script>
-function func(){
-	location.href='./onedayClassView/onedayClassUpdate.html?seq=39';
+
+<!-- Target -->
+<input id="foo" value="">
+
+<!-- Trigger -->
+<button class="urlSave" onclick='save()' data-clipboard-target="#foo">저장하기</button>
+
+<script> 
+new ClipboardJS('.urlSave'); 
+
+function save(){
+	let url = window.location.href;
+	$("#foo").val(url);
 }
+
 </script>
 </body>
 </html>
