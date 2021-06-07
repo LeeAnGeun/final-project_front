@@ -102,7 +102,8 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-
+	$('.badge').hide();
+	
 	$("#len5").hide();
 	$("#len6").hide();
 	$(".loginNewContent").hide();
@@ -112,15 +113,22 @@ $(document).ready(function(){
 	if(login != null){
 		let json = JSON.parse(login);
 		
+		
+		
 		$("#len4").hide();
 		if(json.auth==3){
 			$("#len5").show();
 			$("#len5").attr('src', json.profilePic);
+						
+			checkAlertBadge(json.memNum);
+			
 			if(json.classMaster ==1)
 				$(".loginNewContent").show();
+
 		}
 		else if(json.auth==9){
 			$("#len6").show();
+			$('.badge').hide();
 		}
 	}	
 	
@@ -253,7 +261,7 @@ $(".navTrigger").click(function () {
  });   
 
 function getInterestFunc() {
-	if(json != null)
+	if(login != null)
 		location.href="../interest/getInterest.html";
 	else
 		alert('로그인이 필요합니다');
@@ -420,20 +428,37 @@ $("#check_module").click(function () {
 
 
 //알림아이콘 프로필사진에 뜨는 것 조사
-function checkAlertBadge() {
-	let lgSession = JSON.parse(login);
-	$.ajax({
-		url:"http://localhost:3000/checkAlertBadge",
-		type:"get",
-		data:{memNum:lgSession.memNum},
-		success:function(n){
-			alert("success");
-			
-		},
-		error:function(){
-			alert("error");
-		}
+function checkAlertBadge(memNum) {
+
+ $.ajax({
+    url:"http://localhost:3000/checkAlertBadge",
+    type:"get",
+    data:{memNum:memNum},
+    success:function(chkBadge){
+      // alert("success");
+       
+       let oldN = [];
+       let newN = [];
+ 		
+
+       $.each(chkBadge, function (i,val) {
+    	 
+    	   
+    	   oldN[i] = val.oldRegNum;
+    	   newN[i] = val.newRegNum;
+    	      
 	});
+     // alert(newN[1]);
+      if(oldN != newN){
+    	  $('.badge').show();
+      } 
+
+       
+    },
+    error:function(){
+       alert("error");
+    }
+ });
 }
 
 
