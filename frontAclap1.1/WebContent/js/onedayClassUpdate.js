@@ -837,7 +837,6 @@ function onedayClassWriteAf(){
 			contentType : false,
 			cache : false,
 			success:function( seq ){
-				alert(seq);
 				if(seq>0){
 					alert('성공적으로 수정이 완료 되었습니다');
 					location.href= 'onedayClassDetail.html?seq='+seq;

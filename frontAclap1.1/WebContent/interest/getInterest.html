@@ -229,7 +229,7 @@ function next() {
 		//alert(memNum);
 		
 	if($('#selected1').val()==null || $('#interest1').val()==''){
-		alert('최소 1개의 관심사를 선택해 주세요')
+		alert('최소 1개의 관심사를 선택해 주세요');
 	} else {
 		//alert('관심사 설정 완료');
 		
@@ -244,25 +244,17 @@ function next() {
 				memNum:memNum
 			},
 			success: function(data) {
-				//alert('success');
-				
-				
-				sessionStorage.setItem("myInterest", $('#selected1').val());
-				
-				
-				
-				
-				
-				
+				let interest = $('#selected1').val() +"#"+
+ 				sessionStorage.setItem("myInterest1", $('#selected1').val());
+				sessionStorage.setItem("myInterest2", $('#selected2').val());
+				sessionStorage.setItem("myInterest3", $('#selected3').val()); 
+				location.href='../main/main.html';
 			},
 			error: function () {
 				alert('error');
 			}
 		});
-		
-		location.href='../main/main.html'
 	}
-	
 }
 </script>
 
