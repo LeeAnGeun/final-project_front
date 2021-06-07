@@ -44,6 +44,7 @@
     background-color: white;
     font-size:18px;
     float:right;
+    color:black;
 }
 .DetailShareBtn:hover{
 	cursor: pointer;

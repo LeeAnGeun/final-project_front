@@ -13,7 +13,6 @@ $(document).ready(function(){
 	$("#naviBar").load("../navibar.html");
 	$("#footer").load("../footer.html");
 	
-	
 	//hide setting
 	$(".chapter2").hide();
 	$(".chapter3").hide();
@@ -105,7 +104,6 @@ $(document).ready(function(){
 			
 			let SC = data.secondaryCategory;
 			let secondary = SC.split('#');
-			alert(secondary);
 			
 			$("#_secondaryCategory1").val(secondary[1]);
 			if(secondary[1] != null)
@@ -192,6 +190,7 @@ $(document).ready(function(){
 			// 수업 장소
 			let loc = data.location.split("#");
 			$("#_location").val(data.location);
+			$("#_locationC").val(loc[0]);
 			$("#keyword1").val(loc[0]);
 			$("#keyword2").val(loc[1]);
 			searchClass();
@@ -791,31 +790,6 @@ function onedayClassWriteAf(){
 	else if($('#_OCinfomation').val() == ""){
 		alert('(Chapter1) 간략한 수업소개를 작성하세요');
 	}
-	else if($('#_layerSelect').val()=='A' && (
-			 $('#_ocImgA1').attr('src') == '../images/onedayClassImg1.png' ||
-			 $('#_ocImgA2').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgA3').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgA4').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgA5').attr('src') == '../images/onedayClassImg2.png')){
-		     alert('(Chapter2) 이미지를 모두 입력해주세요');		
-	}
-	else if($('#_layerSelect').val()=='B' && (
-			 $('#_ocImgB1').attr('src') == '../images/onedayClassImg1.png' ||
-			 $('#_ocImgB2').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgB3').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgB4').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgB5').attr('src') == '../images/onedayClassImg2.png')){
-		     alert('(Chapter2) 이미지를 모두 입력해주세요');		
-	}
-	else if($('#_layerSelect').val()=='C' && (
-			 $('#_ocImgC1').attr('src') == '../images/onedayClassImg1.png' ||
-			 $('#_ocImgC2').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgC3').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgC4').attr('src') == '../images/onedayClassImg2.png' ||
-			 $('#_ocImgC5').attr('src') == '../images/onedayClassImg2.png')){
-		     alert('(Chapter2) 이미지를 모두 입력해주세요');
-	}
-	// 여기에 조건 주기
 	else if($('#_OCcontent').val() == ''){
 		alert('(Chapter3) 수업 소개글을 입력해주세요');
 	}	
@@ -846,8 +820,9 @@ function onedayClassWriteAf(){
 	else if(today > $('#_startDate').val()){
 		alert('(Chapter3) 수업 시작일은 오늘보다 이를 수 없습니다');
 	}	
-	else if($('#_location').val() == ""){
-		alert('(Chapter4) 수업 장소 검색 후 저장하세요');
+	else if($('#_locationC').val() != $("#keyword1").val() 
+			&& $('.placeSav').attr('check') == '0'){
+		alert('(Chapter4) 새로운 수업 장소를 저장하세요');
 	}	
 	else if($('#_aboutMeInput').val()==""){
 		alert('(Chapter5) 강사 소개글을 입력해주세요');

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
- 
+
 <!-- icon -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -284,7 +284,6 @@ $(document).ready(function(){
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >S.SCADULE</a> </li>
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >T.SCADULE</a> </li>
-            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myMakeClass" >MY CLASS</a> </li>
             <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myLikeClass" >LIKE CLASS</a> </li>
             <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">UPDATE INFO</a> </li>
         </ul> 	
@@ -1305,22 +1304,38 @@ function getMyClassList() {
 //내가 개설한 클래스 목록에서 바로가기 클릭시...
 $(document).on("click", ".myClassCheck", function () { 
 
-		alert("클래스로 이동");
+	//	alert("클래스로 이동");
 		let classNum = $(this).attr("val");
-		//location.href = "onedayclassupdate.html?classnum"
+		location.href = "../onedayClassView/onedayClassDetail.html?seq="+classNum;
 	});
 //내가 개설한 클래스 목록에서 수정 클릭시...
 $(document).on("click", ".myClassEdit", function () { 
 
-		alert("수정");
+	//	alert("수정");
 		let classNum = $(this).attr("val");
+		location.href = "../onedayClassView/onedayClassUpdate.html?seq="+classNum;
+
 	});
 //내가 개설한 클래스 목록에서 중단 클릭시...
 $(document).on("click", ".myClassStop", function () { 
-	
-		alert("중단하기");
 		let classNum = $(this).attr("val");
+		let del = confirm('정말 중단하곘습니까?');
+		if(del){
+			$.ajax({
+				url:"http://localhost:3000/onedayClassDelete",
+				type:"post",
+				data:{classNum:classNum},
+				success:function( result ){
+					if(result)
+						alert('성공적으로 중단 되었습니다');
+				},
+				error:function(){
+					alert('myClassStop ajax error');
+				}
+			});
+		}
 	});
+	
 //내가 개설한 클래스를 클릭시 디테일부분에 뿌려지는 내 클래스 수강생 신청인 정보 목록
 $(document).on("click", ".classDetailClick", function () { 
 		

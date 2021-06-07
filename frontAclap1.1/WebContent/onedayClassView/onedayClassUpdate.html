@@ -59,6 +59,7 @@
 <input type='hidden' name='classNum' id='_classNum'>
 <input type='hidden' name='layerSelect' id='_layerSelect' value='A'>
 <input type='hidden' name='location' id='_location'>
+<input type='hidden' id='_locationC'>
 <input type='hidden' name='aboutMe' id='_aboutMe'>
 <input type='hidden' name='youtubeLink' id='_youtubeLink'>
 <input type='hidden' name='secondaryCategory' id='_secondaryCategory'>
@@ -317,7 +318,7 @@
 		    <input type="button" class ='placeBtn' onclick="searchPlace()" value="주소 검색"><br>
 			<input type="text" id="keyword1" placeholder="주소" readonly>
 			<input type="text" id="keyword2" placeholder="상세주소">
-			<input type="button" class='placeSav' onclick="placeSave()" value="저장"><br>
+			<input type="button" class='placeSav' check='0' onclick="placeSave()" value="저장"><br>
 		</form>
 		<div id="map" style="width:100%;height:450px; border-radius:20px; margin-bottom:100px;"></div>	
 	</div>
@@ -350,7 +351,8 @@
 <script>
 //----------- 주소 검색 ------------
 function searchPlace() {
-    new daum.Postcode({
+	$(".placeSav").attr('check', '0');
+	new daum.Postcode({
         oncomplete: function(data) {
             var addr = ''; 
             var extraAddr = '';
@@ -423,6 +425,7 @@ function placeSave(){
 	if($('#keyword2').val()!="")
 		location += "#" + $('#keyword2').val();
 	$("#_location").val(location);
+	$(".placeSav").attr('check', '1');
 	alert('저장되었습니다');
 }
 </script>	
