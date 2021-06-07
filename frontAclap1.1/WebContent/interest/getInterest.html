@@ -244,11 +244,13 @@ function next() {
 				memNum:memNum
 			},
 			success: function(data) {
+
 				let interest = $('#selected1').val() +"#"+
  				sessionStorage.setItem("myInterest1", $('#selected1').val());
 				sessionStorage.setItem("myInterest2", $('#selected2').val());
 				sessionStorage.setItem("myInterest3", $('#selected3').val()); 
 				location.href='../main/main.html';
+
 			},
 			error: function () {
 				alert('error');

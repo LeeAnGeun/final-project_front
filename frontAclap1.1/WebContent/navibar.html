@@ -451,7 +451,7 @@ function checkAlertBadge(memNum) {
     data:{memNum:memNum},
     success:function(chkBadge){
       // alert("success");
-       
+        
        let oldN = [];
        let newN = [];
  		
@@ -463,10 +463,19 @@ function checkAlertBadge(memNum) {
     	   newN[i] = val.newRegNum;
     	      
 	});
-     // alert(newN[1]);
-      if(oldN != newN){
-    	  $('.badge').show();
-      } 
+    
+       for (i=0; i < chkBadge.length; i++){
+    	   
+   	   		if(oldN[i] != newN[i]){
+    	    	  $('.badge').show();
+    	    	 
+    	    }
+   	      	if(oldN[i] == newN[i]){
+   	    	  $('.badge').hide();
+   	    	  
+   	      	}
+       }
+      
 
        
     },
