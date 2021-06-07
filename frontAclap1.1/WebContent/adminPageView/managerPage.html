@@ -184,93 +184,94 @@ table.customTable thead {
 
 
 <div id='naviBar'></div>
-        <div id="layoutSidenav">
-        
-            <div id="layoutSidenav_nav">
-            	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Manager Page</div>
-                            <a class="nav-link" href="javascript:void(0);" id="goClassList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Class List
-                            </a>
-                            <a class="nav-link" href="javascript:void(0);" id="goUserList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Users
-                            </a>
-                            <a class="nav-link" href="javascript:void(0)" id="goQnaList">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Questions
-                            </a>
-                           
-                        </div>
-                    </div>
-                </nav>
-            
-              
+
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_nav">
+    	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Manager Page</div>
+                    <a class="nav-link" href="javascript:void(0);" id="goClassList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Class List
+                    </a>
+                    <a class="nav-link" href="javascript:void(0);" id="goUserList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Users
+                    </a>
+                    <a class="nav-link" href="javascript:void(0)" id="goQnaList">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Questions
+                    </a>
+                   
+                </div>
             </div>
-           
-            <div id="layoutSidenav_content">
-                            <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4" id="managerPage">Manager Page</h1>
+        </nav>
+    
+      
+    </div>
+   
+    <div id="layoutSidenav_content">
+          <main>
+            <div class="container-fluid">
+                <h1 class="mt-4" id="managerPage">Manager Page</h1>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                   One-Day Class List
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                    	<div class="row">
+                    		<div class="col-sm-12 col-md-6">
+                     		<div id="dataTable_filter" class="dataTables_filter">
+                     			<label>
+                     				<table>
+                     					<tr>
+                     						<td>Name: </td>
+                     						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
+                     						<td><button type="button" id="btnSearch" class="btn btn-light">search</button></td>
+                     					</tr>
+                     				</table>
+                     			</label>
+                     			<div class="container">
+									<nav aria-label="Page navigation">
+										<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+									</nav>
+						       </div>
+                     		</div>
+                    		</div>
+                    	</div>
                         
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                           One-Day Class List
-                            </div>
-                            <div class="card-body">
-                            <div class="table-responsive">
-                            	<div class="row">
-                            		<div class="col-sm-12 col-md-6">
-	                            		<div id="dataTable_filter" class="dataTables_filter">
-	                            			<label>
-	                            				<table>
-	                            					<tr>
-	                            						<td>Name: </td>
-	                            						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
-	                            						<td><button type="button" id="btnSearch" class="btn btn-light">search</button></td>
-	                            					</tr>
-	                            				</table>
-	                            			</label>
-	                            			<div class="container">
-											<nav aria-label="Page navigation">
-												<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
-											</nav>
-								         </div>
-	                            		</div>
-                            		</div>
-                            	</div>
-                                
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                            	<!-- <th>#</th>
-                                                <th>개설자</th>
-                                                <th>제목</th>
-                                                <th>대분류</th>
-                                                <th>소분류</th>
-                                                <th>시작일</th>
-                                                <th>종료일</th>
-                                                <th>장소</th> -->
-                                              
-                                             </tr>
-                                        </thead>
-                            
-                                        <tbody id="classList">
-                                            
-                                        </tbody>
-                                       	
-                                    </table>
-                                </div>
-                            </div>
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                    	<!-- <th>#</th>
+                                        <th>개설자</th>
+                                        <th>제목</th>
+                                        <th>대분류</th>
+                                        <th>소분류</th>
+                                        <th>시작일</th>
+                                        <th>종료일</th>
+                                        <th>장소</th> -->
+                                      
+                                     </tr>
+                                </thead>
+                    
+                                <tbody id="classList">
+                                    
+                                </tbody>
+                               	
+                            </table>
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
-        </div>
+        </main>
+    </div>
+</div>
 
 
         
@@ -339,193 +340,150 @@ table.customTable thead {
 
  
 <script type="text/javascript">
-	$("#naviBar").load("../navibar.html");
-	$("#footer").load("../footer.html");
+$("#naviBar").load("../navibar.html");
+$("#footer").load("../footer.html");
+
 
 $(document).ready(function () {
+			
+	goClassList();
 	
-
-//사이드 유저리스트 검색했을 때
-$(document).on("click", "#goUserList", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-   $(".card-header").text("User List");
-   $("#managerPage").text("User List")
-   
-   $("#dataTable").empty();
-   let table = "<thead>"
-            + "<tr>"
-            + "<th>#</th>"
-            + "<th>이름</th>"
-            + "<th>닉네임</th>"
-            + "<th>마스터</th>"
-            + "<th>포인트</th>"
-            + "<th>이메일</th>"
-            + "<th>전화번호</th>"
-            + "</tr>"
-            + "</thead>";
-   
-            $("#dataTable").append(table);
-            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
-            
-   
-// 처음에 유저목록 다 보여줌
-$(function(){
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-      $.ajax({
-         url:"http://localhost:3000/memlist",
-         type:"get",
-         data:{ name:$("#userName").val(), page:0},
-         success:function(list){
-            //alert(list);
-            
-            
-            $.each(list, function(i, list){
-               let str = "<tr>"
-                     + "<td>" + (i+1) + "</td>"
-                     + "<td>" + list.userName + "</td>"
-                     + "<td>" + list.nickName + "</td>"
-                     + "<td>" + list.classMaster + "</td>"
-                     + "<td>" + list.myPoint + "</td>"
-                     + "<td>" + list.email + "</td>"
-                     + "<td>" + list.phoneNum + "</td>"
-                     + "</tr>";
-               $("#classList").append(str);                  
-            });         
-            
-            $("#memDelete").click(function(){
-               alert($("#memDelete").val());               
-            });
-         
-         },
-         error:function(){
-            alert('userlist실패쓰ㅜ');
-         }
-      });
-   });
-// 유저 이름 검색했을 때 
-$(document).on("click", "#btnSearch", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
-   $.ajax({
-      url:"http://localhost:3000/memlist",
-      type:"get",
-      data:{ name:$("#userName").val(), page:0},
-      success:function(list){
-         //alert(JSON.stringify(list));
-         alert("성공쓰~!");
-         $("#classList").empty();
-         
-         $.each(list, function(i, list){
-            let str = "<tr>"
-               + "<td>" + (i+1) + "</td>"
-               + "<td>" + list.userName + "</td>"
-               + "<td>" + list.nickName + "</td>"
-               + "<td>" + list.classMaster + "</td>"
-               + "<td>" + list.myPoint + "</td>"
-               + "<td>" + list.email + "</td>"
-               + "<td>" + list.phoneNum + "</td>"
-               + "<td><button type='button' class='btn btn-light' id='memDelete' value='" + list.nickName+ "'>탈퇴</button>"
-               + "</tr>";
-         $("#classList").append(str);      
-         });         
-      },
-      error:function(){
-         alert('유저검색에러임 ㅜ');
-      }      
-   });   
-});
-
-});
-
-//사이드바  원데이 클래스 클릭시 
-$(document).on("click", "#goClassList", function () { 
-
-    $("#mainScr").load("../adminPageView/adminCListUList.html");
-
-	$(".card-header").text("One-Day Class List");
-	$("#managerPage").text("One-Day Class List");
-	$("#dataTable").empty();
+	$("#goClassList").on("click", function(){
+		goClassList();
+	});
+	
+	//사이드 유저리스트 검색했을 때
+	$(document).on("click", "#goUserList", function () { 
+	
+		$("#mainScr").load("../adminPageView/adminCListUList.html");
+	   $(".card-header").text("User List");
+	   $("#managerPage").text("User List")
+	   
+	   $("#dataTable").empty();
 	   let table = "<thead>"
 	            + "<tr>"
 	            + "<th>#</th>"
-	            + "<th>개설자</th>"
-	            + "<th>제목</th>"
-	            + "<th>대분류</th>"
-	            + "<th>소분류</th>"
-	            + "<th>시작 날짜</th>"
-	            + "<th>마지막 날짜</th>"
-	            + "<th>장소</th>"
+	            + "<th>이름</th>"
+	            + "<th>닉네임</th>"
+	            + "<th>마스터</th>"
+	            + "<th>포인트</th>"
+	            + "<th>이메일</th>"
+	            + "<th>전화번호</th>"
 	            + "</tr>"
 	            + "</thead>";
 	   
 	            $("#dataTable").append(table);
 	            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
+	
 	            
-	
-
-	$(function classlist() {
-//		alert('실행');
-		
-		$.ajax({
-			url:"http://localhost:3000/classlist",
-			type:"get",
-			data:{ name:$("#userName").val(), page:0},
-			success:function(list){
-				//alert(JSON.stringify(list));
-				//alert("성공쓰~!");
-				
-				$.each(list, function(i, list){
-					let str = "<tr>"
-							+ "<td>" + (i+1) + "</td>"
-							+ "<td>" + list.instructor + "</td>"
-							+ "<td>" + list.title + "</td>"
-							+ "<td>" + list.primaryCategory + "</td>"
-							+ "<td>" + list.secondaryCategory + "</td>"
-							+ "<td>" + list.startDate + "</td>"
-							+ "<td>" + list.endDate + "</td>"
-							+ "<td>" + list.location + "</td>"
-							+ "</tr>";
-					$("#classList").append(str);	
-				});			
-			},
-			error:function(){
-				alert('에러임 ㅜ');
-			}		
-		});		
-	});	
- 	//클래스 총 수 
+	   
+	// 처음에 유저목록 다 보여줌
 	$(function(){
-		
-		$.ajax({
-			url:"http://localhost:3000/classCount",
-			type:"get",
-			data:{page:0, name:$("#userName").val() },
-			success:function(count){
-			//	alert("성공쓰~!");
-				alert(count);
-			},
-			error:function(){
-			//	alert("우짜냐 에러다ㅜ");
-			}
-		}); 
-	}); 
+		$("#mainScr").load("../adminPageView/adminCListUList.html");
+	      $.ajax({
+	         url:"http://localhost:3000/memlist",
+	         type:"get",
+	         data:{ name:$("#userName").val(), page:0},
+	         success:function(list){
+	            //alert(list);
+	            
+	            
+	            $.each(list, function(i, list){
+	               let str = "<tr>"
+	                     + "<td>" + (i+1) + "</td>"
+	                     + "<td>" + list.userName + "</td>"
+	                     + "<td>" + list.nickName + "</td>"
+	                     + "<td>" + list.classMaster + "</td>"
+	                     + "<td>" + list.myPoint + "</td>"
+	                     + "<td>" + list.email + "</td>"
+	                     + "<td>" + list.phoneNum + "</td>"
+	                     + "</tr>";
+	               $("#classList").append(str);                  
+	            });         
+	            
+	            $("#memDelete").click(function(){
+	               alert($("#memDelete").val());               
+	            });
+	         
+	         },
+	         error:function(){
+	            alert('userlist실패쓰ㅜ');
+	         }
+	      });
+	   });
+	            
+	// 유저 이름 검색했을 때 
+	$("#btnSearch").on("click", function () { 
 	
-
-// 검색했을때 리스트
-$(document).on("click", "#btnSearch", function () { 
-
-	$("#mainScr").load("../adminPageView/adminCListUList.html");
+		$("#mainScr").load("../adminPageView/adminCListUList.html");
+	   $.ajax({
+	      url:"http://localhost:3000/memlist",
+	      type:"get",
+	      data:{ name:$("#userName").val(), page:0},
+	      success:function(list){
+	         //alert(JSON.stringify(list));
+	         alert("성공쓰~!");
+	         $("#classList").empty();
+	         
+	         $.each(list, function(i, list){
+	            let str = "<tr>"
+	               + "<td>" + (i+1) + "</td>"
+	               + "<td>" + list.userName + "</td>"
+	               + "<td>" + list.nickName + "</td>"
+	               + "<td>" + list.classMaster + "</td>"
+	               + "<td>" + list.myPoint + "</td>"
+	               + "<td>" + list.email + "</td>"
+	               + "<td>" + list.phoneNum + "</td>"
+	               + "<td><button type='button' class='btn btn-light' id='memDelete' value='" + list.nickName+ "'>탈퇴</button>"
+	               + "</tr>";
+	         $("#classList").append(str);      
+	         });         
+	      },
+	      error:function(){
+	         alert('유저검색에러임 ㅜ');
+	      }      
+	   });   
+	});
+	
+	});
+	
+	//사이드바  원데이 클래스 클릭시 
+	// $(document).on("click", "#goClassList", function () { 
+	function goClassList(){
+	    $("#mainScr").load("../adminPageView/adminCListUList.html");
+	
+		$(".card-header").text("One-Day Class List");
+		$("#managerPage").text("One-Day Class List");
+		$("#dataTable").empty();
+		   let table = "<thead>"
+		            + "<tr>"
+		            + "<th>#</th>"
+		            + "<th>개설자</th>"
+		            + "<th>제목</th>"
+		            + "<th>대분류</th>"
+		            + "<th>소분류</th>"
+		            + "<th>시작 날짜</th>"
+		            + "<th>마지막 날짜</th>"
+		            + "<th>장소</th>"
+		            + "</tr>"
+		            + "</thead>";
+		   
+		            $("#dataTable").append(table);
+		            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
+	
+		            
+		
+	
+		$(function classlist() {
+	//		alert('실행');
+			
 			$.ajax({
 				url:"http://localhost:3000/classlist",
 				type:"get",
 				data:{ name:$("#userName").val(), page:0},
 				success:function(list){
 					//alert(JSON.stringify(list));
-					alert("성공쓰~!");
-					$("#classList").empty();
+					//alert("성공쓰~!");
 					
 					$.each(list, function(i, list){
 						let str = "<tr>"
@@ -540,128 +498,179 @@ $(document).on("click", "#btnSearch", function () {
 								+ "</tr>";
 						$("#classList").append(str);	
 					});			
-				},    
+				},
 				error:function(){
 					alert('에러임 ㅜ');
 				}		
-			});	
-		});
-
-	
-});
-//--------------------------------------문의사항----------------------------- 
-$("#goQnaList").click(function(){
-	$(".card-header").text("QnA List");
-	$("#managerPage").text("QnA List");
-	adminNoticeCheck();
-});
-
-
-
-
-function adminNoticeCheck() {
-	$("#mainScr").load("../adminPageView/adminNoticeCheck.html");
-	let loginid;
-
-	noticeListData(0);
-
-	noticeListCount();
-	
-	//seq받아오기
-	let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
-	    return paramPair.split(/=(.+)?/).slice(0, 2);
-	}).reduce(function(obj, pairArray) {
-	    obj[pairArray[0]] = pairArray[1];
-	    return obj;
-	}, {});
-}
-function noticeListData( pNumber ) {
-	
-	$.ajax({
-		url:"http://localhost:3000/noticeListData",
-		type:"get",
-		data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
-		success:function( list ){
-			//alert('success');
-			//alert(list);
+			});		
+		});	
+	 	//클래스 총 수 
+		$(function(){
 			
-			
-			$(".list_col").remove();
+			$.ajax({
+				url:"http://localhost:3000/classCount",
+				type:"get",
+				data:{page:0, name:$("#userName").val() },
+				success:function(count){
+				//	alert("성공쓰~!");
+					alert(count);
+				},
+				error:function(){
+				//	alert("우짜냐 에러다ㅜ");
+				}
+			}); 
+		}); 
 		
-			$.each(list, function (i, val) {
-				let app = "<tr>"
-							+ "<td>" + (i + 1) + "</td>"
-							+ "<td>";
-							
-					if(val.del == 0){	// 삭제되지 않은 글	
-						app += "<a href='javascript:;' id='_seq' value='"+val.noticeNum+"'>&nbsp;" 
-						+ val.nTitle + "</a>";
-					}else{				// 삭제된 글
-						app += "<font color='#ff0000'>* 이 글은 작성자에 의해서 삭제되었습니다 *</font>";
-					}
-					app += "</td>";
-					
-					app += "<td>" + val.username + "</td>";
-					app += "<td>" + val.email + "</td>"; 
-					app += "</tr>";
+	
+	// 검색했을때 리스트
+	$(document).on("click", "#btnSearch", function () { 
+	
+		$("#mainScr").load("../adminPageView/adminCListUList.html");
+				$.ajax({
+					url:"http://localhost:3000/classlist",
+					type:"get",
+					data:{ name:$("#userName").val(), page:0},
+					success:function(list){
+						//alert(JSON.stringify(list));
+						alert("성공쓰~!");
+						$("#classList").empty();
 						
-				$("#noticeTable").append(app);	
-			});	
-			
-			
-		},
-		error:function(){
-			alert('error');
-		}
-	});
-}
-
-//글의 총수를 취득
-function noticeListCount() {
+						$.each(list, function(i, list){
+							let str = "<tr>"
+									+ "<td>" + (i+1) + "</td>"
+									+ "<td>" + list.instructor + "</td>"
+									+ "<td>" + list.title + "</td>"
+									+ "<td>" + list.primaryCategory + "</td>"
+									+ "<td>" + list.secondaryCategory + "</td>"
+									+ "<td>" + list.startDate + "</td>"
+									+ "<td>" + list.endDate + "</td>"
+									+ "<td>" + list.location + "</td>"
+									+ "</tr>";
+							$("#classList").append(str);	
+						});			
+					},    
+					error:function(){
+						alert('에러임 ㅜ');
+					}		
+				});	
+			});
 	
-	$.ajax({
-		url:"http://localhost:3000/noticeListCount",
-		type:"get",
-		data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
-		success:function( count ){
-			//alert('success');
-			loadPage(count);
-		},
-		error:function(){
-			alert('error');
-		}		
-	});
-}
-
-//paging 처리
-function loadPage( totalCount ) {
-
-	let pageSize = 10;
-	let nowPage = 1;
-	
-	let _totalPages = totalCount / pageSize;
-	if(totalCount % pageSize > 0){
-		_totalPages++;
+		
 	}
-	$("#pagination").twbsPagination('destroy'); //페이지 갱신: 초기화
+	//--------------------------------------문의사항----------------------------- 
+	$("#goQnaList").click(function(){
+		$(".card-header").text("QnA List");
+		$("#managerPage").text("QnA List");
+		adminNoticeCheck();
+	});
 	
-	$("#pagination").twbsPagination({
-	//	startPage: 1,
-		totalPages: _totalPages,
-		visiblePages: 10,
-		first:'<span sria-hidden="true">«</span>',
-		prev:"이전",
-		next:"다음",
-		last:'<span sria-hidden="true">»</span>',
-		initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
-		onPageClick:function(event, page){
-			nowPage = page;
-		//	alert('nowPage:' + page);
-			noticeListData( page - 1 );
+	
+	
+	
+	function adminNoticeCheck() {
+		$("#mainScr").load("../adminPageView/adminNoticeCheck.html");
+		let loginid;
+	
+		noticeListData(0);
+	
+		noticeListCount();
+		
+		//seq받아오기
+		let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+		    return paramPair.split(/=(.+)?/).slice(0, 2);
+		}).reduce(function(obj, pairArray) {
+		    obj[pairArray[0]] = pairArray[1];
+		    return obj;
+		}, {});
+	}
+	function noticeListData( pNumber ) {
+		
+		$.ajax({
+			url:"http://localhost:3000/noticeListData",
+			type:"get",
+			data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
+			success:function( list ){
+				//alert('success');
+				//alert(list);
+				
+				
+				$(".list_col").remove();
+			
+				$.each(list, function (i, val) {
+					let app = "<tr>"
+								+ "<td>" + (i + 1) + "</td>"
+								+ "<td>";
+								
+						if(val.del == 0){	// 삭제되지 않은 글	
+							app += "<a href='javascript:;' id='_seq' value='"+val.noticeNum+"'>&nbsp;" 
+							+ val.nTitle + "</a>";
+						}else{				// 삭제된 글
+							app += "<font color='#ff0000'>* 이 글은 작성자에 의해서 삭제되었습니다 *</font>";
+						}
+						app += "</td>";
+						
+						app += "<td>" + val.username + "</td>";
+						app += "<td>" + val.email + "</td>"; 
+						app += "</tr>";
+							
+					$("#noticeTable").append(app);	
+				});	
+				
+				
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	}
+	
+	//글의 총수를 취득
+	function noticeListCount() {
+		
+		$.ajax({
+			url:"http://localhost:3000/noticeListCount",
+			type:"get",
+			data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
+			success:function( count ){
+				//alert('success');
+				loadPage(count);
+			},
+			error:function(){
+				alert('error');
+			}		
+		});
+	}
+	
+	//paging 처리
+	function loadPage( totalCount ) {
+	
+		let pageSize = 10;
+		let nowPage = 1;
+		
+		let _totalPages = totalCount / pageSize;
+		if(totalCount % pageSize > 0){
+			_totalPages++;
 		}
-	});	
-}
+		$("#pagination").twbsPagination('destroy'); //페이지 갱신: 초기화
+		
+		$("#pagination").twbsPagination({
+		//	startPage: 1,
+			totalPages: _totalPages,
+			visiblePages: 10,
+			first:'<span sria-hidden="true">«</span>',
+			prev:"이전",
+			next:"다음",
+			last:'<span sria-hidden="true">»</span>',
+			initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
+			onPageClick:function(event, page){
+				nowPage = page;
+			//	alert('nowPage:' + page);
+				noticeListData( page - 1 );
+			}
+		});	
+	}
 });
+
 //아이디..
 $(document).ready(function () {
 
