@@ -547,8 +547,92 @@ let seq = urlParams.seq
 	<div class='hrMargin'><hr></div>
 
 </div>
-<div id='footer'></div>	
 
+
+<!-- 강의 문의하기 버튼 (로그인 필요) --> 
+<div class='detailViewQuestContainer'>
+	<div class='dText1'>지금 보고계신 강의에</div>
+	<div class='dText2'>궁굼한 점이</div>
+	<div class='dText3'>있나요?</div>
+	<div class='dText4' onclick='dqModalShow()'>네</div>
+</div>
+
+<!-- 강의 문의하기 Modal -->
+<div class='dqModal'>
+	<div class='dqMain'>수업에 대해 궁굼한 점을 입력하세요</div>
+	<input id='dqTitle' placeholder="제목"><br>
+	<textarea id='dqContent'>문의 내용</textarea><br>
+	<div class='dqBtns'>
+	<input type='button' class='dqBtn' onclick='dqSubmit()' value='완료'> 
+	<input type='button' class='dqBtn' onclick='dqCan()' value='취소'> 
+	</div>
+</div>
+	
+<div id='footer'></div>	
+<script>
+$('.dqModal').hide();
+function dqModalShow(){
+	if(login == null){
+		alert('로그인이 필요합니다');
+	}
+	else{
+		$('.dqModal').show();
+	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
+	    $('.detailViewQuestContainer').css("opacity","0.1");
+	    $('.onedayClassImageBoxA').css("opacity","0.1");
+	    $('#map').css("opacity","0.1");
+	}
+};
+
+
+function dqCan(){
+	$('.dqModal').hide();
+    $('body').css("background-color","rgba(0, 0, 0, 0)");/*까만색(0,0,0) 20% 투명도*/
+    $('.detailViewQuestContainer').css("opacity","");
+    $('.onedayClassImageBoxA').css("opacity","");
+    $('#map').css("opacity","");
+}
+
+function dqSubmit(){
+	if($("#dqTitle").val()==""){
+		alert('제목을 입력하세요');
+		$("#dqTitle").focus();	
+	}
+	else if($("#dqContent").val()==""){
+		alert('내용을 입력하세요');
+		$("#dqContent").focus();	
+	}
+	else{
+		$.ajax({
+		      url:"http://localhost:3000/writeNotisBbs", 
+		      type:'post',
+		      data:{memNum:json.memNum, nTitle:$("#dqTitle").val(), nContent:$("#dqContent").val()},
+		      success:function( result ){
+		    	  if(result)
+		    		alert("문의 완료! 답변은 메일로 받을 수 있습니다.");
+		    	 	$("#dqTitle").val("");
+		    	 	$("#dqContent").val("");
+		    		$('.dqModal').hide();
+		    	    $('body').css("background-color","rgba(0, 0, 0, 0)");
+		    	    $('.detailViewQuestContainer').css("opacity","");
+		    	    $('.onedayClassImageBoxA').css("opacity","");
+		    	    $('#map').css("opacity","");
+		      },
+		      error:function(){
+		 		alert('writeNotisBbs ajax Error');
+	    	 	$("#dqTitle").val("");
+	    	 	$("#dqContent").val("");
+	    		$('.dqModal').hide();
+	    	    $('body').css("background-color","rgba(0, 0, 0, 0)");
+	    	    $('.detailViewQuestContainer').css("opacity","");
+	    	    $('.onedayClassImageBoxA').css("opacity","");
+	    	    $('#map').css("opacity","");
+		      }
+		});
+	}
+
+}
+</script>
 
 <!-- 신청 결제 모달 -->
 <div class="modal fade" style="z-index: 2000" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -590,6 +674,7 @@ let seq = urlParams.seq
     </div>
   </div>
 </div>
+
 
 <!-- 금액이 모자를 경우 충전하는 것으로 이동할지 여부를 묻는 모달 -->
 <div id="addChargeMoal" style="z-index: 2001" class="modal fade">
@@ -1427,6 +1512,7 @@ $(".onedayClassImageBoxA").click(function(){
          $(".image_hide_modal").show();
  
            $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
+           $('.detailViewQuestContainer').css("background-color","rgba(0, 0, 0, 0.2)");
            $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");
            $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");
            $('.ocImgA1').css("opacity","0.5)");
@@ -1440,6 +1526,7 @@ $(".onedayClassImageBoxA").click(function(){
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
     $('body').css("background-color","");
+    $('.detailViewQuestContainer').css("background-color","");
     $(".image_hide_modal").hide();
     modalCheck = true;
 });
