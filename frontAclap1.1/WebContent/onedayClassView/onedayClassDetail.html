@@ -29,6 +29,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 
+<!-- 클립보드 복사 -->
+<script src="../js/clipboard.min.js"></script>
+
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
@@ -82,12 +85,15 @@ let seq = urlParams.seq
 				
 			</span>
 			<span>                            
-				<button class='DetailLikeBtn'><i class="fas fa-heart">&nbsp;저장</i></button>
-				<button class='DetailShareBtn'><i class="fas fa-share">&nbsp;공유하기</i></button>
-				<input type="hidden" id="ShareUrl">
+				<button class='DetailLikeBtn' check="no" onclick='DetailLike()'><i class="fas fa-heart">&nbsp;저장</i></button>
+				<button class=DetailShareBtn onclick='DetailShare()'  data-clipboard-text=""><i class="fas fa-share">&nbsp;공유하기</i></button>
 			</span>
 		</div>
 	</div>
+	
+	
+	
+	
 	
 		<!--이미지박스1-->
 		<div class='onedayClassImageBoxA'>
@@ -753,6 +759,21 @@ $(document).ready(function(){
         	  alert("error");
           }
 		           
+	});
+	// Like 유무 체크
+	$.ajax({
+		url:"http://localhost:3000/checkLike",  
+		type:"post",
+		data:{memNum:json.memNum, classNum:seq},
+		success:function(result){
+			if(result){
+				$(".DetailLikeBtn").css("color", "red");
+				$(".DetailLikeBtn").attr('check', 'yes');
+			}
+		},
+		error:function(){
+			alert("checkLike ajax error");
+		}
 	});
 	
 	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle){
@@ -1554,7 +1575,8 @@ let json = JSON.parse(sessionStorage.getItem("login"));
 let memNum = json.memNum;
 let userName = json.userName;
 
-// alert("멤버넘" + memNum);
+//alert("멤버넘" + memNum);
+
 //~~~~~~~~~~~리뷰제출하기 버튼 클릭~~~~~~~~~~~
 $("#reviewSubmit").click(function(){
 
@@ -1701,7 +1723,8 @@ $("#reviewSubmit").click(function(){
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){
-			// alert("리뷰갯수" + list.length);
+			//alert("리뷰갯수" + list.length);
+
 			// 삭제한 리뷰 갯수 안보여야 함.................
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
@@ -1778,7 +1801,7 @@ $("#reviewSubmit").click(function(){
 
 //~~~~~~~~~ 리뷰 수정  ~~~~~~~~~~~~~~
 function reviewUp(reviewSeq){
-	alert("리뷰시퀀스" + reviewSeq);
+	//alert("리뷰시퀀스" + reviewSeq);
 $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' value=''>");
 	$.ajax({
 		url:"http://localhost:3000/getReview",
@@ -1874,7 +1897,48 @@ function reviewDel(reviewSeq){
 		}
 	});	 
 }
-	 
+
+// 저장버튼 
+function DetailLike (){
+	if(login == null){  
+		alert('로그인이 필요합니다');
+	}
+	else{
+		if($(".DetailLikeBtn").attr('check')=='no'){
+			$(".DetailLikeBtn").css("color", "red");
+			$(".DetailLikeBtn").attr('check', 'yes');
+			$.ajax({
+				url:"http://localhost:3000/addLike",  
+				type:"post",
+				data:{memNum:memNum, classNum:seq},
+				error:function(){
+					alert("addLike ajax error");
+				}
+			});
+		}
+		else{
+			$(".DetailLikeBtn").css("color", "black");
+			$(".DetailLikeBtn").attr('check', 'no');
+			$.ajax({
+				url:"http://localhost:3000/delLike",  
+				type:"post",
+				data:{memNum:memNum, classNum:seq},
+				error:function(){
+					alert("delLike ajax error");
+				}
+			});
+		}
+	}
+}	
+
+// 공유하기
+new ClipboardJS('.DetailShareBtn'); 
+function DetailShare(){
+	let url = window.location.href;
+	$(".DetailShareBtn").attr('data-clipboard-text', url);
+	alert('주소가 저장 되었습니다');
+};
+		
 </script>
 </body>
 </html>
