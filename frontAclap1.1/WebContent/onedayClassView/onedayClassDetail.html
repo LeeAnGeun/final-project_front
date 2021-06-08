@@ -65,6 +65,7 @@ let seq = urlParams.seq
 
 <div id='naviBar'></div>
 <br><br><br>
+
 <button id="_goBack" onclick="goBack()">Go Back</button>
 
 <script>
@@ -78,6 +79,7 @@ $("#_goBack").on("click", function(){
 });
 
 </script>
+
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -749,7 +751,6 @@ $(document).ready(function(){
 	      type:'post',
 	      data:{classNum:seq},
 	      success:function( dto ){
-	    	 
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
 				if(dto.primaryCategory == '외국어'){
@@ -1855,9 +1856,9 @@ $.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
 		data:{classNum:seq},
-	 	success:function(list){
-	  	
+	 	success:function(list){ 	
 	 		// 삭제한 리뷰 갯수 안보여야 함.................
+
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
 			// 후기 전체보기
@@ -1873,7 +1874,6 @@ $.ajax({
 					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 					str += "<br><br><br>";
 					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-
 		             if(val.image1 != null && val.image2 == null && val.image3==null ){
 		                if(val.image1.includes('.back')){
 		                	str += "<img src=" + val.image1 + " alt=" + ">";
@@ -1936,6 +1936,7 @@ $.ajax({
 	}		
 });
 }
+
 
 	
 	$("#reviewUpSub").hide();
