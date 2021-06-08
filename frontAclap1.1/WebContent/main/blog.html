@@ -66,22 +66,19 @@ a.blogContent{
 
 <script type="text/javascript">
 $(document).ready(function () {
+	
+	let login = sessionStorage.getItem("login");
+	let yourSeq = "";
+	if(login != null){
+		json = JSON.parse(login);
+		yourSeq = json.memNum;
+		getYourInterest(yourSeq);
+		setInterval(function(){getYourInterest(yourSeq)},15000);
+	}
 
 	
 	
-	let login = sessionStorage.getItem("login");
-	let json = JSON.parse(login);
-	let yourSeq = json.memNum;
-	
-	getYourInterest(yourSeq);
-	
-	setInterval(function(){getYourInterest(yourSeq)},15000);
-	
-	
-	
 function getYourInterest(yourSeq) {
-	let login = sessionStorage.getItem("login");
-	let json = JSON.parse(login);
 	
 	$.ajax({
 		url:"http://localhost:3000/getYourInterest",

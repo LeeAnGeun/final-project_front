@@ -448,11 +448,14 @@
     font-weight: 550;
     height: auto;
     width: auto;
+   	margin-top: 20px;
     margin-bottom: 10px;
     display: inline-block;
     position: relative;
     float: left;
-    padding-left: 40px;
+}
+.memCounter{
+	 margin-top: 20px;
 }
 .classApplication_Container{
 	height: 200px;
@@ -468,8 +471,8 @@
 	background-color: white;
 	border: 1px solid #dcdcdc;
 	border-radius:10px;
-	margin-left: 40px;
-}
+ 	margin-right: 46px;
+ }
 .caDate{
 	padding-top:20px;
 	margin-bottom:-6px;
@@ -791,7 +794,7 @@
    object-fit:cover;
 }
 .fa-times{
-   background-color:rgba(0, 0, 0, 0);까만색(0,0,0) 20% 투명도
+   background-color:rgba(0, 0, 0, 0);
    font-size:30px;
    text-align: right;
    padding-left: 770px;
@@ -1263,8 +1266,8 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 	height:270px;
  	position:fixed;
 	background-color:#ecede7;
-	top:250px;
-	left:60px;
+	top:480px;
+	right:60px;
 }
 .dText1{
 	margin-top:44px;
@@ -1356,4 +1359,48 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 .dqBtn:hover{
 	background-color:gray;
 	color:white;
+}
+/*===== 바로 강의 신청하기 버튼 ===== */
+.detailViewClassContainer{
+	width:240px;
+	height:270px;
+ 	position:fixed;
+	background-color:#e3fddf;
+	top:150px;
+	right:60px;
+}
+.dText5{
+	margin-top:44px;
+	text-align:center;
+	font-size:30px;
+	font-family: GongGothicMedium;
+}
+.dText6{
+	position:relative;
+	top:-15px;
+	text-align:center;
+	font-size:50px;
+	font-family: GongGothicMedium;
+}
+.dText7{
+	position:relative;
+	top:-25px;
+	text-align:center;
+	font-size:30px;
+	font-family: GongGothicMedium;
+	
+}
+.dText8{
+	position:relative;
+	top:-12px;
+	text-align:center;
+	font-size:30px;
+	font-family: GongGothicMedium;
+}
+.dText8:hover{
+	cursor: pointer;
+	color: #9872fc;
+	font-size:45px;
+	position:relative;
+	top:-14px;
 }
