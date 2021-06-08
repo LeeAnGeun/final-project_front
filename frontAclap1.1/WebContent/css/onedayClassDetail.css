@@ -1217,9 +1217,9 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 	color: #000;
 	animation: animate 4s ease-in-out infinite;
 }
-#rImg{
-	width: 30px;
-	height: 30px;
+ .rImg{
+	width: 130px;
+	height: 130px;
 }
 
 
