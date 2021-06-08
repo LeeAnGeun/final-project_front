@@ -55,7 +55,8 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
     return obj;
 }, {});
 
-let seq = urlParams.seq;
+let seq = urlParams.seq
+
 
 </script>
 
@@ -64,16 +65,6 @@ let seq = urlParams.seq;
 
 <div id='naviBar'></div>
 <br><br><br>
-
-<button id="_goBack" onclick="goBack()">Go Back</button>
-
-<script>
-$("#_goBack").on("click", function(){
-	let cate = $(this).attr("cate");
-	alert(cate);
-	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+cate+"#comeBack";
-});
-</script>
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -746,7 +737,6 @@ $(document).ready(function(){
 	      data:{classNum:seq},
 	      success:function( dto ){
 	    	 	
-	    	  	$("#_goBack").attr("cate", dto.primaryCategory);
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
 				if(dto.primaryCategory == '외국어'){
@@ -1668,7 +1658,6 @@ $(document).ready(function (e){
     function preview(arr){
       arr.forEach(function(f){
         
-    	  4.
         //파일명이 길면 파일명...으로 처리
         var fileName = f.name;
         if(fileName.length > 10){
@@ -1792,7 +1781,7 @@ $("#reviewSubmit").click(function(){
 			$(function(){
 				$('#satisfaction').barrating({
 			        theme: 'fontawesome-stars',
-			        initialRating : sati,
+			        initialRating : satis,
 			        readonly : true 
 			        	, onSelect: function(value, text, event){
 			        		// 별점 클릭 후 처리는 여기서 코드
@@ -1863,17 +1852,15 @@ $("#reviewSubmit").click(function(){
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){
+			//alert("리뷰갯수" + list.length);
 
 			// 삭제한 리뷰 갯수 안보여야 함.................
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
 			// 후기 전체보기
-	 		$(".reviewModalBtn").hide();
- 			if(list.length > 6 ){
- 				$(".reviewModalBtn").show();
- 			} 
- 			
-  			let str ="";
+ 			let str ="";
+ 		//	if(Object.keys(list).length < 6 && list.del == 0){	//리뷰갯수가 6개 넘으면 후기 전체보기 모달에 다 보이게함
+ 				
 			$.each(list, function(i, val){
 				
 			if(val.del == 0){
@@ -1883,10 +1870,6 @@ $("#reviewSubmit").click(function(){
 					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 					str += "<br><br><br>";
 					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-					str += "<img src=" + val.image1 + " alt=" + " >"	;
-					str += "<img src=" + val.image2 + " alt=" + " >"	;
-					str += "<img src=" + val.image3 + " alt=" + " >"	;
-			if(val.name == userName){
 					/* 
 		            if(val.image1 == null && val.image2 == null && val.image3==null ){
 		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
@@ -1895,10 +1878,11 @@ $("#reviewSubmit").click(function(){
 		                } */
 		             if(val.image1 != null && val.image2 == null && val.image3==null ){
 		                if(val.image1.includes('.back')){
-		                str += "<img src=" + val.image1 + " alt=" + ">";
-		                }else
-		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
-		                }    
+		                	str += "<img src=" + val.image1 + " alt=" + ">";
+		                }else{
+		                	str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
+		                }
+		             }   
 		             if(val.image1 != null && val.image2 != null && val.image3==null){
 		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
 		                str += "<img class='rImg' src=" + val.image2 + " alt=" + ">";
@@ -1908,14 +1892,13 @@ $("#reviewSubmit").click(function(){
 		                str += "<img class='rImg' src=" + val.image2 + " alt=" + ">";
 		                str += "<img class='rImg' src=" + val.image3 + " alt=" + ">";
 		             }
-				if(val.name == userName){
-
-					str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
-					str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
+					if(val.name == userName){
+						str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
+						str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
 					}
 				}
 			$(".review_Modal_Content").append(str);
-			});
+		});
  			
  		
  		
@@ -1959,6 +1942,7 @@ $("#reviewSubmit").click(function(){
 			alert("오류를 잡아라~!");
 		}		
 	});
+
 
 	
 	$("#reviewUpSub").hide();
@@ -2030,7 +2014,6 @@ function reviewDel(reviewSeq){
 		data:{reviewSeq:reviewSeq},
 		success:function(){
 			alert("삭제컨트롤러 다녀옴");
-			location.reload(true);
 		},
 		error:function(){
 			alert("삭제 오류");
