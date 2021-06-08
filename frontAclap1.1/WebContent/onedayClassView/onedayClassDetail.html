@@ -66,6 +66,21 @@ let seq = urlParams.seq
 <div id='naviBar'></div>
 <br><br><br>
 
+<button id="_goBack" onclick="goBack()">Go Back</button>
+
+<script>
+$("#_goBack").on("click", function(){
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const priCate = urlParams.get('cate');
+	const ssseq = urlParams.get('seq');
+	alert(priCate);
+	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
+});
+
+</script>
+
+
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
 	
@@ -736,7 +751,6 @@ $(document).ready(function(){
 	      type:'post',
 	      data:{classNum:seq},
 	      success:function( dto ){
-	    	 	
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
 				if(dto.primaryCategory == '외국어'){
@@ -1744,8 +1758,7 @@ $("#reviewSubmit").click(function(){
 
 //~~~~~~ 리뷰 별점평균 뿌리기~~~~~
 
-//	alert("페이지 로딩" + seq);
-	$.ajax({
+$.ajax({
 		url:"http://localhost:3000/getAvg", 			
 		type:"get",
 		data:{classNum:seq},
@@ -1760,7 +1773,6 @@ $("#reviewSubmit").click(function(){
 				$("#reviewGrade").prepend(0 + "점");
 			}
 			else{
-			//	alert('별점 평균 컨트롤러 갔다옴');
 				let avg = map.avg;
 				let sAvg = map.sAvg;
 				let satis = sAvg.satisfy;
@@ -1773,10 +1785,7 @@ $("#reviewSubmit").click(function(){
 				$("#accAvg").append("  "+acc + " ");
 				$("#coAvg").append("  "+communi + " ");
 				$("#loAvg").append("  "+loca + " ");
-			
-
-		//	alert(typeof clean +"라고한다");
-			
+						
 //--------------------------------별점 평균---------------------------------------
 			$(function(){
 				$('#satisfaction').barrating({
@@ -1787,7 +1796,6 @@ $("#reviewSubmit").click(function(){
 			        		// 별점 클릭 후 처리는 여기서 코드
 			        		// 선택한 별점 값을 value로 받음        	
 			        		clean = parseInt(value);
-			        	//	alert("satisfy: " + typeof satisfy);
 			        	}
 			      });
 				
@@ -1799,7 +1807,6 @@ $("#reviewSubmit").click(function(){
 				        		// 별점 클릭 후 처리는 여기서 코드
 				        		// 선택한 별점 값을 value로 받음        	
 				        		clean = parseInt(value);
-				        	//	alert("satisfy: " + typeof satisfy);
 				        	}
 				      });
 				
@@ -1833,28 +1840,25 @@ $("#reviewSubmit").click(function(){
 			        	}
 			      });
 			});
-			 
-			//alert("별점 평균" + avg);
-			
+						
 			$("#reviewGrade").prepend(avg + "점");
-			}	
+		}	
 	},
-		error:function(){
-			alert('별점 평균 에러ㅜㅜ');
-		}
-	});	
+	error:function(){
+		alert('별점 평균 에러ㅜㅜ');
+	}
+});	
 
-	
-
-	// ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
-	$.ajax({
+getListReviewSibal()
+// ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
+function getListReviewSibal(){
+$.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
 		data:{classNum:seq},
-	 	success:function(list){
-			//alert("리뷰갯수" + list.length);
+	 	success:function(list){ 	
+	 		// 삭제한 리뷰 갯수 안보여야 함.................
 
-			// 삭제한 리뷰 갯수 안보여야 함.................
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
 			// 후기 전체보기
@@ -1870,12 +1874,6 @@ $("#reviewSubmit").click(function(){
 					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 					str += "<br><br><br>";
 					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-					/* 
-		            if(val.image1 == null && val.image2 == null && val.image3==null ){
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                } */
 		             if(val.image1 != null && val.image2 == null && val.image3==null ){
 		                if(val.image1.includes('.back')){
 		                	str += "<img src=" + val.image1 + " alt=" + ">";
@@ -1902,46 +1900,42 @@ $("#reviewSubmit").click(function(){
  			
  		
  		
-			// 간략 리뷰 
-			let sr = "<div class='reviewBox'>";
-			$.each(list, function(i, val){
-	
-			if(val.del ==0){
-				if(i%2==0 && i!=0 ){
-					sr += "</div><div class='reviewBox'>";
-				}
-				sr += "<div class='reviewItem' >"
-			 			+ "<div style='float:left'>"
-						+ "<img src="+val.profilePic+" class='reviewImg'>"
-						+ "</div>"
-						+ "<div style='float:left;'>"
-						+	"<div class='reviewId'>"+val.name+"</div>"
-						+	"<div class='reviewDate'>"+val.wDate+"</div>"
-						+ "</div>"
-						+ "<br><br><br>"
-						+ "<div class='reviewContent'>"
-						+	val.rContent
-						+ "</div>";
-				/* if(val.name == userName){
-					sr += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"
-					 	+ "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>";
-							
-				} */
-				sr 	+= "</div>";
+		// 간략 리뷰 
+		let sr = "<div class='reviewBox'>";
+		$.each(list, function(i, val){
+
+		if(val.del ==0){
+			if(i%2==0 && i!=0 ){
+				sr += "</div><div class='reviewBox'>";
 			}
-				if(i==5){
-					return false; 
-				}
-			});
-			
-			sr += "</div>";
-			$(".reviewAppend").append(sr);
-			
-	 	},
-		error:function(){
-			alert("오류를 잡아라~!");
-		}		
-	});
+			sr += "<div class='reviewItem' >"
+		 			+ "<div style='float:left'>"
+					+ "<img src="+val.profilePic+" class='reviewImg'>"
+					+ "</div>"
+					+ "<div style='float:left;'>"
+					+	"<div class='reviewId'>"+val.name+"</div>"
+					+	"<div class='reviewDate'>"+val.wDate+"</div>"
+					+ "</div>"
+					+ "<br><br><br>"
+					+ "<div class='reviewContent'>"
+					+	val.rContent
+					+ "</div>";
+			sr 	+= "</div>";
+		}
+			if(i==5){
+				return false; 
+			}
+		});
+		
+		sr += "</div>";
+		$(".reviewAppend").append(sr);
+		 
+ 	},
+	error:function(){
+		alert("오류를 잡아라~!");
+	}		
+});
+}
 
 
 	

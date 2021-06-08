@@ -5,13 +5,23 @@
 <title>Insert title here</title>
 <style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR:wght@900&family=Sunflower:wght@300&display=swap');
 
-
-
+.backGroundWeather{
+/*  	 background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+          animation: Gradient 15s ease infinite;  */
+}
 	/* 날씨정보 */
 .wtitle{
+
+font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
-  text-align: center;
+
+  
 }
 .content-slider {
   width: 100%;
@@ -31,15 +41,47 @@
     position: relative;
 }
 .slider li {
-    width: 160px;
+    width: 180px;
     height: 80px;
     position: absolute;
     list-style: none;
     
 }
 .slider .quote {
-    font-size: 14px;
-   
+    font-size: 16px;
+font-family: 'Black Han Sans', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Sunflower', sans-serif;
+
+     background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
+  
+}
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
@@ -47,14 +89,15 @@
 </head>
 <body>
 
+<div class='backGroundWeather'>
 
-<h1 class="wtitle">오늘의 날씨</h1>
 <div class="content-slider">
 
 	<div class="slider">
+	<h1 class="wtitle">오늘의 날씨</h1>
 	</div>
 </div>
-
+</div>
 
 <script type="text/javascript">
 //--------------- 메인클래스 크롤링 화면 관련 js ----------------//

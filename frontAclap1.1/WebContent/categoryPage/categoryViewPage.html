@@ -471,8 +471,7 @@ $(document).ready(function(){
 
 
 if (window.location.hash === '#goToClass') {
-	alert('hi');
-	classListData(0, '', '', '');
+classListData(0, '', '', '');
 }
 //classListData(0, '', '', '');
 
@@ -606,7 +605,7 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				//app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+val.primaryCategory+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + val.title + "</b></h4></a>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
@@ -917,8 +916,8 @@ function comeBack() {
 	const urlParams = new URLSearchParams(queryString);
 	const cate = urlParams.get('cate');
 	const ssseq = urlParams.get('seq');
-	alert(cate);
-	alert(ssseq);
+	//alert(cate);
+	//alert(ssseq);
 	$('.allClassMain').hide();
 	$('.langClassMain').hide();
 	$('.createClassMain').hide();
@@ -937,7 +936,7 @@ function comeBack() {
 }
 
 function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
-	alert('gpgpg');
+	//alert('gpgpg');
 
 	
 	$.ajax({
@@ -945,8 +944,8 @@ function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
 		type:"get",
 		data:{ page:pNumber, choice:myChoice, search:mySearch, primaryCategory:cate},
 		success:function( list ){
-			alert(list);
-			alert('success');
+			//alert(list);
+			//alert('success');
 			$(".classCard").remove();
 			$(".container").remove();
 			$(".seeMore").hide();
@@ -961,7 +960,7 @@ function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+val.primaryCategory+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+cate+"' ><h4><b>" + val.title + "</b></h4></a>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
@@ -977,11 +976,11 @@ function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
 	        }, 'fast'); //slow
  			*/
 			function fnMove(ssseq){
-		        var offset = $("#" + ssseq).position();
-		        $('html, body').animate({scrollTop : offset.top}, 400);
+		        var offset = $("#" + ssseq).position({top:400, left:10});
+		        $('html, body').animate({scrollTop : offset.top}, 400); 
 		    }
 
-
+ 			imageGrid();
 			// location.href = divClassNum;
 	        
 		},
@@ -1002,9 +1001,23 @@ x += val.seq;
 == cardNum22
 href="../categoryPage/categoryViewPage.html#cardNum"
 
-*/ 
-</script>
+*/
+window.onpageshow = function(event) {
+	if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+		//classListData(0, '', '', '');
+		location.href="./categoryViewPage.html#goToClass";
+		classListData(0, '', '', '');
+	}
+}
 
+
+
+
+
+   
+
+
+</script>
 
 </body>
 </html>
