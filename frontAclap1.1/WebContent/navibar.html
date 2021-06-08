@@ -298,10 +298,16 @@ function event(){
 //////////////////////////////////////////////포인트 충전///////////////////////////////////////////////////////////////
 //로그인 세션
 	let login = JSON.parse(sessionStorage.getItem("login"));
-	let email = login.email;
-	let myPoint = login.myPoint;
-	let phoneNum = login.phoneNum;
-	myPoint = parseInt(myPoint);
+	let email = "";
+	let myPoint = "";
+	let phoneNum = "";
+	
+	if(login != null){	
+		email = login.email;
+		myPoint = login.myPoint;
+		phoneNum = login.phoneNum;
+		myPoint = parseInt(myPoint);
+	}
 	
 //	 $("#points").append("$" + myPoint);
 	
