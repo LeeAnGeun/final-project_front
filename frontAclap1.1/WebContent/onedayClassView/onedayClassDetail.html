@@ -1876,29 +1876,25 @@ $("#reviewSubmit").click(function(){
   			let str ="";
 			$.each(list, function(i, val){
 				
-			if(val.del == 0){
-					str ="<div class='reviewModalItem'></div>";
-					str +="<div style='float:left'><img src="+val.profilePic+" class='reviewImg'></div>" 
-					str += "<div style='float:left;'><div class='reviewId'>"+val.name+"</div>";
-					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
-					str += "<br><br><br>";
-					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-					str += "<img src=" + val.image1 + " alt=" + " >"	;
-					str += "<img src=" + val.image2 + " alt=" + " >"	;
-					str += "<img src=" + val.image3 + " alt=" + " >"	;
-			if(val.name == userName){
-					/* 
-		            if(val.image1 == null && val.image2 == null && val.image3==null ){
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                str += "<img class='rImg' src=" + " " + " alt=" + ">";
-		                } */
+					if(val.del == 0){
+							str ="<div class='reviewModalItem'></div>";
+							str +="<div style='float:left'><img src="+val.profilePic+" class='reviewImg'></div>" 
+							str += "<div style='float:left;'><div class='reviewId'>"+val.name+"</div>";
+							str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
+							str += "<br><br><br>";
+							str += "<div class='reviewContent'>"+val.rContent+"</div>";
+							str += "<img src=" + val.image1 + " alt=" + " >"	;
+							str += "<img src=" + val.image2 + " alt=" + " >"	;
+							str += "<img src=" + val.image3 + " alt=" + " >"	;
+					}
+			
 		             if(val.image1 != null && val.image2 == null && val.image3==null ){
 		                if(val.image1.includes('.back')){
 		                str += "<img src=" + val.image1 + " alt=" + ">";
-		                }else
+		                }else{
 		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
-		                }    
+		                }  
+		             }
 		             if(val.image1 != null && val.image2 != null && val.image3==null){
 		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
 		                str += "<img class='rImg' src=" + val.image2 + " alt=" + ">";
@@ -1913,9 +1909,10 @@ $("#reviewSubmit").click(function(){
 					str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
 					str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
 					}
-				}
-			$(".review_Modal_Content").append(str);
+				
 			});
+			$(".review_Modal_Content").append(str);
+			
  			
  		
  		
