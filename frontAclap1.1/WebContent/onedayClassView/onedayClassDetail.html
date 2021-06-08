@@ -55,8 +55,7 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
     return obj;
 }, {});
 
-let seq = urlParams.seq
-
+let seq = urlParams.seq;
 
 </script>
 
@@ -65,6 +64,16 @@ let seq = urlParams.seq
 
 <div id='naviBar'></div>
 <br><br><br>
+
+<button id="_goBack" onclick="goBack()">Go Back</button>
+
+<script>
+$("#_goBack").on("click", function(){
+	let cate = $(this).attr("cate");
+	alert(cate);
+	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+cate+"#comeBack";
+});
+</script>
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -715,6 +724,7 @@ $(document).ready(function(){
 	      data:{classNum:seq},
 	      success:function( dto ){
 	    	 	
+	    	  	$("#_goBack").attr("cate", dto.primaryCategory);
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
 				if(dto.primaryCategory == '외국어'){
