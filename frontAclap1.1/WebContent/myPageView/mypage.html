@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ACLAP</title>
 
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -492,6 +492,11 @@ $("#_myLikeClassView").hide();
 $("#_myLikeClass").click(function(){
 	$("#calendar").hide();
 	$(".mainView").hide();
+	$(".mainView2").hide();
+	$('#_myLikeClass').css('color', 'green');
+	$('#_mySchedules').css('color', 'black');
+	$('#_myClass').css('color', 'black');
+	
 	$("#_myLikeClassView").show();
 });
 
@@ -539,7 +544,10 @@ function goLikeClassDetail(seq){
             <div class="modal-body" >
                 <div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
                 <div class="px-4 py-5" id="saveRecipt">
-                    <h3 class="text-uppercase">ACLAP</h3>
+                <div class="logoO">
+                    <h2 class="aclap">ACLAP</h2>
+					<h2 class="aclap">ACLAP</h2>
+				</div>
                     <h5 class="mt-5 theme-color mb-5">수업에 참여해 주셔서 감사합니다.</h5> 
                     <span class="theme-coloid="classD"r">결제 내역</span>
                     <div class="mb-3">
@@ -971,7 +979,7 @@ $(document).ready(function() {
 		$(".mainView2").hide();
 		$('#_mySchedules').css('color', 'green');
 		$('#_myClass').css('color', 'black');
-		
+		$('#_myLikeClass').css('color', 'black');
 		getMySchedule(syear, smonth)
 		// calendar을 숨김
 		$("#calendar").hide();	
@@ -1193,7 +1201,7 @@ function loadPage( memNum, totalCount  ) {
 		$("#_myLikeClassView").hide();
 		$('#_myClass').css('color', 'green');
 		$('#_mySchedules').css('color', 'black');
-		
+		$('#_myLikeClass').css('color', 'black');
 		$(".mainView2").show();
 		$("#calendar").show();
 

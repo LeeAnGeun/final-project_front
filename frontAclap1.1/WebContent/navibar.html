@@ -289,7 +289,7 @@ function goOnedayClassOpen(){
 
 //클래스 클릭시
 function classView() {
-	location.href="../categoryPage/categoryViewPage.html";
+	location.href="../categoryPage/categoryViewPage.html#goToClass";
 }
 function event(){
 	location.href="../event/event.html";
@@ -298,10 +298,16 @@ function event(){
 //////////////////////////////////////////////포인트 충전///////////////////////////////////////////////////////////////
 //로그인 세션
 	let login = JSON.parse(sessionStorage.getItem("login"));
-	let email = login.email;
-	let myPoint = login.myPoint;
-	let phoneNum = login.phoneNum;
-	myPoint = parseInt(myPoint);
+	let email = "";
+	let myPoint = "";
+	let phoneNum = "";
+	
+	if(login != null){	
+		email = login.email;
+		myPoint = login.myPoint;
+		phoneNum = login.phoneNum;
+		myPoint = parseInt(myPoint);
+	}
 	
 //	 $("#points").append("$" + myPoint);
 	
@@ -451,7 +457,7 @@ function checkAlertBadge(memNum) {
     data:{memNum:memNum},
     success:function(chkBadge){
       // alert("success");
-       
+        
        let oldN = [];
        let newN = [];
  		
@@ -463,10 +469,19 @@ function checkAlertBadge(memNum) {
     	   newN[i] = val.newRegNum;
     	      
 	});
-     // alert(newN[1]);
-      if(oldN != newN){
-    	  $('.badge').show();
-      } 
+    
+       for (i=0; i < chkBadge.length; i++){
+    	   
+   	   		if(oldN[i] != newN[i]){
+    	    	  $('.badge').show();
+    	    	 
+    	    }
+   	      	if(oldN[i] == newN[i]){
+   	    	  $('.badge').hide();
+   	    	  
+   	      	}
+       }
+      
 
        
     },

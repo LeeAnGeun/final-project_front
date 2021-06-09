@@ -7,8 +7,8 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- 제이쿼리 ui css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- 제이쿼리 style css -->
-<link rel="stylesheet" href="/resources/demos/style.css">
+ <!-- 제이쿼리 style css -->
+<!--<link rel="stylesheet" href="/resources/demos/style.css"> -->
 
 <!-- 제이쿼리 ui js -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -65,6 +65,21 @@ let seq = urlParams.seq
 
 <div id='naviBar'></div>
 <br><br><br>
+
+<button id="_goBack" onclick="goBack()">Go Back</button>
+
+<script>
+$("#_goBack").on("click", function(){
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const priCate = urlParams.get('cate');
+	const ssseq = urlParams.get('seq');
+	alert(priCate);
+	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
+});
+
+</script>
+
 
 <div class='onedayClassContaier'>
 	<div class='onedayClassMainTextBox'>
@@ -236,13 +251,13 @@ let seq = urlParams.seq
 	<div class='onedayClassContentBox1'>
 		<div class='ocSubTitle' id='nickNameTit'></div>
 		<i class='material-icons ocIcon'>access_time</i>
-		<span class='ocTxt1' id="classTime"> 30분</span>
+		<span class='ocTxt1' id="classTime"></span>
 		&nbsp;&nbsp;
 		<i class='material-icons'>people</i>
-		<span class='ocTxt1' id="classMaxNum"> 5명</span>
+		<span class='ocTxt1' id="classMaxNum"></span>
 		&nbsp;&nbsp;
       	<i class='material-icons'>check</i>
-      	<span class='ocTxt1' id="classSupplie"> 리코더</span>
+      	<span class='ocTxt1' id="classSupplie"></span>
       	<div class='classInfo'>
       		
       	</div>
@@ -260,22 +275,22 @@ let seq = urlParams.seq
 	<!-- youtube -->
 	<div class='hrMargin' id="youTubeLine"><hr></div>
 	<div class='ocSubTitle' id="youTubeTitle">YouTube</div>
-	 <iframe id="youtubeLink" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	 <iframe id="youtubeLink" width="1120" height="630" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	
 	<div class='hrMargin'><hr></div>
 	<!-- 선생님 소개 -->
 	<img class='ocTeacherImg' id='_ocTeacherImg' src="../images/profileSample.png" style='float:left'>
 	<div style='float:left; padding-top:2px; padding-left:10px;'>
-		<span class='ocSubTitle' id='teacherTitle'>akkeSun 선생님 소개</span><br>
-		<span class='ocTeacherMail'>akkessun@gmail.com</span>
+		<span class='ocSubTitle' id='teacherTitle'></span><br>
+		<span class='ocTeacherMail'></span>
 	</div>
 	<br><br><br><br>
 	<div class='teacherStar'>
 		<i class="fas fa-star" style='color: red;'></i>
-		<span class='teacherTxt'>후기 10개</span> 
+		<span class='teacherTxt'></span> 
 		&nbsp;&nbsp;&nbsp;
 		<i class="fas fa-chalkboard-teacher"></i>
-		<span class='teacherTxt' id="masterClass">개설클래스 3개</span> 
+		<span class='teacherTxt' id="masterClass"></span> 
 		
 	</div>
 	<div class='scProgramTxt' id='TeacherInfo'>
@@ -547,8 +562,114 @@ let seq = urlParams.seq
 	<div class='hrMargin'><hr></div>
 
 </div>
-<div id='footer'></div>	
 
+
+<!-- 강의 문의하기 버튼  --> 
+<div class='detailViewQuestContainer'>
+	<div class='dText1'>지금 보고계신 강의에</div>
+	<div class='dText2'>궁굼한 점이</div>
+	<div class='dText3'>있나요?</div>
+	<div class='dText4' onclick='dqModalShow()'>네</div>
+</div>
+<!-- 강의 문의하기 버튼  --> 
+<div class='detailViewClassContainer'>
+	<div class='dText5'>지금 바로</div>
+	<div class='dText6'>강의를</div>
+	<div class='dText7'>신청하세요!</div>
+	<div class='dText8' onclick='dqGO()'>GO</div>
+</div>
+
+<!-- 강의 문의하기 Modal -->
+<div class='dqModal'>
+	<div class='dqMain'>수업에 대해 궁굼한 점을 입력하세요</div>
+	<input id='dqTitle' placeholder="제목"><br>
+	<textarea id='dqContent'>문의 내용</textarea><br>
+	<div class='dqBtns'>
+	<input type='button' class='dqBtn' onclick='dqSubmit()' value='완료'> 
+	<input type='button' class='dqBtn' onclick='dqCan()' value='취소'> 
+	</div>
+</div>
+	
+<div id='footer'></div>	
+<script>
+// 문의하기 버튼
+$('.dqModal').hide();
+function dqModalShow(){
+	if(login == null){
+		alert('문의사항은 로그인이 필요한 서비스 입니다');
+	}
+	else{
+		$('.dqModal').show();
+	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+	    $('.detailViewQuestContainer').css("opacity","0.1");
+	    $('.detailViewClassContainer').css("opacity","0.1");
+	    $('.onedayClassImageBoxA').css("opacity","0.1");
+	    $('.onedayClassImageBoxB').css("opacity","0.1");
+	    $('.onedayClassImageBoxC').css("opacity","0.1");
+	    $('#map').css("opacity","0.1");
+	}
+};
+
+function dqCan(){
+	$('.dqModal').hide();
+    $('body').css("background-color","rgba(0, 0, 0, 0)");
+    $('.detailViewQuestContainer').css("opacity","");
+    $('.detailViewClassContainer').css("opacity","");
+    $('.onedayClassImageBoxA').css("opacity","");
+    $('.onedayClassImageBoxB').css("opacity","");
+    $('.onedayClassImageBoxC').css("opacity","");
+    $('#map').css("opacity","");
+}
+
+function dqSubmit(){
+	if($("#dqTitle").val()==""){
+		alert('제목을 입력하세요');
+		$("#dqTitle").focus();	
+	}
+	else if($("#dqContent").val()==""){
+		alert('내용을 입력하세요');
+		$("#dqContent").focus();	
+	}
+	else{
+		$.ajax({
+		      url:"http://localhost:3000/writeNotisBbs", 
+		      type:'post',
+		      data:{memNum:json.memNum, nTitle:$("#dqTitle").val(), nContent:$("#dqContent").val()},
+		      success:function( result ){
+		    	  if(result)
+		    		alert("문의 완료! 답변은 메일로 받을 수 있습니다.");
+		    	 	$("#dqTitle").val("");
+		    	 	$("#dqContent").val("문의 내용");
+		    		$('.dqModal').hide();
+		    	    $('body').css("background-color","rgba(0, 0, 0, 0)");
+		    	    $('.detailViewQuestContainer').css("opacity","");
+		    	    $('.detailViewClassContainer').css("opacity","");
+		    	    $('.onedayClassImageBoxA').css("opacity","");
+		    	    $('.onedayClassImageBoxB').css("opacity","");
+		    	    $('.onedayClassImageBoxC').css("opacity","");
+		    	    $('#map').css("opacity","");
+		      },
+		      error:function(){
+		 		alert('writeNotisBbs ajax Error');
+	    	 	$("#dqTitle").val("");
+	    	 	$("#dqContent").val("");
+	    		$('.dqModal').hide();
+	    	    $('body').css("background-color","rgba(0, 0, 0, 0)");
+	    	    $('.detailViewQuestContainer').css("opacity","");
+	    	    $('.detailViewClassContainer').css("opacity","");
+	    	    $('.onedayClassImageBoxA').css("opacity","");
+	    	    $('.onedayClassImageBoxB').css("opacity","");
+	    	    $('.onedayClassImageBoxC').css("opacity","");
+	    	    $('#map').css("opacity","");
+		      }
+		});
+	}
+}
+// 우측 강의신청 버튼
+function dqGO(){
+	$("#allSchedule").modal();
+}
+</script>
 
 <!-- 신청 결제 모달 -->
 <div class="modal fade" style="z-index: 2000" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -591,6 +712,7 @@ let seq = urlParams.seq
   </div>
 </div>
 
+
 <!-- 금액이 모자를 경우 충전하는 것으로 이동할지 여부를 묻는 모달 -->
 <div id="addChargeMoal" style="z-index: 2001" class="modal fade">
 	<div class="modal-dialog modal-confirm">
@@ -629,7 +751,6 @@ $(document).ready(function(){
 	      type:'post',
 	      data:{classNum:seq},
 	      success:function( dto ){
-	    	 	
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
 				if(dto.primaryCategory == '외국어'){
@@ -761,20 +882,23 @@ $(document).ready(function(){
 		           
 	});
 	// Like 유무 체크
-	$.ajax({
-		url:"http://localhost:3000/checkLike",  
-		type:"post",
-		data:{memNum:json.memNum, classNum:seq},
-		success:function(result){
-			if(result){
-				$(".DetailLikeBtn").css("color", "red");
-				$(".DetailLikeBtn").attr('check', 'yes');
+	if(login != null){
+		$.ajax({
+			url:"http://localhost:3000/checkLike",  
+			type:"post",
+			data:{memNum:json.memNum, classNum:seq},
+			success:function(result){
+				if(result){
+					$(".DetailLikeBtn").css("color", "red");
+					$(".DetailLikeBtn").attr('check', 'yes');
+				}
+			},
+			error:function(){
+				alert("checkLike ajax error");
 			}
-		},
-		error:function(){
-			alert("checkLike ajax error");
-		}
-	});
+		});
+	}
+	
 	
 	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle){
 		
@@ -1376,7 +1500,7 @@ function masterClass(email){
 		data:{email:email},
 	 	success:function( count ){
 	 		// alert(count);
-	 		$("#masterClass").text("개설클래스 " + count + "개");	
+	 		$("#masterClass").text("진행 클래스 " + count + "개");	
 	 	},
 	 	error:function(){
 	 		alert('error');
@@ -1425,13 +1549,13 @@ $(".onedayClassImageBoxA").click(function(){
       if(modalCheck){
          $(".image_hide_modal").toggleClass("image_show_modal");   
          $(".image_hide_modal").show();
- 
-           $('body').css("background-color","rgba(0, 0, 0, 0.7)");/*까만색(0,0,0) 20% 투명도*/
-           $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");
-           $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");
-           $('.ocImgA1').css("opacity","0.5)");
-           $('.ocImgA2').css("opacity","0.5)");
-           $('.ocImgA3').css("background-color","rgba(0, 0, 0, 0.02)");
+ 	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+ 	 	 $('.detailViewQuestContainer').css("opacity","0.1");
+	     $('.detailViewClassContainer').css("opacity","0.1");
+	     $('.onedayClassImageBoxA').css("opacity","0.1");
+	     $('.onedayClassImageBoxB').css("opacity","0.1");
+	     $('.onedayClassImageBoxC').css("opacity","0.1");
+	     $('#map').css("opacity","0.1");
            
          modalCheck=false;
       };
@@ -1439,7 +1563,14 @@ $(".onedayClassImageBoxA").click(function(){
    
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
-    $('body').css("background-color","");
+    $('body').css("background-color","rgba(0, 0, 0, 0)");
+    $('.detailViewQuestContainer').css("background-color","");
+  	$('.detailViewQuestContainer').css("opacity","");
+	$('.detailViewClassContainer').css("opacity","");
+   	$('.onedayClassImageBoxA').css("opacity","");
+   	$('.onedayClassImageBoxB').css("opacity","");
+   	$('.onedayClassImageBoxC').css("opacity","");
+   	$('#map').css("opacity","");
     $(".image_hide_modal").hide();
     modalCheck = true;
 });
@@ -1541,7 +1672,6 @@ $(document).ready(function (e){
     function preview(arr){
       arr.forEach(function(f){
         
-    	  4.
         //파일명이 길면 파일명...으로 처리
         var fileName = f.name;
         if(fileName.length > 10){
@@ -1572,9 +1702,12 @@ $(document).ready(function (e){
    
 //~~~~~~~~~~~~로그인 세션~~~~~~~~~~~~~~~~
 let json = JSON.parse(sessionStorage.getItem("login"));
-let memNum = json.memNum;
-let userName = json.userName;
-
+let memNum = "";
+let userName = "";
+if(json != null){
+	memNum = json.memNum;
+	userName = json.userName;
+}
 //alert("멤버넘" + memNum);
 
 //~~~~~~~~~~~리뷰제출하기 버튼 클릭~~~~~~~~~~~
@@ -1625,41 +1758,44 @@ $("#reviewSubmit").click(function(){
 
 //~~~~~~ 리뷰 별점평균 뿌리기~~~~~
 
-//	alert("페이지 로딩" + seq);
-	$.ajax({
+$.ajax({
 		url:"http://localhost:3000/getAvg", 			
 		type:"get",
 		data:{classNum:seq},
 		success:function(map){
-		//	alert('별점 평균 컨트롤러 갔다옴');
-			let avg = map.avg;
-			let sAvg = map.sAvg;
-		//	alert(sAvg.cleanness);
-			let satis = sAvg.satisfy;
-			let clean = sAvg.cleanness;
-			let communi = sAvg.rComm;
-			let loca = sAvg.rLocation;
-			let sati = sAvg.satisfy;
-			let acc = sAvg.accuracy;
-			$("#saAvg").append("  "+satis + " ");
-			$("#clAvg").append("  "+clean + " ");
-			$("#accAvg").append("  "+acc + " ");
-			$("#coAvg").append("  "+communi + " ");
-			$("#loAvg").append("  "+loca + " ");
-			
-		//	alert(typeof clean +"라고한다");
-			
+			if(map.sAvg == null){
+				$(".reviewBox").css('height', '50px');
+				$("#saAvg").append("  "+0 + " ");
+				$("#clAvg").append("  "+0 + " ");
+				$("#accAvg").append("  "+0 + " ");
+				$("#coAvg").append("  "+0 + " ");
+				$("#loAvg").append("  "+0 + " ");
+				$("#reviewGrade").prepend(0 + "점");
+			}
+			else{
+				let avg = map.avg;
+				let sAvg = map.sAvg;
+				let satis = sAvg.satisfy;
+				let clean = sAvg.cleanness;
+				let communi = sAvg.rComm;
+				let loca = sAvg.rLocation;
+				let acc = sAvg.accuracy;
+				$("#saAvg").append("  "+satis + " ");
+				$("#clAvg").append("  "+clean + " ");
+				$("#accAvg").append("  "+acc + " ");
+				$("#coAvg").append("  "+communi + " ");
+				$("#loAvg").append("  "+loca + " ");
+						
 //--------------------------------별점 평균---------------------------------------
 			$(function(){
 				$('#satisfaction').barrating({
 			        theme: 'fontawesome-stars',
-			        initialRating : sati,
+			        initialRating : satis,
 			        readonly : true 
 			        	, onSelect: function(value, text, event){
 			        		// 별점 클릭 후 처리는 여기서 코드
 			        		// 선택한 별점 값을 value로 받음        	
 			        		clean = parseInt(value);
-			        	//	alert("satisfy: " + typeof satisfy);
 			        	}
 			      });
 				
@@ -1671,7 +1807,6 @@ $("#reviewSubmit").click(function(){
 				        		// 별점 클릭 후 처리는 여기서 코드
 				        		// 선택한 별점 값을 value로 받음        	
 				        		clean = parseInt(value);
-				        	//	alert("satisfy: " + typeof satisfy);
 				        	}
 				      });
 				
@@ -1705,27 +1840,25 @@ $("#reviewSubmit").click(function(){
 			        	}
 			      });
 			});
-			 
-			//alert("별점 평균" + avg);
-			
+						
 			$("#reviewGrade").prepend(avg + "점");
-		},
-		error:function(){
-			alert('별점 평균 에러ㅜㅜ');
-		}
-	});	
+		}	
+	},
+	error:function(){
+		alert('별점 평균 에러ㅜㅜ');
+	}
+});	
 
-	
-
-	// ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
-	$.ajax({
+getListReviewSibal()
+// ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
+function getListReviewSibal(){
+$.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
 		data:{classNum:seq},
-	 	success:function(list){
-			//alert("리뷰갯수" + list.length);
+	 	success:function(list){ 	
+	 		// 삭제한 리뷰 갯수 안보여야 함.................
 
-			// 삭제한 리뷰 갯수 안보여야 함.................
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 			
 			// 후기 전체보기
@@ -1735,66 +1868,75 @@ $("#reviewSubmit").click(function(){
 			$.each(list, function(i, val){
 				
 			if(val.del == 0){
-					 str ="<div class='reviewModalItem'></div>";
+					str ="<div class='reviewModalItem'></div>";
 					str +="<div style='float:left'><img src="+val.profilePic+" class='reviewImg'></div>" 
 					str += "<div style='float:left;'><div class='reviewId'>"+val.name+"</div>";
 					str += "<div class='reviewDate'>"+val.wDate+"</div></div>";
 					str += "<br><br><br>";
 					str += "<div class='reviewContent'>"+val.rContent+"</div>";
-					str += "<img src=" + val.image1 + " alt=" + ">"	;
-					str += "<img src=" + val.image2 + " alt=" + ">"	;
-					str += "<img src=" + val.image3 + " alt=" + ">"	;
-				if(val.name == userName){
-					str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
-					str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
+		             if(val.image1 != null && val.image2 == null && val.image3==null ){
+		                if(val.image1.includes('.back')){
+		                	str += "<img src=" + val.image1 + " alt=" + ">";
+		                }else{
+		                	str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
+		                }
+		             }   
+		             if(val.image1 != null && val.image2 != null && val.image3==null){
+		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
+		                str += "<img class='rImg' src=" + val.image2 + " alt=" + ">";
+		             }
+		             if(val.image1 != null && val.image2 != null && val.image3 != null){
+		                str += "<img class='rImg' src=" + val.image1 + " alt=" + ">";
+		                str += "<img class='rImg' src=" + val.image2 + " alt=" + ">";
+		                str += "<img class='rImg' src=" + val.image3 + " alt=" + ">";
+		             }
+					if(val.name == userName){
+						str += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"	;
+						str += "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>"	;
 					}
 				}
 			$(".review_Modal_Content").append(str);
-			});
+		});
  			
  		
  		
-			// 간략 리뷰 
-			
-			let sr = "<div class='reviewBox'>";
-			$.each(list, function(i, val){
-	
-			if(val.del ==0){
-				if(i%2==0 && i!=0 ){
-					sr += "</div><div class='reviewBox'>";
-				}
-				sr += "<div class='reviewItem' >"
-			 			+ "<div style='float:left'>"
-						+ "<img src="+val.profilePic+" class='reviewImg'>"
-						+ "</div>"
-						+ "<div style='float:left;'>"
-						+	"<div class='reviewId'>"+val.name+"</div>"
-						+	"<div class='reviewDate'>"+val.wDate+"</div>"
-						+ "</div>"
-						+ "<br><br><br>"
-						+ "<div class='reviewContent'>"
-						+	val.rContent
-						+ "</div>";
-				/* if(val.name == userName){
-					sr += "<button type='button' class='btn btn-light btn-sm rBtn' onClick='reviewUp(" + val.reviewSeq + ")'>수정</button>"
-					 	+ "<button type='button' class='btn btn-light btn-sm rBtn' id='reviewDel' onClick='reviewDel("+val.reviewSeq+")'>삭제</button>";
-							
-				} */
-				sr 	+= "</div>";
+		// 간략 리뷰 
+		let sr = "<div class='reviewBox'>";
+		$.each(list, function(i, val){
+
+		if(val.del ==0){
+			if(i%2==0 && i!=0 ){
+				sr += "</div><div class='reviewBox'>";
 			}
-				if(i==5){
-					return false; 
-				}
-			});
-			
-			sr += "</div>";
-			$(".reviewAppend").append(sr);
-			
-	 	},
-		error:function(){
-			alert("오류를 잡아라~!");
-		}		
-	});
+			sr += "<div class='reviewItem' >"
+		 			+ "<div style='float:left'>"
+					+ "<img src="+val.profilePic+" class='reviewImg'>"
+					+ "</div>"
+					+ "<div style='float:left;'>"
+					+	"<div class='reviewId'>"+val.name+"</div>"
+					+	"<div class='reviewDate'>"+val.wDate+"</div>"
+					+ "</div>"
+					+ "<br><br><br>"
+					+ "<div class='reviewContent'>"
+					+	val.rContent
+					+ "</div>";
+			sr 	+= "</div>";
+		}
+			if(i==5){
+				return false; 
+			}
+		});
+		
+		sr += "</div>";
+		$(".reviewAppend").append(sr);
+		 
+ 	},
+	error:function(){
+		alert("오류를 잡아라~!");
+	}		
+});
+}
+
 
 	
 	$("#reviewUpSub").hide();
@@ -1886,14 +2028,18 @@ function reviewDel(reviewSeq){
 		data:{classNum:seq, memNum:memNum}, 
 		success:function( count ){
 		//	alert(count);
-			if(count>0){
+			if(count == true){
+			
+				alert('true');
 				$(".reviewBtn").show();
 			}else{
+
+				alert('false');
 				$(".reviewBtn").hide();
 			}
 		},
 		error:function(){
-			alert("error");
+			alert("리뷰작성가능error");
 		}
 	});	 
 }

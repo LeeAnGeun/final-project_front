@@ -78,7 +78,7 @@ $("#footer").load("../footer.html");
 			
 			 <div class="search-box">
 			  <input class="search-input" id="allSearchWord" type="text" placeholder="검색어 입력">
-			  <a href="#" id="allBtnSearch" class="search-btn">
+			  <a href="#" id="allBtnSearch" class="search-btn" >
 			    <i class="fas fa-search"></i>
 			  </a>     
 			</div>
@@ -128,7 +128,7 @@ $("#footer").load("../footer.html");
 				
 				 <div class="search-box">
 				  <input class="search-input" id="langSearchWord" type="text" placeholder="검색어 입력">
-				  <a href="#" id="allBtnSearch" class="search-btn">
+				  <a href="#" id="langBtnSearch" class="search-btn">
 				    <i class="fas fa-search"></i>
 				  </a>     
 				</div>
@@ -178,7 +178,7 @@ $("#footer").load("../footer.html");
 				
 				 <div class="search-box">
 				  <input class="search-input" id="createSearchWord" type="text" placeholder="검색어 입력">
-				  <a href="#" id="allBtnSearch" class="search-btn">
+				  <a href="#" id="createBtnSearch" class="search-btn">
 				    <i class="fas fa-search"></i>
 				  </a>     
 				</div>
@@ -228,7 +228,7 @@ $("#footer").load("../footer.html");
 				
 				 <div class="search-box">
 				  <input class="search-input" id="cookSearchWord" type="text" placeholder="검색어 입력">
-				  <a href="#" id="allBtnSearch" class="search-btn">
+				  <a href="#" id="cookBtnSearch" class="search-btn">
 				    <i class="fas fa-search"></i>
 				  </a>     
 				</div>
@@ -277,7 +277,7 @@ $("#footer").load("../footer.html");
 				
 				 <div class="search-box">
 				  <input class="search-input" id="programSearchWord" type="text" placeholder="검색어 입력">
-				  <a href="#" id="allBtnSearch" class="search-btn">
+				  <a href="#" id="programBtnSearch" class="search-btn">
 				    <i class="fas fa-search"></i>
 				  </a>     
 				</div>
@@ -325,7 +325,7 @@ $("#footer").load("../footer.html");
 				
 				 <div class="search-box">
 				  <input class="search-input" id="sportSearchWord" type="text" placeholder="검색어 입력">
-				  <a href="#" id="allBtnSearch" class="search-btn">
+				  <a href="#" id="sportBtnSearch" class="search-btn">
 				    <i class="fas fa-search"></i>
 				  </a>     
 				</div>
@@ -469,99 +469,104 @@ $(document).ready(function(){
 //클래스 리스트 가져오기
 
 
-let mySearch = $("#allSearchWord").val();
-let myChoice = $("#allChoice").val();
 
-classListData(0, myChoice, mySearch, '');
+if (window.location.hash === '#goToClass') {
+classListData(0, '', '', '');
+}
+//classListData(0, '', '', '');
 
 var vari =  $('.classCard:hidden').length;
 
+let mySearch ='';
+let myChoice ='';
+
+let pcVal='';
+
+$(document).ready(function () {
+	
+
+$('#allBtnSearch').click(function () {
+	mySearch = $("#allSearchWord").val();
+	myChoice = $("#allChoice").val();
+	pcVal = '';
+	classListData(0, myChoice, mySearch, pcVal);
+	
+});
+$('#langBtnSearch').click(function () {
+	mySearch = $("#langSearchWord").val();
+	myChoice = $("#langChoice").val();
+	pcVal='외국어';
+	classListData(0, myChoice, mySearch, pcVal);
+
+});
+$('#createBtnSearch').click(function () {
+	mySearch = $("#createSearchWord").val();
+	myChoice = $("#createChoice").val();
+	pcVal = '크리에이티브';
+	classListData(0, myChoice, mySearch, pcVal);
+	
+});
+$('#cookBtnSearch').click(function () {
+	mySearch = $("#cookSearchWord").val();
+	myChoice = $("#cookChoice").val();
+	pcVal = '요리';
+	classListData(0, myChoice, mySearch, pcVal);
+
+});
+$('#programBtnSearch').click(function () {
+	mySearch = $("#programSearchWord").val();
+	myChoice = $("#programChoice").val();
+	pcVal = '프로그래밍';
+	classListData(0, myChoice, mySearch, pcVal);
+
+});
+$('#sportBtnSearch').click(function () {
+	mySearch = $("#sportSearchWord").val();
+	myChoice = $("#sportChoice").val();
+	
+	classListData(0, myChoice, mySearch, pcVal);
+	
+});
 
 
+});
 
 
 $(document).on("click", ".categoryA", function () { 
-	let pcVal=$(this).attr('eng');
+	pcVal=$(this).attr('eng');
 	
 	if (pcVal=='전체'){
 		pcVal = '';
-		mySearch = $("#allSearchWord").val();
-		myChoice = $("#allChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#allBtnSearch').click(function () {
-			mySearch = $("#allSearchWord").val();
-			myChoice = $("#allChoice").val();
-			
-			classListData(0, myChoice, mySearch, pcVal);
 		
-			
-		});
+		classListData(0, '', '', pcVal);
+		
 	}
 	
 	if (pcVal=='외국어'){
 		pcVal = '외국어';
-		mySearch = $("#langSearchWord").val();
-		myChoice = $("#langChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#langBtnSearch').click(function () {
-			mySearch = $("#langSearchWord").val();
-			myChoice = $("#langChoice").val();
-			
-			classListData(0, myChoice, mySearch, pcVal);
+	
+		classListData(0, '', '', pcVal);
 		
-		});
 	}
 	if (pcVal=='크리에이티브'){
 		pcVal = '크리에이티브';
-		mySearch = $("#createSearchWord").val();
-		myChoice = $("#createChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#createBtnSearch').click(function () {
-			mySearch = $("#createSearchWord").val();
-			myChoice = $("#createChoice").val();
-			
-			classListData(0, myChoice, mySearch, pcVal);
-			
-		});
+		classListData(0, '', '', pcVal);
+	
 	}
 	if (pcVal=='요리'){
 		pcVal = '요리';
-		mySearch = $("#cookSearchWord").val();
-		myChoice = $("#cookChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#cookBtnSearch').click(function () {
-			mySearch = $("#cookSearchWord").val();
-			myChoice = $("#cookChoice").val();
-			//alert('검색한 값:' + mySearch);
-			classListData(0, myChoice, mySearch, pcVal);
-		
-		});
+		classListData(0, '', '', pcVal);
+
 	}
 	if (pcVal=='프로그래밍'){
 		pcVal = '프로그래밍';
-		mySearch = $("#programSearchWord").val();
-		myChoice = $("#programChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#programBtnSearch').click(function () {
-			mySearch = $("#programSearchWord").val();
-			myChoice = $("#programChoice").val();
-			//alert('검색한 값:' + mySearch);
-			classListData(0, myChoice, mySearch, pcVal);
-		
-		});
+		classListData(0, '', '', pcVal);
+
 	}
 	if (pcVal=='스포츠/레져'){
 		pcVal = '스포츠레저';
-		mySearch = $("#sportSearchWord").val();
-		myChoice = $("#sportChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#sportBtnSearch').click(function () {
-			mySearch = $("#sportSearchWord").val();
-			myChoice = $("#sportChoice").val();
-			
-			classListData(0, myChoice, mySearch, pcVal);
-			
-		});
+		classListData(0, '', '', pcVal);
+
 	}
 	
 });
@@ -595,12 +600,12 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				let startDD = val.startDate;
 				startDD = startDD.substring(0,10);
 				//<img class='classImg' src='"+val.image1+"' alt='no image'>"
-				app = "<div class='classCard'>"
+				app = "<div class='classCard' id='"+val.classNum +"'>"
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				//app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum' value='"+val.classNum+"'><h4><b>" + val.title + "</b></h4></a>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + val.title + "</b></h4></a>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
@@ -728,7 +733,9 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 //클래스 클릭시 디테일로~
 $(document).on("click", ".classDetailNum", function () { 
 	var tseq=$(this).attr('value');
-  location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq;
+	var cate=$(this).attr('cate');
+
+  location.href='../onedayClassView/onedayClassDetail.html?seq='+tseq+"&cate="+cate;
 
 });
 
@@ -758,7 +765,7 @@ function imageGrid() {
 
 //메인에서 클릭으로 넘어올때
 if (window.location.hash === '#langClass') {
-	$(function () {
+ $(function () {
 		$('.allClassMain').hide();
 		$('.langClassMain').hide();
 		$('.createClassMain').hide();
@@ -769,23 +776,13 @@ if (window.location.hash === '#langClass') {
 		
 		$('.langClassMain').show();
 		$('.langClassMain').addClass('pt-page-moveFromRight');
+		classListData(0, '', '', '외국어');
 		
-		pcVal = '외국어';
-		mySearch = $("#langSearchWord").val();
-		myChoice = $("#langChoice").val();
-		classListData(0, myChoice, mySearch, pcVal);
-		$('#langBtnSearch').click(function () {
-			mySearch = $("#langSearchWord").val();
-			myChoice = $("#langChoice").val();
-			
-			classListData(0, myChoice, mySearch, pcVal);
-		
-		});
-	});
+	}); 
 	
 }
 if (window.location.hash === '#createClass') {
-	$(function () {
+ $(function () {
 		$('.langClassMain').hide();
 		$('.createClassMain').hide();
 		$('.cookingClassMain').hide();
@@ -813,7 +810,7 @@ if (window.location.hash === '#createClass') {
 }
 
 if (window.location.hash === '#cookingClass') {
-	$(function () {
+$(function () {
 		$('.langClassMain').hide();
 		$('.createClassMain').hide();
 		$('.cookingClassMain').hide();
@@ -835,7 +832,7 @@ if (window.location.hash === '#cookingClass') {
 			classListData(0, myChoice, mySearch, pcVal);
 		
 		});
-	});
+	}); 
 	
 }
 if (window.location.hash === '#programmingClass') {
@@ -891,8 +888,136 @@ if (window.location.hash === '#sportsClass') {
 	});
 	
 }
-</script>
 
+
+
+
+
+////////////////////////////////
+/* let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+    return paramPair.split(/=(.+)?/).slice(0, 2);
+}).reduce(function(obj, pairArray) {
+    obj[pairArray[0]] = pairArray[1];
+    return obj;
+}, {});
+
+let seq = urlParams.seq */
+
+if (window.location.hash === '#comeBack') {
+	comeBack();
+}
+	
+function comeBack() {
+	//alert(seq);
+	//alert("comeBack");
+	
+	
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const cate = urlParams.get('cate');
+	const ssseq = urlParams.get('seq');
+	//alert(cate);
+	//alert(ssseq);
+	$('.allClassMain').hide();
+	$('.langClassMain').hide();
+	$('.createClassMain').hide();
+	$('.cookingClassMain').hide();
+	$('.programmingClassMain').hide();
+	$('.sportsClassMain').hide();
+	
+	
+	
+	$('.allClassMain').show();
+	$('.allClassMain').addClass('pt-page-moveFromRight');
+
+	mySearch = $("#allSearchWord").val();
+	myChoice = $("#allChoice").val();
+	goBackClassList(0, mySearch, myChoice, cate, ssseq);
+}
+
+function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
+	//alert('gpgpg');
+
+	
+	$.ajax({
+		url:"http://localhost:3000/classListData",
+		type:"get",
+		data:{ page:pNumber, choice:myChoice, search:mySearch, primaryCategory:cate},
+		success:function( list ){
+			//alert(list);
+			//alert('success');
+			$(".classCard").remove();
+			$(".container").remove();
+			$(".seeMore").hide();
+			
+			let app ='';
+		
+			$.each(list, function (i, val) {
+				let startDD = val.startDate;
+				startDD = startDD.substring(0,10);
+				//<img class='classImg' src='"+val.image1+"' alt='no image'>"
+				app += "<div class='classCard' id='"+val.classNum +"'>"
+				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
+				app += "<div class='classContainer'>";
+				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+cate+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
+				app += "<font> 포인트: " + val.price + "</font>";
+				app += "</div></div>";
+			}); 
+			
+			$(".classListTableAll").append(app);
+			
+			let divClassNum = "#" + ssseq;
+			fnMove(ssseq);
+			/*  
+			$('html, body').animate({
+	            scrollTop: $(divClassNum).offset({top:10})
+	        }, 'fast'); //slow
+ 			*/
+			function fnMove(ssseq){
+		        var offset = $("#" + ssseq).position({top:400, left:10});
+		        $('html, body').animate({scrollTop : offset.top}, 400); 
+		    }
+
+ 			imageGrid();
+			// location.href = divClassNum;
+	        
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
+
+
+
+/* //디테일에서 돌아올때 
+if(window.location.hash === '') {
+
+//디테일에서
+var x = cardNum;
+x += val.seq;
+== cardNum22
+href="../categoryPage/categoryViewPage.html#cardNum"
+
+*/
+window.onpageshow = function(event) {
+	if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+		//classListData(0, '', '', '');
+		location.href="./categoryViewPage.html#goToClass";
+		classListData(0, '', '', '');
+	}
+}
+
+
+
+
+
+   
+
+
+</script>
 
 </body>
 </html>

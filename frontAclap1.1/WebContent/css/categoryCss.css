@@ -354,7 +354,7 @@ div.searchedClassListView{
 	margin-bottom: 80px !important;
 	padding-left: 50px;
 	padding-right: 50px;
-	overflow: auto;
+	overflow: hidden;
 	overflow-x: hidden !important;
 	
 	
@@ -487,3 +487,4 @@ a.seeMore:hover{
 		margin: 0 auto;
 	}
 }
+
