@@ -48,7 +48,6 @@
       <button type='button' class='myPageButton' onclick="goMyPage()" >마이페이지</button>
       <button type="button" class="myPageButton" id="pointsCharge" data-toggle="modal" data-target="#staticBackdrop">포인트 충전</button>
       <hr class='loginHr1'>
-      <div class='loginNewContent'></div>
       <div class='myPointCheck'></div>
       <hr class='loginHr2'>
       <input type='button' class='logoutButton' value='로그아웃'>
@@ -106,7 +105,6 @@ $(document).ready(function(){
 	
 	$("#len5").hide();
 	$("#len6").hide();
-	$(".loginNewContent").hide();
 	
 	// 로그인 버튼
 	let login = sessionStorage.getItem("login");
@@ -122,9 +120,6 @@ $(document).ready(function(){
 						
 			checkAlertBadge(json.memNum);
 			
-			if(json.classMaster ==1)
-				$(".loginNewContent").show();
-
 		}
 		else if(json.auth==9){
 			$("#len6").show();
@@ -150,11 +145,9 @@ $(document).ready(function(){
 					$(".loginModalEmail").html(json.email);
 					$(".myPointCheck").html("내 포인트 " + json.myPoint);			
 					// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
-					$(".loginNewContent").html("새로운 클래스 신청자 : 0명");
 					$("#points").append("$" + json.myPoint);
 					
 			
-					
 				},
 				error:function(){
 					alert("Google_Kakao_Regi ajax Error");
@@ -335,7 +328,7 @@ $(document).ready(function(){
 	
 	// 포인트 충전하기 클릭시 충전 금액 초기화 
 	$("#pointsCharge").click(function(){
-	//	alert("포인트충전하기 클릭");
+//	alert("포인트충전하기 클릭");
 		$("#chargeMoney").val(""); 	
 	});
 	

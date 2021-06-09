@@ -54,21 +54,6 @@
 	width:600px;
 	border-radius: 20px;
 }
-/* 2560*1600 */
-/* 
-.contentImgText{
-	font-family:Roboto;
-	font-size:150px;
-	font-weight: 1000;
-	letter-spacing:10px;
-	color:white;
-	z-index: 1;
-	position: relative;
-	top:-90px;
-	left:80px;
-}
- */
-/* 1920*1080*/
 .contentImgText{
 	font-family:Roboto;
 	font-size:150px;
@@ -124,19 +109,29 @@
 	font-style: italic;
 	font-size: 18px;
 	font-weight: 700;
-	margin-bottom:30px;
+}
+.circle-dark-dashed {
+  border-radius: 2.4em;
+  border: 4px dashed white;
+  width: 240px;
+  height: 240px;
+  margin-top:2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .makeClasstext2{
+	padding-top:49px;
+	text-align:center;
 	font-family: Roboto;
-	font-size:60px;
+	font-size:50px;
 	font-weight: 800;
 	line-height: 65px;
-	margin-bottom: 60px;
 }
-.makeClasstext2:hover{
+.circle-dark-dashed:hover {
 	cursor: pointer;
 	color:white;
 	font-weight: 830;
+	border: 4px dashed black;
 }
 .makeClasstext3{
 	font-family: Open Sans;

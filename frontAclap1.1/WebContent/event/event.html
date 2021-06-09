@@ -3,185 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- 커스텀 css -->
+<link rel="stylesheet" href="../css/event.css">
 
-<style>
-
-.container{
-	margin-top: 100px;
-}
-
-.a_eventView{
-	width: 100%;
-	display: flex;
-  	justify-content: center;
-    display: flex;
-    flex-direction: row;
-    min-height: calc(100vh - 64px);
-    /* border: 5px solid red; */
-}
-
-.a_title{
-	width: 100%;
-	margin: 0px;
-	font-size: 50px;
-	font-weight: 900;
-	padding-left: 100px;
-}
-
-.a_eventList{
-	width: 90%;
-	text-align: center; 
-	list-style:none; 
-}
-
-.a_event{
-	width: 30%;
-	height: 40%;
-	position: relative;
-    min-height: 1px;
-	margin-right: 20px;
-	margin-bottom: 40px;
-    box-sizing: border-box;
-    float: left;
-    /* border: 5px solid blue; */
-}
-
-.a_eventImg{
-	width: 100%;
-	height: 250px;
-	border-radius:10px;
-}
-
-.a_eventFont{
-	font-size: 17px;
-    font-weight: normal;
-    color: rgb(26, 26, 26);
-    line-height: 16px;
-    letter-spacing: normal;
-    margin: 0px;
-    padding-top: 10px;
-    text-align: left;
-}
-
-.a_eventTitle{
-	font-size: 20px;
-    font-weight: 800;
-    color: rgb(26, 26, 26);
-    line-height: 20px;
-    letter-spacing: -0.15px;
-    margin: 10px auto;
-    text-align: left;
-}
-
-.a_eventATag{
-	text-decoration: none;
-}
-.a_eventATag:hover {
-	text-decoration: underline;
-}
-
-</style>
 
 </head>
-<body>
+<body style='background-color:#FFFFF9'>
 
 
 <div id='naviBar'></div>
-<div class="container">
-
-	<div>
+<div class="container-fluid">
+	<div class='eventMainImg'>
 		<p class=a_title>EVENT</p>
+		
 	</div>
 	<div class="a_eventView">
 	<ul class="a_eventList">
 		<li class="a_event">
 			<a href="javascript:regiEvent();" class="a_eventATag"> 
-				<div>
+				<div class='a_eventImgBox'>
 					<img class="a_eventImg" src="../images/regiEvent.png">
-					<div class="a_eventFont">
-						가입 이벤트
-					</div>
-					<div class="a_eventTitle">
-						신규 가입시 3000포인트 제공!!
-					</div>
+				</div>
+				<div class="a_eventFont">가입 이벤트</div>
+				<div class="a_eventTitle">
+					신규 가입시 3000포인트 제공!!
 				</div>
 			</a>
 		</li>
 		<li class="a_event">
 			<a href="javascript:chargeEvent();" class="a_eventATag">
-				<div>
+				<div class='a_eventImgBox'>
 					<img class="a_eventImg" src="../images/eventImg.jpg">
-					<div class="a_eventFont">
-						충전 이벤트
-					</div>
-					<div class="a_eventTitle" >
-						처음 충전 시 3000포인트를 드립니다!!
-					</div>
+				</div>
+				<div class="a_eventFont">
+					충전 이벤트
+				</div>
+				<div class="a_eventTitle" >
+					처음 충전 시 3000포인트를 드립니다!!
 				</div>
 			</a>
 		</li>
 		<li class="a_event">
 			<a href="javascript:proEvent();" class="a_eventATag">
-				<div>
+				<div class='a_eventImgBox'>
 					<img class="a_eventImg" src="../images/eventImg2.jpg">
-					<div class="a_eventFont">
-						할인 이벤트
-					</div>
-					<div class="a_eventTitle">
-						개발자에 도전하시는 분~ 10% 할인특가!!
-					</div>
+				</div>	
+				<div class="a_eventFont">
+					할인 이벤트
+				</div>
+				<div class="a_eventTitle">
+					개발자에 도전하시는 분~ 10% 할인특가!!
 				</div>
 			</a>
 		</li>
 		<li class="a_event">
 			<a href="javascript:cookEvent();" class="a_eventATag"> 
-				<div>
+				<div class='a_eventImgBox'>
 					<img class="a_eventImg" src="../images/eventImg3.jpg">
-					<div class="a_eventFont">
-						할인 이벤트
-					</div>
-					<div class="a_eventTitle">
-						10% 할인!! 빵에 환장하시는 분 직접 만들어 보세요~~
-					</div>
+				</div>	
+				<div class="a_eventFont">
+					할인 이벤트
+				</div>
+				<div class="a_eventTitle">
+					10% 할인!! 빵에 환장하시는 분 직접 <br>만들어 보세요~~
 				</div>
 			</a>
 		</li>
 		<li class="a_event">
 			<a href="javascript:stampEvent();" class="a_eventATag">
-				<div>
+				<div class='a_eventImgBox'>
 					<img class="a_eventImg" src="../images/eventImg4.jpg">
-					<div class="a_eventFont">
-						충전 이벤트
-					</div>
-					<div class="a_eventTitle">
-						스탬프를 5개 모을 시 5000포인트 제공!!
-					</div>
+				</div>	
+				<div class="a_eventFont">
+					충전 이벤트
+				</div>
+				<div class="a_eventTitle">
+					스탬프를 5개 모을 시 5000포인트 제공!!
 				</div>
 			</a>
 		</li>
 		<li class="a_event">
 			<a href="" class="a_eventATag">
-				<div>
-					<img class="a_eventImg" src="../images/main4.png">
-					<div class="a_eventFont">
-						이벤트
-					</div>
-					<div class="a_eventTitle">
-						처음 가입시 3000포인트 제공!!
-					</div>
+				<div class='a_eventImgBox'>
+					<img class="a_eventImg" src="../images/eventRegi.png">
+				</div>	
+				<div class="a_eventFont">
+					이벤트
+				</div>
+				<div class=a_eventTitle>
+					처음 가입시 3000포인트 제공!!
 				</div>
 			</a>
 		</li>
 	</ul>
 	</div>
 </div>
-
 <div id='footer'></div>
 <script type="text/javascript">
 	$("#naviBar").load("../navibar.html");
@@ -194,25 +117,25 @@ function regiEvent() {
 	
 	// alert(json.email);
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
-		alert("아님~");
+		alert("event");
 	}
 }
 
 // 충전 이벤트 이동
 function chargeEvent(){
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
-		alert("아님~");
+		alert("event");
 	}
 }
 
 // 프로그래밍 이벤트 이동
 function proEvent(){
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
 		alert("아님~");
 	}
@@ -221,25 +144,25 @@ function proEvent(){
 // 빵 이벤트 이동
 function cookEvent(){
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
-		alert("아님~");
+		alert("event");
 	}
 }
 
 // 스탬프 이벤트 이동
 function stampEvent(){
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
-		alert("아님~");
+		alert("event");
 	}
 }
 
 //프로그래밍 이벤트 이동
 function proEvent(){
 	if(login == null){
-		location.href = "loginRegi.html";
+		location.href = "../loginRegi/loginRegi.html";
 	}else{
 		alert("아님~");
 	}

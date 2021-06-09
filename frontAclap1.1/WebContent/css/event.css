@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container-fluid{
+	margin-top: 100px;
+	font-family: GongGothicMedium;
+}
+
+.eventMainImg{
+	margin-left:224px;
+	height:300px;
+	width: 74.5%;
+	text-align: center; 
+	list-style:none; 
+	background-size: cover;  
+	background-image: url(../images/eventMain.jpg);
+	margin-bottom:80px;
+}
+.a_title{
+	color: white;
+	font-size: 180px;
+	font-weight: 900;
+	padding-left: 100px;
+	text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
+}
+.a_eventView{
+	width: 100%;
+  	justify-content: center;
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - 64px);
+}
+.a_eventList{
+	width: 80%;
+	text-align: center; 
+	list-style:none; 
+}
+.a_event{
+	width: 30%;
+	height: 40%;
+	position: relative;
+ 	margin-right: 40px; 
+	margin-bottom: 100px;
+/*     box-sizing: border-box; */
+    float: left;
+    /* border: 5px solid blue; */
+}
+
+.a_eventImgBox{
+  width: 95%;
+  height: 350px;
+  border-radius:10px;
+  overflow: hidden;
+}
+.a_eventImg{
+  width: 95%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.a_eventFont{
+	margin-left:10px;
+	font-size: 20px;
+    font-weight: normal;
+    color: rgb(26, 26, 26);
+    letter-spacing: normal;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.a_eventTitle{
+	margin-left:10px;
+	font-size: 23px;
+    font-weight: 700;
+    color: rgb(26, 26, 26);
+    line-height: 26px;
+    letter-spacing: -0.15px;
+    text-align: left;
+    margin-top:2px;
+}
+
+.a_eventATag{
+	text-decoration: none;
+}
+
