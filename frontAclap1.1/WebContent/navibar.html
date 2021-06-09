@@ -171,12 +171,12 @@ $(document).ready(function(){
 		if(login != null){
 			let json = JSON.parse(login);
 			$.ajax({
-				url:"http://localhost:3000/login", 
+				url:"http://localhost:3000/noAnserNoticeCount", 
 				type:'post',
-				data : {email:json.email, pwd:json.pwd},
-				success:function( json ){			
+				success:function( count ){			
 					// 문의글 목록 보이는 코드 들어가야함
-					$(".ManagerNewContent").html('새 문의 글 : 0건');
+					let noAnserText = "답변 하지 않은 문의 글 : " + count + "건";
+					$(".ManagerNewContent").html(noAnserText);
 				},
 				error:function(){
 					alert("Google_Kakao_Regi ajax Error");
