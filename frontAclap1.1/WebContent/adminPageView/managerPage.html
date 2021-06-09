@@ -239,19 +239,31 @@ table.customTable thead {
 	background-color:white;
 	border:none;
 }
+.reStartClass{
+	background-color:white;
+	border:none;
+}
 .delClass:hover{
 	background-color:#F6F1EF;
 }
+.reStartClass:hover{
+	background-color:#F6F1EF;
+}
+.goD:hover{
+	cursor: pointer;
+	background-color:#F6F1EF;
+}
+
 </style>
 </head>
 
-  <body>
+<body>
 
 
 <div id='naviBar'></div>
 
+<!-- 왼쪽 네비바 -->
 <div id="layoutSidenav">
-
     <div id="layoutSidenav_nav">
     	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
             <div class="sb-sidenav-menu">
@@ -285,6 +297,7 @@ table.customTable thead {
                         <i class="fas fa-table mr-1"></i>
                    		One-Day Class List
                     </div>
+                    <!-- 메인 컨텐츠 -->
                     <div class="card-body" >
                     <div class="table-responsive">
                     	<div class="row">
@@ -293,73 +306,46 @@ table.customTable thead {
                      			<label>
                      				<table>
                      					<tr>
-                     						<td>Name: </td>
+                     						<td>NAME&nbsp;:&nbsp; </td>
                      						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable">
                      						<input type="search" id="className" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
-                     						<td><button type="button" id="btnClassSearch" class="btn btn-light">search</button></td>
+                     						<td>:&nbsp;<button type="button" id="btnClassSearch" class="btn btn-light">search</button></td>
                      					</tr>
                      				</table>
-                     				
                      			</label>
-                     			
                      		</div>
                     		</div>
                     	</div>
                         
-
-                 
-                                
-                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                 <thead>
-                                     <tr>
-                                     	<!-- <th>#</th>
-                                         <th>개설자</th>
-                                         <th>제목</th>
-                                         <th>대분류</th>
-                                         <th>소분류</th>
-                                         <th>시작일</th>
-                                         <th>종료일</th>
-                                         <th>장소</th> -->
-                                       
-                                      </tr>
-                                 </thead>
-                     
-                                 <tbody id="classList">
-                                     
-                                 </tbody>
-                                	
-                             </table>
-                             <div class="container" id="userPagination">
-								<nav aria-label="Page navigation">
-									<ul class="userPagination" style="justify-content:center;"></ul>
-								</nav>
-						    </div>
-						    <div class="container" id="classPagination">
-								<nav aria-label="Page navigation">
-									<ul class="classPagination" style="justify-content:center;"></ul>
-								</nav>
-						    </div>
-                         </div>
-                         </div>
-                     </div>
+                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                           <tbody id="classList"></tbody>
+                       </table>
+                       <div class="container" id="userPagination">
+							<nav aria-label="Page navigation">
+								<ul class="userPagination" style="justify-content:center;"></ul>
+							</nav>
+					    </div>
+					    <div class="container" id="classPagination">
+							<nav aria-label="Page navigation">
+								<ul class="classPagination" style="justify-content:center;"></ul>
+							</nav>
+					    </div>
+                      </div>
+                    </div>
+                    <!-- ///////////// 메인 컨텐츠 끝 ///////////// -->
+                   </div>
                </div>
            </main>
-     </div>
-                
-    
-            
+     </div>       
 
-            
-          <!-- 유저노티스체크 -->
-          
+
+
     <div id="noticeCheckCheck">
           	<div style="padding-top: 100px;">
-				<!-- 검색 -->
-	
+			<!--검색 -->
 			<div class="search">
 				<table style="margin: auto;">
 					<tr>
-						
 						<td style="padding-left: 5px">
 							<select id="_choice" name="choice" class="form-select">
 								<option value="" selected="selected">검색 선택</option>
@@ -379,7 +365,7 @@ table.customTable thead {
 					</tr>
 				</table>
 			</div>
-			
+			<!-- 테이블 -->
 			<div class="mainTable">
 				<table class="customTable" id="noticeTable">
 					<colgroup>			
@@ -404,13 +390,11 @@ table.customTable thead {
 				</nav>
 			</div>
 		</div>
-          
-     
      </div>
-       
-</div>
+</div>             
+ 
+
                    
-            
 
 
 
@@ -497,8 +481,8 @@ $(document).ready(function () {
 	$("#goUserList").on('click',function(){
 		goUserList();
 	});
-	
-	
+
+
 	//--------------------------사이드 유저리스트 검색했을 때
 	function goUserList(){	
 		$("#layoutSidenav_content").show();
@@ -650,7 +634,7 @@ $(document).ready(function () {
 		            + "<th>수업 시작일</th>"
 		            + "<th>수업 종료일</th>"
 		            + "<th>장소</th>"
-		            + "<th>삭제</th>"
+		            + "<th>중단/재개</th>"
 		            + "</tr>"
 		            + "</thead>";
 		   
@@ -665,44 +649,54 @@ $(document).ready(function () {
 		        
 	}            
 		
+	//----------- 클래스 리스트 뿌리기------------
 	function classlist(pNum) {
 		$.ajax({
 			url:"http://localhost:3000/classlist",
 			type:"get",
 			data:{ name:$("#className").val(), page:pNum},
 			success:function(list){
-				//alert(JSON.stringify(list));
-				//alert("성공쓰~!");
+				
 				$('.classtrtrtr').remove();
-				 $('.usertrtrtr').remove();
+				$('.usertrtrtr').remove();
+				
 				$.each(list, function(i, list){
+					
 					let startDate = (list.startDate).substring(0, 10);
 					let endDate = (list.endDate).substring(0, 10);
+					let del = "";
+					
+			        if(list.del==0)
+						del = "<td><input type='button' seq="+list.classNum+" class='delClass' value='중단'></td>"
+					else if(list.del==1)
+						del = "<td><input type='button' seq="+list.classNum+" class='reStartClass' value='재개'></td>"
+					
 					let str = "<tr class='classtrtrtr'>"
 							+ "<td>" + (i+1) + "</td>"
 							+ "<td>" + list.instructor + "</td>"
-							+ "<td>" + list.title + "</td>"
+							+ "<td class='goD' seq="+list.classNum+">" + list.title + "</td>"
 							+ "<td>" + list.primaryCategory + "</td>"
 							+ "<td>" + list.secondaryCategory + "</td>"
 							+ "<td>" + startDate + "</td>"
 							+ "<td>" + endDate  + "</td>"
 							+ "<td>" + list.location + "</td>"
-							+ "<td><input type='button' seq="+list.classNum+" class='delClass' value='삭제'></td>"
+							+ del
 							+ "</tr>";
 					$("#classList").append(str);	
 				});
 				
+				// 클래스 중단
 				$('.delClass').on('click',function(){
-					let check = confirm('정말로 삭제하시겠습니까');
+					let check = confirm('정말로 중단하겠습니다');
 					let seq = $(this).attr('seq');
 					if(check){
 						$.ajax({
-							url:"http://localhost:3000/onedayClassMasterDel",
+							url:"http://localhost:3000/onedayClassDelete",
 							type:"get",
 							data:{classNum:seq},
 							success:function(result){
 								if(result){
-									alert('성공적으로 삭제되었습니다');
+									alert('성공적으로 중단했습니다');
 									location.reload();									
 								}
 							},
@@ -712,9 +706,38 @@ $(document).ready(function () {
 						}); 
 					}
 				}); 
+				
+				// 클래스 재개
+				$('.reStartClass').on('click',function(){
+					let check = confirm('정말로 재개하겠습니까');
+					let seq = $(this).attr('seq');
+					if(check){
+						$.ajax({
+							url:"http://localhost:3000/onedayClassRestart",
+							type:"get",
+							data:{classNum:seq},
+							success:function(result){
+								if(result){
+									alert('성공적으로 재개하였습니다');
+									location.reload();									
+								}
+							},
+							error:function(){
+								alert("onedayClassMasterDel ajax error");
+							}
+						}); 
+					}
+				}); 
+				
+				// 클래스 수정
+				$(".goD").click(function(){
+					let seq = $(this).attr('seq');
+					location.href="../onedayClassView/onedayClassUpdate.html?seq="+seq;
+				})
+				
 			},
 			error:function(){
-				alert('에러임 ㅜ');
+				alert('classlist ajax error');
 			}		
 				
 		});	
@@ -766,13 +789,12 @@ $(document).ready(function () {
 		classlist(0);
 	    countClassList();
 	});
-
-
-}); //
+}); 
 
 
 
-//----------------------문의사항------------------
+//----------------------문의사항----------------------------
+
 
 
 	$("#goQnaList").click(function(){
@@ -848,7 +870,6 @@ $(document).ready(function () {
 			data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
 			success:function( count ){
 				//alert('success');
-				alert(count);
 				loadPage(count);
 				
 			},

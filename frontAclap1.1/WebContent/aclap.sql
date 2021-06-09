@@ -42,7 +42,9 @@ select COUNT(MEMNUM)
 FROM LIKES
 WHERE MEMNUM=7
 
-
+select *
+from onedayclass
+where classnum=41
 	
 	-- 내가 좋아하는 클래스의 CLASSNUM : 5개 
 	SELECT CLASSNUM
