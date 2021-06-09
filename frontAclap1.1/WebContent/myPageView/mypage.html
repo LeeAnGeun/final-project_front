@@ -347,15 +347,15 @@ $(document).ready(function(){
                 <div class="col-md-6 pt-md-0 mt-5 subView2" >
                     <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
                     <div class="bg-white border rounded view">
-                        <div class="d-flex flex-row align-items-center b_info2">
-                            <table class="pppInfoTable" style="width: 100%; text-align: center">
+                        <div class="align-items-center b_info2">
+                            <table class="pppInfoTable" style="width: 100%; text-align: center;">
                             <colgroup>
-                            <col style="width: 20%; height: 60px;"><col style="width: 70%; height: 60px;"><col style="width: 20%; height: 60px;">
+                            <col style="width: 20%; height: 60px;"><col style="width: 60%; height: 60px;"><col style="width: 20%; height: 60px;">
                             
                             </colgroup>	
                             	<thead>
-                            	<tr>
-                            		<th>수강일자</th><th>신청자정보</th><th>인원수</th>
+                            	<tr class="classMemTi">
+                            		<th>수강일자</th><th>신청자 정보</th><th>신청 인원</th>
                             	</tr>
                             	</thead>
                             	
@@ -389,157 +389,42 @@ $(document).ready(function(){
 				
 			</div>
         </div>
-    </div>
-	   	
-<script>	 
-//------- Like Class 처리 ---------
-let log = sessionStorage.getItem("login");
-let log2 = JSON.parse(log); // String -> json 
-let memNum = log2.memNum;
-
-getLikeClass(0); 
-getLikeClassCount();
-function getLikeClass(pNumber){
-	$.ajax({
-		url:"http://localhost:3000/getLikeClassList",  
-		type:"post",
-		data:{ page:pNumber, memNum:memNum },
-		success:function( data ){
-
-			//페이징 클릭 시 이전에 불러온 테이블은 지우고 다시 시작하기 
- 			$(".MLC_trContent").remove();			
-			                      //index, 변수
-			$.each(data, function (i, item) {
-				let app = "";
-					app = "<tr class='MLC_trContent'>" +
-						  	"<td>"+
-								"<div style='float:left'>"+
-									"<img src=" + item.profilePic +" class='MLC_proFile'>"+ 
-								"</div>"+
-								"<div style='float:left'>" + 
-									"<div class='MLC_nameTxt'>"+ item.instructor +"</div>"+ 
-									"<div class='MLC_mailTxt'>"+ item.email +"</div>"+ 
-						 		"</div>"+
-								"</td>"+
-								"<td class='MLC_titleTxt MLC_titleInput' onclick='goLikeClassDetail("+item.classNum+")'>"+ item.title +"</td>"+
-								"<td class='MLC_titleTxt ' id='MLC_categoryInput'>"+item.primaryCategory+"</td>"+
-								"<td class='MLC_titleTxt'>"+
-									"<i class='fas fa-star' style='color: red;'></i>"+
-									"<span id='MLC_gradeInput'>"+item.avgPoint+"</span>"+ 
-								"</td>"+
-								"<td class='MLC_pointTxt'>"+
-									"<i class='fas fa-coins'></i>"+
-									"<span id='MLC_pointInput'>"+item.price+"</span>"+
-								"</td>"+
-							"</tr>"					
-				$("#_MLC_table").append(app);	
-			});		 
-		},
-		error:function(){
-			alert('getLikeClassList ajax error');
-		}
-	});
-}
-
-
-// 글의 총 수 
-function getLikeClassCount(){
-	$.ajax({
-		url:"http://localhost:3000/getLikeClassCount",
-		type:"post",
-		data:{memNum:memNum},
-		success:function( count ){
-			// alert(count);
-			loadPages(count); 
-		},
-		error:function(){
-			alert('getLikeClassCount ajax error');
-		}		
-	});
-}
-
-
-//페이징 처리 
-function loadPages( totalCount ){
-	let pageSize = 5;		
-	let nowPage = 1;	
-
-	//총 페이지의 수
- 	let totalPage = totalCount / pageSize;
-	if(totalCount % pageSize > 0){
-		totalPage++;
-	}
-
-	// 페이지 초기화 : 검색 시 이전 값을 지워주기 위함
-	$("#pagination2").twbsPagination('destroy');
-	
-	//페이지 설정	
-	$("#pagination2").twbsPagination({
-		totalPages: totalPage,
-		visiblePages: pageSize,
-		first:'<span sria-hidden="true">«</span>',
-		prev:"PREV",
-		next:"NEXE",
-		last:'<span sria-hidden="true">»</span>',
-		initiateStartPageClick:false, // 처음 로드 시 onPageClick 자동 실행되지 않도록
-		
-		//클릭시 페이지를 바꿔라
-		onPageClick:function(event, page){
-			nowPage = page;
-			getLikeClass(page-1);
-		}
-	}); 
-}
-
-$("#_myLikeClassView").hide();
-$("#_myLikeClass").click(function(){
-	$("#calendar").hide();
-	$(".mainView").hide();
-	$(".mainView2").hide();
-	$('#_myLikeClass').css('color', 'green');
-	$('#_mySchedules').css('color', 'black');
-	$('#_myClass').css('color', 'black');
-	
-	$("#_myLikeClassView").show();
-});
-
-
-function goLikeClassDetail(seq){
-	location.href='../onedayClassView/onedayClassDetail.html?seq='+seq;
-}
-</script>
-
-	    
+    </div>	    
 </div>
 
-<div id="stampTable" class="hide_table">
-	<div class="stamp_Modal_Table">
-		<i class="fa fa-times close_Table"></i>
-		<div>
-		<table class="stamp_Table" frame=void border="1">
-			<colgroup>
-			    <col width="20%"/>
-			    <col width="20%"/>
-			    <col width="20%"/>
-			    <col width="20%"/>
-			    <col width="20%"/>
-			  </colgroup>
-		<!-- 	<tbody class="stamp_Table_body">
-			
-			</tbody> -->
-		</table>
+</div>
+
+<!-- <div id="stampTable" class="hide_table"> -->
+<div class="modal fade" id="stampTable">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="stamp_Modal_Table">
+				<div class="text-right"> <i class="fa fa-times close" data-dismiss="modal"></i> </div>
+				<div>
+				<table class="stamp_Table" frame=void border="1">
+					<colgroup>
+					    <col width="20%"/>
+					    <col width="20%"/>
+					    <col width="20%"/>
+					    <col width="20%"/>
+					    <col width="20%"/>
+					  </colgroup>
+				<!-- 	<tbody class="stamp_Table_body">
+					
+					</tbody> -->
+				</table>
+				</div>
+				<!-- paging -->
+				<div class="container">
+					<nav aria-lable="Page navigation">
+						<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+					</nav>
+				</div>
+				
+			</div>
 		</div>
-		<!-- paging -->
-		<div class="container">
-			<nav aria-lable="Page navigation">
-				<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
-			</nav>
-		</div>
-		
 	</div>
 </div>
-</div>
-
 
 <div class="modal fade" id="reciptModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -664,7 +549,7 @@ function goLikeClassDetail(seq){
 </div>
 <div id="footer"></div>
 
-<!-- Modal HTML -->
+<!-- 일정취소 모달 HTML -->
 <div id="cancleScheduleMoal" class="modal fade">
 	<div class="modal-dialog modal-confirm">
 		<div class="modal-content">
@@ -682,6 +567,46 @@ function goLikeClassDetail(seq){
 		</div>
 	</div>
 </div>
+
+<!-- 다시 신청 모달 HTML -->
+<div id="reAddScheduleMoal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="canclelogo">
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+				</div>					
+				<h4 class="modal-title w-100">신청을 위해 해당 수업으로<br>이동하시겠습니까?</h4>	
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" id="reAddYES">YES</button>
+				<button type="button" class="btn btn-danger" id="reAddNO" data-dismiss="modal">NO</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 다시 신청 모달 HTML -->
+<div id="tScheduleModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="canclelogo">
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+					<h2 class="canclelogoAclap" onclick="ACLAP();return false;">ACLAP</h2>
+				</div>					
+				<h4 class="modal-title w-100" id="modalContent">신청을 위해 해당 수업으로<br>이동하시겠습니까?</h4>	
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary btn_yes" id="">YES</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <script type="text/javascript">
 $("#naviBar").load("../navibar.html");
 $("#footer").load("../footer.html");
@@ -926,15 +851,17 @@ $(document).ready(function() {
 					});
 					
 					$(".a_btn_participate").on("click", function () {
-						let classNum = $(this).attr("classNum");
+						$("#reAddYES").attr('classNum', classNum);
 						
-						let test = confirm('다시 신청을 위해 해당 수업으로 이동하시겠습니까?');
-						   if(test){
+						$("#reAddScheduleMoal").modal('show');
+						
+						/*    
+						if(test){
 							   location.href='../onedayClassView/onedayClassDetail.html?seq='+classNum;
 						   }
 						   else{
 							   
-						   }
+						   } */
 					});
 				},
 				error:function(){
@@ -980,7 +907,7 @@ $(document).ready(function() {
 		// 기존 학생신분 부분을 보여줌
 		$(".mainView").show();
 		$(".mainView2").hide();
-		$('#_mySchedules').css('color', 'green');
+		$('#_mySchedules').css('color', 'blue');
 		$('#_myClass').css('color', 'black');
 		$('#_myLikeClass').css('color', 'black');
 		getMySchedule(syear, smonth)
@@ -1019,8 +946,9 @@ $(document).ready(function() {
 	
 	// 도장판 닫기
 	$(".close_Table").click(function(){
-		$(".show_table").attr('class', "hide_table");
-	});	
+		alert("안꺼지냐??..");
+		$("#stampTable").on('hide');
+	});	 
 
 	
 	// 두개의 날짜를 비교하여 차이를 알려준다.
@@ -1057,6 +985,13 @@ $(document).ready(function() {
 		}); 
 	})
 	
+	$("#reAddYES").on('click', function(){
+		let classNum = $(this).attr("classNum");
+		
+		location.href='../onedayClassView/onedayClassDetail.html?seq='+classNum;
+	});
+	
+	
 	function comma(num){
 	    let len, point, str; 
 	       
@@ -1082,14 +1017,13 @@ function spoint2(){
 	//alert(json.id);
 	let memNum = json.memNum;
 	
-	alert("spoint2");
 	stampTable(memNum, 0);
 	stampCount(memNum);
 }
 
 // 도장판을 보기위한 function
 function stampTable( memNum, pageNum ){
-	$(".hide_table").attr('class', "show_table");
+	// $(".hide_table").attr('class', "show_table");
 	
 	$.ajax({
 		url: 'http://localhost:3000/myStampList',
@@ -1124,7 +1058,7 @@ function stampTable( memNum, pageNum ){
 			
 			$(".stamp_Table").append(table);
          	
-			
+			$("#stampTable").modal('show');
 		},
 		error: function () {
 			alert('error');
@@ -1132,7 +1066,7 @@ function stampTable( memNum, pageNum ){
 	});
 }
 
-//글의 총수를 취득
+//도장의 총수를 취득
 function stampCount(memNum) {
 	
 	$.ajax({
@@ -1202,7 +1136,7 @@ function loadPage( memNum, totalCount  ) {
 	$("#_myClass").click(function(){
 		$(".mainView").hide();
 		$("#_myLikeClassView").hide();
-		$('#_myClass').css('color', 'green');
+		$('#_myClass').css('color', 'blue');
 		$('#_mySchedules').css('color', 'black');
 		$('#_myLikeClass').css('color', 'black');
 		$(".mainView2").show();
@@ -1286,17 +1220,35 @@ function getMyClassList() {
 				} else {
 					
 					$.each(list, function (i, val) {
+						let oldRegNum = val.oldRegNum;
+						let newRegNum = val.newRegNum;
+						let bedge = "";
+						
+						if(oldRegNum != newRegNum){
+							bedge = "<span class='classBedge'>!</span>";							
+						}else{
+							bedge = "<div style='width: 16px;'></div>";
+						}
+						
+						let btn = "";
+						if(val.del != 1){
+							btn = "<button class='btn btn-danger myClassStop' val='"+val.classNum+"'>중단</button>";
+						}else{
+							btn = "<button class='btn btn-warning myClassStart' val='"+val.classNum+"'>재개</button>";
+						}
+						
 						classInfo += "<div class='d-flex flex-row pt-2 line'>"
+								+ bedge
 								+ "<div>" + val.startDate.substring(0,10) + "<br>" +val.endDate.substring(0,10)+"</div>"
 								+ "<div class='progress vertical-progress'>"
-								+ "<div class='_dot' id='dot'></div>"
+								+ "<div class='_dot' id='clsDot'></div>"
 								+ "</div>"
 								+ "<div class='ufcTitle'><a href='#' class='classDetailClick' val='"+val.classNum+"'>"
 								+ "<span class='text-info a_cStatus'>" + val.title + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
-								+ "</span></a>"
-								+ "<a href='#' class='myClassEdit' val='"+val.classNum+"'><span class='text-primary a_cStatus'>수정</span></a>"
-								+ "<a href='#' class='myClassStop' val='"+val.classNum+"'><span class='text-danger a_cStatus'>중단</span></a>"
-								+ "<a href='#' class='myClassCheck' val='"+val.classNum+"'><span class='text-success a_cStatus'>바로가기</span></a></div>"					
+								+ "</span></a><br>"
+								+ "<button class='btn btn-success myClassEdit' val='"+val.classNum+"'>수정</button>"
+								+ btn
+								+ "<button class='btn btn-secondary myClassCheck' val='"+val.classNum+"'>바로가기</button></div>"					
 							
 					  + "</div>";
 								
@@ -1314,23 +1266,80 @@ function getMyClassList() {
 }	
 //내가 개설한 클래스 목록에서 바로가기 클릭시...
 $(document).on("click", ".myClassCheck", function () { 
-
-	//	alert("클래스로 이동");
-		let classNum = $(this).attr("val");
-		location.href = "../onedayClassView/onedayClassDetail.html?seq="+classNum;
+	$("#modalContent").text("해당 클래스로 이동하시겠습니까?");
+	$('.btn_yes').attr("id", "myClassCheck");
+	let classNum = $(this).attr("val");
+	
+	$("#myClassCheck").on('click', function(){
+		location.href = "../onedayClassView/onedayClassDetail.html?seq="+classNum; 
 	});
+	
+	$("#tScheduleModal").modal('show');
+	
+	//	alert("클래스로 이동");
+	/* 
+	let classNum = $(this).attr("val");
+	location.href = "../onedayClassView/onedayClassDetail.html?seq="+classNum; 
+	*/
+});
+
+
 //내가 개설한 클래스 목록에서 수정 클릭시...
 $(document).on("click", ".myClassEdit", function () { 
-
-	//	alert("수정");
+		$("#modalContent").text("수정 화면으로 이동하시겠습니까?");
+		$('.btn_yes').attr("id", "myClassEdit");
+		
 		let classNum = $(this).attr("val");
-		location.href = "../onedayClassView/onedayClassUpdate.html?seq="+classNum;
+		
+		$("#myClassEdit").on('click', function(){
+			location.href = "../onedayClassView/onedayClassUpdate.html?seq="+classNum;
+		});
+		
+		$("#tScheduleModal").modal('show');
+	//	alert("수정");
+		/* 
+		let classNum = $(this).attr("val");
+		location.href = "../onedayClassView/onedayClassUpdate.html?seq="+classNum; 
+		*/
 
+});
+//내개 개설한 클래스 목록에서 재개 클릭시...
+$(document).on("click", ".myClassStart", function(){
+	$("#modalContent").html("수업 재개를 위해 수정 화면으로 <br>이동하시겠습니까?");
+	$('.btn_yes').attr("id", "myClassStart");
+	
+	let classNum = $(this).attr("val");
+	
+	$("#myClassStart").on('click', function(){
+		location.href = "../onedayClassView/onedayClassUpdate.html?seq="+classNum;
 	});
+	
+	$("#tScheduleModal").modal('show');
+});
 //내가 개설한 클래스 목록에서 중단 클릭시...
 $(document).on("click", ".myClassStop", function () { 
-		let classNum = $(this).attr("val");
-		let del = confirm('정말 중단하곘습니까?');
+	$("#modalContent").text("정말 중단 하시겠습니까?");
+	$('.btn_yes').attr("id", "myClassStop");
+	let classNum = $(this).attr("val");
+	
+	$("#myClassStop").on('click', function(){
+		$.ajax({
+			url:"http://localhost:3000/onedayClassDelete",
+			type:"post",
+			data:{classNum:classNum},
+			success:function( result ){
+				if(result)
+				alert('성공적으로 중단 되었습니다');
+				location.reload();
+			},
+			error:function(){
+				alert('myClassStop ajax error');
+			}
+		});
+	});
+	
+	$("#tScheduleModal").modal('show');
+	/* 
 		if(del){
 			$.ajax({
 				url:"http://localhost:3000/onedayClassDelete",
@@ -1338,14 +1347,16 @@ $(document).on("click", ".myClassStop", function () {
 				data:{classNum:classNum},
 				success:function( result ){
 					if(result)
-						alert('성공적으로 중단 되었습니다');
+					alert('성공적으로 중단 되었습니다');
+					location.reload();
 				},
 				error:function(){
 					alert('myClassStop ajax error');
 				}
 			});
 		}
-	});
+ 	*/
+});
 	
 //내가 개설한 클래스를 클릭시 디테일부분에 뿌려지는 내 클래스 수강생 신청인 정보 목록
 $(document).on("click", ".classDetailClick", function () { 
@@ -1357,19 +1368,16 @@ $(document).on("click", ".classDetailClick", function () {
 			type:"get",
 			data:{classNum:classNum},
 			success:function( list ){
-				alert('success');
 				$(".pInfo").remove();
-
-				
-				
+			
 				let ppp="<tbody class='pInfo'>";
 				$.each(list, function(i,val){
 					/* let month = val.rdate.substring(5,7);
 					let day = val.rdate.substring(8,10); */
-					ppp += "<tr><td>"+val.rdate.substring(0,10)+"</td>"
-						+ "<td> <img src='" + val.profilePic + "' alt='' width='50' height='50' class='myPageProfile'>"
-						+ "<b>" + val.name + "("+val.nickName+")</b>" + val.email + "</td><td>"+val.participants+"</td>"
-			  			 + "</tr>";
+					ppp += "<tr class='classMemCon'><td class='classMemDate'>"+val.rdate.substring(0,10)+"</td>"
+						+ "<td style='padding-left: 80px;'> <div style='float:left'><img src='" + val.profilePic + "' alt='' class='classMemProfile'></div>"
+						+ "<div style='float:left'><div class='classMemNic'>" +val.nickName+ "</div><div class='classMemEma'>" + val.email + "</div></div></td><td>"+val.participants+"</td>"
+			  			+ "</tr>";
 				});
 				ppp += "</tbody>";
 			$(".pppInfoTable").append(ppp);
@@ -1383,6 +1391,122 @@ $(document).on("click", ".classDetailClick", function () {
 	});
 </script>
 
+<script>	 
+//------- Like Class 처리 ---------
+let log = sessionStorage.getItem("login");
+let log2 = JSON.parse(log); // String -> json 
+let memNum = log2.memNum;
 
+getLikeClass(0); 
+getLikeClassCount();
+function getLikeClass(pNumber){
+	$.ajax({
+		url:"http://localhost:3000/getLikeClassList",  
+		type:"post",
+		data:{ page:pNumber, memNum:memNum },
+		success:function( data ){
+
+			//페이징 클릭 시 이전에 불러온 테이블은 지우고 다시 시작하기 
+ 			$(".MLC_trContent").remove();			
+			                      //index, 변수
+			$.each(data, function (i, item) {
+				let app = "";
+					app = "<tr class='MLC_trContent'>" +
+						  	"<td>"+
+								"<div style='float:left'>"+
+									"<img src=" + item.profilePic +" class='MLC_proFile'>"+ 
+								"</div>"+
+								"<div style='float:left'>" + 
+									"<div class='MLC_nameTxt'>"+ item.instructor +"</div>"+ 
+									"<div class='MLC_mailTxt'>"+ item.email +"</div>"+ 
+						 		"</div>"+
+								"</td>"+
+								"<td class='MLC_titleTxt MLC_titleInput' onclick='goLikeClassDetail("+item.classNum+")'>"+ item.title +"</td>"+
+								"<td class='MLC_titleTxt ' id='MLC_categoryInput'>"+item.primaryCategory+"</td>"+
+								"<td class='MLC_titleTxt'>"+
+									"<i class='fas fa-star' style='color: red;'></i>"+
+									"<span id='MLC_gradeInput'>"+item.avgPoint+"</span>"+ 
+								"</td>"+
+								"<td class='MLC_pointTxt'>"+
+									"<i class='fas fa-coins'></i>"+
+									"<span id='MLC_pointInput'>"+item.price+"</span>"+
+								"</td>"+
+							"</tr>"					
+				$("#_MLC_table").append(app);	
+			});		 
+		},
+		error:function(){
+			alert('getLikeClassList ajax error');
+		}
+	});
+}
+
+
+// 글의 총 수 
+function getLikeClassCount(){
+	$.ajax({
+		url:"http://localhost:3000/getLikeClassCount",
+		type:"post",
+		data:{memNum:memNum},
+		success:function( count ){
+			// alert(count);
+			loadPages(count); 
+		},
+		error:function(){
+			alert('getLikeClassCount ajax error');
+		}		
+	});
+}
+
+
+//페이징 처리 
+function loadPages( totalCount ){
+	let pageSize = 5;		
+	let nowPage = 1;	
+
+	//총 페이지의 수
+ 	let totalPage = totalCount / pageSize;
+	if(totalCount % pageSize > 0){
+		totalPage++;
+	}
+
+	// 페이지 초기화 : 검색 시 이전 값을 지워주기 위함
+	$("#pagination2").twbsPagination('destroy');
+	
+	//페이지 설정	
+	$("#pagination2").twbsPagination({
+		totalPages: totalPage,
+		visiblePages: pageSize,
+		first:'<span sria-hidden="true">«</span>',
+		prev:"PREV",
+		next:"NEXE",
+		last:'<span sria-hidden="true">»</span>',
+		initiateStartPageClick:false, // 처음 로드 시 onPageClick 자동 실행되지 않도록
+		
+		//클릭시 페이지를 바꿔라
+		onPageClick:function(event, page){
+			nowPage = page;
+			getLikeClass(page-1);
+		}
+	}); 
+}
+
+$("#_myLikeClassView").hide();
+$("#_myLikeClass").click(function(){
+	$("#calendar").hide();
+	$(".mainView").hide();
+	$(".mainView2").hide();
+	$('#_myLikeClass').css('color', 'blue');
+	$('#_mySchedules').css('color', 'black');
+	$('#_myClass').css('color', 'black');
+	
+	$("#_myLikeClassView").show();
+});
+
+
+function goLikeClassDetail(seq){
+	location.href='../onedayClassView/onedayClassDetail.html?seq='+seq;
+}
+</script>
 </body>
 </html>

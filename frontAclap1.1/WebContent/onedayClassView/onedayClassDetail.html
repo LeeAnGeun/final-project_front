@@ -76,9 +76,13 @@ let seq = urlParams.seq
 $("#_goBack").on("click", function(){
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
-	const priCate = urlParams.get('cate');
+	let priCate = urlParams.get('cate');
 	const ssseq = urlParams.get('seq');
-	alert(priCate);
+	
+	if(priCate==null){
+		priCate = "";
+	}
+	
 	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
 });
 

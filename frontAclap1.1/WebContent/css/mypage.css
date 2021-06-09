@@ -136,6 +136,10 @@ h2.aclap:nth-child(2) {
     cursor: pointer;
 }
 
+.spoint2:hover{
+	color: blue;
+}
+
 .spoint3{
 	float: right;
     width:30%;
@@ -147,31 +151,18 @@ h2.aclap:nth-child(2) {
     text-align: center;
 }
 
-.hide_table{
-	opacity: 0;
-   	visibility: hidden;
-}
-
-.show_table{
-	opacity: 1;
-    visibility: visible;
-}
 
 .stamp_Modal_Table{
+	margin-top: 300px;
 	position: absolute;
- 	left:36.5% !important;
-	top:35% !important;   
-
 	z-index:1; 	
 	padding: 1rem 1.5rem;
 	background-color:white;
-	width: 30vw;
 	height: 28vh;
 	border-radius: 0.5rem;
 	text-align:center;
-	box-shadow: 3px 2px 5px #66676B;
 }
-
+ 
 .stamp_Table{
 	margin-top: 25px;
 	margin-bottom: 5px;	
@@ -210,7 +201,7 @@ h2.aclap:nth-child(2) {
 }
 
 .a_navbar{
-	margin-top: 200px;
+	margin-top: 210px;
 }
 .mdot{
 	padding-top: 15px
@@ -239,6 +230,7 @@ h2.aclap:nth-child(2) {
 	max-height:60px;
 	object-fit: cover;
 }
+
 #newprofile{
 	height:150px;
 	width:150px;
@@ -696,6 +688,7 @@ hr.new1 {
 	max-width: 1000px;
 	margin: 0px auto;
 	position: relative;
+	padding-bottom: 30px;
 }
 
 #script-warning {
@@ -798,10 +791,6 @@ hr.new1 {
 }
 .active a{
 	color:black;
-}
-
-.ufcTitle{
-	padding-top: 12px;
 }
 
 /* cancle 모달 */
@@ -945,5 +934,160 @@ div.canclelogo h2.canclelogoAclap:nth-child(2) {
 		);
 	}
 }
+/* 태민 스케줄 css */
+.ufcTitle{
+	padding-top:  5px;
+	padding-left: 40px;
+}
 
+.schdulelist2{
+	position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+}
+.myClassEdit{
+	font-size: 8px;
+    padding: revert;
+    margin-left: 10px;
+}
+
+.myClassStop{
+	font-size: 8px;
+    padding: revert;
+    margin-left: 5px;
+}
+
+.myClassStart{
+	font-size: 8px;
+	color: #fff;
+    padding: revert;
+    margin-left: 5px;
+}
+
+.myClassCheck{
+	font-size: 8px;
+    padding: revert;
+    margin-left: 5px;
+}
+
+.b_info2{
+	height: 500px;
+	overflow: scroll;
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.b_info2::-webkit-scrollbar{
+	display: none; /* Chrome, Safari, Opera*/
+}
+
+.classBedge{
+	background: #fa623f;
+    border-color: #fa5a35;
+    background-image: linear-gradient(to bottom, #fc9f8a, #fa623f);
+    height: 16px;
+    padding: 0 5px;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-shadow: 0 1px rgb(0 0 0 / 25%);
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgb(255 255 255 / 30%), 0 1px 1px rgb(0 0 0 / 8%);
+    font-size: 75%;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#clsDot{
+	left: 128px;
+    margin-top: 18px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    background: rgb(21, 90, 194);
+}
+.classMemTi{
+	height:50px;
+	background-color:#7a7a7a;
+	color:white;
+}
+.classMemCon{
+	height:70px;
+	font-size:20px;
+}
+.classMemCon:hover{
+	background-color:#ececec;
+}
+.classMemDate{
+	font-size: 15px;
+}
+.classMemProfile{
+	margin-top:3px;
+	border-radius: 25px;
+	height:45px;
+	width:45px;
+	object-fit: cover;
+}
+.classMemNic{
+	font-size:20px;
+	text-align: left;
+	margin-left:10px;
+}
+.classMemEma{
+	font-size:12px;
+	margin-left:10px;
+}
+/* 
+.MLC_teacher{
+	padding-left:15px;
+	width:250px;
+}
+.MLC_title{
+	width:600px;
+	padding-left:15px;
+}
+.MLC_category{
+	width:160px;
+	padding-left:15px;
+}
+.MLC_grade{
+	width:100px;
+	padding-left:15px;
+}
+.MLC_point{
+	width:120px;
+	padding-left:15px;
+}
+.MLC_proFile{
+	margin-top:3px;
+	margin-left:15px;
+	border-radius: 25px;
+	height:45px;
+	width:45px;
+	object-fit: cover;
+}
+.MLC_nameTxt{
+	font-size:20px;
+	margin-left:10px;
+}
+.MLC_mailTxt{
+	font-size:12px;
+	margin-left:10px;
+}
+.MLC_titleTxt{
+	padding-left:15px;
+}
+.MLC_pointTxt{
+	padding-left:15px;
+}
+.MLC_titleInput:hover{
+	cursor: pointer;
+} */
 
