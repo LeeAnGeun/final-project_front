@@ -316,12 +316,13 @@
 
 /*----- 리뷰 -----*/
 .reviewBox{
-  margin-bottom:5px;
-  height: 210px;
-  padding: 10px;
-  display: flex; 
-  justify-content: space-between; 
-  overflow:hidden;
+	overflow-y:auto; overflow-x:hidden;
+	margin-bottom:5px;  
+	height: 170px;  
+	padding: 10px;
+    display: flex; 
+	justify-content: space-between; 
+	overflow:hidden;
 }
 .reviewItem{
 	width:560px;
@@ -330,6 +331,7 @@
 	padding-top:5px;
 }
 .reviewImg{
+	margin-left: 30px;
 	border-radius:50%;
 	object-fit: cover;
 	width:55px;
@@ -347,7 +349,10 @@
 	
 }
 .reviewContent{
-	padding-top:10px;
+	margin-left: 30px;
+	margin-right: 30px;
+	
+	
 }
 .reviewModalBtn{
 	margin-top:30px;
@@ -376,23 +381,23 @@
 	position:fixed;
  	top:120px;
 	left:760px; 
-	border-radius:20px;
-	box-shadow: 3px 2px 5px #66676B;
-	background-color:#F5F2F5;
+	border-radius:20px;	
+	background-color:#FAFAFA;
 	height:660px;
-	width:500px;
+	width:600px;
+
 }
 .review_modal_close{
 	font-size:30px;
-	color:gray;
+	color:#585858;
 	float:right;
 	padding-right:10px;
 	padding-top:10px;
 }
 .review_Modal_Content{
 	height:600px;
-	width:400px;
-	background-color:#F5F2F5;
+	width:600px;
+	background-color:#FAFAFA;
 	overflow: scroll;
 }
 .review_modal_close:hover{
@@ -411,8 +416,9 @@
 
 /*-----리뷰 모달창 수정삭제 버튼------*/
 .rBtn{
+	margin-top:10px;
 	float: right;
-    margin-right: 10px;
+    margin-right: 20px;
 	
 }
 
@@ -1026,7 +1032,6 @@ div.OCSubmitBtn:hover {
 	font-size: 5px;
 }
 .ratingAvg{
-	margin-top: 5px;
 	font-size: 15px;
 	font-family: 'Nanum Gothic Coding', monospace;
 }
@@ -1218,9 +1223,16 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 	animation: animate 4s ease-in-out infinite;
 }
  .rImg{
-	width: 130px;
-	height: 130px;
+ 	margin-bottom 10px;
+ 	margin-top: 10px;
+ 	margin-left: 30px;	
+	width: 140px; 
+	height: 140px;
+	object-fit: cover;    
+
 }
+
+
 
 
 @keyframes animate {
@@ -1403,4 +1415,13 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 	font-size:45px;
 	position:relative;
 	top:-14px;
+}
+
+/*뒤로가기 버튼*/
+#_goBack{
+	position: fixed;	
+    margin-top: 70px;
+    margin-left: 50px;
+	
+	
 }
