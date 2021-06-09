@@ -168,7 +168,7 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable {
 }
 
 div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
-	color: #00E676;
+	color: #088A4B;
 	cursor: pointer;
 }
 
@@ -516,7 +516,7 @@ div.header nav.topMenu div.menuTop2 ul.navListTop li.listItem a.hoverable:hover{
 	padding: 1rem 1.5rem;
 	background-color:white;
 	width: 380px;
-	height: 420px;
+	height: 410px;
 	border-radius: 0.5rem;
 	text-align:center;
 	box-shadow: 3px 2px 5px #66676B;
