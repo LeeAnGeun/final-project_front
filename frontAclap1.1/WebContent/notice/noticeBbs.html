@@ -3,18 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- jquary -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <!-- bootsrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- jquary -->
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script> 
-
 <script type="text/javascript">
 	$("#naviBar").load("../navibar.html");
 	$("#footer").load("../footer.html");
 </script>
 
 <style type="text/css">
+@font-face {
+     font-family: 'S-CoreDream-6Bold';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+@font-face {
+    font-family: 'GongGothicLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ @font-face {
+    font-family: 'ELAND_Choice_M';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .transition, ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after, p.acP {
   transition: all 0.25s ease-in-out;
 }
@@ -48,12 +65,14 @@ div.acBigBody {
 
 div.acTitleD {
 	width: 100%;
-	height: 100px;
+	height: 70px;
 	position: relative;
 	float:left;
 	margin-top: 100px;
-	margin-left: 200px;
+	font-size:70px;
+	text-align:center;
 }
+
 div.acBigBody div.acBody {
   min-height: 0;
   display: inline-block;
@@ -63,7 +82,7 @@ div.acBigBody div.acBody {
   transform: translate(-50%, 0);
   box-shadow: 0 10px 0 0 #ff6873 inset;
   background-color: #fefffa;
-  max-width: 500px;
+  max-width: 800px;
   padding: 30px;
   position: relative;
 }
@@ -79,21 +98,23 @@ div.acBigBody div.acBody {
 }
 
 h1.acNT, h2.acNT2 {
-  color: #ff6873;
+  color: #FF9974;
 }
 
 h1.acNT {
+  font-family:S-CoreDream-6Bold;
   text-transform: uppercase;
-  font-size: 36px;
-  line-height: 42px;
-  letter-spacing: 3px;
+  font-size: 70px;
+/*   line-height: 42px;
+ */  letter-spacing: 3px;
   font-weight: 100;
 }
 
 h2.acNT2 {
-  font-size: 26px;
+font-family:GongGothicLight;
+  font-size: 25px;
   line-height: 34px;
-  font-weight: 300;
+ /*  font-weight: 200; */
   letter-spacing: 1px;
   display: block;
   background-color: #fefffa;
@@ -102,6 +123,8 @@ h2.acNT2 {
 }
 
 p.acP {
+
+  font-family:ELAND_Choice_M;
   color: rgba(48, 69, 92, 0.8);
   font-size: 17px;
   line-height: 26px;
@@ -111,7 +134,8 @@ p.acP {
   max-height: 800px;
   opacity: 1;
   transform: translate(0, 0);
-  margin-top: 14px;
+  margin-top: 25px;
+  margin-botton: 10px;
   z-index: 2;
 }
 
@@ -126,8 +150,8 @@ ul.acUlist li.acLi {
   position: relative;
   padding: 0;
   margin: 0;
-  padding-bottom: 4px;
-  padding-top: 18px;
+  padding-bottom: 10px;
+  padding-top: 25px;
   border-top: 1px dotted #dce7eb;
 }
 ul.acUlist li.acLi:nth-of-type(1) {
@@ -151,7 +175,7 @@ ul.acUlist li.acLi i {
 ul.acUlist li.acLi i:before, ul.acUlist li.acLi i:after {
   content: "";
   position: absolute;
-  background-color: #ff6873;
+  background-color: #545A78;
   width: 3px;
   height: 9px;
 }
@@ -217,49 +241,59 @@ ul.acUlist li.acLi input[type=checkbox]:checked ~ i:after {
 
 <div id='naviBar'></div>
 <div class="acBigBody">
+<!-- 
 <div class="acTitleD"><h1 class="acTitle">FAQ</h1></div>
+ -->
+<br><br><br><br><br>
 <div class="acBody">
 <h1 class="acNT">자주묻는 질문</h1>
 <ul class="acUlist">
   <li class="acLi">
     <input type="checkbox" checked>
     <i></i>
-    <h2 class="acNT2">환불정책</h2>
-    <p class="acP">클래스 신청, 결제일 이후 당일 클래스 시작 하루전까지 전액환불가능, 당일취소의 경우 전액환불이 어려우시며 클래스 시작 3시간전까지 50%환불가능합니다. 그이후에는 환불 불가합니다.</p>
+    <h2 class="acNT2">Q1. 환불 정책이 어떻게 되나요?</h2>
+    <p class="acP">
+   	 클래스 결제일 이후 당일 클래스 시작 이틀전까지 전액 환불 가능하며, <br>
+        그 후에는 환불이 불가능합니다.
+    </p>
   </li>
   <li class="acLi">
     <input type="checkbox" checked>
     <i></i>
-    <h2 class="acNT2">포인트 적립은 어떻게 할 수 있나요?</h2>
-    <p class="acP">[포인트 적립 방법]<br>
-		1.수강 중 주어지는 "미션완료"시 미션완료 격려 포인트 : 2,000 P (한 클래스당 1일 1회)<br>
-		2. 좋아요 누르기 : 500P (한 클래스당 1일 1회)<br>
-		[포인트 유의 사항]<br>
-		ㅁ 포인트의 유효기간은 적립일로부터 1년 입니다.<br>
-		ㅁ 한번 사용하신 포인트는 철회가 불가능 합니다.<br>
-		ㅁ 계정정보 이전시에 포인트 이전은 불가능 합니다.</p>
+    <h2 class="acNT2">Q2. 포인트 적립은 어떻게 할 수 있나요?</h2>
+    <p class="acP">
+    <b>[포인트 적립 방법]</b><br>
+    1. 로그인 후 우측 상단에 프로필 사진 클릭 하면 포인트를 충전 하실수 있습니다(카카오페이)<br>
+    2. 포인트는 충전 금액과 동일합니다.<br>
+    3. 이벤트에 참여하시면 무료로 포인트를 지급받을 수 있습니다.<br><br>
+	
+	<b>[포인트 유의 사항]</b><br>
+	1. 한번 사용하신 포인트는 철회가 불가능 합니다.<br>
+	2. 계정정보 이전 시 포인트 이전은 불가능 합니다.<br>
+	3. 한번 충전한 포인트는 환불이 불가능합니다.</p>
   </li>
   <li class="acLi">
     <input type="checkbox" checked>
     <i></i>
-    <h2 class="acNT2">수강증,영수증 발급</h2>
-    <p class="acP">a. [마이페이지] - 빨간색 [주문상세보기] 버튼 클릭<br>
-		b. [영수증 출력] 버튼 클릭<br>
-		c. 결제 정보 입력하면 영수증 발급 완료 됨 </p>
+    <h2 class="acNT2">Q3. 수강증, 영수증 발급은 어떻게 하나요?</h2>
+    <p class="acP">
+     1. [마이페이지] - [S.Scadule] 버튼을 클립합니다.<br>
+	 2. 출력하고 싶은 참여 클래스를 선택합니다.<br>
+	 3. 결제내역을 클릭한 후 영수증을 저장합니다 </p>
   </li>
   <li class="acLi">
     <input type="checkbox" checked>
     <i></i>
-    <h2 class="acNT2">구매한 클래스가 확인되지 않아요!</h2>
-    <p class="acP">결제한 클래스가 보이지 않는 경우
-				먼저 아래 요청드리는 두 가지를 꼬~옥! 확인해주세요.<br>
-				<b>
-				1. 현재 로그인 되어있는 상태인지 확인하기<br>
-				2. 결제한 계정으로 로그인 한 상태인지 확인하기</b></p>
+    <h2 class="acNT2">Q4. 구매한 클래스가 확인되지 않아요!</h2>
+    <p class="acP">
+       결제한 클래스가 보이지 않는 경우 아래 요청드리는 두 가지를 확인해주세요.<br>
+	<b>
+	1. 현재 로그인 되어있는 상태인지 확인하기<br>
+	2. 결제한 계정으로 로그인 한 상태인지 확인하기</b></p>
   </li>
-  
 </ul>
 </div>
+<br><br>
 </div>
 <div id='footer'></div>
 <script type="text/javascript">
