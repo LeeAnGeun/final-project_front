@@ -1852,6 +1852,7 @@ $.ajax({
 getListReviewSibal()
 // ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
 function getListReviewSibal(){
+
 $.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
@@ -2030,11 +2031,11 @@ function reviewDel(reviewSeq){
 		//	alert(count);
 			if(count == true){
 			
-				alert('true');
+			//	alert('true');
 				$(".reviewBtn").show();
 			}else{
 
-				alert('false');
+			//	alert('false');
 				$(".reviewBtn").hide();
 			}
 		},
