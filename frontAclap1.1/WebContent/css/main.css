@@ -41,19 +41,20 @@ div.midClassMenu ul.navListTop2 li.listItem2 {
     width: 120px;
     line-height: 40px;
     border: none;
-    font-size: 20px;
-   
+    font-size: 20px;   
     display:inline-block;
 }
 div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA{
-	 display: block;
+	display: block;
     color: black;
     text-decoration: none;
     width: 180px;
+   
 }
 
 div.midClassMenu ul.navListTop2 li.listItem2 a.categoryA:hover{
-	color: #00E676;
+	font-size:30px;
+	color: #6E6E6E;
 	cursor: pointer;
 }
 
