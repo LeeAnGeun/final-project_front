@@ -353,6 +353,10 @@ h2.aclap:nth-child(2) {
 	padding: 10px;
 }
 
+#_searchSchedules{
+		margin-left: 10px;
+}
+
 @media(min-width:992px) {
     #profile {
         width: 75px;
