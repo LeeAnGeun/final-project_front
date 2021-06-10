@@ -354,7 +354,19 @@ h2.aclap:nth-child(2) {
 }
 
 #_searchSchedules{
-		margin-left: 10px;
+	margin-left: 10px;
+}
+
+.memListDate{
+	color: #6c757d!important;
+	margin-left: 170px;
+	padding: .5rem;
+	border-radius: .25rem;
+	border: 1px solid #dee2e6;
+}
+
+#_searchMemList{
+	margin-left: 10px;
 }
 
 @media(min-width:992px) {
@@ -420,6 +432,10 @@ h2.aclap:nth-child(2) {
     .view {
         height: 500px;
         margin-top: 5%
+    }
+    .view2 {
+        height: 500px;
+        margin-top: 2%
     }
 }
 
@@ -487,6 +503,10 @@ h2.aclap:nth-child(2) {
     }
 
     .view {
+        height: 340px;
+        margin-top: 2%
+    }
+    .view2 {
         height: 340px;
         margin-top: 2%
     }
@@ -577,6 +597,10 @@ h2.aclap:nth-child(2) {
     }
 
     .view {
+        height: 280px;
+        margin-bottom: 10px
+    }
+     .view2 {
         height: 280px;
         margin-bottom: 10px
     }
@@ -945,6 +969,7 @@ div.canclelogo h2.canclelogoAclap:nth-child(2) {
 }
 
 .schdulelist2{
+	height: 500px;
 	position: relative;
     overflow: scroll;
     overflow-x: hidden;
