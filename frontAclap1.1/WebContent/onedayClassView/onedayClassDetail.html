@@ -1541,9 +1541,44 @@ function addressSearch(location){
 // 리뷰 모달 창 컨트롤
 $(".reviewModalBtn").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
+	 $('body').css("background-color","rgba(0, 0, 0, 0.5)");
+	 $('.classApplicatoinBox').css({"background-color":"rgba(0, 0, 0, 0.02)", "border":"none"});
+	 $('.allScheduleModalBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.caSelectBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.decrease').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('#maxMember').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.increase').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('#map').css("opacity","0.2");
+	 $('#br-widget').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.reviewModalBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.detailViewClassContainer').css("opacity","0.2");
+	 $('.detailViewQuestContainer').css("opacity","0.2");
+	 $('.ratingAvg').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.carousel-item active').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.reviewBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.fa-star').css("color","gray"); // 별 빨강색 -> 회색으로 
+//	 $('.br-readonly ').css("color","#d2d2d2"); // 리뷰 별점 회색으로
+	 
+	
 });
 $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
+	 $('body').css("background-color","rgba(0, 0, 0, 0)");
+	 $('.classApplicatoinBox').css({"background-color":"", "border":""});
+	 $('.allScheduleModalBtn').css("background-color","");
+	 $('.caSelectBtn').css("background-color","");
+	 $('.decrease').css("background-color","");
+	 $('#maxMember').css("background-color","");
+	 $('.increase').css("background-color","");
+	 $('#map').css("opacity","1");
+	 $('#br-widget').css("background-color","");
+	 $('.reviewModalBtn').css("background-color","");
+	 $('.detailViewClassContainer').css("opacity","1");
+	 $('.detailViewQuestContainer').css("opacity","1");
+	 $('.ratingAvg').css("background-color",")");
+	 $('.carousel-item active').css("background-color","");
+	 $('.reviewBtn').css("background-color","");
+	 $('.fa-star').css("color","red"); // 별 빨강색 -> 회색으로 
 });
 
 
@@ -1556,7 +1591,7 @@ $(".onedayClassImageBoxA").click(function(){
       if(modalCheck){
          $(".image_hide_modal").toggleClass("image_show_modal");   
          $(".image_hide_modal").show();
- 	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+   	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
  	 	 $('.detailViewQuestContainer').css("opacity","0.1");
 	     $('.detailViewClassContainer').css("opacity","0.1");
 	     $('.onedayClassImageBoxA').css("opacity","0.1");
@@ -1912,8 +1947,7 @@ $.ajax({
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){ 	
-	 		// 삭제한 리뷰 갯수 안보여야 함.................
-
+	 		
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 	 //		$("#starGradeCount").html("("+Object.keys(list).length+")")		// 리뷰갯수
 	 //		alert( Object.keys(list).length + "개");
@@ -2153,6 +2187,8 @@ function DetailShare(){
 	$(".DetailShareBtn").attr('data-clipboard-text', url);
 	alert('주소가 저장 되었습니다');
 };
+
+
 
 
 

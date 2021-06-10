@@ -382,7 +382,7 @@
  	top:120px;
 	left:760px; 
 	border-radius:20px;	
-	background-color:#FAFAFA;
+	background-color:#FFFFFF;
 	height:660px;
 	width:600px;
 
@@ -397,7 +397,7 @@
 .review_Modal_Content{
 	height:600px;
 	width:600px;
-	background-color:#FAFAFA;
+	background-color:#FFFFFF;
 	overflow: scroll;
 }
 .review_modal_close:hover{

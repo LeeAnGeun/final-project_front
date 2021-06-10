@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 글씨체 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-family: 'Sunflower', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 body { background-color: black; color: #fff; }
@@ -47,10 +51,15 @@ font{
 #select2{
 	color: red;
 }
+body{
+	
+    margin-top: 100px;
+	
+}
 </style>
 
 </head>
-<body>
+<body >
 <!-- jquary -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -81,7 +90,7 @@ series.data = [ {
 	"weight": 60
 }, {
 	"tag": "비지니스회화",
-	"weight": 45
+	"weight": 60
 }, {
 	"tag": "음악",
 	"weight": 70
@@ -99,10 +108,10 @@ series.data = [ {
 	"weight": 70
 }, {
 	"tag": "음료&커피",
-	"weight": 50
+	"weight": 60
 }, {
 	"tag": "한식&일식",
-	"weight": 50
+	"weight": 60
 }, {
 	"tag": "양식",
 	"weight": 80
@@ -111,7 +120,7 @@ series.data = [ {
 	"weight": 60
 }, {
 	"tag": "back-end",
-	"weight": 50
+	"weight": 60
 }, {
 	"tag": "익스트림스포츠",
 	"weight": 70
@@ -139,9 +148,9 @@ subtitle.stroke = am4core.color("white").lighten(0.5);
 var title = chart.titles.create();
 title.text = "관심사를 선택해 주세요";
 title.fontSize = 20;
-title.fontWeight = "800";
-title.fill = am4core.color("yellow").lighten(0.5);
-title.stroke = am4core.color("yellow").lighten(0.5);
+title.fontWeight = "200";
+title.fill = am4core.color("yellow").lighten(0.0);
+title.stroke = am4core.color("yellow").lighten(0.0);
 
 series.cursor = new am4charts.XYCursor();
 var hoverState = series.labels.template.states.create("hover");
@@ -274,9 +283,13 @@ function next() {
 </div>
 
 <div id ="proceed" align="center">
+<button type="button" class="btn btn-light btn-sm" id="reload" onclick="reload()">다시선택</button>
+<button type="button" class="btn btn-light btn-sm" id="next" onclick="next()">선택완료</button>
 
+<!-- 
 <input type="button" id="reload" onclick="reload()" value="다시선택">
 <input type="button" id="next" onclick="next()" value="선택완료">
+ -->
 </div>
 
 </body>
