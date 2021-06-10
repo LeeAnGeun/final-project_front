@@ -480,25 +480,24 @@
  	margin-right: 46px;
  }
 .caDate{
-	padding-top:20px;
+	padding-top:10px;
 	margin-bottom:-6px;
-	padding-left:35px;
-	font-size:20px;
+	padding-left:25px;
+	font-size:25px;
 	font-weight: 600;
 }
 .caTime{
-	padding-left:35px;
-	padding-top:2px;
-	font-size:10px;
+	padding-left:25px;
+	padding-top:10px;
+	font-size:17px;
 }
 .caMem{
-	padding-left:35px;
+	padding-left:25px;
 	padding-top:2px;
-	font-size:10px;
+	font-size:17px;
 }
 .coinNprice{
-	padding-left:35px;
-	padding-top:45px;
+	padding-left:25px;
 }
 .coin{
 	width:30px;
@@ -585,11 +584,12 @@
 }
 
 .clsSchedule{
+	background-color: #F5F2F5;
 	text-align: left;
-	margin: 10px 0px 0px 40px;
+	margin: 10px 0px 0px 90px;
 	padding-left: 30px;
-	width: 700px;
-	height: 150px;
+	width: 500px;
+	height: 130px;
 	border-radius: 20px;
 	border: 2px solid #F5F2F5;
 }
@@ -601,19 +601,23 @@
 }
 
 .csTime{
-	
+	float: left;
+	font-size: 23px;
 }
 
 .csMem{
-	
+	float: left;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 23px;
 }
 
 .csCoin{
-	
+	font-size: 23px;
 }
 
 .csPrice{
-	
+	font-size: 23px;
 }
 
 .csSelectBtn{
@@ -1418,10 +1422,47 @@ div.addChargelogo h2.addChargelogoAclap:nth-child(2) {
 }
 
 /*뒤로가기 버튼*/
-#_goBack{
-	position: fixed;	
-    margin-top: 70px;
-    margin-left: 50px;
-	
-	
+.goBack{
+	position: fixed;
+	font-size: 23px;
+    font-family: GongGothicMedium;	
+    background-color: #FAEF4D;
+	color: #000;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-shadow: #fff 1px 0 10px;
+	height: 50px;
+    width: 240px;
+	border: solid 1px #fff;
+	/* border-radius: 175px; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	top: 820px;
+    right: 60px;
+}
+
+.goBack:before{
+	content: '';
+	position: absolute;
+	background: #FAAF4D;
+	width: 0;
+	height: 0;
+	z-index: -1;
+	/* border-radius: 175px; */
+	box-shadow: 0px 0px 24px 1px rgba(224,199,224,0.2); 
+	transition: all 900ms cubic-bezier(1.000, -0.195, 0.000, 1.330);
+	transition-timing-function: cubic-bezier(1.000, -0.195, 0.000, 1.330);	
+}
+
+.goBack:hover:before{
+	width: 85%;
+	height: 85%;	
+}
+
+.goBack:active:before, .goBack:focus:before{
+	width: 100%;
+	height: 100%;
 }

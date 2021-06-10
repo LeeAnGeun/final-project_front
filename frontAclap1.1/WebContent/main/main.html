@@ -129,6 +129,18 @@ if(json == null){
 	$("#blogCrawling").remove();
 }
 
+// endDate가 지난 클래스를 del=1로 처리하는 ajax
+$.ajax({
+	url:"http://localhost:3000/updateEndClass", 
+    type:'post',
+    success: function(count){
+    	// return 괜히 했나??....
+    },
+    error: function(){
+    	alert('error');
+    }
+});
+
 </script>
 
 </body>
