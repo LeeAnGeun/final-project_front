@@ -114,6 +114,7 @@ $(document).ready(function(){
 	// 회원정보 수정 초기화 값 넣기 
 	$(document).ready(function(){
 		$("#newprofile").attr('src', json.profilePic);
+		$("#_oldProfilePic").val(json.profilePic);
 		$("#_memNum").val(json.memNum);
 		$("#newUserName").val(json.userName);
 		$("#newNickName").val(json.nickName);
@@ -249,7 +250,7 @@ $(document).ready(function(){
 						if(data>0){
 							alert('성공적으로 탈퇴 되었습니다');
 							sessionStorage.clear();
-							location.href='taeminNavi.html';
+							location.href = "../main/main.html"; 
 						}
 						else{
 							alert('회원 탈퇴 실패');

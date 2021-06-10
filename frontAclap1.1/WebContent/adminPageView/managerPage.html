@@ -38,228 +38,18 @@
 <!-- pagination -->
 <script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
 
+<!-- 커스텀 CSS -->
+<link rel="stylesheet" href="../css/managerPage.css">
+<link rel="stylesheet" href="../css/mypage.css">
+
 <script type="text/javascript">
 (function() {
 emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
 })();
 </script>
-
-<style type="text/css">
-.card mb-4{
-	width: 80%
-}	
-#layoutSidenav{
-	width: 100%;
-	height: 100vh;
-	position: relative;
-	margin: 0auto;
-	
-}
-	
-	
-#layoutSidenav #layoutSidenav_nav{
-	width: 10%;
-	height: 100%;
-	float: left;
-	position: relative;
-	/* border: dashed;
-	border-color: red; */
-}
-	
-	
-	
-#layoutSidenav #layoutSidenav_content{
-	width: 90%;
-	height: 100%;
-	float: left;
-	position: relative;
-	/* border: dashed;
-	border-color: red; */
-}
-	
-
-.sb-sidenav {
-padding-top: 200px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  flex-wrap: nowrap;
-}
-
-.sb-sidenav .sb-sidenav-menu {
-  flex-grow: 1;
-}
-.sb-sidenav .sb-sidenav-menu .nav {
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-  padding: 1.75rem 1rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link {
-  display: flex;
-  align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  position: relative;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-  font-size: 0.9rem;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
-  display: inline-block;
-  margin-left: auto;
-  transition: transform 0.15s ease;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
-  transform: rotate(-90deg);
-}
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
-  margin-left: 1.5rem;
-  flex-direction: column;
-}
-.sb-sidenav .sb-sidenav-footer {
-  padding: 0.75rem;
-  flex-shrink: 0;
-}
-
-.sb-sidenav-dark {
-  background-color: #212529;
-  color: rgba(255, 255, 255, 0.5);
-}
-.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
-}
-.table-responsive::-webkit-scrollbar{
-	display: none; /* Chrome, Safari, Opera*/
-}
-div.mainTable{
-	width: 100%;
-	height: 80%;
-	position: relative;
-	float: center;
-	
-}
-table.customTable {
-  width: 70%;
-  background-color: #FFFCE6;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  color: #000000;
-  margin: auto;
- 
-}
-
-table.customTable td, table.customTable th {
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  padding: 5px;
-}
-
-table.customTable thead {
-  background-color: #F8EB95;
-}
-
-
-
-
-
-
-div.mainTable{
-
-	height: 80%;
-	position: relative;
-	float: center;
-	
-}
-table.customTable {
-  width: 70%;
-  background-color: #FFFCE6;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  color: #000000;
-  margin: auto;
- 
-}
-
-table.customTable td, table.customTable th {
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  padding: 5px;
-}
-
-table.customTable thead {
-  background-color: #F8EB95;
-}
-
-
-
-#noticeCheckCheck{
-    display: none;
-    width: 100vw;
-    margin-left: 80px;
-    position: relative;
-}
-
-#layoutSidenav_content{
-	display: none;
-}
-
-.delClass{
-	background-color:white;
-	border:none;
-}
-.reStartClass{
-	background-color:white;
-	border:none;
-}
-.delClass:hover{
-	background-color:#F6F1EF;
-}
-.reStartClass:hover{
-	background-color:#F6F1EF;
-}
-.goD:hover{
-	cursor: pointer;
-	background-color:#F6F1EF;
-}
-
-</style>
 </head>
 
 <body>
-
-
 <div id='naviBar'></div>
 
 <!-- 왼쪽 네비바 -->
@@ -459,6 +249,54 @@ table.customTable thead {
     </div>
 </div>	
 
+<!-- 회원정보수정 Modal 2 (정보 입력 View) -->
+<div class="modal fade" id="memberUpdateModal">
+  <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">회원정보 수정</h4>
+       </div>        
+       <div class="modal-body">
+       
+       <form id='myPageUserUpdate'>
+        <input type='hidden' name='memNum' id='_memNums'>
+        <input type='hidden' name='oldProfilePic' id='_oldProfilePic'>
+        <input type='hidden'  id='_checkNname'>
+       
+       	<label for="profile" class='updateFont'>Profile</label> 
+       	<br style='padding-bottom:1px'>
+	   	<input type="file" name="fileload" class="profile2" id="_profilePic" style="display: none" >	            
+	    <label for="_profilePic"> 
+	   	<img id="newprofile" class="profile">
+	    </label>
+	    <br>        
+	    
+        <label class='updateFont'>UserName</label>
+        <input type='text' class="form-inline newInput" name='userName' id='newUserName' size='60px'>
+         
+       	<label class='updateFont'>NickName</label>
+        <input type='text' class="form-inline newInput" name='nickName' id='newNickName' size='60px'>
+                 
+       	<label class='updateFont'>Email</label>
+        <input type='text' class="form-inline holdInput" name='email' id='originalEmail' size='60px' readonly>
+  
+       	<label class='updateFont'>Password</label>
+        <input type='password' class="form-inline newInput" name='pwd' id='newPwd' size='60px'>
+         
+        <label class='updateFont'>Confirm Password</label>
+        <input type='password' class="form-inline newInput" id='newCpwd' size='60px'>
+         
+        <label class='updateFont'>Phone Number</label>
+        <input type='text' class="form-inline newInput" name='phoneNum' id='newPhoneNum' size='60px'>
+        
+        <br>
+        <input type='button' class='btn btn-light' id='memberUpdateBtn' style='float:right' value='수정완료'>
+        <input type='button' class='btn btn-light' id='memberDropOut' style='float:right' value='회원탈퇴'>
+       </form>
+       </div>
+     </div>
+   </div>
+</div>
 
 <div id='footer'></div>
 
@@ -504,7 +342,7 @@ $(document).ready(function () {
 	            + "<th>#</th>"
 	            + "<th>이름</th>"
 	            + "<th>닉네임</th>"
-	            + "<th>마스터</th>"
+	            + "<th>클래스 개설</th>"
 	            + "<th>포인트</th>"
 	            + "<th>이메일</th>"
 	            + "<th>전화번호</th>"
@@ -513,8 +351,6 @@ $(document).ready(function () {
 	   
 	            $("#dataTable").append(table);
 	            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
-	
 	            getUserListData(0);
 	            countUserList();
 	}
@@ -531,11 +367,16 @@ $(document).ready(function () {
 	            $('.classtrtrtr').remove();
 	            $('.usertrtrtr').remove();
 	            $.each(list, function(i, list){
+	               let master = "";
+	               if(list.classMaster==0)
+	            	   master = "O";
+	               else
+	            	   master = "X"
 	               let str = "<tr class='usertrtrtr'>"
 	                     + "<td>" + (i+1) + "</td>"
 	                     + "<td>" + list.userName + "</td>"
-	                     + "<td>" + list.nickName + "</td>"
-	                     + "<td>" + list.classMaster + "</td>"
+	                     + "<td class='nName' seq="+list.memNum+">" + list.nickName + "</td>"
+	                     + "<td>" + master + "</td>"
 	                     + "<td>" + list.myPoint + "</td>"
 	                     + "<td>" + list.email + "</td>"
 	                     + "<td>" + list.phoneNum + "</td>"
@@ -543,9 +384,12 @@ $(document).ready(function () {
 	               $("#classList").append(str);                  
 	            });         
 	            
-	         
-	            $("#memDelete").click(function(){
-	               alert($("#memDelete").val());               
+	         	// 유저 정보 수정
+				$('.nName').on('click',function(){
+					let seq = $(this).attr('seq');
+					alert(seq);
+					setMemInfo(seq);
+					$("#memberUpdateModal").modal('show');
 	            });
 	            
 	         },
@@ -555,6 +399,176 @@ $(document).ready(function () {
 	      });
 	}
 	            
+ 	
+	/////////////////////////// 정보 수정 (회원정보 수정)  ///////////////////////////////
+    
+	// 회원정보 수정 초기화 값 셋팅 
+	function setMemInfo(seq){
+		$.ajax({
+	        url:"http://localhost:3000/myinfo",
+	        type:"post",
+	        data:{ memNum:seq},
+	        success:function(data){
+				$("#newprofile").attr('src', data.profilePic);
+				$("#_oldProfilePic").val(data.profilePic);
+				$("#_memNums").val(data.memNum);
+				$("#newUserName").val(data.userName);
+				$("#newNickName").val(data.nickName);
+				$("#_checkNname").val(data.nickName);
+				$("#originalEmail").val(data.email);
+				$("#newPwd").val(data.pwd);
+				$("#newCpwd").val(data.pwd);
+				$("#newPhoneNum").val(data.phoneNum);
+	        },
+	        error:function(){
+	        	alert('managerpage myinfo ajax error')
+	        }
+		});
+	};
+	
+	
+	// 프로필 이미지 미리보기
+	$("#_profilePic").on("change", handleImgFileSelect);
+	function handleImgFileSelect(e) {
+		
+		let files = e.target.files;
+		let filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+		   if(!f.type.match("image.*")) {
+		       alert("이미지만 업로드 가능합니다.");
+		       return;
+		   }
+		   sel_file = f;
+		   let reader = new FileReader();
+		   reader.onload = function(e) {
+		        $("#newprofile").attr("src", e.target.result);   
+		   }
+		   reader.readAsDataURL(f);
+		});
+	}
+
+
+	// 회원정보 수정 입력 값 빈 칸 체크
+	$("#memberUpdateBtn").click(function(){
+		if($("#newUserName").val() == ""){
+			alert('이름을 입력하세요');
+			$("#newUserName").focus();
+		}
+		else if($("#newNickName").val() == ""){
+			alert('닉네임을 입력하세요');
+			$("#newNickName").focus();
+		}
+		else if($("#newPwd").val() == ""){
+			alert('비밀번호를 입력하세요');
+			$("#newPwd").focus();
+		}
+		else if($("#newPhoneNum").val() == ""){
+			alert('전화번호를 입력하세요');
+			$("#newPhoneNum").focus();
+		}
+		else {
+			inputCheck();
+		}
+	});
+
+	
+	// 회원정보 수정 입력 값 중복확인 & 정규식 체크
+	function inputCheck(){
+		let pwdCheck = /^[a-zA-Z0-9]{4,12}$/; // pwassword 정규식
+		let phoneCheck = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; // 휴대전화 정규식
+		let nickName = $("#newNickName").val();
+		let originalNname = $("#_checkNname").val();
+		$.ajax({
+			url:"http://localhost:3000/checkNickName", 
+			type:'post',
+			data:{nickName:nickName},
+			success:function( data ){
+				if(nickName != originalNname && data == 1){
+					alert("사용중인 닉네임 입니다");
+					$("#newNickName").val("");
+					$("#newNickName").focus();
+				}
+				else if($("#newPwd").val() != $("#newCpwd").val()){ 
+					alert("비밀번호가 동일하지 않습니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!pwdCheck.test($("#newPwd").val())){
+					alert("패스워드는 4~12자의 영문 대소문자와 숫자만 가능합니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!phoneCheck.test($("#newPhoneNum").val())){
+					alert("올바른 전화번호를 입력하세요");
+					$("#newPhoneNum").val("");
+					$("#newPhoneNum").focus();
+				}
+				else{
+					memberUpdateAf();
+				}
+			},
+			error:function(){
+				alert('inputCheck Check ajax error');
+			}
+		});
+	}
+	
+	
+	// 회원정보 수정 AF
+	function memberUpdateAf(){
+	$.ajax({
+		url:"http://localhost:3000/myPageUserUpdate", 
+		type:'post',
+		data : new FormData($("#myPageUserUpdate")[0]), 
+		enctype : 'multipart/form-data',
+		processData : false,
+		contentType : false,
+		cache : false,
+		success:function( data ){
+			if(data){
+				alert('성공적으로 수정되었습니다');
+				location.reload();
+			}
+			else{
+				alert("수정 실패");
+			}
+		},
+		error:function(){
+			alert('memberUpdateAf ajax error');
+		}
+	});
+	}
+	
+	
+	// 회원 탈퇴
+	$("#memberDropOut").click(function(){
+		let dropOut = confirm('정말로 탈퇴 하시겠습니까');
+		if(dropOut){
+			$.ajax({
+				url:"http://localhost:3000/memberDropOut", 
+				type:'post',
+				data:{memNum:$("#_memNums").val()},
+				success:function( data ){
+					if(data>0){
+						alert('성공적으로 탈퇴 되었습니다');
+					}
+					else{
+						alert('회원 탈퇴 실패');
+					}
+				},
+				error:function(){
+					alert('memberDropOut ajax Error')
+				}
+			});
+		}
+		else{
+			$('#memberUpdateModal').modal('hide');
+		}
+	});
+	
+	// ===============================================================
+
+	
 	function countUserList() {
 		$.ajax({
 			url:"http://localhost:3000/userCount",
@@ -1038,6 +1052,7 @@ $(document).ready(function () {
 	         
 	        });
 		  });
+
 
 		</script>
 </body>

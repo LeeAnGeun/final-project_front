@@ -83,8 +83,8 @@ where classnum=41
 	ORDER BY RNUM
 	
 	
-	  SELECT NVL(TRUNC(AVG(STARPOINT), 1),0) AS AVGPOINT
-      FROM REVIEW
+	SELECT NVL(TRUNC(AVG(STARPOINT), 1),0) AS AVGPOINT
+    FROM REVIEW
       WHERE CLASSNUM = 7 AND NOT MEMNUM=1	
     
       
@@ -97,11 +97,31 @@ where classnum=41
 	
 	SELECT *
 	FROM ONEDAYCLASS
-	WHERE CLASSNUM=29
+	WHERE masternum=4
       
-
-
 	
+	
+select * from aclapmember where memnum=4	
+
+select * from NOTICEBBS where memnum=4
+------------------------------------------------------------
+-- DEL 처리 : 로그인 못하게 만든다 (삭제된 계정입니다) 
+-- DEL = 1;
+DELETE FROM ACLAPMEMBER
+WHERE MEMNUM=14 
+
+-- DEL = 1;
+DELETE FROM ONEDAYCLASS
+WHERE MASTERNUM=14
+
+DELETE FROM NOTICEBBS
+WHERE MEMNUM=14
+
+ALTER TABLE ACLAPMEMBER modify DEL NUMBER NOT NULL
+------------------------------------------------------
+
+
+SELECT * FROM ONEDAYCLASS
 	
     UPDATE ONEDAYCLASS 
 	SET PRIMARYCATEGORY='요리',
@@ -434,6 +454,8 @@ FROM REVIEW
 WHERE CLASSNUM = 1
 
 --------------------------schedule--------------------------
+
+
 DROP TABLE SCHEDULE
 CASCADE CONSTRAINTS;
 
@@ -566,6 +588,7 @@ select * from NOTICEBBS;
 INSERT INTO NOTICEBBS (NOTICENUM, MEMNUM, NTITLE, NCONTENT, WDATE, DEL, ANSWER)
 VALUES SEQ_NOTICEBBS, 1, '11111', '12312321', SYSDATE, 0, 0
 ---------------------------MYSTAMP TABLE--------------------------
+
 
 DROP TABLE MYSTAMP
 CASCADE CONSTRAINTS;
