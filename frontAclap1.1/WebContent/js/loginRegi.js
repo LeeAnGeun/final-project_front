@@ -409,9 +409,8 @@ $("#_checkNickName").change(function() {
 	}
 	else{	
 		let nickName = $("#_nickName").val();
-		
 		$.ajax({
-			url:"http:/localhost:3000/checkNickName", 
+			url:"http://localhost:3000/checkNickName", 
 			type:'post',
 			data:{nickName:nickName},
 			success:function( data ){

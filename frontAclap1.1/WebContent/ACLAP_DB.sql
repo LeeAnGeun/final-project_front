@@ -1,3 +1,7 @@
+------삭제하면 매니저 먼저 만들어주세요!~-------
+
+INSERT INTO ACLAPMEMBER (MEMNUM, EMAIL, PWD, USERNAME, NICKNAME, PHONENUM, INTEREST1, INTEREST2, INTEREST3, PROFILEPIC, AUTH, CLASSMASTER, MYPOINT, DEL)
+VALUES(1, 'admin@gmail.com', 'admin', 'admin', 'admin', 1111, '음악', NULL, NULL, NULL, 9, 1, 5000, 0);
 
 --------------------------member--------------------------
 	
@@ -25,11 +29,10 @@ CREATE TABLE ACLAPMEMBER(
 
 
 CREATE SEQUENCE SEQ_MEMBER
-START WITH 1
+START WITH 2
 INCREMENT BY 1;
 
 select * from ACLAPMEMBER;
-
 --------------------------onedayClass--------------------------
 DROP TABLE ONEDAYCLASS
 CASCADE CONSTRAINTS;
@@ -95,7 +98,7 @@ CREATE SEQUENCE SEQ_NOCLASSDATE
 START WITH 1
 INCREMENT BY 1;
 
-select * from ONEDAYCLASS;
+select * from NOCLASSDATE;
 
 
 
@@ -144,7 +147,7 @@ CREATE SEQUENCE SEQ_REVIEW
 START WITH 1
 INCREMENT BY 1;
 
-SELECT * FROM REVIEW WHERE CLASSNUM=1 AND MEMNUM=1
+SELECT * FROM REVIEW 
 
 --------------------------schedule--------------------------
 DROP TABLE SCHEDULE
