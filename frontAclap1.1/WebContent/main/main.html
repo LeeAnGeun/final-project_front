@@ -73,7 +73,7 @@
 	</div>
 	
 	<!-- 블로그 크롤링 -->
-	<div id="blogCrawling">
+	<div id="blogCrawling" style="margin-right:80px;">
 			
 	</div>
 	<!-- 나의 관심사 설정 -->
@@ -121,6 +121,13 @@ $("#footer").load("../footer.html");
 $("#weatherCrawling").load("weather.html");
 $("#coronaCrawling").load("covid.html");
 $("#blogCrawling").load("blog.html");
+
+//로그인 안했을 시 블로그 클롤링 안보이게
+let json = JSON.parse(sessionStorage.getItem("login"));
+
+if(json == null){
+	$("#blogCrawling").remove();
+}
 
 </script>
 

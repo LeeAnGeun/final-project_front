@@ -3,21 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
 <style type="text/css">
-	/* 블로그 자료 */
+ 	/* 블로그 자료 */
 .btitle{
-	font-size: 14px;
-  text-align: center;
+	padding:8px;
+	font-size: 20px;
+  margin-left:45px;
+  background-color: black;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
 }
-.content-slider3 {
+/* .content-slider3 {
   width: auto;
   height: auto;
 }
 .slider3 {
     height: auto;
     width: auto;
-    margin: auto 0;
-    
+    margin: auto 0;    
     position: relative;
 }
 
@@ -26,6 +37,8 @@
     padding: 0;
     list-style: none;
 	position: absolute;
+/* 	border: 1px solid #D8D8D8;
+	border-radius: 20px 20px 20px 20px; */
 	
 }
 .slider3 li {
@@ -39,27 +52,29 @@
     
 }
 .slider3 .quote3 {
-    font-size: 14px;
-    
+    font-size: 14px;    
     margin: 0 auto;
-	padding: 0;
-	
+	padding: 0;	
 	width: 180px;
 	
    
-}
-a.blogContent{
-	
+} */
+a.blogContent{	
 	z-index: 10;
+	color:black;
 }
-
+.blogContent{
+	color: black;
+	font-size: 14px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
 
 
 </style>
 </head>
 <body>
 <h1 class="btitle">블로그정보</h1>
-<div id="content-slider3">
+<div id="content-slider3" class="card" style="width: 18rem;">
 	<div class="slider3">
 	
 	</div>
@@ -111,10 +126,10 @@ function getBlogData(data) {
 				//alert('success');
 				$(".bul").remove();
 				//alert(list);
-				let atab = "<ul class='bul'>";
+				let atab = "<ul class='list-group list-group-flush bul'>";
 				$.each(list, function (i,	 val) {
 					
-					atab += "<li class='blogInfo' id='animC"+i+"'><div class='quote3'>"
+					atab += "<li class='list-group-item blogInfo' id='animC"+i+"'><div class='quote3'>"
 							+ "<a class='blogContent' href='"+val.url+"' target='_blank'>"+ val.title + " </a></div></li>";
 				
 					

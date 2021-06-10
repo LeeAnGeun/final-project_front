@@ -76,13 +76,9 @@ let seq = urlParams.seq
 $("#_goBack").on("click", function(){
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
-	let priCate = urlParams.get('cate');
+	const priCate = urlParams.get('cate');
 	const ssseq = urlParams.get('seq');
-	
-	if(priCate==null){
-		priCate = "";
-	}
-	
+	alert(priCate);
 	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
 });
 
@@ -797,20 +793,20 @@ $(document).ready(function(){
 	    	  		$(".onedayClassImageBoxB").show();
 	    	  		$(".onedayClassImageBoxA").hide();
 	    	  		$(".onedayClassImageBoxC").hide();
-	    	  		$("#_ocImgB1").attr("src", dto.image1);
-	    	  		$("#_ocImgB2").attr("src", dto.image2);
-	    	  		$("#_ocImgB3").attr("src", dto.image3);
-	    	  		$("#_ocImgB4").attr("src", dto.image4);
-	    	  		$("#_ocImgB5").attr("src", dto.image5);
+	    	  		$("#_ocImgB1, #img1").attr("src", dto.image1);
+	    	  		$("#_ocImgB2, #img2").attr("src", dto.image2);
+	    	  		$("#_ocImgB3, #img3").attr("src", dto.image3);
+	    	  		$("#_ocImgB4, #img4").attr("src", dto.image4);
+	    	  		$("#_ocImgB5, #img5").attr("src", dto.image5);
 	    	  	}else if(dto.layerSelect=='C'){
 	    	  		$(".onedayClassImageBoxC").show();
 	    	  		$(".onedayClassImageBoxA").hide();
 	    	  		$(".onedayClassImageBoxB").hide();
-	    	  		$("#_ocImgC1").attr("src", dto.image1);
-	    	  		$("#_ocImgC2").attr("src", dto.image2);
-	    	  		$("#_ocImgC3").attr("src", dto.image3);
-	    	  		$("#_ocImgC4").attr("src", dto.image4);
-	    	  		$("#_ocImgC5").attr("src", dto.image5);
+	    	  		$("#_ocImgC1, #img1").attr("src", dto.image1);
+	    	  		$("#_ocImgC2, #img2").attr("src", dto.image2);
+	    	  		$("#_ocImgC3, #img3").attr("src", dto.image3);
+	    	  		$("#_ocImgC4, #img4").attr("src", dto.image4);
+	    	  		$("#_ocImgC5, #img5").attr("src", dto.image5);
 	    	  	}
 	    	  	
 	    	  	// 3. ~~님이 개설한 클래스
@@ -1572,6 +1568,46 @@ $(".onedayClassImageBoxA").click(function(){
          modalCheck=false;
       };
 });
+$(".onedayClassImageBoxB").click(function(){
+	 if(modalCheck){
+         $(".image_hide_modal").toggleClass("image_show_modal");   
+         $(".image_hide_modal").show();
+ 	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+ 	 	 $('.detailViewQuestContainer').css("opacity","0.1");
+	     $('.detailViewClassContainer').css("opacity","0.1");
+	     $('.onedayClassImageBoxA').css("opacity","0.1");
+	     $('.onedayClassImageBoxB').css("opacity","0.1");
+	     $('.onedayClassImageBoxC').css("opacity","0.1");
+	     $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");	// 공유하기
+	     $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");		// 좋아요
+	     $('.fa-star').css("color","#848484");									//별점
+	     $('#map').css("opacity","0.1");
+	     $('#map').css("opacity","0.1");
+           
+         modalCheck=false;
+      };
+	
+});
+$(".onedayClassImageBoxC").click(function(){
+	 if(modalCheck){
+        $(".image_hide_modal").toggleClass("image_show_modal");   
+        $(".image_hide_modal").show();
+	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+	 	 $('.detailViewQuestContainer').css("opacity","0.1");
+	     $('.detailViewClassContainer').css("opacity","0.1");
+	     $('.onedayClassImageBoxA').css("opacity","0.1");
+	     $('.onedayClassImageBoxB').css("opacity","0.1");
+	     $('.onedayClassImageBoxC').css("opacity","0.1");
+	     $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");	// 공유하기
+	     $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");		// 좋아요
+	     $('.fa-star').css("color","#848484");									//별점
+	     $('#map').css("opacity","0.1");
+	     $('#map').css("opacity","0.1");
+          
+        modalCheck=false;
+     };
+	
+});
    
 $(".fa-times").click(function(){
    $(".image_hide_modal").toggleClass("image_show_modal");   
@@ -1867,9 +1903,7 @@ $.ajax({
 
 getListReview()
 // ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
-
 function getListReview(){
-
 $.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
