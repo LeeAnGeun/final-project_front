@@ -70,15 +70,18 @@ let seq = urlParams.seq
 <div id='naviBar'></div>
 <br><br><br>
 
-<button id="_goBack" class="btn btn-dark btn-sm" onclick="goBack()">Go Back</button>
+<button class="goBack" id="_goBack">목록 바로가기</button>
 
 <script>
 $("#_goBack").on("click", function(){
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
-	const priCate = urlParams.get('cate');
+	let priCate = urlParams.get('cate');
 	const ssseq = urlParams.get('seq');
-	alert(priCate);
+	
+	if(priCate == null){
+		priCate = "";
+	}
 	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
 });
 
@@ -688,7 +691,7 @@ function dqGO(){
 <!--allSchedule Modal -->
 <div class="modal fade allScheduleModal" id="allSchedule" tabindex="-1" aria-labelledby="allScheduleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 700px"> 
       <div class="modal-header">
         <h5 class="modal-title" id="allScheduleModalLabel" style="text-align: center;">일정 전체보기</h5>
         <button type="button" class="close" onclick="allScheduleHide()" aria-label="Close">
@@ -696,7 +699,7 @@ function dqGO(){
         </button>
       </div>
       <div class="modal-body oneClsSche">
-      	<div>
+      	<div style="margin-left: 100px;">
 		 <font style="float: left;">Date: <input type="text" id="datepicker"></font>
 		<form  class="scMemCounterFrm" style="padding-left: 20px; float: left;">
 			<fieldset>
@@ -934,20 +937,20 @@ $(document).ready(function(){
 						let sbtn = "";
 						
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' title='' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
+	                     	sbtn += "<button type='button' class='caSelectBtn' title='' cDate='" + rdate + "' classtitle='"+ classtitle +"' style='margin-top: 20px;margin-left: 50px;'>신청</button>";
 	                    }else{
-	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    	sbtn += "<button type='button' class='eaSelectBtn' style='margin-top: 20px;margin-left: 50px;'>마감</button>";
 	                    	noDateArray[z] = rdate;
 	                    	z = z+1;
 	                    }
 						
 						src += "<div class='classApplicatoinBox'>"
 						                     + "<div class='caDate'>" + rdate + "</div>"
-						                     + "<div class='caTime'> 수업 시간 : " + classSchedule.duration + "분</div>"
-						                     + "<div class='caMem'>예약 가능 인원 : " + classSchedule.limitNum + "</div>"
+						                     + "<div class='caTime'><i class='fas fa-clock'></i> " + classSchedule.duration + "분</div>"
+						                     + "<div class='caMem'><i class='material-icons' style='font-size:19 px'>people</i> " + classSchedule.limitNum + "명</div>"
 						                     + "<div class='coinNprice'>"
 						                           + "<i class='fas fa-donate'></i>"
-						                           + "<span class='caPrice'>" + classSchedule.price + "point</span>"
+						                           + "<span class='caPrice'> " + comma(classSchedule.price) + "point</span>"
 						                     + "</div>"
 						                     + sbtn
 						              	+ "</div>";
@@ -976,19 +979,19 @@ $(document).ready(function(){
 						
 						let sbtn = "";
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
+	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "' classtitle='"+ classtitle +"' style='margin-left: 360px; margin-top: 10px;'>신청</button>";
 	                    }else{
-	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    	sbtn += "<button type='button' class='eaSelectBtn' style='margin-left: 360px; margin-top: 10px;'>마감</button>";
 	                    }
 						
 						src2 += "<div class='clsSchedule'>"
 					      	 	+	"<div class='csDate'>"+ rdate +"</div>"
-								+	"<div class='csTime'>수업 시간 :"+ classSchedule.duration + "분</div>"
-								+	"<div class='csMem'>예약 가능 인원 :"+ classSchedule.limitNum +"명</div>"
+								+	"<div style='margin-top: 10px;'><div class='csTime'><i class='fas fa-clock'></i> "+ classSchedule.duration + "분</div>"
+								+	"<div class='csMem'><i class='material-icons'>people</i> "+ classSchedule.limitNum +"명</div>"
 								+	"<div class='csCoin'>"
 						        +        "<i class='fas fa-donate'></i>"
-						        +        "<span class='csPrice'>"+ classSchedule.price +"point</span>"
-								+	"</div>"
+						        +        "<span class='csPrice'> "+ comma(classSchedule.price) +"point</span>"
+								+	"</div></div>"
 								+	sbtn
 				      	 	  + "</div>";
 					}
