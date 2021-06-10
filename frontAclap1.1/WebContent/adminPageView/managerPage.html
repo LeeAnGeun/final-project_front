@@ -346,6 +346,7 @@ $(document).ready(function () {
 	            + "<th>포인트</th>"
 	            + "<th>이메일</th>"
 	            + "<th>전화번호</th>"
+	            + "<th>상태</th>"
 	            + "</tr>"
 	            + "</thead>";
 	   
@@ -371,7 +372,17 @@ $(document).ready(function () {
 	               if(list.classMaster==0)
 	            	   master = "O";
 	               else
-	            	   master = "X"
+	            	   master = "X";
+
+	    	       // 계정 상태
+	               let status = "";
+	               
+	               if(list.del==0){
+	            	   status = "<td>이용</td>";
+	               }else{
+	            	   status = "<td>탈퇴</td>";
+	               }
+	            	
 	               let str = "<tr class='usertrtrtr'>"
 	                     + "<td>" + (i+1) + "</td>"
 	                     + "<td>" + list.userName + "</td>"
@@ -380,6 +391,7 @@ $(document).ready(function () {
 	                     + "<td>" + list.myPoint + "</td>"
 	                     + "<td>" + list.email + "</td>"
 	                     + "<td>" + list.phoneNum + "</td>"
+	                     + status
 	                     + "</tr>";
 	               $("#classList").append(str);                  
 	            });         

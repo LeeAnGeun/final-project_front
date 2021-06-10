@@ -346,8 +346,11 @@ $(document).ready(function(){
                 </div>
                 
                 <div class="col-md-6 pt-md-0 mt-5 subView2" >
-                    <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
-                    <div class="bg-white border rounded view">
+                    <div class="memListView" > 
+                    	<b>Detail View</b> 
+                    	<input type="month" id="_date2" class="memListDate"><button type="button" class="btn btn-dark" id="_searchMemList" >검색</button>             	
+                    </div>
+                    <div class="bg-white border rounded view2">
                         <div class="align-items-center b_info2">
                             <table class="pppInfoTable" style="width: 100%; text-align: center;">
                             <colgroup>
@@ -685,6 +688,7 @@ $(document).ready(function() {
 		
 		$(".mainView2").hide();
 		$("#_date").val(mdate);
+		$("#_date2").val(mdate);
 		
 		$.ajax({
 			url:"http://localhost:3000/mySchedule", 
@@ -1365,18 +1369,21 @@ $(document).on("click", ".myClassStop", function () {
 });
 	
 //내가 개설한 클래스를 클릭시 디테일부분에 뿌려지는 내 클래스 수강생 신청인 정보 목록
-$(document).on("click", ".classDetailClick", function () { 
-		
-		let classNum = $(this).attr("val");
-		
-		$.ajax({
-			url:"http://localhost:3000/getMyClassParticipants",
-			type:"get",
-			data:{classNum:classNum},
-			success:function( list ){
-				$(".pInfo").remove();
+function searchMemList(classNum){	
+	let classDate = $("#_date2").val();
+	
+	$.ajax({
+		url:"http://localhost:3000/getMyClassParticipants",
+		type:"get",
+		data:{classNum:classNum, classDate:classDate},
+		success:function( list ){
+			$(".pInfo").remove();
 			
-				let ppp="<tbody class='pInfo'>";
+			let ppp="<tbody class='pInfo'>";
+			if(list.length == 0){
+				ppp += "<tr><td colspan='3'>해당 월에는 가입자가 없습니다.</td></tr>";
+			}
+			else{
 				$.each(list, function(i,val){
 					/* let month = val.rdate.substring(5,7);
 					let day = val.rdate.substring(8,10); */
@@ -1385,16 +1392,34 @@ $(document).on("click", ".classDetailClick", function () {
 						+ "<div style='float:left'><div class='classMemNic'>" +val.nickName+ "</div><div class='classMemEma'>" + val.email + "</div></div></td><td>"+val.participants+"</td>"
 			  			+ "</tr>";
 				});
-				ppp += "</tbody>";
-			$(".pppInfoTable").append(ppp);
-			
-				
-			},
-			error:function(){
-				alert('error');
 			}
-		});
+			ppp += "</tbody>";
+		$(".pppInfoTable").append(ppp);
+		
+			
+		},
+		error:function(){
+			alert('error');
+		}
 	});
+}
+
+$(document).on("click", ".classDetailClick", function () {
+	let classNum = $(this).attr("val");
+	$("#_searchMemList").attr('classNum', classNum);
+	
+	searchMemList(classNum);
+});
+
+$("#_searchMemList").on('click', function(){
+	let classNum = $(this).attr("classNum");
+	if(classNum == null){
+		alert("검색하실 클래스를 선택해주세요.");
+		return;
+	}
+	searchMemList(classNum);
+});
+
 </script>
 
 <script>	 
