@@ -760,19 +760,19 @@ $(document).ready(function(){
 	      success:function( dto ){
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
-				if(dto.primaryCategory == '외국어'){
+	    	  	if(dto.primaryCategory == '외국어'){
 					$("#pCategory").attr("class", "fas fa-language");
 					$("#pCategory").html("&nbsp;외국어");
-				}else if(dto.primaryCategory = '크리에이티브'){
+				}else if(dto.primaryCategory == '크리에이티브'){
 					$("#pCategory").attr("class", "fas fa-palette");
 					$("#pCategory").html("&nbsp;크리에이티브");
-				}else if(dto.primaryCategory = '요리'){
+				}else if(dto.primaryCategory == '요리'){
 					$("#pCategory").attr("class", "fas fa-utensils");
 					$("#pCategory").html("&nbsp;요리");
-				}else if(dto.primaryCategory = '프로그래밍'){
+				}else if(dto.primaryCategory == '프로그래밍'){
 					$("#pCategory").attr("class", "fas fa-code");
 					$("#pCategory").html("&nbsp;프로그래밍");
-				}else if(dto.primaryCategory = '스포츠/레져'){
+				}else if(dto.primaryCategory == '스포츠/레져'){
 					$("#pCategory").attr("class", "fas fa-dumbbell");
 					$("#pCategory").html("&nbsp;스포츠/레져");
 				}
