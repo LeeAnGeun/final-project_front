@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.bluebox, .stuff {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 300px;
+  height: 30px;
+  margin-bottom: 5px;
+  float: left;
+}
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.marquee span {
+  display: inline-block;
+  width: 100%;
+}
+.marquee span span {
+  -moz-transition: left 4s linear;
+  -o-transition: left 4s linear;
+  -webkit-transition: left 4s linear;
+  transition: left 2s linear;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  left: 0px;
+}
+.marquee:active span, .marquee:hover span {
+  width: auto;
+}
+.marquee:active span span, .marquee:hover span span {
+  left: calc(300px - 15px - 100%);
+}
+.hov:hover{
+	width: 60%;
+	direction: left;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+<div class='marquee bluebox'><span><span>
+<a href=#>This is a sample scrolling text that has scrolls texts to right.</a>
+</span></span></div>
+<!-- width="60%" direction="left" height="100px" -->
+<br><br>
+
+<marquee class='hov'>
+This is a sample scrolling text that has scrolls texts to left.
+</marquee><br><br>
+</body>
+</html>
