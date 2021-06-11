@@ -146,7 +146,6 @@ $(document).ready(function(){
 					$(".myPointCheck").html("내 포인트 " + json.myPoint);			
 					// 새로 클래스를 신청한 사람이 있는지 뿌려주는 코드 들어가야함!
 					$("#points").append("$" + json.myPoint);
-					
 			
 				},
 				error:function(){
@@ -351,7 +350,6 @@ function charge(num){
 	
 	$("#points").empty();
 	$("#points").append("$" + (money+myPoint));	// 충전 후 예상 포인
-
 
 /* 	 const money = document.getElementById('#chargeMoney');
 	 alert(parseInt(money));
