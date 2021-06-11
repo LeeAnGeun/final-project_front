@@ -64,14 +64,14 @@ $(document).ready(function(){
 				$('#_secondaryCategory2').children('option:not(:first)').remove();
 				$("#_secondaryCategory1").append(
 						"<option value='디저트'>&nbsp;디저트</option>"+
-						"<option value='음료/커피'>&nbsp;음료/커피</option>"+
-						"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+						"<option value='음료커피'>&nbsp;음료/커피</option>"+
+						"<option value='한식일식'>&nbsp;한식/일식</option>"+
 						"<option value='양식'>&nbsp;양식</option>"
 				);
 				$("#_secondaryCategory2").append(
 						"<option value='디저트'>&nbsp;디저트</option>"+
-						"<option value='음료/커피'>&nbsp;음료/커피</option>"+
-						"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+						"<option value='음료커피'>&nbsp;음료/커피</option>"+
+						"<option value='한식일식'>&nbsp;한식/일식</option>"+
 						"<option value='양식'>&nbsp;양식</option>"
 				);
 			}
@@ -597,14 +597,14 @@ $(document).ready(function(){
 			$('#_secondaryCategory2').children('option:not(:first)').remove();
 			$("#_secondaryCategory1").append(
 					"<option value='디저트'>&nbsp;디저트</option>"+
-					"<option value='음료/커피'>&nbsp;음료/커피</option>"+
-					"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+					"<option value='음료커피'>&nbsp;음료/커피</option>"+
+					"<option value='한식일식'>&nbsp;한식/일식</option>"+
 					"<option value='양식'>&nbsp;양식</option>"
 			);
 			$("#_secondaryCategory2").append(
 					"<option value='디저트'>&nbsp;디저트</option>"+
-					"<option value='음료/커피'>&nbsp;음료/커피</option>"+
-					"<option value='한식/일식'>&nbsp;한식/일식</option>"+
+					"<option value='음료커피'>&nbsp;음료/커피</option>"+
+					"<option value='한식일식'>&nbsp;한식/일식</option>"+
 					"<option value='양식'>&nbsp;양식</option>"
 			);
 		}

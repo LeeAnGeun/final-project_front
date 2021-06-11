@@ -6,7 +6,6 @@ function likeBtnClick(seq){
 
 //디테일뷰로 이동
 function goDetail(seq){
-//	alert(seq);
 	location.href='../onedayClassView/onedayClassDetail.html?seq='+seq;
 }
 
