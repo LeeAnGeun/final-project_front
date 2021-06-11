@@ -988,7 +988,9 @@ $(document).ready(function () {
 		$("#detailTable").append(reply);	
 		
 		$('#answerbtn').hide(); //답변클릭시 답변버튼 지움
-		$(".modal-footer").append("<button type=\"button\" class=\"btn btn-secondary\" id=\"answerAf\">답변완료</button>");			
+		
+		$(".modal-footer").append("<button type=\"button\" class=\"btn btn-secondary\" id=\"answerAf\">답변완료</button>");	
+		
 	});
 
 
@@ -1042,6 +1044,7 @@ $(document).ready(function () {
 	  	 			alert('success');
 
 	  	 			adminNoticeCheck();
+	  	 			location.reload(true);
 	  	 			
 	  	 		},
 	  	 		error:function(){
