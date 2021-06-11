@@ -604,17 +604,19 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				let startDD = val.startDate;
 				startDD = startDD.substring(0,10);
 				//<img class='classImg' src='"+val.image1+"' alt='no image'>"
-				var className = val.title;
+				/* var className = val.title;
 		        if(className.length > 10){
 		        	className = className.substring(0,10)+"...";
-		        }
+		        } */
 				
 				app = "<div class='classCard' id='"+val.classNum +"'>"
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				//app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
-				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + className + "</b></h4></a>";
+				app += "<div><font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font></div>";
+				app += "<div class='marquee bluebox'><span><span>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "</span></span></div>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
@@ -968,13 +970,15 @@ function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
 				app += "<div class='classCard' id='"+val.classNum +"'>"
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
-				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<div class='marqueebluebox'><a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+cate+"'><h4><b>" + val.title + "</b></h4></a></div>";
+				app += "<div><font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font></div>";
+				app += "<div class='marquee bluebox'><span><span>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "</span></span></div>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
 			}); 
-			
+
 			$(".classListTableAll").append(app);
 			
 			let divClassNum = "#" + ssseq;
