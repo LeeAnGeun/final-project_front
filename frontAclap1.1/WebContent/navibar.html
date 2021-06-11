@@ -326,10 +326,12 @@ $(document).ready(function(){
 	}	
 
 	
-	// 포인트 충전하기 클릭시 충전 금액 초기화 
+// 포인트 충전하기 클릭시 충전 금액 초기화 
 	$("#pointsCharge").click(function(){
-//	alert("포인트충전하기 클릭");
+	alert("포인트충전하기 클릭");
+	chargeNum = 0;
 		$("#chargeMoney").val(""); 	
+		$("#points").empty(); 	
 	});
 	
 });
