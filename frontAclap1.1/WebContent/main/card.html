@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<!-- 추천 클래스 -->
 <div id='recommendClass'>
 <p class='s_mainTitle'>추천 클래스</p> 
 <!--Carousel Wrapper-->
@@ -115,50 +116,6 @@
      </div>
 </div>
 </div>
-
-<!--third slide-->
-<div class="carousel-item">
-<div class="sCard_container">
-      <!-- card 1-->
-      <div class="s_Card">
-	    <div class="s_img"><img src="" id="s_recommendImg6"></div>
-        <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' id='recommendBtn6' value='BEST'>			
-			<input type='hidden' id='recommend_classNum6'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn6"onclick="likeBtnClick($('#recommend_classNum6').val())">LIKE</button> 
-        </div>
-		<hr class="s_card_hr">
-       	<div class="s_title" id='s_recommendTitle6' onclick="goDetail($('#recommend_classNum6').val())"></div>
-       	<div class="s_teacher" id='s_recommendTeacher6'></div>
-     </div>
-
-      <!-- card 2-->
-      <div class="s_Card">
-	    <div class="s_img"><img src="" id="s_recommendImg7"></div>
-        <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' id='recommendBtn7'value='BEST'>			
-			<input type='hidden' id='recommend_classNum7'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn7" onclick="likeBtnClick($('#recommend_classNum7').val())">LIKE</button> 
-        </div>
-		<hr class="s_card_hr">
-       	<div class="s_title" id='s_recommendTitle7' onclick="goDetail($('#recommend_classNum7').val())"></div>
-       	<div class="s_teacher" id='s_recommendTeacher7'></div>
-     </div>
-      
-      <!-- card 3-->
-      <div class="s_Card">
-	    <div class="s_img"><img id="s_recommendImg8"></div>
-        <div class="s_new_best_like">
-			<input type='button' class='s_NewNBestBtn' id='recommendBtn8' value='BEST'>			
-			<input type='hidden' id='recommend_classNum8'>		
-			<button type='button' class='s_likeBtn' id="recommendLikeBtn8" onclick="likeBtnClick($('#recommend_classNum8').val())">LIKE</button> 
-        </div>
-		<hr class="s_card_hr">
-       	<div class="s_title" id='s_recommendTitle8' onclick="goDetail($('#recommend_classNum8').val())"></div>
-       	<div class="s_teacher" id='s_recommendTeacher1'></div>
-     </div>
-</div>
-</div>
 </div>
 
 <!-- Slider Controls -->
@@ -166,7 +123,6 @@
 <div class=" s_slider">
     <a href="#s_recommendClass_slider" data-slide-to="0"><i class="fa fa-circle"></i></a>
     <a href="#s_recommendClass_slider" data-slide-to="1"><i class="fa fa-circle"></i></a>
-    <a href="#s_recommendClass_slider" data-slide-to="2"><i class="fa fa-circle"></i></a>      
 </div>
 </div>
 <br><br><br><br>

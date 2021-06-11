@@ -108,19 +108,19 @@ series.data = [ {
 	"tag": "디저트",
 	"weight": 70
 }, {
-	"tag": "음료&커피",
+	"tag": "음료커피",
 	"weight": 60
 }, {
-	"tag": "한식&일식",
+	"tag": "한식일식",
 	"weight": 60
 }, {
 	"tag": "양식",
 	"weight": 80
 }, {
-	"tag": "front-end",
+	"tag": "frontEnd",
 	"weight": 60
 }, {
-	"tag": "back-end",
+	"tag": "backEnd",
 	"weight": 60
 }, {
 	"tag": "익스트림스포츠",
@@ -241,8 +241,7 @@ function next() {
 	if($('#selected1').val()==null || $('#interest1').val()==''){
 		alert('최소 1개의 관심사를 선택해 주세요');
 	} else {
-		//alert('관심사 설정 완료');
-		
+
 		$.ajax({
 			url: 'http://localhost:3000/interestComplete',
 			type: 'POST',
