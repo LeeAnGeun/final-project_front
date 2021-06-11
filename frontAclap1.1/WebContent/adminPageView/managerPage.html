@@ -159,12 +159,7 @@ emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
 			<!-- 테이블 -->
 			<div class="mainTable">
 				<table class="customTable" id="noticeTable">
-					<colgroup>			
-						<col style="width:3px">
-						<col style="width:140px">
-						<col style="width:50px">
-						<col style="width:90px">
-					</colgroup>	
+					
 					
 					<tr>
 						<th>번호</th><th>제목</th><th>작성자</th><th>이메일</th>
@@ -202,6 +197,10 @@ emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
             </div>
             <div class="modal-body">
 			<table class="customTable" id="detailTable">
+					<colgroup>			
+						<col style="width:50px">
+						<col style="width:90px">
+					</colgroup>	
 				<tr>
 					<th>문의번호</th>
 					<td><input type='text' size="20" id="_noticeNum" name="noticeNum" readonly="readonly"></td>
@@ -232,9 +231,7 @@ emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
 		        <td><textarea rows="10" cols="30" id="_ncontent" name="content" readonly="readonly"></textarea>
 		        
 		        </tr>
-		        <tr><th>첨부이미지</th>
-		        <td><img id="_nImg" alt='no image' src=''></td>
-		        </tr>
+		        
 		        
 		          
           	</table>
@@ -977,9 +974,6 @@ $(document).ready(function () {
 				$("#_ncontent").val(bbs.nContent);
 				$("#_wdate").val(bbs.wDate);
 				$("#_email").val(bbs.email);
-				var src1 = './noticeUpload/' + bbs.nImg;
-				
-				$("#_nImg").attr("src", src1);
 				
 				$("#detailModal").modal('show');
 			},
@@ -1026,14 +1020,16 @@ $(document).ready(function () {
 	       
 			$(document).on("click", '#answerAf', function(){       	 
 				$(this).remove();
-				$("#detailModal").modal('hide');
 				
+				let fullName = document.getElementById("_username").value;
+			    let userEmail = document.getElementById("_email").value;
+			    let userMessage = document.getElementById("replyMessage").value;
 				
 	          var templateParams = {	
 	          //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
-	                username: $('.detailUsername').val(),
-	                email : $('.detailEmail').val(),
-	                message : $('.message').val()
+	                username: fullName,
+	                email: userEmail,
+	                message: userMessage
 	           				};
 	                    
 	                	
@@ -1047,7 +1043,7 @@ $(document).ready(function () {
 	         	       console.log('FAILED...', error);
 	         	    });
 	         	       
-
+	         $("#detailModal").modal('hide');
 				
 	         $.ajax({
 	  	 		url:"http://localhost:3000/noticeAnswerAf",

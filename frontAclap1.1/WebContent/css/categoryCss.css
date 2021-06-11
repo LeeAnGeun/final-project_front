@@ -488,3 +488,26 @@ a.seeMore:hover{
 	}
 }
 
+
+
+.marqueebluebox {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marqueebluebox a {
+  -moz-transition: left 4s linear;
+  -o-transition: left 4s linear;
+  -webkit-transition: left 4s linear;
+  transition: left 4s linear;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  left: 0px;
+}
+.marqueebluebox:active a, .marqueebluebox:hover a {
+  width: auto;
+}
+.marqueebluebox:active a, .marqueebluebox:hover a {
+  left: calc(300px - 15px - 100%);
+}
