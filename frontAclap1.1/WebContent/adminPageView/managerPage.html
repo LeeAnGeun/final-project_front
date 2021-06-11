@@ -38,220 +38,22 @@
 <!-- pagination -->
 <script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
 
+<!-- 커스텀 CSS -->
+<link rel="stylesheet" href="../css/managerPage.css">
+<link rel="stylesheet" href="../css/mypage.css">
+
 <script type="text/javascript">
 (function() {
 emailjs.init("user_ZyFYDtGep3QSZfIgncD2e");
 })();
 </script>
-
-<style type="text/css">
-.card mb-4{
-	width: 80%
-}	
-#layoutSidenav{
-	width: 100%;
-	height: 100vh;
-	position: relative;
-	margin: 0auto;
-	
-}
-	
-	
-#layoutSidenav #layoutSidenav_nav{
-	width: 10%;
-	height: 100%;
-	float: left;
-	position: relative;
-	/* border: dashed;
-	border-color: red; */
-}
-	
-	
-	
-#layoutSidenav #layoutSidenav_content{
-	width: 90%;
-	height: 100%;
-	float: left;
-	position: relative;
-	/* border: dashed;
-	border-color: red; */
-}
-	
-
-.sb-sidenav {
-padding-top: 200px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  flex-wrap: nowrap;
-}
-
-.sb-sidenav .sb-sidenav-menu {
-  flex-grow: 1;
-}
-.sb-sidenav .sb-sidenav-menu .nav {
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-  padding: 1.75rem 1rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link {
-  display: flex;
-  align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  position: relative;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-  font-size: 0.9rem;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
-  display: inline-block;
-  margin-left: auto;
-  transition: transform 0.15s ease;
-}
-.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
-  transform: rotate(-90deg);
-}
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
-  margin-left: 1.5rem;
-  flex-direction: column;
-}
-.sb-sidenav .sb-sidenav-footer {
-  padding: 0.75rem;
-  flex-shrink: 0;
-}
-
-.sb-sidenav-dark {
-  background-color: #212529;
-  color: rgba(255, 255, 255, 0.5);
-}
-.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: rgba(255, 255, 255, 0.25);
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
-  color: #fff;
-}
-.sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
-}
-.table-responsive::-webkit-scrollbar{
-	display: none; /* Chrome, Safari, Opera*/
-}
-div.mainTable{
-	width: 100%;
-	height: 80%;
-	position: relative;
-	float: center;
-	
-}
-table.customTable {
-  width: 70%;
-  background-color: #FFFCE6;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  color: #000000;
-  margin: auto;
- 
-}
-
-table.customTable td, table.customTable th {
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  padding: 5px;
-}
-
-table.customTable thead {
-  background-color: #F8EB95;
-}
-
-
-
-
-
-
-div.mainTable{
-
-	height: 80%;
-	position: relative;
-	float: center;
-	
-}
-table.customTable {
-  width: 70%;
-  background-color: #FFFCE6;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  color: #000000;
-  margin: auto;
- 
-}
-
-table.customTable td, table.customTable th {
-  border-width: 2px;
-  border-color: #FFFFFF;
-  border-style: groove;
-  padding: 5px;
-}
-
-table.customTable thead {
-  background-color: #F8EB95;
-}
-
-
-
-#noticeCheckCheck{
-    display: none;
-    width: 100vw;
-    margin-left: 80px;
-    position: relative;
-}
-
-#layoutSidenav_content{
-	display: none;
-}
-
-.delClass{
-	background-color:white;
-	border:none;
-}
-.delClass:hover{
-	background-color:#F6F1EF;
-}
-</style>
 </head>
 
-  <body>
-
-
+<body>
 <div id='naviBar'></div>
 
+<!-- 왼쪽 네비바 -->
 <div id="layoutSidenav">
-
     <div id="layoutSidenav_nav">
     	<nav class="sb-sidenav accordion sb-sidenav-dark" id="leftMenuNav">
             <div class="sb-sidenav-menu">
@@ -285,6 +87,7 @@ table.customTable thead {
                         <i class="fas fa-table mr-1"></i>
                    		One-Day Class List
                     </div>
+                    <!-- 메인 컨텐츠 -->
                     <div class="card-body" >
                     <div class="table-responsive">
                     	<div class="row">
@@ -293,73 +96,47 @@ table.customTable thead {
                      			<label>
                      				<table>
                      					<tr>
-                     						<td>Name: </td>
+                     						<td>NAME&nbsp;:&nbsp; </td>
                      						<td><input type="search" id="userName" class="form-control form-control-sm" placeholder aria-controls="dataTable">
                      						<input type="search" id="className" class="form-control form-control-sm" placeholder aria-controls="dataTable"></td>
-                     						<td><button type="button" id="btnClassSearch" class="btn btn-light">search</button></td>
+                     						<td>:&nbsp;<button type="button" id="btnClassSearch" class="btn btn-light">search</button></td>
                      					</tr>
                      				</table>
-                     				
                      			</label>
-                     			
                      		</div>
                     		</div>
                     	</div>
                         
-
-                 
-                                
-                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                 <thead>
-                                     <tr>
-                                     	<!-- <th>#</th>
-                                         <th>개설자</th>
-                                         <th>제목</th>
-                                         <th>대분류</th>
-                                         <th>소분류</th>
-                                         <th>시작일</th>
-                                         <th>종료일</th>
-                                         <th>장소</th> -->
-                                       
-                                      </tr>
-                                 </thead>
-                     
-                                 <tbody id="classList">
-                                     
-                                 </tbody>
-                                	
-                             </table>
-                             <div class="container" id="userPagination">
-								<nav aria-label="Page navigation">
-									<ul class="userPagination" style="justify-content:center;"></ul>
-								</nav>
-						    </div>
-						    <div class="container" id="classPagination">
-								<nav aria-label="Page navigation">
-									<ul class="classPagination" style="justify-content:center;"></ul>
-								</nav>
-						    </div>
-                         </div>
-                         </div>
-                     </div>
+                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                           <tbody id="classList"></tbody>
+                       </table>
+                       <div class="container" id="userPagination">
+							<nav aria-label="Page navigation">
+								<ul class="userPagination" style="justify-content:center;"></ul>
+							</nav>
+					    </div>
+					    <div class="container" id="classPagination">
+							<nav aria-label="Page navigation">
+								<ul class="classPagination" style="justify-content:center;"></ul>
+							</nav>
+					    </div>
+                      </div>
+                    </div>
+                    <!-- ///////////// 메인 컨텐츠 끝 ///////////// -->
+                   </div>
                </div>
            </main>
-     </div>
-                
-    
-            
+     </div>       
 
-            
-          <!-- 유저노티스체크 -->
-          
+
+
     <div id="noticeCheckCheck">
-          	<div style="padding-top: 100px;">
-				<!-- 검색 -->
-	
+        <div style="padding-top: 100px;">
+	    <div class='noticeTitle'>Question</div>
+			<!--검색 -->
 			<div class="search">
-				<table style="margin: auto;">
+				<table>
 					<tr>
-						
 						<td style="padding-left: 5px">
 							<select id="_choice" name="choice" class="form-select">
 								<option value="" selected="selected">검색 선택</option>
@@ -373,21 +150,16 @@ table.customTable thead {
 						</td>
 						<td style="padding-left: 5px">
 							<span class="button blue">
-								<button type="button" id="btnSearch" class="btn btn-secondary">검색</button>
+								<button type="button" id="btnSearch" class="Qbtn">검색</button>
 							</span>
 						</td>
 					</tr>
 				</table>
 			</div>
-			
+			<!-- 테이블 -->
 			<div class="mainTable">
 				<table class="customTable" id="noticeTable">
-					<colgroup>			
-						<col style="width:70px">
-						<col style="width:70px">
-						<col style="width:70px">
-						<col style="width:70px">
-					</colgroup>	
+					
 					
 					<tr>
 						<th>번호</th><th>제목</th><th>작성자</th><th>이메일</th>
@@ -404,13 +176,11 @@ table.customTable thead {
 				</nav>
 			</div>
 		</div>
-          
-     
      </div>
-       
-</div>
+</div>             
+ 
+
                    
-            
 
 
 
@@ -427,6 +197,10 @@ table.customTable thead {
             </div>
             <div class="modal-body">
 			<table class="customTable" id="detailTable">
+					<colgroup>			
+						<col style="width:50px">
+						<col style="width:90px">
+					</colgroup>	
 				<tr>
 					<th>문의번호</th>
 					<td><input type='text' size="20" id="_noticeNum" name="noticeNum" readonly="readonly"></td>
@@ -457,9 +231,7 @@ table.customTable thead {
 		        <td><textarea rows="10" cols="30" id="_ncontent" name="content" readonly="readonly"></textarea>
 		        
 		        </tr>
-		        <tr><th>첨부이미지</th>
-		        <td><img id="_nImg" alt='no image' src=''></td>
-		        </tr>
+		        
 		        
 		          
           	</table>
@@ -475,6 +247,54 @@ table.customTable thead {
     </div>
 </div>	
 
+<!-- 회원정보수정 Modal 2 (정보 입력 View) -->
+<div class="modal fade" id="memberUpdateModal">
+  <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title">회원정보 수정</h4>
+       </div>        
+       <div class="modal-body">
+       
+       <form id='myPageUserUpdate'>
+        <input type='hidden' name='memNum' id='_memNums'>
+        <input type='hidden' name='oldProfilePic' id='_oldProfilePic'>
+        <input type='hidden'  id='_checkNname'>
+       
+       	<label for="profile" class='updateFont'>Profile</label> 
+       	<br style='padding-bottom:1px'>
+	   	<input type="file" name="fileload" class="profile2" id="_profilePic" style="display: none" >	            
+	    <label for="_profilePic"> 
+	   	<img id="newprofile" class="profile">
+	    </label>
+	    <br>        
+	    
+        <label class='updateFont'>UserName</label>
+        <input type='text' class="form-inline newInput" name='userName' id='newUserName' size='60px'>
+         
+       	<label class='updateFont'>NickName</label>
+        <input type='text' class="form-inline newInput" name='nickName' id='newNickName' size='60px'>
+                 
+       	<label class='updateFont'>Email</label>
+        <input type='text' class="form-inline holdInput" name='email' id='originalEmail' size='60px' readonly>
+  
+       	<label class='updateFont'>Password</label>
+        <input type='password' class="form-inline newInput" name='pwd' id='newPwd' size='60px'>
+         
+        <label class='updateFont'>Confirm Password</label>
+        <input type='password' class="form-inline newInput" id='newCpwd' size='60px'>
+         
+        <label class='updateFont'>Phone Number</label>
+        <input type='text' class="form-inline newInput" name='phoneNum' id='newPhoneNum' size='60px'>
+        
+        <br>
+        <input type='button' class='btn btn-light' id='memberUpdateBtn' style='float:right' value='수정완료'>
+        <input type='button' class='btn btn-light' id='memberDropOut' style='float:right' value='회원탈퇴'>
+       </form>
+       </div>
+     </div>
+   </div>
+</div>
 
 <div id='footer'></div>
 
@@ -497,8 +317,8 @@ $(document).ready(function () {
 	$("#goUserList").on('click',function(){
 		goUserList();
 	});
-	
-	
+
+
 	//--------------------------사이드 유저리스트 검색했을 때
 	function goUserList(){	
 		$("#layoutSidenav_content").show();
@@ -520,17 +340,16 @@ $(document).ready(function () {
 	            + "<th>#</th>"
 	            + "<th>이름</th>"
 	            + "<th>닉네임</th>"
-	            + "<th>마스터</th>"
+	            + "<th>클래스 개설</th>"
 	            + "<th>포인트</th>"
 	            + "<th>이메일</th>"
 	            + "<th>전화번호</th>"
+	            + "<th>상태</th>"
 	            + "</tr>"
 	            + "</thead>";
 	   
 	            $("#dataTable").append(table);
 	            $("#dataTable").append("<tbody id='classList'></tbody>"); // 태그 추가
-
-	
 	            getUserListData(0);
 	            countUserList();
 	}
@@ -547,21 +366,40 @@ $(document).ready(function () {
 	            $('.classtrtrtr').remove();
 	            $('.usertrtrtr').remove();
 	            $.each(list, function(i, list){
+	               let master = "";
+	               if(list.classMaster==0)
+	            	   master = "O";
+	               else
+	            	   master = "X";
+
+	    	       // 계정 상태
+	               let status = "";
+	               
+	               if(list.del==0){
+	            	   status = "<td>이용</td>";
+	               }else{
+	            	   status = "<td>탈퇴</td>";
+	               }
+	            	
 	               let str = "<tr class='usertrtrtr'>"
 	                     + "<td>" + (i+1) + "</td>"
 	                     + "<td>" + list.userName + "</td>"
-	                     + "<td>" + list.nickName + "</td>"
-	                     + "<td>" + list.classMaster + "</td>"
+	                     + "<td class='nName' seq="+list.memNum+">" + list.nickName + "</td>"
+	                     + "<td>" + master + "</td>"
 	                     + "<td>" + list.myPoint + "</td>"
 	                     + "<td>" + list.email + "</td>"
 	                     + "<td>" + list.phoneNum + "</td>"
+	                     + status
 	                     + "</tr>";
 	               $("#classList").append(str);                  
 	            });         
 	            
-	         
-	            $("#memDelete").click(function(){
-	               alert($("#memDelete").val());               
+	         	// 유저 정보 수정
+				$('.nName').on('click',function(){
+					let seq = $(this).attr('seq');
+					alert(seq);
+					setMemInfo(seq);
+					$("#memberUpdateModal").modal('show');
 	            });
 	            
 	         },
@@ -571,6 +409,176 @@ $(document).ready(function () {
 	      });
 	}
 	            
+ 	
+	/////////////////////////// 정보 수정 (회원정보 수정)  ///////////////////////////////
+    
+	// 회원정보 수정 초기화 값 셋팅 
+	function setMemInfo(seq){
+		$.ajax({
+	        url:"http://localhost:3000/myinfo",
+	        type:"post",
+	        data:{ memNum:seq},
+	        success:function(data){
+				$("#newprofile").attr('src', data.profilePic);
+				$("#_oldProfilePic").val(data.profilePic);
+				$("#_memNums").val(data.memNum);
+				$("#newUserName").val(data.userName);
+				$("#newNickName").val(data.nickName);
+				$("#_checkNname").val(data.nickName);
+				$("#originalEmail").val(data.email);
+				$("#newPwd").val(data.pwd);
+				$("#newCpwd").val(data.pwd);
+				$("#newPhoneNum").val(data.phoneNum);
+	        },
+	        error:function(){
+	        	alert('managerpage myinfo ajax error')
+	        }
+		});
+	};
+	
+	
+	// 프로필 이미지 미리보기
+	$("#_profilePic").on("change", handleImgFileSelect);
+	function handleImgFileSelect(e) {
+		
+		let files = e.target.files;
+		let filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+		   if(!f.type.match("image.*")) {
+		       alert("이미지만 업로드 가능합니다.");
+		       return;
+		   }
+		   sel_file = f;
+		   let reader = new FileReader();
+		   reader.onload = function(e) {
+		        $("#newprofile").attr("src", e.target.result);   
+		   }
+		   reader.readAsDataURL(f);
+		});
+	}
+
+
+	// 회원정보 수정 입력 값 빈 칸 체크
+	$("#memberUpdateBtn").click(function(){
+		if($("#newUserName").val() == ""){
+			alert('이름을 입력하세요');
+			$("#newUserName").focus();
+		}
+		else if($("#newNickName").val() == ""){
+			alert('닉네임을 입력하세요');
+			$("#newNickName").focus();
+		}
+		else if($("#newPwd").val() == ""){
+			alert('비밀번호를 입력하세요');
+			$("#newPwd").focus();
+		}
+		else if($("#newPhoneNum").val() == ""){
+			alert('전화번호를 입력하세요');
+			$("#newPhoneNum").focus();
+		}
+		else {
+			inputCheck();
+		}
+	});
+
+	
+	// 회원정보 수정 입력 값 중복확인 & 정규식 체크
+	function inputCheck(){
+		let pwdCheck = /^[a-zA-Z0-9]{4,12}$/; // pwassword 정규식
+		let phoneCheck = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; // 휴대전화 정규식
+		let nickName = $("#newNickName").val();
+		let originalNname = $("#_checkNname").val();
+		$.ajax({
+			url:"http://localhost:3000/checkNickName", 
+			type:'post',
+			data:{nickName:nickName},
+			success:function( data ){
+				if(nickName != originalNname && data == 1){
+					alert("사용중인 닉네임 입니다");
+					$("#newNickName").val("");
+					$("#newNickName").focus();
+				}
+				else if($("#newPwd").val() != $("#newCpwd").val()){ 
+					alert("비밀번호가 동일하지 않습니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!pwdCheck.test($("#newPwd").val())){
+					alert("패스워드는 4~12자의 영문 대소문자와 숫자만 가능합니다");
+					$("#newPwd").val("");
+					$("#newPwd").focus();
+				}
+				else if(!phoneCheck.test($("#newPhoneNum").val())){
+					alert("올바른 전화번호를 입력하세요");
+					$("#newPhoneNum").val("");
+					$("#newPhoneNum").focus();
+				}
+				else{
+					memberUpdateAf();
+				}
+			},
+			error:function(){
+				alert('inputCheck Check ajax error');
+			}
+		});
+	}
+	
+	
+	// 회원정보 수정 AF
+	function memberUpdateAf(){
+	$.ajax({
+		url:"http://localhost:3000/myPageUserUpdate", 
+		type:'post',
+		data : new FormData($("#myPageUserUpdate")[0]), 
+		enctype : 'multipart/form-data',
+		processData : false,
+		contentType : false,
+		cache : false,
+		success:function( data ){
+			if(data){
+				alert('성공적으로 수정되었습니다');
+				location.reload();
+			}
+			else{
+				alert("수정 실패");
+			}
+		},
+		error:function(){
+			alert('memberUpdateAf ajax error');
+		}
+	});
+	}
+	
+	
+	// 회원 탈퇴
+	$("#memberDropOut").click(function(){
+		let dropOut = confirm('정말로 탈퇴 하시겠습니까');
+		if(dropOut){
+			$.ajax({
+				url:"http://localhost:3000/memberDropOut", 
+				type:'post',
+				data:{memNum:$("#_memNums").val()},
+				success:function( data ){
+					if(data>0){
+						alert('성공적으로 탈퇴 되었습니다');
+					}
+					else{
+						alert('회원 탈퇴 실패');
+					}
+				},
+				error:function(){
+					alert('memberDropOut ajax Error')
+				}
+			});
+		}
+		else{
+			$('#memberUpdateModal').modal('hide');
+		}
+	});
+	
+	// ===============================================================
+
+	
 	function countUserList() {
 		$.ajax({
 			url:"http://localhost:3000/userCount",
@@ -650,7 +658,7 @@ $(document).ready(function () {
 		            + "<th>수업 시작일</th>"
 		            + "<th>수업 종료일</th>"
 		            + "<th>장소</th>"
-		            + "<th>삭제</th>"
+		            + "<th>중단/재개</th>"
 		            + "</tr>"
 		            + "</thead>";
 		   
@@ -665,44 +673,54 @@ $(document).ready(function () {
 		        
 	}            
 		
+	//----------- 클래스 리스트 뿌리기------------
 	function classlist(pNum) {
 		$.ajax({
 			url:"http://localhost:3000/classlist",
 			type:"get",
 			data:{ name:$("#className").val(), page:pNum},
 			success:function(list){
-				//alert(JSON.stringify(list));
-				//alert("성공쓰~!");
+				
 				$('.classtrtrtr').remove();
-				 $('.usertrtrtr').remove();
+				$('.usertrtrtr').remove();
+				
 				$.each(list, function(i, list){
+					
 					let startDate = (list.startDate).substring(0, 10);
 					let endDate = (list.endDate).substring(0, 10);
+					let del = "";
+					
+			        if(list.del==0)
+						del = "<td><input type='button' seq="+list.classNum+" class='delClass' value='중단'></td>"
+					else if(list.del==1)
+						del = "<td><input type='button' seq="+list.classNum+" class='reStartClass' value='재개'></td>"
+					
 					let str = "<tr class='classtrtrtr'>"
 							+ "<td>" + (i+1) + "</td>"
 							+ "<td>" + list.instructor + "</td>"
-							+ "<td>" + list.title + "</td>"
+							+ "<td class='goD' seq="+list.classNum+">" + list.title + "</td>"
 							+ "<td>" + list.primaryCategory + "</td>"
 							+ "<td>" + list.secondaryCategory + "</td>"
 							+ "<td>" + startDate + "</td>"
 							+ "<td>" + endDate  + "</td>"
 							+ "<td>" + list.location + "</td>"
-							+ "<td><input type='button' seq="+list.classNum+" class='delClass' value='삭제'></td>"
+							+ del
 							+ "</tr>";
 					$("#classList").append(str);	
 				});
 				
+				// 클래스 중단
 				$('.delClass').on('click',function(){
-					let check = confirm('정말로 삭제하시겠습니까');
+					let check = confirm('정말로 중단하겠습니다');
 					let seq = $(this).attr('seq');
 					if(check){
 						$.ajax({
-							url:"http://localhost:3000/onedayClassMasterDel",
+							url:"http://localhost:3000/onedayClassDelete",
 							type:"get",
 							data:{classNum:seq},
 							success:function(result){
 								if(result){
-									alert('성공적으로 삭제되었습니다');
+									alert('성공적으로 중단했습니다');
 									location.reload();									
 								}
 							},
@@ -712,9 +730,38 @@ $(document).ready(function () {
 						}); 
 					}
 				}); 
+				
+				// 클래스 재개
+				$('.reStartClass').on('click',function(){
+					let check = confirm('정말로 재개하겠습니까');
+					let seq = $(this).attr('seq');
+					if(check){
+						$.ajax({
+							url:"http://localhost:3000/onedayClassRestart",
+							type:"get",
+							data:{classNum:seq},
+							success:function(result){
+								if(result){
+									alert('성공적으로 재개하였습니다');
+									location.reload();									
+								}
+							},
+							error:function(){
+								alert("onedayClassMasterDel ajax error");
+							}
+						}); 
+					}
+				}); 
+				
+				// 클래스 수정
+				$(".goD").click(function(){
+					let seq = $(this).attr('seq');
+					location.href="../onedayClassView/onedayClassUpdate.html?seq="+seq;
+				})
+				
 			},
 			error:function(){
-				alert('에러임 ㅜ');
+				alert('classlist ajax error');
 			}		
 				
 		});	
@@ -766,13 +813,12 @@ $(document).ready(function () {
 		classlist(0);
 	    countClassList();
 	});
-
-
-}); //
+}); 
 
 
 
-//----------------------문의사항------------------
+//----------------------문의사항----------------------------
+
 
 
 	$("#goQnaList").click(function(){
@@ -848,7 +894,6 @@ $(document).ready(function () {
 			data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
 			success:function( count ){
 				//alert('success');
-				alert(count);
 				loadPage(count);
 				
 			},
@@ -929,9 +974,6 @@ $(document).ready(function () {
 				$("#_ncontent").val(bbs.nContent);
 				$("#_wdate").val(bbs.wDate);
 				$("#_email").val(bbs.email);
-				var src1 = './noticeUpload/' + bbs.nImg;
-				
-				$("#_nImg").attr("src", src1);
 				
 				$("#detailModal").modal('show');
 			},
@@ -953,7 +995,9 @@ $(document).ready(function () {
 		$("#detailTable").append(reply);	
 		
 		$('#answerbtn').hide(); //답변클릭시 답변버튼 지움
-		$(".modal-footer").append("<button type=\"button\" class=\"btn btn-secondary\" id=\"answerAf\">답변완료</button>");			
+		
+		$(".modal-footer").append("<button type=\"button\" class=\"btn btn-secondary\" id=\"answerAf\">답변완료</button>");	
+		
 	});
 
 
@@ -976,14 +1020,16 @@ $(document).ready(function () {
 	       
 			$(document).on("click", '#answerAf', function(){       	 
 				$(this).remove();
-				$("#detailModal").modal('hide');
 				
+				let fullName = document.getElementById("_username").value;
+			    let userEmail = document.getElementById("_email").value;
+			    let userMessage = document.getElementById("replyMessage").value;
 				
 	          var templateParams = {	
 	          //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
-	                username: $('.detailUsername').val(),
-	                email : $('.detailEmail').val(),
-	                message : $('.message').val()
+	                username: fullName,
+	                email: userEmail,
+	                message: userMessage
 	           				};
 	                    
 	                	
@@ -997,7 +1043,7 @@ $(document).ready(function () {
 	         	       console.log('FAILED...', error);
 	         	    });
 	         	       
-
+	         $("#detailModal").modal('hide');
 				
 	         $.ajax({
 	  	 		url:"http://localhost:3000/noticeAnswerAf",
@@ -1007,6 +1053,7 @@ $(document).ready(function () {
 	  	 			alert('success');
 
 	  	 			adminNoticeCheck();
+	  	 			location.reload(true);
 	  	 			
 	  	 		},
 	  	 		error:function(){
@@ -1017,6 +1064,7 @@ $(document).ready(function () {
 	         
 	        });
 		  });
+
 
 		</script>
 </body>

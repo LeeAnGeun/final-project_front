@@ -72,10 +72,16 @@ $(document).ready(function(){
 				type:'post',
 				data:log,
 				success:function( data ){
-					
+					alert(data.del);
 					if(data.email != null){
-						sessionSave(data)
-						interestCheck(data)
+						if(data.del == 1){
+							alert('삭제된 계정입니다');
+							location.reload();
+						}
+						else{
+							sessionSave(data)
+							interestCheck(data)
+						}
 					}
 					else{
 						loginMiss(logMissCount);				
@@ -226,14 +232,20 @@ function Google_Kakao_Log(email, userName, nickName, profilePic){
 		type:'post',
 		data:{email:email},
 		success:function( data ){
-			
+			alert(data.del);
 			if(data.email != null){
-				sessionSave(data);
-				interestCheck(data);			
-			} 
-			else {
-				Google_Kakao_Regi(email, userName, nickName, profilePic);
+				if(data.del == 1){
+					alert('삭제된 계정입니다');
+					location.reload();
+				}
+				else{
+					sessionSave(data)
+					interestCheck(data)
+				}
 			}
+			else{
+				Google_Kakao_Regi(email, userName, nickName, profilePic);
+			} 
 		},
 		error:function(){
 			alert("Google_Kakao_Log ajax Error");
@@ -397,9 +409,8 @@ $("#_checkNickName").change(function() {
 	}
 	else{	
 		let nickName = $("#_nickName").val();
-		
 		$.ajax({
-			url:"http:/localhost:3000/checkNickName", 
+			url:"http://localhost:3000/checkNickName", 
 			type:'post',
 			data:{nickName:nickName},
 			success:function( data ){

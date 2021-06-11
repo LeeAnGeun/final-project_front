@@ -39,7 +39,7 @@ $("#footer").load("../footer.html");
 	<div class="midClassMenu">
 		<ul class="navListTop2">
 			<li class="listItem2"><a class="categoryA langLink" id="allClass" eng="전체" href="javascript:void(0);">
-			<i class="fas fa-language" style="font-size:46px;"></i><br>전체보기</a></li>
+			<i class="fas fa-home" style="font-size:46px;"></i><br>전체보기</a></li>
 			<li class="listItem2"><a class="categoryA langLink" id="langClass" eng="외국어" href="javascript:void(0);">
 			<i class="fas fa-language" style="font-size:46px;"></i><br>외국어</a></li>
 			<li class="listItem2"><a class="categoryA createLink" id="createClass" eng="크리에이티브" href="javascript:void(0);">
@@ -604,12 +604,17 @@ function classListData( pNumber, myChoice, mySearch, pcVal ) {
 				let startDD = val.startDate;
 				startDD = startDD.substring(0,10);
 				//<img class='classImg' src='"+val.image1+"' alt='no image'>"
+				var className = val.title;
+		        if(className.length > 10){
+		        	className = className.substring(0,10)+"...";
+		        }
+				
 				app = "<div class='classCard' id='"+val.classNum +"'>"
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				//app += "<img class='classImg' src='../images/What-are-your-Hobbies.jpg' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+pcVal+"' ><h4><b>" + className + "</b></h4></a>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";
@@ -964,7 +969,7 @@ function goBackClassList(pNumber, mySearch, myChoice, cate, ssseq) {
 				app += "<img class='classImg' src='"+val.image1+"' alt='no image' align='center'>";
 				app += "<div class='classContainer'>";
 				app += "<font><i class='far fa-thumbs-up'></i>" + val.likeCount + "&nbsp;&nbsp;<i class='far fa-star'></i>"+val.avgPoint+"</font>";
-				app += "<a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+cate+"' ><h4><b>" + val.title + "</b></h4></a>";
+				app += "<div class='marqueebluebox'><a href=# class='classDetailNum'  id='classDN"+val.classNum +"' value='"+val.classNum+"' cate='"+cate+"'><h4><b>" + val.title + "</b></h4></a></div>";
 				app += "<font>" + val.primaryCategory + val.secondaryCategory + "</font><br>";
 				app += "<font> 포인트: " + val.price + "</font>";
 				app += "</div></div>";

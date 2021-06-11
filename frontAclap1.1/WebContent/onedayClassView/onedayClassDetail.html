@@ -70,7 +70,7 @@ let seq = urlParams.seq
 <div id='naviBar'></div>
 <br><br><br>
 
-<button id="_goBack" class="btn btn-dark btn-sm" onclick="goBack()">Go Back</button>
+<button class="goBack" id="_goBack">목록 바로가기</button>
 
 <script>
 $("#_goBack").on("click", function(){
@@ -79,10 +79,9 @@ $("#_goBack").on("click", function(){
 	let priCate = urlParams.get('cate');
 	const ssseq = urlParams.get('seq');
 	
-	if(priCate==null){
+	if(priCate == null){
 		priCate = "";
 	}
-	
 	window.location.href = "../categoryPage/categoryViewPage.html?seq=" + seq + "&cate="+ priCate +"#comeBack";
 });
 
@@ -692,7 +691,7 @@ function dqGO(){
 <!--allSchedule Modal -->
 <div class="modal fade allScheduleModal" id="allSchedule" tabindex="-1" aria-labelledby="allScheduleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 700px"> 
       <div class="modal-header">
         <h5 class="modal-title" id="allScheduleModalLabel" style="text-align: center;">일정 전체보기</h5>
         <button type="button" class="close" onclick="allScheduleHide()" aria-label="Close">
@@ -700,7 +699,7 @@ function dqGO(){
         </button>
       </div>
       <div class="modal-body oneClsSche">
-      	<div>
+      	<div style="margin-left: 100px;">
 		 <font style="float: left;">Date: <input type="text" id="datepicker"></font>
 		<form  class="scMemCounterFrm" style="padding-left: 20px; float: left;">
 			<fieldset>
@@ -761,19 +760,19 @@ $(document).ready(function(){
 	      success:function( dto ){
 	    	  	// 1. 제목 부분
 	    	  	// 스몰로고 
-				if(dto.primaryCategory == '외국어'){
+	    	  	if(dto.primaryCategory == '외국어'){
 					$("#pCategory").attr("class", "fas fa-language");
 					$("#pCategory").html("&nbsp;외국어");
-				}else if(dto.primaryCategory = '크리에이티브'){
+				}else if(dto.primaryCategory == '크리에이티브'){
 					$("#pCategory").attr("class", "fas fa-palette");
 					$("#pCategory").html("&nbsp;크리에이티브");
-				}else if(dto.primaryCategory = '요리'){
+				}else if(dto.primaryCategory == '요리'){
 					$("#pCategory").attr("class", "fas fa-utensils");
 					$("#pCategory").html("&nbsp;요리");
-				}else if(dto.primaryCategory = '프로그래밍'){
+				}else if(dto.primaryCategory == '프로그래밍'){
 					$("#pCategory").attr("class", "fas fa-code");
 					$("#pCategory").html("&nbsp;프로그래밍");
-				}else if(dto.primaryCategory = '스포츠/레져'){
+				}else if(dto.primaryCategory == '스포츠/레져'){
 					$("#pCategory").attr("class", "fas fa-dumbbell");
 					$("#pCategory").html("&nbsp;스포츠/레져");
 				}
@@ -797,20 +796,20 @@ $(document).ready(function(){
 	    	  		$(".onedayClassImageBoxB").show();
 	    	  		$(".onedayClassImageBoxA").hide();
 	    	  		$(".onedayClassImageBoxC").hide();
-	    	  		$("#_ocImgB1").attr("src", dto.image1);
-	    	  		$("#_ocImgB2").attr("src", dto.image2);
-	    	  		$("#_ocImgB3").attr("src", dto.image3);
-	    	  		$("#_ocImgB4").attr("src", dto.image4);
-	    	  		$("#_ocImgB5").attr("src", dto.image5);
+	    	  		$("#_ocImgB1, #img1").attr("src", dto.image1);
+	    	  		$("#_ocImgB2, #img2").attr("src", dto.image2);
+	    	  		$("#_ocImgB3, #img3").attr("src", dto.image3);
+	    	  		$("#_ocImgB4, #img4").attr("src", dto.image4);
+	    	  		$("#_ocImgB5, #img5").attr("src", dto.image5);
 	    	  	}else if(dto.layerSelect=='C'){
 	    	  		$(".onedayClassImageBoxC").show();
 	    	  		$(".onedayClassImageBoxA").hide();
 	    	  		$(".onedayClassImageBoxB").hide();
-	    	  		$("#_ocImgC1").attr("src", dto.image1);
-	    	  		$("#_ocImgC2").attr("src", dto.image2);
-	    	  		$("#_ocImgC3").attr("src", dto.image3);
-	    	  		$("#_ocImgC4").attr("src", dto.image4);
-	    	  		$("#_ocImgC5").attr("src", dto.image5);
+	    	  		$("#_ocImgC1, #img1").attr("src", dto.image1);
+	    	  		$("#_ocImgC2, #img2").attr("src", dto.image2);
+	    	  		$("#_ocImgC3, #img3").attr("src", dto.image3);
+	    	  		$("#_ocImgC4, #img4").attr("src", dto.image4);
+	    	  		$("#_ocImgC5, #img5").attr("src", dto.image5);
 	    	  	}
 	    	  	
 	    	  	// 3. ~~님이 개설한 클래스
@@ -865,11 +864,12 @@ $(document).ready(function(){
 				let s_pDate = dateDiff(startDate, pDate);
 				// alert(s_pDate);
 				$(".ccSelectBtn").attr("classtitle", dto.title);
-			
+				$(".ccSelectBtn").attr("masterNum", dto.masterNum);
+				
 				if(s_pDate >= 0){
 					//alert("이미시작함");
 					
-					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum, dto.title);
+					classSchedulList(dto.classNum, dateFormat(pDate), (dto.endDate).substring(0,10), dto.limitNum, dto.title, dto.masterNum);
 					
 				}else{
 					//alert("아직 시작안함");
@@ -878,7 +878,7 @@ $(document).ready(function(){
 					startDate.setDate(startDate.getDate() -1);
 					
 					startDate = dateFormat(startDate);
-					classSchedulList(dto.classNum, startDate, (dto.endDate).substring(0,10), dto.limitNum, dto.title);
+					classSchedulList(dto.classNum, startDate, (dto.endDate).substring(0,10), dto.limitNum, dto.title, dto.masterNum);
 				}
 				
 				//10. 이미지 클릭시 확대 모달
@@ -908,7 +908,7 @@ $(document).ready(function(){
 	}
 	
 	
-	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle){
+	function classSchedulList(classNum, startDate, endDate, limitNum, classtitle, masterNum){
 		
 		$.ajax({
 		      url:"http://localhost:3000/classSchedulList", 
@@ -938,20 +938,20 @@ $(document).ready(function(){
 						let sbtn = "";
 						
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='caSelectBtn' title='' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
+	                     	sbtn += "<button type='button' class='caSelectBtn' title='' cDate='" + rdate + "' classtitle='"+ classtitle +"' masterNum='"+ masterNum +"' style='margin-top: 20px;margin-left: 50px;'>신청</button>";
 	                    }else{
-	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    	sbtn += "<button type='button' class='eaSelectBtn' style='margin-top: 20px;margin-left: 50px;'>마감</button>";
 	                    	noDateArray[z] = rdate;
 	                    	z = z+1;
 	                    }
 						
 						src += "<div class='classApplicatoinBox'>"
 						                     + "<div class='caDate'>" + rdate + "</div>"
-						                     + "<div class='caTime'> 수업 시간 : " + classSchedule.duration + "분</div>"
-						                     + "<div class='caMem'>예약 가능 인원 : " + classSchedule.limitNum + "</div>"
+						                     + "<div class='caTime'><i class='fas fa-clock'></i> " + classSchedule.duration + "분</div>"
+						                     + "<div class='caMem'><i class='material-icons' style='font-size:19 px'>people</i> " + classSchedule.limitNum + "명</div>"
 						                     + "<div class='coinNprice'>"
 						                           + "<i class='fas fa-donate'></i>"
-						                           + "<span class='caPrice'>" + classSchedule.price + "point</span>"
+						                           + "<span class='caPrice'> " + comma(classSchedule.price) + "point</span>"
 						                     + "</div>"
 						                     + sbtn
 						              	+ "</div>";
@@ -980,19 +980,19 @@ $(document).ready(function(){
 						
 						let sbtn = "";
 						if(classSchedule.limitNum > 0){
-	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "' classtitle='"+ classtitle +"'>신청</button>";
+	                     	sbtn += "<button type='button' class='cbSelectBtn' cDate='" + rdate + "' classtitle='"+ classtitle +"' masterNum='"+ masterNum +"' style='margin-left: 360px; margin-top: 10px;'>신청</button>";
 	                    }else{
-	                    	sbtn += "<button type='button' class='eaSelectBtn'>마감</button>";
+	                    	sbtn += "<button type='button' class='eaSelectBtn' style='margin-left: 360px; margin-top: 10px;'>마감</button>";
 	                    }
 						
 						src2 += "<div class='clsSchedule'>"
 					      	 	+	"<div class='csDate'>"+ rdate +"</div>"
-								+	"<div class='csTime'>수업 시간 :"+ classSchedule.duration + "분</div>"
-								+	"<div class='csMem'>예약 가능 인원 :"+ classSchedule.limitNum +"명</div>"
+								+	"<div style='margin-top: 10px;'><div class='csTime'><i class='fas fa-clock'></i> "+ classSchedule.duration + "분</div>"
+								+	"<div class='csMem'><i class='material-icons'>people</i> "+ classSchedule.limitNum +"명</div>"
 								+	"<div class='csCoin'>"
 						        +        "<i class='fas fa-donate'></i>"
-						        +        "<span class='csPrice'>"+ classSchedule.price +"point</span>"
-								+	"</div>"
+						        +        "<span class='csPrice'> "+ comma(classSchedule.price) +"point</span>"
+								+	"</div></div>"
 								+	sbtn
 				      	 	  + "</div>";
 					}
@@ -1018,9 +1018,14 @@ $(document).ready(function(){
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	let classTitle = $(this).attr("classtitle");
-	                	
+	                	let masterNum= $(this).attr("masterNum"); // 가입자와 class master와 같은 사람인지 판별하기 위함
 	                	getIncludMember(json.memNum, seq, cdate);
-	                	
+	   
+	                	if(masterNum==json.memNum){
+	                		alert("개설자는 가입할 수 없습니다.");
+	                		return;
+	                	}
+	                
 	                	if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
 	                		return;
@@ -1030,7 +1035,7 @@ $(document).ready(function(){
 	                		alert("이미 신청 한 날짜 입니다. 다시 한번 확인 부탁드립니다.");
 							return;
 						}
-	                
+	   
 	                	for(let i=1; i < clist.length+1; i++){
 							let classSchedule = clist[i-1];
 							let rdate = (classSchedule.rdate).substring(0,10);
@@ -1084,8 +1089,14 @@ $(document).ready(function(){
 	                	let myPoint = memPoint-(clist[0].price*joinNum)	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	let classTitle = $(this).attr("classtitle");
+	                	let masterNum= $(this).attr("masterNum"); // 가입자와 class master와 같은 사람인지 판별하기 위함
 	                	
 	                	getIncludMember(json.memNum, seq, cdate);
+	                	
+	                	if(masterNum==json.memNum){
+	                		alert("개설자는 가입할 수 없습니다.");
+	                		return;
+	                	}
 	                	
 	               		if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
@@ -1149,8 +1160,14 @@ $(document).ready(function(){
 	                	let myPoint = memPoint-(clist[0].price*joinNum);	// 신청 후 나의 잔액
 	                	let rPoint = clist[0].price * joinNum; // 결제 금액
 	                	let classTitle = $(this).attr("classtitle");
-	                	
+	                	let masterNum= $(this).attr("masterNum"); // 가입자와 class master와 같은 사람인지 판별하기 위함
+	                
 	                	getIncludMember(json.memNum, seq, cdate);
+	                	
+	                	if(masterNum==json.memNum){
+	                		alert("개설자는 가입할 수 없습니다.");
+	                		return;
+	                	}
 	                	
 	                	if(joinNum==0){
 	                		alert("인원수를 다시한번 확인해주세요");
@@ -1542,9 +1559,44 @@ function addressSearch(location){
 // 리뷰 모달 창 컨트롤
 $(".reviewModalBtn").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
+	 $('body').css("background-color","rgba(0, 0, 0, 0.5)");
+	 $('.classApplicatoinBox').css({"background-color":"rgba(0, 0, 0, 0.02)", "border":"none"});
+	 $('.allScheduleModalBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.caSelectBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.decrease').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('#maxMember').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.increase').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('#map').css("opacity","0.2");
+	 $('#br-widget').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.reviewModalBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.detailViewClassContainer').css("opacity","0.2");
+	 $('.detailViewQuestContainer').css("opacity","0.2");
+	 $('.ratingAvg').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.carousel-item active').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.reviewBtn').css("background-color","rgba(0, 0, 0, 0.02)");
+	 $('.fa-star').css("color","gray"); // 별 빨강색 -> 회색으로 
+//	 $('.br-readonly ').css("color","#d2d2d2"); // 리뷰 별점 회색으로
+	 
+	
 });
 $(".review_modal_close").click(function(){
 	$(".review_hide_modal").toggleClass("review_show_modal");	
+	 $('body').css("background-color","rgba(0, 0, 0, 0)");
+	 $('.classApplicatoinBox').css({"background-color":"", "border":""});
+	 $('.allScheduleModalBtn').css("background-color","");
+	 $('.caSelectBtn').css("background-color","");
+	 $('.decrease').css("background-color","");
+	 $('#maxMember').css("background-color","");
+	 $('.increase').css("background-color","");
+	 $('#map').css("opacity","1");
+	 $('#br-widget').css("background-color","");
+	 $('.reviewModalBtn').css("background-color","");
+	 $('.detailViewClassContainer').css("opacity","1");
+	 $('.detailViewQuestContainer').css("opacity","1");
+	 $('.ratingAvg').css("background-color",")");
+	 $('.carousel-item active').css("background-color","");
+	 $('.reviewBtn').css("background-color","");
+	 $('.fa-star').css("color","red"); // 별 빨강색 -> 회색으로 
 });
 
 
@@ -1555,6 +1607,25 @@ $(".image_hide_modal").hide();
 let modalCheck = true;
 $(".onedayClassImageBoxA").click(function(){
       if(modalCheck){
+         $(".image_hide_modal").toggleClass("image_show_modal");   
+         $(".image_hide_modal").show();
+   	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+ 	 	 $('.detailViewQuestContainer').css("opacity","0.1");
+	     $('.detailViewClassContainer').css("opacity","0.1");
+	     $('.onedayClassImageBoxA').css("opacity","0.1");
+	     $('.onedayClassImageBoxB').css("opacity","0.1");
+	     $('.onedayClassImageBoxC').css("opacity","0.1");
+	     $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");	// 공유하기
+	     $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");		// 좋아요
+	     $('.fa-star').css("color","#848484");									//별점
+	     $('#map').css("opacity","0.1");
+	     $('#map').css("opacity","0.1");
+           
+         modalCheck=false;
+      };
+});
+$(".onedayClassImageBoxB").click(function(){
+	 if(modalCheck){
          $(".image_hide_modal").toggleClass("image_show_modal");   
          $(".image_hide_modal").show();
  	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
@@ -1571,6 +1642,27 @@ $(".onedayClassImageBoxA").click(function(){
            
          modalCheck=false;
       };
+	
+});
+$(".onedayClassImageBoxC").click(function(){
+	 if(modalCheck){
+        $(".image_hide_modal").toggleClass("image_show_modal");   
+        $(".image_hide_modal").show();
+	    $('body').css("background-color","rgba(0, 0, 0, 0.7)");
+	 	 $('.detailViewQuestContainer').css("opacity","0.1");
+	     $('.detailViewClassContainer').css("opacity","0.1");
+	     $('.onedayClassImageBoxA').css("opacity","0.1");
+	     $('.onedayClassImageBoxB').css("opacity","0.1");
+	     $('.onedayClassImageBoxC').css("opacity","0.1");
+	     $('.DetailShareBtn').css("background-color","rgba(0, 0, 0, 0.02)");	// 공유하기
+	     $('.DetailLikeBtn').css("background-color","rgba(0, 0, 0, 0.02)");		// 좋아요
+	     $('.fa-star').css("color","#848484");									//별점
+	     $('#map').css("opacity","0.1");
+	     $('#map').css("opacity","0.1");
+          
+        modalCheck=false;
+     };
+	
 });
    
 $(".fa-times").click(function(){
@@ -1867,16 +1959,13 @@ $.ajax({
 
 getListReview()
 // ~~~~~~~~~리뷰 리스트 뿌리기~~~~~
-
 function getListReview(){
-
 $.ajax({
 		url:"http://localhost:3000/getReviewList", 			
 		type:"get",
 		data:{classNum:seq},
 	 	success:function(list){ 	
-	 		// 삭제한 리뷰 갯수 안보여야 함.................
-
+	 		
 			$("#reviewGrade").append("(리뷰" + Object.keys(list).length + "개)");
 	 //		$("#starGradeCount").html("("+Object.keys(list).length+")")		// 리뷰갯수
 	 //		alert( Object.keys(list).length + "개");
@@ -1984,11 +2073,11 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 	//		alert(typeof (JSON.stringify(data.satisfy)));
 	//		var satisfy = parseInt(data.satisfy)
 	//		alert(typeof satisfy )
-			alert("리뷰시퀀스" + data.reviewSeq);
+	//		alert("리뷰시퀀스" + data.reviewSeq);
 			//모달로 뿌러줘야하는데.............
 			$(".reviewBtn").show();
 			
-		//	$("#satisfy").val(data.satisfy);  이거 안됨 ㅜㅜ별점 으악~~~~
+		
 			$("#rContent").val(data.rContent); 
 			$("#reviewSubmit").hide();	//리뷰 쓰기에 제출 버튼 안보이게해줘
 			$("#reviewUpSub").show();	// 리뷰 수정버튼 보이게해줘
@@ -2116,6 +2205,8 @@ function DetailShare(){
 	$(".DetailShareBtn").attr('data-clipboard-text', url);
 	alert('주소가 저장 되었습니다');
 };
+
+
 
 
 

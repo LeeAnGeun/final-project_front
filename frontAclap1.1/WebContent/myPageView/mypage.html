@@ -114,6 +114,7 @@ $(document).ready(function(){
 	// 회원정보 수정 초기화 값 넣기 
 	$(document).ready(function(){
 		$("#newprofile").attr('src', json.profilePic);
+		$("#_oldProfilePic").val(json.profilePic);
 		$("#_memNum").val(json.memNum);
 		$("#newUserName").val(json.userName);
 		$("#newNickName").val(json.nickName);
@@ -249,7 +250,7 @@ $(document).ready(function(){
 						if(data>0){
 							alert('성공적으로 탈퇴 되었습니다');
 							sessionStorage.clear();
-							location.href='taeminNavi.html';
+							location.href = "../main/main.html"; 
 						}
 						else{
 							alert('회원 탈퇴 실패');
@@ -300,7 +301,7 @@ $(document).ready(function(){
             	 <div class="col-md-6 py-md-3 subView1" >
                     <div class="d-flex flex-row justify-content-start align-items-center pt-md-4 pb-md-3 pt-sm-2 border-bottom timeline">
                         <div class="p-md-2 pl-sm-2 mt-sm-1 font-weight-bold">User Timeline</div>
-                        <input type="month" id="_date" class="p-md-2 pt-sm-1 p-2 ml-auto border rounded text-muted bg-white"><input type="button" id="_searchSchedules" value="검색">
+                        <input type="month" id="_date" class="p-md-2 pt-sm-1 p-2 ml-auto border rounded text-muted bg-white"><button type="button" class="btn btn-dark" id="_searchSchedules" >검색</button>
                     </div>
                     <div class="text-secondary">
                     	<span class="a_date"></span>
@@ -345,8 +346,11 @@ $(document).ready(function(){
                 </div>
                 
                 <div class="col-md-6 pt-md-0 mt-5 subView2" >
-                    <div class="mt-lg-0 mt-md-4" > <b>Detail View</b> </div>
-                    <div class="bg-white border rounded view">
+                    <div class="memListView" > 
+                    	<b>Detail View</b> 
+                    	<input type="month" id="_date2" class="memListDate"><button type="button" class="btn btn-dark" id="_searchMemList" >검색</button>             	
+                    </div>
+                    <div class="bg-white border rounded view2">
                         <div class="align-items-center b_info2">
                             <table class="pppInfoTable" style="width: 100%; text-align: center;">
                             <colgroup>
@@ -409,9 +413,6 @@ $(document).ready(function(){
 					    <col width="20%"/>
 					    <col width="20%"/>
 					  </colgroup>
-				<!-- 	<tbody class="stamp_Table_body">
-					
-					</tbody> -->
 				</table>
 				</div>
 				<!-- paging -->
@@ -687,6 +688,7 @@ $(document).ready(function() {
 		
 		$(".mainView2").hide();
 		$("#_date").val(mdate);
+		$("#_date2").val(mdate);
 		
 		$.ajax({
 			url:"http://localhost:3000/mySchedule", 
@@ -944,12 +946,6 @@ $(document).ready(function() {
 		return msg.length<2?"0"+msg:msg; // 글자수가 2보다 작을때 0을 붙여서 반환한다.
 	};
 	
-	// 도장판 닫기
-	$(".close_Table").click(function(){
-		alert("안꺼지냐??..");
-		$("#stampTable").on('hide');
-	});	 
-
 	
 	// 두개의 날짜를 비교하여 차이를 알려준다.
 	function dateDiff(_date1, _date2) {
@@ -1034,15 +1030,29 @@ function stampTable( memNum, pageNum ){
 	
 			$(".stamp_Table_body").remove();
 			
-			let table = "<tbody class='stamp_Table_body'><tr>";
+			let table = "<tbody class='stamp_Table_body'><tr style='height:50%;'>";
 			
 			// 다 채워진 판 이외에 나머지 도장판
 			let i = 1;
 			for(i; i < list.length + 1; i++){
+				let stampPriCate = list[i-1].primaryCategory;
+				let priCate = "";
+	
+				if(stampPriCate == '외국어'){
+					priCate += "<i class='fas fa-language' style='font-size:50px;color:#1E3269;'></i>";
+				}else if(stampPriCate == '크리에이티브'){
+					priCate += "<i class='fas fa-palette' style='font-size:50px;color: #1E3269;'></i>";
+				}else if(stampPriCate == '요리'){
+					priCate += "<i class='fas fa-utensils' style='font-size:50px;color: #1E3269;'></i>";
+				}else if(stampPriCate == '프로그래밍'){
+					priCate += "<i class='fas fa-code' style='font-size:50px;color: #1E3269;'></i>";
+				}else if(stampPriCate == '스포츠/레져'){
+					priCate += "<i class='fas fa-dumbbell' style='font-size:50px;color: #1E3269;'></i>";
+				}
 				if(i==6){
 					table += "</tr><tr>";
 				}
-				table += "<td><img class='tableImg' src='./images/stamp.png'></td>";
+				table += "<td>" + priCate + "</td>";
 			}
 			
 			for(i; i<11; i++){
@@ -1359,18 +1369,21 @@ $(document).on("click", ".myClassStop", function () {
 });
 	
 //내가 개설한 클래스를 클릭시 디테일부분에 뿌려지는 내 클래스 수강생 신청인 정보 목록
-$(document).on("click", ".classDetailClick", function () { 
-		
-		let classNum = $(this).attr("val");
-		
-		$.ajax({
-			url:"http://localhost:3000/getMyClassParticipants",
-			type:"get",
-			data:{classNum:classNum},
-			success:function( list ){
-				$(".pInfo").remove();
+function searchMemList(classNum){	
+	let classDate = $("#_date2").val();
+	
+	$.ajax({
+		url:"http://localhost:3000/getMyClassParticipants",
+		type:"get",
+		data:{classNum:classNum, classDate:classDate},
+		success:function( list ){
+			$(".pInfo").remove();
 			
-				let ppp="<tbody class='pInfo'>";
+			let ppp="<tbody class='pInfo'>";
+			if(list.length == 0){
+				ppp += "<tr><td colspan='3'>해당 월에는 가입자가 없습니다.</td></tr>";
+			}
+			else{
 				$.each(list, function(i,val){
 					/* let month = val.rdate.substring(5,7);
 					let day = val.rdate.substring(8,10); */
@@ -1379,16 +1392,34 @@ $(document).on("click", ".classDetailClick", function () {
 						+ "<div style='float:left'><div class='classMemNic'>" +val.nickName+ "</div><div class='classMemEma'>" + val.email + "</div></div></td><td>"+val.participants+"</td>"
 			  			+ "</tr>";
 				});
-				ppp += "</tbody>";
-			$(".pppInfoTable").append(ppp);
-			
-				
-			},
-			error:function(){
-				alert('error');
 			}
-		});
+			ppp += "</tbody>";
+		$(".pppInfoTable").append(ppp);
+		
+			
+		},
+		error:function(){
+			alert('error');
+		}
 	});
+}
+
+$(document).on("click", ".classDetailClick", function () {
+	let classNum = $(this).attr("val");
+	$("#_searchMemList").attr('classNum', classNum);
+	
+	searchMemList(classNum);
+});
+
+$("#_searchMemList").on('click', function(){
+	let classNum = $(this).attr("classNum");
+	if(classNum == null){
+		alert("검색하실 클래스를 선택해주세요.");
+		return;
+	}
+	searchMemList(classNum);
+});
+
 </script>
 
 <script>	 

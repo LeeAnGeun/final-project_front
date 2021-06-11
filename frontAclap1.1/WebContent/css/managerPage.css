@@ -1,0 +1,218 @@
+@charset "UTF-8";
+.card mb-4{
+	width: 80%
+}	
+#layoutSidenav{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	margin: 0auto;
+	
+}
+.noticeTitle{
+	font-size:15px;
+	position: relative;
+	left:32px;
+	top:-5px;
+}
+.search{
+	position: relative;
+	left:28px;
+	top:3px;
+}	
+.form-select{
+	width:100px;
+	height:31px;
+	border-radius: 5px;
+	border-color:#d1d1d1;
+}
+#_searchWord{
+	width:180px;
+	height:32px;
+	border-radius: 5px;
+	border:solid 1px #d1d1d1;
+}
+.Qbtn{
+	background-color:white;
+	height:32px;
+	border-radius: 5px;
+	border:solid 1px #d1d1d1;
+}
+	
+#layoutSidenav #layoutSidenav_nav{
+	width: 10%;
+	height: 100%;
+	float: left;
+	position: relative;
+	/* border: dashed;
+	border-color: red; */
+}
+	
+	
+	
+#layoutSidenav #layoutSidenav_content{
+	width: 90%;
+	height: 100%;
+	float: left;
+	position: relative;
+	/* border: dashed;
+	border-color: red; */
+}
+	
+
+.sb-sidenav {
+padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+.sb-sidenav .sb-sidenav-menu {
+  flex-grow: 1;
+}
+.sb-sidenav .sb-sidenav-menu .nav {
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
+  padding: 1.75rem 1rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.sb-sidenav .sb-sidenav-menu .nav .nav-link {
+  display: flex;
+  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
+  font-size: 0.9rem;
+}
+.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
+  display: inline-block;
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
+  transform: rotate(-90deg);
+}
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
+  margin-left: 1.5rem;
+  flex-direction: column;
+}
+.sb-sidenav .sb-sidenav-footer {
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+
+.sb-sidenav-dark {
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.5);
+}
+.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+  color: #fff;
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+  color: #fff;
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+  color: #fff;
+}
+.sb-sidenav-dark .sb-sidenav-footer {
+  background-color: #343a40;
+}
+.table-responsive::-webkit-scrollbar{
+	display: none; /* Chrome, Safari, Opera*/
+}
+div.mainTable{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	font-size:18px;
+	overflow: hidden;
+}
+table.customTable {
+/*   width: 70%;
+ */ 
+    width: 80%;
+	height: 80%;
+  margin: auto;
+ 
+}
+table.customTable th{
+  font-weight: 200;
+  background: #8a97a0;
+  color: #FFF;
+}
+table.customTable tr {
+  background: #f4f7f8;
+  border-bottom: 1px solid #FFF;
+  margin-bottom: 5px;
+}
+
+table.customTable tr:nth-child(even) {
+  background: #e8eeef;
+}
+
+table.customTable th, td {
+  text-align: left;
+  padding: 10px;
+  font-weight: 200;
+}
+
+
+
+
+
+#noticeCheckCheck{
+    display: none;
+    width: 90%;
+	height: 100%;
+	float: left;
+	position: relative;
+}
+#layoutSidenav_content{
+	display: none;
+}
+.delClass{
+	background-color:#f2b8b3;
+	color:white;
+	border:none;
+	margin-left:15px;
+}
+.reStartClass{
+	background-color:#a9a9fc;
+	color:white;
+	border:none;
+	margin-left:15px;
+}
+.delClass:hover{
+	background-color:#F6F1EF;
+	color:black;
+}
+.reStartClass:hover{
+	background-color:#F6F1EF;
+}
+.goD:hover{
+	cursor: pointer;
+	background-color:#F6F1EF;
+}
+.nName:hover{
+	cursor: pointer;
+	background-color:#F6F1EF;
+}
