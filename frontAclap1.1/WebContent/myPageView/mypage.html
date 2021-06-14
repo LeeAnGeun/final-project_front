@@ -656,7 +656,7 @@ $(document).ready(function() {
 						+ "</div>"
 						
 						+ "<div class='d-flex flex-column align-items-center spoint3'>"
-							+ "<p class='h4'>" + dto.myPoint + "</p>"
+							+ "<p class='h4'>" + comma(dto.myPoint) + "</p>"
 							+ "<div class='text-muted' id='count'>포인트</div>"
 						+ "</div>"
 				
@@ -961,6 +961,24 @@ $(document).ready(function() {
 	    return diff;
 	}
 	
+	function comma(num){
+	    let len, point, str; 
+	       
+	    num = num + ""; 
+	    point = num.length % 3 ;
+	    len = num.length; 
+	   
+	    str = num.substring(0, point); 
+	    while (point < len) { 
+	        if (str != "") str += ","; 
+	        str += num.substring(point, point + 3); 
+	        point += 3; 
+	    } 
+	     
+	    return str;
+	}
+	
+	
 	// function myFunc(classNum, classDate, price){
 	$("#cancleYES").on("click", function(){	
 		let classNum = $(this).attr("classNum");
@@ -1246,7 +1264,10 @@ function getMyClassList() {
 						}else{
 							btn = "<button class='btn btn-warning myClassStart' val='"+val.classNum+"'>재개</button>";
 						}
-						
+						let className = val.title;
+			            if(className.length > 15){
+			                 className = className.substring(0,15)+"...";
+			            } 
 						classInfo += "<div class='d-flex flex-row pt-2 line'>"
 								+ bedge
 								+ "<div>" + val.startDate.substring(0,10) + "<br>" +val.endDate.substring(0,10)+"</div>"
@@ -1254,7 +1275,7 @@ function getMyClassList() {
 								+ "<div class='_dot' id='clsDot'></div>"
 								+ "</div>"
 								+ "<div class='ufcTitle'><a href='#' class='classDetailClick' val='"+val.classNum+"'>"
-								+ "<span class='text-info a_cStatus'>" + val.title + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
+								+ "<span class='text-info a_cStatus'>" + className + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
 								+ "</span></a><br>"
 								+ "<button class='btn btn-success myClassEdit' val='"+val.classNum+"'>수정</button>"
 								+ btn
