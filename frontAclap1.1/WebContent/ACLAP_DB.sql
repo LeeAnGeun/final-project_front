@@ -27,19 +27,18 @@ CREATE TABLE ACLAPMEMBER(
     DEL NUMBER(1) NOT NULL
 );
 
-
 CREATE SEQUENCE SEQ_MEMBER
 START WITH 2
 INCREMENT BY 1;
 
-select * from ACLAPMEMBER;
 --------------------------onedayClass--------------------------
 DROP TABLE ONEDAYCLASS
 CASCADE CONSTRAINTS;
 
 DROP SEQUENCE SEQ_CLASS;
 
-select * from ONEDAYCLASS;
+select * from ONEDAYCLASS 
+update onedayclass set instructor='코딩박'  where classnum=6
 
 CREATE TABLE ONEDAYCLASS(
     CLASSNUM NUMBER PRIMARY KEY,

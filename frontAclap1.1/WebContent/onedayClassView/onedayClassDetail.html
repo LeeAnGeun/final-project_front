@@ -293,10 +293,10 @@ $("#_goBack").on("click", function(){
 	</div>
 	<br><br><br><br>
 	<div class='teacherStar'>
-		<i class="fas fa-star" style='color: red;'></i>
-		<span class='teacherTxt'></span> 
-		&nbsp;&nbsp;&nbsp;
-		<i class="fas fa-chalkboard-teacher"></i>
+		<i class="far fa-thumbs-up"></i>&nbsp;
+		<span class='teacherTxt' id='masterLikes'></span> 
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<i class="fas fa-chalkboard-teacher"></i>&nbsp;
 		<span class='teacherTxt' id="masterClass"></span> 
 		
 	</div>
@@ -772,9 +772,9 @@ $(document).ready(function(){
 				}else if(dto.primaryCategory == '프로그래밍'){
 					$("#pCategory").attr("class", "fas fa-code");
 					$("#pCategory").html("&nbsp;프로그래밍");
-				}else if(dto.primaryCategory == '스포츠/레져'){
+				}else if(dto.primaryCategory == '스포츠/레저'){
 					$("#pCategory").attr("class", "fas fa-dumbbell");
-					$("#pCategory").html("&nbsp;스포츠/레져");
+					$("#pCategory").html("&nbsp;스포츠/레저");
 				}
 	    	  	
 	    	  	$(".onedayClassTitle").text(dto.title);
@@ -834,12 +834,11 @@ $(document).ready(function(){
 		    	  	let nYoutubeLink = youtubeLink.replace("watch?v=", "embed/");
 		    	  	$("#youtubeLink").attr("src", nYoutubeLink);
 	    	  	}
-	    	  	
 	    	  	// 6. 선생님 소개
 	    	  	$("#_ocTeacherImg").attr("src", dto.profilePic);
 	    	  	$("#teacherTitle").text(dto.instructor + " 선생님 소개");
 	    	  	$(".ocTeacherMail").text(dto.email);
-	    	  	masterClass(dto.email);
+	    	  	masterClass(dto.masterNum);
 	    	  	$("#TeacherInfo").html(dto.aboutMe);
 	    	  	
 	    	  	// 7. 수업 장소
@@ -1518,14 +1517,14 @@ function showLayer3(){
 }
 
 // 개설클래스 append해주는 부분
-function masterClass(email){
+function masterClass(masterNum){
 	$.ajax({
 		url:"http://localhost:3000/masterClassCounter", 			
 		type:"post",
-		data:{email:email},
-	 	success:function( count ){
-	 		// alert(count);
-	 		$("#masterClass").text("진행 클래스 " + count + "개");	
+		data:{masterNum:masterNum},
+	 	success:function( map ){
+	 		$("#masterClass").text("진행 클래스 " + map.allClass + "개");	
+	 		$("#masterLikes").text(map.allLikes);	
 	 	},
 	 	error:function(){
 	 		alert('error');
@@ -2069,7 +2068,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 		type: "get",
 		data: {reviewSeq:reviewSeq},
 		success:function(data){
-			alert("컨트롤러 갔ㄷㅏ옴");
+	//		alert("수정 완료!");
 	//		alert(typeof (JSON.stringify(data.satisfy)));
 	//		var satisfy = parseInt(data.satisfy)
 	//		alert(typeof satisfy )
@@ -2089,7 +2088,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 			$("#classNum").val(data.classNum);
 			$("#reviewSeq").val(data.reviewSeq);
 				$("#reviewUpSub").click(function(){
-					alert("수정하기 버튼 클릭");
+				//	alert("수정하기 버튼 클릭");
 					
 					$.ajax({
 						url:"http://localhost:3000/updateReview",
@@ -2099,7 +2098,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 						contentType: false, // 필수 
 						cache: false,
 						success:function(){
-							alert("컨트롤러는 잘 다녀옴");
+						//	alert("수정완료");
 							$("#rContent").val("");
 							 location.reload();
 						},
@@ -2126,7 +2125,7 @@ function reviewDel(reviewSeq){
 		type:"get",
 		data:{reviewSeq:reviewSeq},
 		success:function(){
-			alert("삭제컨트롤러 다녀옴");
+			alert("삭제되었습니다.");
 			location.reload(true);
 		},
 		error:function(){

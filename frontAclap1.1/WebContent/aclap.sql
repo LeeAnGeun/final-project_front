@@ -7,6 +7,16 @@
 										GROUP BY R.CLASSNUM) S
 	WHERE O.MASTERNUM = A.MEMNUM AND S.CLASSNUM = O.CLASSNUM
 		AND O.CLASSNUM = 2
+
+-- A가 만든 클래스넘버르 구한다
+-- 그 클래스에 달린 좋아요 수를 구한다 		
+SELECT CLASSNUM 		
+FROM ONEDAYCLASS
+WHERE masternum = (SELECT MEMNUM FROM ACLAPMEMBER WHERE EMAIL='singt2@nate.com')
+
+SELECT count(*)
+FROM LIKES
+WHERE CLASSNUM = 5
 ------------------------------------------------------------
 -- DEL 처리 : 로그인 못하게 만든다 (삭제된 계정입니다) 
 -- DEL = 1;
