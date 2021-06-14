@@ -66,7 +66,7 @@ $(document).ready(function(){
 			alert("패스워드를 입력해주세요");
 			return;
 		}else{
-	        let log= $("#loginFrm").serialize() ;	
+	        let log= $("#loginFrm").serialize();	
 			$.ajax({
 				url:"http://localhost:3000/login", 
 				type:'post',

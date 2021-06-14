@@ -87,7 +87,7 @@ $(document).ready(function(){
 						"<option value='backEnd'>&nbsp;back end</option>"
 				);
 			}
-			else if($("#_primaryCategory").val()=='스포츠/레저'){
+			else if($("#_primaryCategory").val()=='스포츠레저'){
 				$('#_secondaryCategory1').children('option:not(:first)').remove();
 				$('#_secondaryCategory2').children('option:not(:first)').remove();
 				$("#_secondaryCategory1").append(
@@ -620,7 +620,7 @@ $(document).ready(function(){
 					"<option value='backEnd'>&nbsp;back end</option>"
 			);
 		}
-		else if($("#_primaryCategory").val()=='스포츠/레저'){
+		else if($("#_primaryCategory").val()=='스포츠레저'){
 			$('#_secondaryCategory1').children('option:not(:first)').remove();
 			$('#_secondaryCategory2').children('option:not(:first)').remove();
 			$("#_secondaryCategory1").append(
