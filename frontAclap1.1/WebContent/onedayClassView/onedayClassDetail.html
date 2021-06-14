@@ -2068,7 +2068,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 		type: "get",
 		data: {reviewSeq:reviewSeq},
 		success:function(data){
-			alert("컨트롤러 갔ㄷㅏ옴");
+	//		alert("수정 완료!");
 	//		alert(typeof (JSON.stringify(data.satisfy)));
 	//		var satisfy = parseInt(data.satisfy)
 	//		alert(typeof satisfy )
@@ -2088,7 +2088,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 			$("#classNum").val(data.classNum);
 			$("#reviewSeq").val(data.reviewSeq);
 				$("#reviewUpSub").click(function(){
-					alert("수정하기 버튼 클릭");
+				//	alert("수정하기 버튼 클릭");
 					
 					$.ajax({
 						url:"http://localhost:3000/updateReview",
@@ -2098,7 +2098,7 @@ $("#reviewImages").append("<input type='hidden' name='reviewSeq' id='reviewSeq' 
 						contentType: false, // 필수 
 						cache: false,
 						success:function(){
-							alert("컨트롤러는 잘 다녀옴");
+						//	alert("수정완료");
 							$("#rContent").val("");
 							 location.reload();
 						},
@@ -2125,7 +2125,7 @@ function reviewDel(reviewSeq){
 		type:"get",
 		data:{reviewSeq:reviewSeq},
 		success:function(){
-			alert("삭제컨트롤러 다녀옴");
+			alert("삭제되었습니다.");
 			location.reload(true);
 		},
 		error:function(){
