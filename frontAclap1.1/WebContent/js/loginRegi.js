@@ -72,7 +72,7 @@ $(document).ready(function(){
 				type:'post',
 				data:log,
 				success:function( data ){
-					alert(data.del);
+				//	alert(data.del);
 					if(data.email != null){
 						if(data.del == 1){
 							alert('삭제된 계정입니다');
@@ -232,7 +232,7 @@ function Google_Kakao_Log(email, userName, nickName, profilePic){
 		type:'post',
 		data:{email:email},
 		success:function( data ){
-			alert(data.del);
+	//		alert(data.del);
 			if(data.email != null){
 				if(data.del == 1){
 					alert('삭제된 계정입니다');
