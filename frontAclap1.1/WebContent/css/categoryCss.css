@@ -394,18 +394,20 @@ div.classContainer a:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 300px;
-  height: 400px;
- 
+  height: 420px;
+  
     float: left;
     position: relative;
 
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 18px;
+  margin-bottom: 10px;
   text-align: center;
   border-radius: 25px;
    -webkit-transition: 0.3s transform ease-out;
   transition: 0.3s transform ease-out;
 overflow-x: hidden;
+overflow-y: hidden;
 }
 
 .classCard:hover {
