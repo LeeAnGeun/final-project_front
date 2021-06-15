@@ -286,10 +286,10 @@ $(document).ready(function(){
     </div>
     <div class="a_navbar">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >S.SCADULE</a> </li>
-            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >T.SCADULE</a> </li>
-            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myLikeClass" >LIKE CLASS</a> </li>
-            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">UPDATE INFO</a> </li>
+            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_mySchedules" >S.SCHEDULE</a> </li>
+            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myClass" >T.SCHEDULE</a> </li>
+            <li class="nav-item" role="presentation"> <a href="javascript:void(0);" class="nav-link" id="_myLikeClass" >LIKED CLASS</a> </li>
+            <li class="nav-item" role="presentation"> <a href="#" class="nav-link" id="a_infoUpdate">UPDATE PROFILE</a> </li>
         </ul> 	
     </div>
 </div>
@@ -656,7 +656,7 @@ $(document).ready(function() {
 						+ "</div>"
 						
 						+ "<div class='d-flex flex-column align-items-center spoint3'>"
-							+ "<p class='h4'>" + dto.myPoint + "</p>"
+							+ "<p class='h4'>" + comma(dto.myPoint) + "</p>"
 							+ "<div class='text-muted' id='count'>포인트</div>"
 						+ "</div>"
 				
@@ -718,6 +718,11 @@ $(document).ready(function() {
 						let pmonth = date.getMonth() + 1;
 						let pday = date.getDate();
 						
+						let className = val.title;
+			            if(className.length > 17){
+			                 className = className.substring(0,17)+"...";
+			            }
+			            
 						pdate = Number(pyear + two(pmonth + "") + two(pday+""));
 						
 						let rdate = Number(val.rdate.replace(/-/gi, ""));
@@ -743,7 +748,7 @@ $(document).ready(function() {
 									+ "<div class='d-flex flex-column border bg-white ml-md-5 p-sm-0 status' id='status' rdate='" + val.rdate + "' class_seq='"+ val.classNum +"' classDel='" + val.del + "'>"
 										+ "<div class='_arrow' id='arrow'></div>"
 										
-										+ "<div class='text-dark pl-sm-2 _title'>" + val.title 
+										+ "<div class='text-dark pl-sm-2 _title'>" + className 
 											+ cStatus
 										+ "</div>"
 															
@@ -783,7 +788,7 @@ $(document).ready(function() {
 					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
 									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
 									+ "<div class='d-flex flex-column tps'>"
-										+ "<div><b>" + classDto.title + "</b></div>"
+										+ "<div style='width:220px'><b>" + classDto.title + "</b></div>"
 										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
 									+ "</div>"
 							   + "</div>";
@@ -800,12 +805,12 @@ $(document).ready(function() {
 	             	let ct_info = "<div class='d-flex flex-column justify-content-center mct_info'>"
 	             					+ "<div class='pb-2'><span class='fa fa-book-reader' style='margin-right: 10px'></span><b>선생 소개</b></div>"
 	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
-		           						+ "<div class='p-1' id='small-font'>" + classDto.aboutMe + "</div>"
+		           						+ "<div class='aboutMe' id='small-font'>" + classDto.aboutMe + "</div>"
 		             				+ "</div>"
 		             				
 	             					+ "<div class='pb-2 pt-2'><span class='fa fa-chalkboard-teacher' style='margin-right: 10px'></span><b>수업 소개</b></div>"
 	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
-		          						+ "<div class='p-1' id='small-font'>" + classDto.information + "</div>"    
+		          						+ "<div class='classInfo' id='small-font'>" + classDto.information + "</div>"    
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
@@ -961,6 +966,24 @@ $(document).ready(function() {
 	    return diff;
 	}
 	
+	function comma(num){
+	    let len, point, str; 
+	       
+	    num = num + ""; 
+	    point = num.length % 3 ;
+	    len = num.length; 
+	   
+	    str = num.substring(0, point); 
+	    while (point < len) { 
+	        if (str != "") str += ","; 
+	        str += num.substring(point, point + 3); 
+	        point += 3; 
+	    } 
+	     
+	    return str;
+	}
+	
+	
 	// function myFunc(classNum, classDate, price){
 	$("#cancleYES").on("click", function(){	
 		let classNum = $(this).attr("classNum");
@@ -1046,7 +1069,7 @@ function stampTable( memNum, pageNum ){
 					priCate += "<i class='fas fa-utensils' style='font-size:50px;color: #1E3269;'></i>";
 				}else if(stampPriCate == '프로그래밍'){
 					priCate += "<i class='fas fa-code' style='font-size:50px;color: #1E3269;'></i>";
-				}else if(stampPriCate == '스포츠/레져'){
+				}else if(stampPriCate == '스포츠레져'){
 					priCate += "<i class='fas fa-dumbbell' style='font-size:50px;color: #1E3269;'></i>";
 				}
 				if(i==6){
@@ -1182,7 +1205,9 @@ function loadPage( memNum, totalCount  ) {
 						// alert('success');
 						var ev = Array();
 						$.each(data, function (i, entry) {
-							ev.push({title: entry.title + entry.name,
+							
+						let name = " ("+entry.name+")";
+							ev.push({title: entry.title + name,
 								
 								start: entry.rdate, end:entry.rdate
 							});
@@ -1246,7 +1271,10 @@ function getMyClassList() {
 						}else{
 							btn = "<button class='btn btn-warning myClassStart' val='"+val.classNum+"'>재개</button>";
 						}
-						
+						let className = val.title;
+			            if(className.length > 15){
+			                 className = className.substring(0,15)+"...";
+			            } 
 						classInfo += "<div class='d-flex flex-row pt-2 line'>"
 								+ bedge
 								+ "<div>" + val.startDate.substring(0,10) + "<br>" +val.endDate.substring(0,10)+"</div>"
@@ -1254,7 +1282,7 @@ function getMyClassList() {
 								+ "<div class='_dot' id='clsDot'></div>"
 								+ "</div>"
 								+ "<div class='ufcTitle'><a href='#' class='classDetailClick' val='"+val.classNum+"'>"
-								+ "<span class='text-info a_cStatus'>" + val.title + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
+								+ "<span class='text-info a_cStatus'>" + className + "(<i class='far fa-thumbs-up'></i>"+val.likeCount+")"
 								+ "</span></a><br>"
 								+ "<button class='btn btn-success myClassEdit' val='"+val.classNum+"'>수정</button>"
 								+ btn

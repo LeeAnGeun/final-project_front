@@ -373,6 +373,7 @@ div.classContainer{
 	float: left;
 	width: 300px;
 	height: auto;
+	overflow: hidden;
 }
 
 div.classContainer a{
@@ -381,26 +382,32 @@ div.classContainer a{
 	background-image: linear-gradient(to top, #ffa3ba 0, #ffa3ba .13169rem, rgba(255, 102, 140, 0) .13169rem, rgba(255, 102, 140, 0) 100%);
 	transition: 0.2s;
 	outline: none;
+	
+	
 }
 div.classContainer a:hover {
 	 color: #ff668c;
+	 
+  animation: move 30s linear infinite
 }
 .classCard {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 300px;
-  height: 400px;
- 
+  height: 420px;
+  
     float: left;
     position: relative;
 
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 18px;
+  margin-bottom: 10px;
   text-align: center;
   border-radius: 25px;
    -webkit-transition: 0.3s transform ease-out;
   transition: 0.3s transform ease-out;
-
+overflow-x: hidden;
+overflow-y: hidden;
 }
 
 .classCard:hover {
@@ -488,26 +495,38 @@ a.seeMore:hover{
 	}
 }
 
-
-
-.marqueebluebox {
+.bluebox, .stuff {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 300px;
+  height: 30px;
+  margin-bottom: 5px;
+  float: left;
+}
+.marquee {
   white-space: nowrap;
   overflow: hidden;
 }
-
-.marqueebluebox a {
+.marquee span {
+  display: inline-block;
+  width: 100%;
+}
+.marquee span span {
   -moz-transition: left 4s linear;
   -o-transition: left 4s linear;
   -webkit-transition: left 4s linear;
-  transition: left 4s linear;
+  transition: left 1s linear;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
   left: 0px;
 }
-.marqueebluebox:active a, .marqueebluebox:hover a {
+.marquee:active span, .marquee:hover span {
   width: auto;
 }
-.marqueebluebox:active a, .marqueebluebox:hover a {
+.marquee:active span span, .marquee:hover span span {
   left: calc(300px - 15px - 100%);
 }
+

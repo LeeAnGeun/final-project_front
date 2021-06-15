@@ -397,7 +397,7 @@ $(document).ready(function () {
 	         	// 유저 정보 수정
 				$('.nName').on('click',function(){
 					let seq = $(this).attr('seq');
-					alert(seq);
+				//	alert(seq);
 					setMemInfo(seq);
 					$("#memberUpdateModal").modal('show');
 	            });
@@ -588,7 +588,7 @@ $(document).ready(function () {
 				loadPage3(count);
 			},
 			error:function(){
-				alert("우짜냐 에러다ㅜ");
+				alert("에러");
 			}
 		}); 
 	}
@@ -776,7 +776,7 @@ $(document).ready(function () {
 				loadPage2(count);
 			},
 			error:function(){
-				alert("우짜냐 에러다ㅜ");
+				alert("에러");
 			}
 		}); 
 	}
@@ -955,10 +955,6 @@ $(document).ready(function () {
 	//디테일 show up
 	$(document).on("click", "#_seq", function () { 
 		var tseq=$(this).attr('value');
-		//alert('click');
-		//alert(tseq);
-		//let seq = urlParams.seq;
-		//alert("seq: " + seq);
 		
 		$.ajax({
 			url:"http://localhost:3000/noticeDetail",
