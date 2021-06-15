@@ -718,6 +718,11 @@ $(document).ready(function() {
 						let pmonth = date.getMonth() + 1;
 						let pday = date.getDate();
 						
+						let className = val.title;
+			            if(className.length > 17){
+			                 className = className.substring(0,17)+"...";
+			            }
+			            
 						pdate = Number(pyear + two(pmonth + "") + two(pday+""));
 						
 						let rdate = Number(val.rdate.replace(/-/gi, ""));
@@ -743,7 +748,7 @@ $(document).ready(function() {
 									+ "<div class='d-flex flex-column border bg-white ml-md-5 p-sm-0 status' id='status' rdate='" + val.rdate + "' class_seq='"+ val.classNum +"' classDel='" + val.del + "'>"
 										+ "<div class='_arrow' id='arrow'></div>"
 										
-										+ "<div class='text-dark pl-sm-2 _title'>" + val.title 
+										+ "<div class='text-dark pl-sm-2 _title'>" + className 
 											+ cStatus
 										+ "</div>"
 															
@@ -783,7 +788,7 @@ $(document).ready(function() {
 					let b_info = "<div class='d-flex flex-row align-items-center m_info'>"
 									+ "<div class='pr-sm-2 pr-1 a_masterPic'> <img src='" + classDto.profilePic + "' alt='' width='50' height='50' class='myPageProfile'> </div>"
 									+ "<div class='d-flex flex-column tps'>"
-										+ "<div><b>" + classDto.title + "</b></div>"
+										+ "<div style='width:220px'><b>" + classDto.title + "</b></div>"
 										+ "<div id='small-font'>" + classDto.primaryCategory + "-"  + classDto.secondaryCategory + "</div>"
 									+ "</div>"
 							   + "</div>";
@@ -800,12 +805,12 @@ $(document).ready(function() {
 	             	let ct_info = "<div class='d-flex flex-column justify-content-center mct_info'>"
 	             					+ "<div class='pb-2'><span class='fa fa-book-reader' style='margin-right: 10px'></span><b>선생 소개</b></div>"
 	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
-		           						+ "<div class='p-1' id='small-font'>" + classDto.aboutMe + "</div>"
+		           						+ "<div class='aboutMe' id='small-font'>" + classDto.aboutMe + "</div>"
 		             				+ "</div>"
 		             				
 	             					+ "<div class='pb-2 pt-2'><span class='fa fa-chalkboard-teacher' style='margin-right: 10px'></span><b>수업 소개</b></div>"
 	             					+ "<div class='d-flex flex-row align-items-center rounded border mct_box'>"
-		          						+ "<div class='p-1' id='small-font'>" + classDto.information + "</div>"    
+		          						+ "<div class='classInfo' id='small-font'>" + classDto.information + "</div>"    
 		          					+ "</div>"
 		          					
 		          					+ "<div class='btn_sdel'>"
