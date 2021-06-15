@@ -466,12 +466,12 @@ function checkAlertBadge(memNum) {
        for (i=0; i < chkBadge.length; i++){
     	   
    	   		if(oldN[i] != newN[i]){
-    	    	  $('.badge').show();
-    	    	 
+    	      $('.badge').css('display', 'block');
+    	    	
     	    }
    	      	if(oldN[i] == newN[i]){
-   	    	  $('.badge').hide();
-   	    	  
+   	    	 // $('.badge').hide();
+   	    	$('.badge').css('display', 'none');
    	      	}
        }
       
