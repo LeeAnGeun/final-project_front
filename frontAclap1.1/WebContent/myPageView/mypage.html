@@ -1200,7 +1200,9 @@ function loadPage( memNum, totalCount  ) {
 						// alert('success');
 						var ev = Array();
 						$.each(data, function (i, entry) {
-							ev.push({title: entry.title + entry.name,
+							
+						let name = " ("+entry.name+")";
+							ev.push({title: entry.title + name,
 								
 								start: entry.rdate, end:entry.rdate
 							});
