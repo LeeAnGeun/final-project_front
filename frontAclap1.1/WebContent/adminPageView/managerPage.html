@@ -955,10 +955,6 @@ $(document).ready(function () {
 	//디테일 show up
 	$(document).on("click", "#_seq", function () { 
 		var tseq=$(this).attr('value');
-		//alert('click');
-		//alert(tseq);
-		//let seq = urlParams.seq;
-		//alert("seq: " + seq);
 		
 		$.ajax({
 			url:"http://localhost:3000/noticeDetail",
