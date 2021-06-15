@@ -369,6 +369,27 @@ h2.aclap:nth-child(2) {
 	margin-left: 10px;
 }
 
+.aboutMe{
+	padding-top:5px;
+	width: 380px;
+	height: 60px;
+	overflow: scroll;
+}
+
+.aboutMe::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.classInfo{
+	padding-top:5px;
+	width: 380px;
+	height: 60px;
+	overflow: scroll;
+}
+.classInfo::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
 @media(min-width:992px) {
     #profile {
         width: 75px;
